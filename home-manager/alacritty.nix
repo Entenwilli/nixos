@@ -1,7 +1,10 @@
 {
   lib, pkgs, ...
 }: {
-programs.alacritty = {
+  home.packages = with pkgs; [
+    nerdfonts
+  ];
+  programs.alacritty = {
     enable = true;
     settings = {
       shell.program = "${pkgs.fish}/bin/fish";

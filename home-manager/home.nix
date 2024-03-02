@@ -11,6 +11,7 @@
   # You can import other home-manager modules here
   imports = [
     ./alacritty.nix
+    ./theming.nix
   ];
 
   nixpkgs = {
@@ -52,17 +53,6 @@
   # Enable XDG Desktop
   xdg.enable = true;
   xdg.mime.enable = true;
-
-  # GTK Theming
-  gtk = {
-    enable = true;
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
-    };
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
-    };
-  };
 
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
