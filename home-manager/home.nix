@@ -1,0 +1,148 @@
+# This is your home-manager configuration file
+# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
+  # You can import other home-manager modules here
+  imports = [
+    # If you want to use modules your own flake exports (from modules/home-manager):
+    # outputs.homeManagerModules.example
+
+    # Or modules exported from other flakes (such as nix-colors):
+    # inputs.nix-colors.homeManagerModules.default
+
+    # You can also split up your configuration and import pieces of it here:
+    # ./nvim.nix
+  ];
+
+  nixpkgs = {
+    # You can add overlays here
+    overlays = [
+      # Add overlays your own flake exports (from overlays and pkgs dir):
+      outputs.overlays.additions
+      outputs.overlays.modifications
+      outputs.overlays.unstable-packages
+
+      # You can also add overlays exported from other flakes:
+      # neovim-nightly-overlay.overlays.default
+
+      # Or define it inline, for example:
+      # (final: prev: {
+      #   hi = final.hello.overrideAttrs (oldAttrs: {
+      #     patches = [ ./change-hello-to-hi.patch ];
+      #   });
+      # })
+    ];
+    # Configure your nixpkgs instance
+    config = {
+      # Disable if you don't want unfree packages
+      allowUnfree = true;
+      # Workaround for https://github.com/nix-community/home-manager/issues/2942
+      allowUnfreePredicate = _: true;
+    };
+  };
+
+  # Set home and username
+  home = {
+    username = "felix";
+    homeDirectory = "/home/felix";
+    sessionVariables = {
+      DMENU_BLUETOOTH_LAUNCHER = "rofi";
+    };
+  };
+
+  # Enable XDG Desktop
+  xdg.enable = true;
+  xdg.mime.enable = true;
+
+  # GTK Theming
+  gtk = {
+    enable = true;
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = true;
+    };
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = true;
+    };
+  };
+
+  # Add stuff for your user as you see fit:
+  # programs.neovim.enable = true;
+  home.packages = with pkgs; [ 
+    fzf
+    ripgrep
+    jq
+    socat
+
+    unstable.obsidian
+    keepassxc
+    discord
+    lazygit
+    jetbrains.idea-ultimate
+    openjdk17
+    unstable.eww
+    unstable.neovim
+  ];
+
+  # Enable home-manager and git
+  programs.home-manager.enable = true;
+  programs.git = {
+    enable = true;
+    userName = "Felix Schwickerath";
+    userEmail = "felix@fschwickerath.de";
+  };
+
+  # Enable cat alternative
+  programs.bat.enable = true;
+
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      shell.program = "${pkgs.fish}/bin/fish";
+
+      colors.bright = {
+        black = "0x414868";
+        blue = "0x7aa2f7";
+        cyan = "0x7dcfff";
+        green = "0x9ece6a";
+        magenta = "0xbb9af7";
+        red = "0xf7768e";
+        white = "0xc0caf5";
+        yellow = "0xe0af68";
+      };
+
+      colors.normal = {
+        black = "0x15161e";
+        blue = "0x7aa2f7";
+        cyan = "0x7dcfff";
+        green = "0x9ece6a";
+        magenta = "0xbb9af7";
+        red = "0xf7768e";
+        white = "0xa9b1d6";
+        yellow = "0xe0af68";
+      };
+
+      colors.primary = {
+      background = "0x1a1b26";
+      foreground = "0xc0caf5";
+      };
+
+      font.size = 14.0;
+
+      font.normal = {
+        family = "FiraCode Nerd Font";
+        style = "Regular";
+      };
+    };
+  };
+  # Nicely reload system units when changing configs
+  systemd.user.startServices = "sd-switch";
+
+  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+  home.stateVersion = "23.11";
+}
