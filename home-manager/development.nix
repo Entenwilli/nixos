@@ -5,7 +5,7 @@
 }: {
   # Install required packages 
   home.packages = with pkgs; [
-    commitizen
+    cz-cli 
   ];
 
   # Configure git
@@ -21,13 +21,14 @@
     settings = {
       gui.shortTimeFormat = "15:04:05";
       customCommands = [
-        "c" = {
+        {
+          key = "c";
           command = "git cz";
           description = "commit with commitizen";
           context = "files";
           loadingText = "opening commit tool";
           subprocess = true;
-        };
+        }
       ];
     };
   };
@@ -37,5 +38,5 @@
     {
       "path": "cz-conventional-changelog"
     }
-  ''
+  '';
 }

@@ -21,6 +21,7 @@
   fileSystems."/home" =
     { device = "/dev/disk/by-uuid/3b518ebf-acac-44d1-a223-f170d212632a";
       fsType = "btrfs";
+      neededForBoot = true;
     };
 
   fileSystems."/boot" =

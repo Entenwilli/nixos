@@ -14,6 +14,11 @@
       inputs.hardware.nixosModules.dell-xps-13-9310
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.home-manager
+
+      ./secrets.nix
+      ./hyprland.nix
+      ./network.nix
+      ./laptop.nix
     ];
 
   # Configure nix package manager
@@ -55,10 +60,32 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Set Hostname
-  networking.hostName = "nixos-laptop";
-  # Enable network manager
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  # Boot splash screen
+  boot.consoleLogLevel = 0;
+  boot.kernelParams = ["quiet" "splash" "rd.udev.log-priority=3"];
+  boot.initrd.verbose = false;
+  boot.plymouth = {
+    enable = true;
+  };
+
+  # Enable display manager
+  services.xserver.enable = true;
+  services.xserver.displayManager = {
+    sddm = {
+      enable = true;
+      wayland.enable = true;
+      settings = {
+        Autologin = {
+          Session = "hyprland.desktop";
+          User = "felix";
+        };
+      };
+    };
+  };
+
+  environment.sessionVariables = {
+    EDITOR = "nvim";
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -75,8 +102,9 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.felix = {
+    hashedPassword = "$y$j9T$hHy3Jnr8hvdSqLRV3z2760$G.Hr/DOnqhA6c2IfcAcPDGByVm8EOrtvKTnrGKYPodB";
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "audio" "network" "networkmanager" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.fish;
     packages = with pkgs; [
       eza
@@ -91,16 +119,14 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
+    age
+    sops
     alacritty
     git
-    rofi
     neofetch
-    hyprpaper
-    dunst
     rustc
     cargo
     nodejs
-    wl-clipboard
     gcc
     prettierd
     playerctl
@@ -108,21 +134,13 @@
     pulseaudio
     binutils
     libarchive
-    wirelesstools
     man-pages
     glibcInfo
-    networkmanager_dmenu
-    dmenu-bluetooth
-    papirus-icon-theme
     eclipse-dfa
+    
+    #TODO: Laptop Only
+    brightnessctl
   ];
-
-  # Enable hyprland
-  programs.hyprland.enable = true;
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-  };
 
   # Setup syncthing
   services = {
@@ -149,12 +167,6 @@
   # Installing Fonts
   fonts.packages = with pkgs; [ nerdfonts ];
 
-  # Start ssh agent
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-
   # Configure bluetooth
   hardware.bluetooth = {
     enable = true;
@@ -167,6 +179,10 @@
     users = {
       felix = import ../home-manager/home.nix;
     };
+  };
+
+  programs.ssh = {
+    startAgent = true;
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,

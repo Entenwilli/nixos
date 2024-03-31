@@ -13,6 +13,9 @@
     ./alacritty.nix
     ./theming.nix
     ./development.nix
+    ./cli-tools.nix
+    ./hyprland.nix
+    ./spicetify.nix
   ];
 
   # Configure nix package manager
@@ -34,8 +37,13 @@
     homeDirectory = "/home/felix";
     sessionVariables = {
       DMENU_BLUETOOTH_LAUNCHER = "rofi";
+      XDG_CURRENT_DESKTOP = "hyprland";
+      EDITOR = "nvim";
     };
   };
+
+  # Enable alacritty
+  alacritty.enable = true;
 
   # Enable XDG Desktop
   xdg.enable = true;
@@ -44,26 +52,29 @@
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   home.packages = with pkgs; [ 
-    fzf
-    ripgrep
-    jq
-    socat
-
     unstable.obsidian
     keepassxc
-    discord
-    lazygit
+    libsecret
+    webcord
     jetbrains.idea-ultimate
-    openjdk17
+    openjdk21
     unstable.eww
     unstable.neovim
   ];
 
+
+  xdg.desktopEntries.webcord = {
+    name = "Discord";
+    genericName = "Discord";
+    exec = "webcord --enable-features=UseOzonePlatform --ozone-platform=wayland";
+    icon = "webcord";
+    terminal = false;
+    type = "Application";
+    categories = [ "Network" ];
+  };
+
   # Enable home-manager
   programs.home-manager.enable = true;
-
-  # Enable cat alternative
-  programs.bat.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
