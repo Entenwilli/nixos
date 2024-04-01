@@ -26,6 +26,7 @@
      outer_color = rgb(c0caf5)
      inner_color = rgb(16161e)
      font_color = rgb(EFEFEF)
+     color = rgb(EFEFEF)
      placeholder_text = <i>Input Password...</i>
      hide_input = false
      size = 200, 50
