@@ -13,7 +13,6 @@
     [ # Include the results of the hardware scan.
       inputs.hardware.nixosModules.dell-xps-13-9310
       ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.home-manager
 
       ./secrets.nix
       ./hyprland.nix
@@ -137,10 +136,19 @@
     man-pages
     glibcInfo
     eclipse-dfa
+    xournalpp
+    gnome.adwaita-icon-theme
+    shared-mime-info
     
     #TODO: Laptop Only
     brightnessctl
   ];
+
+   # Fixes for xournalpp
+    environment.pathsToLink = [
+      "/share/icons"
+        "/share/mime"
+    ];
 
   # Setup syncthing
   services = {

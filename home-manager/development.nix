@@ -6,6 +6,7 @@
   # Install required packages 
   home.packages = with pkgs; [
     cz-cli 
+    yarn
   ];
 
   # Configure git
