@@ -18,6 +18,9 @@
 
     # Credential management wth sops
     sops-nix.url = "github:Mic92/sops-nix";
+
+    # Neovim Configuration 
+    entenvim.url = "github:Entenwilli/neovim";
   };
 
   outputs = {

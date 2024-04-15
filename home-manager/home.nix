@@ -16,6 +16,7 @@
     ./cli-tools.nix
     ./hyprland.nix
     ./spicetify.nix
+    ./neovim.nix
   ];
 
   # Configure nix package manager
@@ -59,7 +60,6 @@
     jetbrains.idea-ultimate
     openjdk21
     unstable.eww
-    unstable.neovim
   ];
 
 
