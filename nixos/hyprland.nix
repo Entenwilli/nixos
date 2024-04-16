@@ -6,6 +6,8 @@
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     QT_QPA_PLATFORMTHEME = "qt6ct";
+    # HACK: Fix crash in newer eclipse versions
+    WEBKIT_DISABLE_DMABUF_RENDERER = "1";
   };
  environment.systemPackages = with pkgs; [
     networkmanager_dmenu

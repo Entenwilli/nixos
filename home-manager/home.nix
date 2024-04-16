@@ -40,6 +40,8 @@
       DMENU_BLUETOOTH_LAUNCHER = "rofi";
       XDG_CURRENT_DESKTOP = "hyprland";
       EDITOR = "nvim";
+      # HACK: Fix eclipse crash
+      WEBKIT_DISABLE_DMABUF_RENDERER = "1";
     };
   };
 
