@@ -22,7 +22,11 @@
     grim
     slurp
   ];
-  programs.hyprland.enable = true;
+
+  programs.hyprland = {
+    enable = true;
+    package = pkgs.unstable.hyprland;
+  };
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 }
