@@ -14,7 +14,7 @@
     rofi-power-menu
     dmenu-bluetooth
     wirelesstools
-    rofi
+    rofi-wayland
     wl-clipboard
     hyprpaper
     unstable.hyprlock

@@ -139,6 +139,7 @@
     xournalpp
     gnome.adwaita-icon-theme
     shared-mime-info
+    unstable.nh
     
     #TODO: Laptop Only
     brightnessctl

@@ -17,6 +17,7 @@
     ./hyprland.nix
     ./spicetify.nix
     ./neovim.nix
+    ./rofi.nix
   ];
 
   # Configure nix package manager
