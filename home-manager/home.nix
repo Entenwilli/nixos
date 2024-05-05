@@ -10,6 +10,7 @@
 }: {
   # You can import other home-manager modules here
   imports = [
+    inputs.entenvim.homeManagerModules.default
     ./alacritty.nix
     ./theming.nix
     ./development.nix
@@ -18,6 +19,9 @@
     ./spicetify.nix
     ./neovim.nix
     ./rofi.nix
+    ./dunst.nix
+    ./zathura.nix
+    ./waybar.nix
   ];
 
   # Configure nix package manager
@@ -49,13 +53,22 @@
   # Enable alacritty
   alacritty.enable = true;
 
+  # Enable dunst
+  dunst.enable = true;
+
+  # Enable zathura
+  zathura.enable = true;
+
+  # Enable waybar
+  waybar.enable = true;
+
   # Enable XDG Desktop
   xdg.enable = true;
   xdg.mime.enable = true;
 
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
-  home.packages = with pkgs; [ 
+  home.packages = with pkgs; [
     unstable.obsidian
     keepassxc
     libsecret
@@ -65,7 +78,6 @@
     unstable.eww
   ];
 
-
   xdg.desktopEntries.webcord = {
     name = "Discord";
     genericName = "Discord";
@@ -73,7 +85,7 @@
     icon = "webcord";
     terminal = false;
     type = "Application";
-    categories = [ "Network" ];
+    categories = ["Network"];
   };
 
   # Enable home-manager
