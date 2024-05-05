@@ -1,5 +1,8 @@
 {
-  lib, pkgs, config, ...
+  lib,
+  pkgs,
+  config,
+  ...
 }: {
   options = {
     alacritty.enable = lib.mkEnableOption "Enable alacritty";
@@ -7,7 +10,7 @@
 
   config = lib.mkIf config.alacritty.enable {
     home.packages = with pkgs; [
-      nerdfonts
+      (nerdfonts.override {fonts = ["FiraCode"];})
     ];
     programs.alacritty = {
       enable = true;
@@ -46,6 +49,18 @@
         font.normal = {
           family = "FiraCode Nerd Font";
           style = "Regular";
+        };
+        font.bold = {
+          family = "FiraCode Nerd Font";
+          style = "Bold";
+        };
+        font.italic = {
+          family = "FiraCode Nerd Font";
+          style = "Italic";
+        };
+        font.bold_italic = {
+          family = "FiraCode Nerd Font";
+          style = "Bold Italic";
         };
       };
     };
