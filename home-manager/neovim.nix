@@ -3,9 +3,8 @@
   pkgs,
   inputs,
   ...
-}: 
-let
+}: let
   system = pkgs.system;
 in {
-  programs.neovim = inputs.entenvim.lib.mkHomeManager {inherit system;};
+  programs.entenvim.enable = true;
 }
