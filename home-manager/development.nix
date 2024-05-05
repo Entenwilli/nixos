@@ -1,5 +1,4 @@
 {
-  libs,
   pkgs,
   ...
 }: {
@@ -7,6 +6,12 @@
   home.packages = with pkgs; [
     cz-cli 
     yarn
+    gnumake
+    libgcc
+    cmake
+    pwndbg
+    llvmPackages_latest.lldb
+    valgrind
   ];
 
   # Configure git
