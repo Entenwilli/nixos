@@ -1,24 +1,24 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ inputs,
+{
+  inputs,
   outputs,
   lib,
   config,
-  pkgs, 
-  ... 
+  pkgs,
+  ...
 }: {
-  imports =
-    [ # Include the results of the hardware scan.
-      inputs.hardware.nixosModules.dell-xps-13-9310
-      ./hardware-configuration.nix
+  imports = [
+    # Include the results of the hardware scan.
+    inputs.hardware.nixosModules.dell-xps-13-9310
+    ./hardware-configuration.nix
 
-      ./secrets.nix
-      ./hyprland.nix
-      ./network.nix
-      ./laptop.nix
-    ];
+    ./secrets.nix
+    ./hyprland.nix
+    ./network.nix
+    ./laptop.nix
+  ];
 
   # Configure nix package manager
   nixpkgs = {
@@ -56,8 +56,21 @@
   };
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
+  #boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Use grub bootloader
+  boot.loader = {
+    grub = {
+      enable = true;
+      device = "nodev";
+      efiSupport = true;
+    };
+    grub2-theme = {
+      enable = true;
+      theme = "vimix";
+    };
+  };
 
   # Boot splash screen
   boot.consoleLogLevel = 0;
@@ -103,7 +116,7 @@
   users.users.felix = {
     hashedPassword = "$y$j9T$hHy3Jnr8hvdSqLRV3z2760$G.Hr/DOnqhA6c2IfcAcPDGByVm8EOrtvKTnrGKYPodB";
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "network" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "audio" "network" "networkmanager"]; # Enable ‘sudo’ for the user.
     shell = pkgs.fish;
     packages = with pkgs; [
       eza
@@ -111,7 +124,6 @@
       spotify
     ];
   };
-
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -140,16 +152,17 @@
     gnome.adwaita-icon-theme
     shared-mime-info
     unstable.nh
-    
+    element-desktop
+
     #TODO: Laptop Only
     brightnessctl
   ];
 
-   # Fixes for xournalpp
-    environment.pathsToLink = [
-      "/share/icons"
-        "/share/mime"
-    ];
+  # Fixes for xournalpp
+  environment.pathsToLink = [
+    "/share/icons"
+    "/share/mime"
+  ];
 
   # Setup syncthing
   services = {
@@ -174,7 +187,10 @@
   };
 
   # Installing Fonts
-  fonts.packages = with pkgs; [ nerdfonts ];
+  fonts.packages = with pkgs; [
+    (nerdfonts.override {fonts = ["FiraCode"];})
+    ipafont
+  ];
 
   # Configure bluetooth
   hardware.bluetooth = {
@@ -184,7 +200,7 @@
 
   # Setup homemanager
   home-manager = {
-    extraSpecialArgs = { inherit inputs outputs; };
+    extraSpecialArgs = {inherit inputs outputs;};
     users = {
       felix = import ../home-manager/home.nix;
     };
@@ -212,4 +228,3 @@
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "23.11"; # Did you read the comment?
 }
-

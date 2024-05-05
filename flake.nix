@@ -19,8 +19,11 @@
     # Credential management wth sops
     sops-nix.url = "github:Mic92/sops-nix";
 
-    # Neovim Configuration 
+    # Neovim Configuration
     entenvim.url = "github:Entenwilli/neovim";
+
+    # Grub bootloader theme
+    grub2-themes.url = "github:vinceliuice/grub2-themes";
   };
 
   outputs = {
@@ -54,6 +57,7 @@
           ./nixos/configuration.nix
           inputs.sops-nix.nixosModules.sops
           inputs.home-manager.nixosModules.home-manager
+          inputs.grub2-themes.nixosModules.default
         ];
       };
     };
