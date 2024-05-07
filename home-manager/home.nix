@@ -3,8 +3,6 @@
 {
   inputs,
   outputs,
-  lib,
-  config,
   pkgs,
   ...
 }: {
@@ -22,6 +20,7 @@
     ./dunst.nix
     ./zathura.nix
     ./waybar.nix
+    ./zoxide.nix
   ];
 
   # Configure nix package manager
@@ -61,6 +60,9 @@
 
   # Enable waybar
   waybar.enable = true;
+
+  # Enable zoxide
+  zoxide.enable = true;
 
   # Enable XDG Desktop
   xdg.enable = true;
