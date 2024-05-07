@@ -19,7 +19,7 @@
           height = 30;
           output = [
             "eDP-1"
-            "HDMI-A-1"
+            "DP-1"
           ];
           modules-left = ["custom/launcher" "hyprland/workspaces" "mpris"];
           # modules-center = ["hyprland/window"];
