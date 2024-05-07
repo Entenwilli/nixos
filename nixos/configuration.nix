@@ -148,7 +148,6 @@
     man-pages
     glibcInfo
     eclipse-dfa
-    xournalpp
     gnome.adwaita-icon-theme
     shared-mime-info
     unstable.nh
@@ -156,12 +155,6 @@
 
     #TODO: Laptop Only
     brightnessctl
-  ];
-
-  # Fixes for xournalpp
-  environment.pathsToLink = [
-    "/share/icons"
-    "/share/mime"
   ];
 
   # Setup syncthing
