@@ -75,7 +75,6 @@
     webcord
     jetbrains.idea-ultimate
     openjdk21
-    unstable.eww
   ];
 
   xdg.desktopEntries.webcord = {
