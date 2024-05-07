@@ -151,6 +151,14 @@
                   background: #90b1b1;
               }
 
+              #bluetooth.on {
+              background: #68D2E8;
+              }
+
+              #bluetooth.connected {
+              background: #03AED2;
+              }
+
         #network {
                   background: #2980b9;
               }
