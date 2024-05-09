@@ -138,7 +138,7 @@
     sops
     alacritty
     git
-    neofetch
+    fastfetch
     rustc
     cargo
     nodejs
