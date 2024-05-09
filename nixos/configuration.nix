@@ -18,6 +18,7 @@
     ./hyprland.nix
     ./network.nix
     ./laptop.nix
+    ./nixos-helper.nix
   ];
 
   # Configure nix package manager
@@ -54,6 +55,9 @@
     # Deduplicate and optimize nix store
     auto-optimise-store = true;
   };
+
+  # Enable nixos-helper
+  nixos-helper.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   #boot.loader.systemd-boot.enable = true;
@@ -150,7 +154,6 @@
     eclipse-dfa
     gnome.adwaita-icon-theme
     shared-mime-info
-    unstable.nh
     element-desktop
 
     #TODO: Laptop Only

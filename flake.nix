@@ -15,15 +15,19 @@
 
     # Spicetify
     spicetify-nix.url = "github:the-argus/spicetify-nix";
+    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     # Credential management wth sops
     sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     # Neovim Configuration
     entenvim.url = "github:Entenwilli/neovim";
+    entenvim.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     # Grub bootloader theme
     grub2-themes.url = "github:vinceliuice/grub2-themes";
+    grub2-themes.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
