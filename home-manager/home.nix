@@ -76,6 +76,9 @@
   # Enable fish
   fish.enable = true;
 
+  # Enable hyprland
+  hyprland.enable = true;
+
   # Enable XDG Desktop
   xdg.enable = true;
   xdg.mime.enable = true;
