@@ -9,7 +9,7 @@
     # HACK: Fix crash in newer eclipse versions
     WEBKIT_DISABLE_DMABUF_RENDERER = "1";
   };
- environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     networkmanager_dmenu
     rofi-power-menu
     dmenu-bluetooth
@@ -23,6 +23,7 @@
     bc
     grim
     slurp
+    rofi-emoji
   ];
 
   programs.hyprland = {
@@ -30,5 +31,5 @@
     package = pkgs.unstable.hyprland;
   };
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
 }
