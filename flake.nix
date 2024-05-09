@@ -13,17 +13,23 @@
     # Hardware configuration
     hardware.url = "github:nixos/nixos-hardware";
 
+    # Flake utils
+    flake-utils.url = "github:numtide/flake-utils";
+
     # Spicetify
     spicetify-nix.url = "github:the-argus/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
+    spicetify-nix.inputs.flake-utils.follows = "flake-utils";
 
     # Credential management wth sops
     sops-nix.url = "github:Mic92/sops-nix";
-    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs"; # This could also be unstable
+    sops-nix.inputs.nixpkgs-stable.follows = "nixpkgs";
 
     # Neovim Configuration
     entenvim.url = "github:Entenwilli/neovim";
     entenvim.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    entenvim.inputs.flake-utils.follows = "flake-utils";
 
     # Grub bootloader theme
     grub2-themes.url = "github:vinceliuice/grub2-themes";
