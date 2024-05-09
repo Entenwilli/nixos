@@ -17,8 +17,8 @@
     flake-utils.url = "github:numtide/flake-utils";
 
     # Spicetify
-    spicetify-nix.url = "github:the-argus/spicetify-nix";
-    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
+    spicetify-nix.url = "github:A1ca7raz/spicetify-nix";
+    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs-unstable";
     spicetify-nix.inputs.flake-utils.follows = "flake-utils";
 
     # Credential management wth sops

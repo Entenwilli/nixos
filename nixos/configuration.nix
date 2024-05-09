@@ -125,7 +125,6 @@
     packages = with pkgs; [
       eza
       firefox
-      spotify
     ];
   };
 
