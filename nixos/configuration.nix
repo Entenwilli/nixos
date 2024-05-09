@@ -112,7 +112,7 @@
     keyMap = "de-latin1";
   };
 
-  # Enable fish shell
+  # Enable fish
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
 
@@ -120,8 +120,8 @@
   users.users.felix = {
     hashedPassword = "$y$j9T$hHy3Jnr8hvdSqLRV3z2760$G.Hr/DOnqhA6c2IfcAcPDGByVm8EOrtvKTnrGKYPodB";
     isNormalUser = true;
-    extraGroups = ["wheel" "audio" "network" "networkmanager"]; # Enable ‘sudo’ for the user.
     shell = pkgs.fish;
+    extraGroups = ["wheel" "audio" "network" "networkmanager"]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       eza
       firefox
@@ -192,14 +192,6 @@
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = false;
-  };
-
-  # Setup homemanager
-  home-manager = {
-    extraSpecialArgs = {inherit inputs outputs;};
-    users = {
-      felix = import ../home-manager/home.nix;
-    };
   };
 
   programs.ssh = {
