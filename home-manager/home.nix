@@ -64,6 +64,9 @@
   # Enable zoxide
   zoxide.enable = true;
 
+  # Enable rofi
+  rofi.enable = true;
+
   # Enable XDG Desktop
   xdg.enable = true;
   xdg.mime.enable = true;

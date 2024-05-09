@@ -11,10 +11,8 @@
   };
   environment.systemPackages = with pkgs; [
     networkmanager_dmenu
-    rofi-power-menu
     dmenu-bluetooth
     wirelesstools
-    rofi-wayland
     wl-clipboard
     hyprpaper
     unstable.hyprlock
@@ -23,7 +21,6 @@
     bc
     grim
     slurp
-    rofi-emoji
   ];
 
   programs.hyprland = {
