@@ -44,6 +44,17 @@
           foreground = "0xc0caf5";
         };
 
+        colors.indexed_colors = [
+          {
+            index = 16;
+            color = "0xff9e64";
+          }
+          {
+            index = 17;
+            color = "0xdb4b4b";
+          }
+        ];
+
         font.size = 14.0;
 
         font.normal = {
