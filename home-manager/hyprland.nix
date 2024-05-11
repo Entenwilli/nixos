@@ -14,6 +14,10 @@
       package = pkgs.unstable.hyprland;
       systemd.enable = true;
       settings = {
+        monitor = [
+          "eDP-1,1920x1200@60,0x0,1"
+        ];
+
         "$terminal" = "${pkgs.alacritty}/bin/alacritty";
         "$menu" = "${pkgs.rofi-wayland}/bin/rofi -modi drun,run -show drun";
 
@@ -69,15 +73,27 @@
 
         windowrulev2 = [
           "opacity 0.90 0.85,class:^(Alacritty)$"
+
           "opacity 0.90 0.85,class:^(Anki)$"
-          "opacity 0.95 0.90,class:^(discord)$"
+
+          "opacity 0.95 0.90,class:^(WebCord)$"
+          "workspace 5, class:^(WebCord)$"
+
           "opacity 0.90 0.85,class:^(Rofi)$"
-          "opacity 0.90 0.85,class:^(SWT)$"
-          "opacity 0.85 0.90,class:^(neovide)$"
-          "opacity 0.85 0.90,title:^(nvim.*)$"
           "stayfocused,class:^(Rofi)$"
+
+          "opacity 0.90 0.85,class:^(SWT)$"
           "float,title:^(This product Launcher.*)$"
+
+          "opacity 0.85 0.90,class:^(neovide)$"
+
+          "opacity 0.85 0.90,initialTitle:^(Spotify Premium)$"
+
           "nofocus,class:^jetbrains-(?!toolbox),floating:1,title:^win\d+$"
+
+          "float,title:^(KeePassXC - Access Request)$"
+
+          "workspace 2, class:^(firefox)$"
         ];
 
         "$mainMod" = "SUPER";
@@ -143,7 +159,7 @@
         exec-once = keepassxc;
 
         exec-once = dbus-update-activation-environment --systemd --all
-        exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME
+        exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME DBUS_SESSION_ADDRESS
 
         device {
            name = keychron-keychron-q1-keyboard

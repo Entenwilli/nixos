@@ -9,11 +9,14 @@
   };
 
   config = lib.mkIf config.rofi.enable {
+    home.packages = with pkgs; [
+      rofi-power-menu
+    ];
+
     programs.rofi = {
       enable = true;
       package = pkgs.rofi-wayland;
       plugins = with pkgs; [
-        rofi-power-menu
         rofi-emoji
       ];
       font = "FiraCode Nerd Font 15";
