@@ -82,111 +82,113 @@
         };
       };
       style = ''
-                * {
-                  border: none;
-                  border-radius: 0;
-                  font-family: FiraCode Nerd Font;
-                  font-size: 13px;
-                  min-height: 0;
-                }
+        * {
+          border: none;
+          border-radius: 0;
+          font-family: FiraCode Nerd Font;
+          font-size: 13px;
+          min-height: 0;
+        }
 
-                window#waybar {
-                  background: rgba(43, 48, 59, 0.5);
-                  border-bottom: 3px solid rgba(100, 114, 125, 0.5);
-                  color: #ffffff;
-                }
+        window#waybar {
+          background: rgba(43, 48, 59, 0.5);
+          border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+          color: #ffffff;
+        }
 
-                #workspaces button {
-                  padding: 0 12px;
-                  background: transparent;
-                  color: #FFFFFF;
-                  border-bottom: 3px solid transparent;
-                }
+        #workspaces button {
+          padding: 0 12px;
+          background: transparent;
+          color: #FFFFFF;
+          border-bottom: 3px solid transparent;
+        }
+
         #workspaces button.active {
-                  background: #64727D;
-                  border-bottom: 3px solid #ffffff;
-              }
+          background: #64727D;
+          border-bottom: 3px solid #ffffff;
+        }
 
         #workspaces button.urgent {
-                  background-color: #eb4d4b;
-              }
+          background-color: #eb4d4b;
+        }
 
         #clock, #battery, #backlight, #bluetooth, #network, #pulseaudio, #mpris, #custom-launcher {
-                  padding: 0 10px;
-                  margin: 0 5px;
-              }
+          padding: 0 10px;
+          margin: 0 5px;
+        }
 
         #clock {
-                  background-color: #64727D;
-              }
+          background-color: #64727D;
+        }
 
         #battery {
-                  background-color: #ffffff;
-                  color: #000000;
-              }
+          background-color: #ffffff;
+          color: #000000;
+        }
 
         #battery.charging {
-                  color: #ffffff;
-                  background-color: #26A65B;
-              }
+          color: #ffffff;
+          background-color: #26A65B;
+        }
 
-              @keyframes blink {
-                  to {
-                      background-color: #ffffff;
-                      color: #000000;
-                  }
-              }
+        @keyframes blink {
+          to {
+            background-color: #ffffff;
+            color: #000000;
+          }
+        }
 
         #battery.critical:not(.charging) {
-                  background: #f53c3c;
-                  color: #ffffff;
-                  animation-name: blink;
-                  animation-duration: 0.5s;
-                  animation-timing-function: linear;
-                  animation-iteration-count: infinite;
-                  animation-direction: alternate;
-              }
+          background: #f53c3c;
+          color: #ffffff;
+          animation-name: blink;
+          animation-duration: 0.5s;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+        }
 
         #backlight {
-                  background: #90b1b1;
-              }
+          background: #90b1b1;
+        }
 
-              #bluetooth.on {
-              background: #68D2E8;
-              }
+        #bluetooth.on {
+          background: #68D2E8;
+        }
 
-              #bluetooth.connected {
-              background: #03AED2;
-              }
+        #bluetooth.connected {
+          background: #03AED2;
+          color: #ffffff;
+        }
 
         #network {
-                  background: #2980b9;
-              }
+          background: #2980b9;
+        }
 
         #network.disconnected {
-                  background: #f53c3c;
-              }
+          background: #f53c3c;
+        }
 
         #pulseaudio {
-                  background: #f1c40f;
-                  color: #000000;
-              }
+          background: #f1c40f;
+          color: #000000;
+        }
 
         #pulseaudio.muted {
-                  background: #90b1b1;
-                  color: #2a5c45;
-              }
+          background: #90b1b1;
+          color: #2a5c45;
+        }
 
         #mpris {
-                  background: #66cc99;
-                  color: #2a5c45;
-              }
+          background: #66cc99;
+          color: #2a5c45;
+        }
 
         #custom-launcher {
-            background: #9b59b6;
-            font-size: 20px;
-            padding: 0 15px;
-          }
+          background: #9b59b6;
+          font-size: 20px;
+          padding: 0 15px;
+        }
       '';
     };
   };
