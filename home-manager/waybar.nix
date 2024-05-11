@@ -154,10 +154,11 @@
 
         #bluetooth.on {
           background: #68D2E8;
+          color: #000000;
         }
 
         #bluetooth.connected {
-          background: #03AED2;
+          background: #6AA84F;
           color: #000000;
         }
 
