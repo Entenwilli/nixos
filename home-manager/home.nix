@@ -84,14 +84,13 @@
   xdg.mime.enable = true;
 
   # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
   home.packages = with pkgs; [
     unstable.obsidian
     keepassxc
     libsecret
     webcord
-    jetbrains.idea-ultimate
     openjdk21
+    unstable.jetbrains.idea-ultimate
   ];
 
   xdg.desktopEntries.webcord = {
