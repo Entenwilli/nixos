@@ -9,10 +9,11 @@
   };
 
   config = lib.mkIf config.dunst.enable {
+    home.packages = with pkgs; [papirus-icon-theme];
     services.dunst = {
       enable = true;
       iconTheme = {
-        name = "papirus";
+        name = "Papirus-Dark";
         package = pkgs.papirus-icon-theme;
         size = "32x32";
       };
@@ -21,10 +22,12 @@
           # Set notification format
           markup = "full";
           ignore_newline = "no";
-          format = "<b>%a</b>\n<i>%s</i>\n\n%b";
+          format = "<b>%a</b>\\n<i>%s</i>\\n\\n%b";
 
           # Set font
           font = "FiraCode Nerd Font 11";
+
+          icon_path = "${pkgs.papirus-icon-theme}/share/icons/Papirus-Dark/symbolic/status";
 
           # Follow monitor with mouse
           follow = "mouse";
@@ -91,8 +94,8 @@
           icon_position = "left";
 
           # Icon size
-          min_icon_size = 50;
-          max_icon_size = 60;
+          # min_icon_size = 50;
+          # max_icon_size = 60;
 
           # ------- History ------
           # Avoid timing out hidden notifications

@@ -59,6 +59,11 @@
   # Enable nixos-helper
   nixos-helper.enable = true;
 
+  services.dbus = {
+    enable = true;
+    packages = with pkgs; [dunst];
+  };
+
   # Use the systemd-boot EFI boot loader.
   #boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -119,6 +124,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.felix = {
     hashedPassword = "$y$j9T$hHy3Jnr8hvdSqLRV3z2760$G.Hr/DOnqhA6c2IfcAcPDGByVm8EOrtvKTnrGKYPodB";
+    uid = 1000;
     isNormalUser = true;
     shell = pkgs.fish;
     extraGroups = ["wheel" "audio" "network" "networkmanager"]; # Enable ‘sudo’ for the user.
