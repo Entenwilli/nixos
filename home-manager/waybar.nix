@@ -158,7 +158,7 @@
 
         #bluetooth.connected {
           background: #03AED2;
-          color: #ffffff;
+          color: #000000;
         }
 
         #network {
