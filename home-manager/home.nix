@@ -88,7 +88,7 @@
     libsecret
     webcord
     openjdk21
-    unstable.jetbrains.idea-ultimate
+    jetbrains.idea-ultimate
   ];
 
   xdg.desktopEntries.webcord = {
