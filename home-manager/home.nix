@@ -89,6 +89,7 @@
     webcord
     openjdk21
     jetbrains.idea-ultimate
+    pympress
   ];
 
   xdg.desktopEntries.webcord = {
