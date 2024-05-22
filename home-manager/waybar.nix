@@ -12,6 +12,7 @@
     programs.waybar = {
       enable = true;
       systemd.enable = true;
+      package = pkgs.unstable.waybar;
       settings = {
         main = {
           layer = "top";
@@ -30,7 +31,7 @@
             on-click = "${pkgs.rofi-wayland}/bin/rofi -show drun";
           };
           "hyprland/workspaces" = {
-            format = "{name}: {icon}";
+            format = "{icon}";
             format-icons = {
               "1" = "";
               "2" = "󰈹";
@@ -186,6 +187,7 @@
         }
 
         #custom-launcher {
+          color: #82bce5;
           background: #9b59b6;
           font-size: 20px;
           padding: 0 15px;
