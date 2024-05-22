@@ -56,6 +56,11 @@
     auto-optimise-store = true;
   };
 
+  sops.secrets."github-token" = {};
+  nix.extraOptions = ''
+    !include ${config.sops.secrets."github-token".path}
+  '';
+
   # Enable nixos-helper
   nixos-helper.enable = true;
 
