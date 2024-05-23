@@ -55,7 +55,7 @@
     };
   };
 
-  colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-dark;
+  colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-terminal-dark;
 
   # Enable alacritty
   alacritty.enable = true;
