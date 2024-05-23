@@ -1,14 +1,10 @@
-{
-  libs,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   # Install cli packages
-  home.packages = with pkgs; [ 
-      fzf
-      ripgrep
-      jq
-      socat
+  home.packages = with pkgs; [
+    fzf
+    ripgrep
+    jq
+    socat
   ];
 
   # Enable cat alternative

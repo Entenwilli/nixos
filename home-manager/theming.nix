@@ -1,8 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   # Rquired theming packages
   home.packages = with pkgs; [
     papirus-icon-theme
