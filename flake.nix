@@ -33,6 +33,9 @@
     # Grub bootloader theme
     grub2-themes.url = "github:vinceliuice/grub2-themes";
     grub2-themes.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Color theming
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = {

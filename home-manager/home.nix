@@ -9,6 +9,7 @@
   # You can import other home-manager modules here
   imports = [
     inputs.entenvim.homeManagerModules.default
+    inputs.nix-colors.homeManagerModules.default
     ./alacritty.nix
     ./theming.nix
     ./fish.nix
@@ -52,6 +53,8 @@
       EDITOR = "nvim";
     };
   };
+
+  colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-dark;
 
   # Enable alacritty
   alacritty.enable = true;
