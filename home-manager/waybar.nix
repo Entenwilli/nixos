@@ -147,6 +147,7 @@
         #mpris {
           color: #${config.colorScheme.palette.base0B};
           background: transparent;
+          margin-left: 2em;
         }
 
 
