@@ -23,6 +23,7 @@
     ./zathura.nix
     ./waybar.nix
     ./zoxide.nix
+    ./starship.nix
   ];
 
   # Enable home-manager
@@ -79,6 +80,9 @@
 
   # Enable hyprland
   hyprland.enable = true;
+
+  # Enable starship promt
+  starship.enable = true;
 
   # Enable XDG Desktop
   xdg.enable = true;
