@@ -89,8 +89,6 @@
 
           "opacity 0.85 0.90,initialTitle:^(Spotify Premium)$"
 
-          "nofocus,class:^jetbrains-(?!toolbox),floating:1,title:^win\d+$"
-
           "float,title:^(KeePassXC - Access Request)$"
 
           "workspace 2, class:^(firefox)$"
