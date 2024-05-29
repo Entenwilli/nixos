@@ -165,10 +165,13 @@
     gnome.adwaita-icon-theme
     shared-mime-info
     element-desktop
+    gnome-network-displays
 
     #TODO: Laptop Only
     brightnessctl
   ];
+
+  services.avahi.enable = true;
 
   # Setup syncthing
   services = {
