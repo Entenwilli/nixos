@@ -94,7 +94,8 @@
     libsecret
     webcord
     openjdk21
-    jetbrains.idea-ultimate
+    unstable.jetbrains.idea-ultimate
+    unstable.jetbrains-toolbox
     pympress
   ];
 
