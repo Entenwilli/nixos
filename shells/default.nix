@@ -1,0 +1,5 @@
+{...}: {
+  imports = [
+    ./clang.nix
+  ];
+}
