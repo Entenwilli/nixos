@@ -95,7 +95,6 @@
     webcord
     openjdk21
     unstable.jetbrains.idea-ultimate
-    unstable.jetbrains-toolbox
     pympress
   ];
 
