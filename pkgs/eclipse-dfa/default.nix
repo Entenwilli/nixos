@@ -35,8 +35,8 @@ stdenv.mkDerivation rec {
   };
 
   src = fetchurl {
-    url = "https://github.com/DataFlowAnalysis/DataFlowAnalysis/releases/download/v${version}/DataFlowAnalysis.linux.gtk.x86_64.zip";
-    hash = "sha256-6P8wxhdnwMGDBWKWC4DsDfCRVp+T/ApN5oRwO94dldE=";
+    url = "https://github.com/DataFlowAnalysis/product/releases/download/v${version}/DataFlowAnalysis.linux.gtk.x86_64.zip";
+    hash = "sha256-m8NEPFEl+zlYqYaimiO18Gdq5Jn94gLCeo9KnFoTNqE=";
   };
 
   nativeBuildInputs = [makeWrapper perl];
