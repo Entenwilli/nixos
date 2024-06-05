@@ -25,11 +25,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1717571709,
-        "narHash": "sha256-1XvAETk96YLP3Wbofwu7xyec459V4fPAsNmC/S5LgKA=",
+        "lastModified": 1717572483,
+        "narHash": "sha256-UY3AbtWVibCC+xH+JstWexIVbea/matfGdi2C4UGrgE=",
         "owner": "Entenwilli",
         "repo": "neovim",
-        "rev": "11c63ae49a8b675479fb45bfc7aacf572c04284c",
+        "rev": "2225b8dbe0b0511320c71c370c75bd1be82d4b2e",
         "type": "github"
       },
       "original": {
