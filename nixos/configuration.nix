@@ -174,6 +174,9 @@
     brightnessctl
   ];
 
+  # Ports for gnome-network-displays
+  networking.firewall.allowedTCPPorts = [7236 7250];
+  networking.firewall.allowedUDPPorts = [7236 5353];
   services.avahi.enable = true;
 
   # Setup syncthing
