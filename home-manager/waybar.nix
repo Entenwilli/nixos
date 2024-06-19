@@ -18,10 +18,14 @@
         main = {
           layer = "top";
           position = "top";
-          height = 30;
+          height = 0;
+          margin-top = 20;
+          margin-left = 10;
+          margin-right = 10;
           output = [
             "eDP-1"
             "DP-1"
+            "DP-3"
           ];
           modules-left = ["custom/launcher" "hyprland/workspaces" "mpris"];
           # modules-center = ["hyprland/window"];
@@ -109,8 +113,8 @@
         }
 
         window#waybar {
-          background-color: rgba(${inputs.nix-colors.lib.conversions.hexToRGBString "," config.colorScheme.palette.base01}, 0.7);
           color: #ffffff;
+          background-color: transparent;
         }
 
         #custom-launcher {

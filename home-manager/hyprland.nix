@@ -179,6 +179,7 @@
 
       wallpaper = eDP-1,~/pictures/Wallpaper/nighttime-in-the-mountains.jpg
       wallpaper = DP-1,~/pictures/Wallpaper/snowy-lake.jpg
+      wallpaper = DP-3,~/pictures/Wallpaper/snowy-lake.jpg
 
       splash = false
     '';
