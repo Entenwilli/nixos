@@ -57,7 +57,9 @@
     auto-optimise-store = true;
   };
 
-  sops.secrets."github-token" = {};
+  sops.secrets."github-token" = {
+    owner = "felix";
+  };
   nix.extraOptions = ''
     !include ${config.sops.secrets."github-token".path}
   '';
