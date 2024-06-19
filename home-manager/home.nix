@@ -51,6 +51,7 @@
       DMENU_BLUETOOTH_LAUNCHER = "rofi";
       XDG_CURRENT_DESKTOP = "hyprland";
       EDITOR = "nvim";
+      ANKI_WAYLAND = 1;
     };
   };
 
@@ -96,6 +97,7 @@
     openjdk21
     unstable.jetbrains.idea-ultimate
     pympress
+    anki
   ];
 
   xdg.desktopEntries.webcord = {
