@@ -1,10 +1,7 @@
-{
-  pkgs,
-  ...
-}: {
-  # Install required packages 
+{pkgs, ...}: {
+  # Install required packages
   home.packages = with pkgs; [
-    cz-cli 
+    cz-cli
     yarn
     gnumake
     libgcc
@@ -12,6 +9,7 @@
     pwndbg
     llvmPackages_latest.lldb
     valgrind
+    bacon
   ];
 
   # Configure git
