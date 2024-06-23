@@ -2,7 +2,6 @@
   lib,
   pkgs,
   config,
-  inputs,
   ...
 }: {
   options = {
@@ -10,6 +9,10 @@
   };
 
   config = lib.mkIf config.waybar.enable {
+    home.packages = with pkgs; [
+      wttrbar
+    ];
+
     programs.waybar = {
       enable = true;
       systemd.enable = true;
@@ -29,7 +32,7 @@
           ];
           modules-left = ["custom/launcher" "hyprland/workspaces" "mpris"];
           # modules-center = ["hyprland/window"];
-          modules-right = ["backlight" "pulseaudio" "bluetooth" "network" "battery" "clock"];
+          modules-right = ["custom/weather" "backlight" "pulseaudio" "bluetooth" "network" "battery" "clock"];
 
           "custom/launcher" = {
             format = "󱄅";
@@ -54,6 +57,13 @@
             interval = 3;
           };
           "hyprland/window" = {
+          };
+          "custom/weather" = {
+            tooltip = true;
+            format = "{}";
+            interval = 30;
+            exec = "wttrbar --custom-indicator \"{ICON} {temp_C}°\"";
+            return-type = "json";
           };
           "backlight" = {
             format = "{percent}% {icon}";
@@ -154,13 +164,18 @@
           margin-left: 2em;
         }
 
+        #custom-weather {
+          color: #${config.colorScheme.palette.base0D};
+          background-color: #${config.colorScheme.palette.base02};
+          padding: 0 0.5em;
+          border-top-left-radius: 0.5em;
+          border-bottom-left-radius: 0.5em;
+        }
 
         #backlight {
           color: #${config.colorScheme.palette.base09};
           background-color: #${config.colorScheme.palette.base02};
           padding: 0 0.5em;
-          border-top-left-radius: 0.5em;
-          border-bottom-left-radius: 0.5em;
         }
 
         #pulseaudio {
