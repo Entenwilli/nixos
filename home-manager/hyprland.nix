@@ -72,22 +72,23 @@
         };
 
         windowrulev2 = [
-          "opacity 0.90 0.85,class:^(kitty)$"
+          "opacity 0.80 0.75,class:^(kitty)$"
 
-          "opacity 0.90 0.85,class:^(Anki)$"
+          "opacity 0.80 0.75,class:^(Anki)$"
 
-          "opacity 0.95 0.90,class:^(WebCord)$"
+          "opacity 0.80 0.75,class:^(WebCord)$"
           "workspace 5, class:^(WebCord)$"
 
-          "opacity 0.90 0.85,class:^(Rofi)$"
+          "opacity 0.80 0.75,class:^(Rofi)$"
           "stayfocused,class:^(Rofi)$"
 
-          "opacity 0.90 0.85,class:^(SWT)$"
+          "opacity 0.80 0.75,class:^(SWT)$"
           "float,title:^(This product Launcher.*)$"
 
-          "opacity 0.85 0.90,class:^(neovide)$"
+          "opacity 0.80 0.75,class:^(neovide)$"
 
-          "opacity 0.85 0.90,initialTitle:^(Spotify Premium)$"
+          "opacity 0.80 0.75,title:^(spotify_player)$"
+          "workspace 4, title:^(spotify_player)$"
 
           "float,title:^(KeePassXC - Access Request)$"
 
