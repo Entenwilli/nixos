@@ -20,7 +20,7 @@
         rofi-emoji
       ];
       font = "FiraCode Nerd Font 15";
-      terminal = "${pkgs.alacritty}/bin/alacritty";
+      terminal = "${pkgs.kitty}/bin/kitty";
       extraConfig = {
         modi = "window,run,drun";
         show-icons = true;

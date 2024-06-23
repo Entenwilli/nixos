@@ -151,7 +151,6 @@
     wget
     age
     sops
-    alacritty
     git
     fastfetch
     rustc

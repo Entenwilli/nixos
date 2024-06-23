@@ -18,7 +18,7 @@
           "eDP-1,1920x1200@60,0x0,1"
         ];
 
-        "$terminal" = "${pkgs.alacritty}/bin/alacritty";
+        "$terminal" = "${pkgs.kitty}/bin/kitty";
         "$menu" = "${pkgs.rofi-wayland}/bin/rofi -modi drun,run -show drun";
 
         input = {
@@ -72,7 +72,7 @@
         };
 
         windowrulev2 = [
-          "opacity 0.90 0.85,class:^(Alacritty)$"
+          "opacity 0.90 0.85,class:^(kitty)$"
 
           "opacity 0.90 0.85,class:^(Anki)$"
 
@@ -92,6 +92,8 @@
           "float,title:^(KeePassXC - Access Request)$"
 
           "workspace 2, class:^(firefox)$"
+
+          "noanim, class:^(ueberzugpp_.*)$"
         ];
 
         "$mainMod" = "SUPER";

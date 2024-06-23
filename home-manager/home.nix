@@ -9,7 +9,7 @@
   imports = [
     inputs.entenvim.homeManagerModules.default
     inputs.nix-colors.homeManagerModules.default
-    ./alacritty.nix
+    ./terminal.nix
     ./theming.nix
     ./fish.nix
     ./development.nix
@@ -23,6 +23,7 @@
     ./waybar.nix
     ./zoxide.nix
     ./starship.nix
+    ./yazi.nix
   ];
 
   # Enable home-manager
@@ -57,8 +58,8 @@
 
   colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-terminal-dark;
 
-  # Enable alacritty
-  alacritty.enable = true;
+  # Enable terminal
+  terminal.enable = true;
 
   # Enable dunst
   dunst.enable = true;
@@ -83,6 +84,9 @@
 
   # Enable starship promt
   starship.enable = true;
+
+  # Enable yazi
+  yazi.enable = true;
 
   # Enable XDG Desktop
   xdg.enable = true;
