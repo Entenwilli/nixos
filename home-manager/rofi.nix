@@ -32,12 +32,12 @@
 
       theme = let
         inherit (config.lib.formats.rasi) mkLiteral;
-        background = mkLiteral "#15161EFF";
-        background-alt = mkLiteral "#1A1B26FF";
-        foreground = mkLiteral "#C0CAF5FF";
-        selected = mkLiteral "#33467CFF";
-        active = mkLiteral "#33467CFF";
-        urgent = mkLiteral "#F7768EFF";
+        background = mkLiteral "#${config.colorScheme.colors.base00}B3";
+        background-alt = mkLiteral "#${config.colorScheme.colors.base03}B3";
+        foreground = mkLiteral "#${config.colorScheme.colors.base06}FF";
+        selected = mkLiteral "#${config.colorScheme.colors.base02}B3";
+        active = mkLiteral "#${config.colorScheme.colors.base03}FF";
+        urgent = mkLiteral "#${config.colorScheme.colors.base0F}FF";
       in {
         "*" = {
           border-color = selected;
@@ -45,7 +45,7 @@
           background-color = background;
           foreground-color = foreground;
           alternate-background = background-alt;
-          normal-background = background;
+          normal-background = mkLiteral "transparent";
           normal-foreground = foreground;
           urgent-background = urgent;
           urgent-foreground = background;
@@ -59,7 +59,7 @@
           selected-active-background = urgent;
           selected-active-foreground = foreground;
 
-          alternate-normal-background = background;
+          alternate-normal-background = mkLiteral "transparent";
           alternate-normal-foreground = foreground;
           alternate-urgent-background = urgent;
           alternate-urgent-foreground = background;

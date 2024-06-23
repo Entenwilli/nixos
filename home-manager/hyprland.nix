@@ -79,8 +79,7 @@
           "opacity 0.80 0.75,class:^(WebCord)$"
           "workspace 5, class:^(WebCord)$"
 
-          "opacity 0.80 0.75,class:^(Rofi)$"
-          "stayfocused,class:^(Rofi)$"
+          "opacity 0.80 0.75,title:^(Rofi.*)$"
 
           "opacity 0.80 0.75,class:^(SWT)$"
           "float,title:^(This product Launcher.*)$"
@@ -95,6 +94,10 @@
           "workspace 2, class:^(firefox)$"
 
           "noanim, class:^(ueberzugpp_.*)$"
+        ];
+
+        layerrule = [
+          "blur,rofi"
         ];
 
         "$mainMod" = "SUPER";
