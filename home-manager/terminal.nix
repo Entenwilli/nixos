@@ -18,6 +18,11 @@
       };
       shellIntegration.enableFishIntegration = true;
       theme = "Tokyo Night";
+      extraConfig = ''
+        cursor_blink_interval 0
+        cursor_shape beam
+        disable_ligatures never
+      '';
     };
   };
 }
