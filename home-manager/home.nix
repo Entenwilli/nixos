@@ -58,6 +58,9 @@
 
   colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-terminal-dark;
 
+  # Enable gtk and qt theming
+  theming.enable = true;
+
   # Enable terminal
   terminal.enable = true;
 

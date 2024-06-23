@@ -1,21 +1,52 @@
-{pkgs, ...}: {
-  # Rquired theming packages
-  home.packages = with pkgs; [
-    papirus-icon-theme
-    libsForQt5.qt5ct
-    qt6Packages.qt6ct
-  ];
+{
+  lib,
+  config,
+  inputs,
+  pkgs,
+  ...
+}: let
+  inherit
+    (inputs.nix-colors.lib-contrib {inherit pkgs;})
+    gtkThemeFromScheme
+    ;
+in {
+  options = {
+    theming.enable = lib.mkEnableOption "Enable theming settings";
+  };
 
-  home.sessionVariables.QT_QPA_PLATFORMTHEME = "qt6ct";
+  config = lib.mkIf config.theming.enable {
+    home.packages = with pkgs; [
+      adwaita-qt
+      papirus-icon-theme
+      libsForQt5.qt5ct
+      qt6Packages.qt6ct
+      tokyo-night-gtk
+    ];
 
-  # GTK Theming
-  gtk = {
-    enable = true;
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
+    home.pointerCursor = {
+      gtk.enable = true;
+      x11.enable = true;
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
+      size = 1;
     };
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
+
+    qt = {
+      enable = true;
+      platformTheme = "gtk";
+      style.name = "adwaita-dark";
+      style.package = pkgs.adwaita-qt;
+    };
+
+    gtk = {
+      enable = true;
+      gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
+      gtk4.extraConfig.gtk-application-prefer-dark-theme = true;
+
+      theme = {
+        name = "${config.colorScheme.slug}";
+        package = gtkThemeFromScheme {scheme = config.colorScheme;};
+      };
     };
   };
 }
