@@ -11,23 +11,21 @@
   config = lib.mkIf config.rofi.enable {
     home.packages = with pkgs; [
       rofi-power-menu
+      bemoji
     ];
 
     programs.rofi = {
       enable = true;
       package = pkgs.rofi-wayland;
-      plugins = with pkgs; [
-        rofi-emoji
-      ];
       font = "FiraCode Nerd Font 15";
       terminal = "${pkgs.kitty}/bin/kitty";
       extraConfig = {
         modi = "window,run,drun";
         show-icons = true;
-        display-drun = "";
-        display-run = "";
-        display-filebrowser = "";
-        display-window = "";
+        display-drun = " ";
+        display-run = " ";
+        display-filebrowser = " ";
+        display-window = " ";
         drun-display-format = "{name}";
         window-format = "{w} · {c} · {t}";
       };
@@ -121,7 +119,7 @@
 
         textbox-prompt-colon = {
           enabled = true;
-          padding = mkLiteral "5px 0px";
+          padding = mkLiteral "5px";
           expand = false;
           str = "";
           background-color = mkLiteral "inherit";

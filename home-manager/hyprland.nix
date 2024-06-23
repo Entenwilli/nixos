@@ -143,7 +143,7 @@
           ",XF86AudioPause,             exec, playerctl play-pause"
           ",XF86MonBrightnessUp,        exec, /home/felix/.config/scripts/backlight.sh inc 5"
           ",XF86MonBrightnessDown,      exec, /home/felix/.config/scripts/backlight.sh dec 5"
-          "$mainMod,Period,             exec, rofi -show emoji"
+          "$mainMod,Period,             exec, bemoji"
         ];
         bindm = [
           "$mainMod, mouse:272, movewindow"
