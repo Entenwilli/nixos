@@ -15,7 +15,7 @@
     ./development.nix
     ./cli-tools.nix
     ./hyprland.nix
-    ./spicetify.nix
+    ./music.nix
     ./neovim.nix
     ./rofi.nix
     ./dunst.nix

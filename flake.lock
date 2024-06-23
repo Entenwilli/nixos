@@ -233,8 +233,7 @@
         "nix-colors": "nix-colors",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "sops-nix": "sops-nix",
-        "spicetify-nix": "spicetify-nix"
+        "sops-nix": "sops-nix"
       }
     },
     "sops-nix": {
@@ -257,29 +256,6 @@
       "original": {
         "owner": "Mic92",
         "repo": "sops-nix",
-        "type": "github"
-      }
-    },
-    "spicetify-nix": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs-unstable"
-        ]
-      },
-      "locked": {
-        "lastModified": 1719081538,
-        "narHash": "sha256-84Ru4I9mQomAWF6t7RjkIePHpUPxJi+RVL1KqwlSKaE=",
-        "owner": "A1ca7raz",
-        "repo": "spicetify-nix",
-        "rev": "4ae79aac9853ee87cb064d03c4c07288725aad8f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "A1ca7raz",
-        "repo": "spicetify-nix",
         "type": "github"
       }
     },
