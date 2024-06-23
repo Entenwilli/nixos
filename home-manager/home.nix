@@ -24,6 +24,7 @@
     ./zoxide.nix
     ./starship.nix
     ./yazi.nix
+    ./fastfetch.nix
   ];
 
   # Enable home-manager
@@ -60,6 +61,9 @@
 
   # Enable gtk and qt theming
   theming.enable = true;
+
+  # Enable fastfetch
+  fastfetch.enable = true;
 
   # Enable terminal
   terminal.enable = true;
