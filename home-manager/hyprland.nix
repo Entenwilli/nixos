@@ -214,6 +214,7 @@ in {
         exec-once = hyprpaper;
         exec-once = hypridle;
         exec-once = keepassxc;
+        exec-once = spotify_player -d;
 
         exec-once = dbus-update-activation-environment --systemd --all
         exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME DBUS_SESSION_ADDRESS
