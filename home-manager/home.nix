@@ -105,7 +105,7 @@
     keepassxc
     libsecret
     webcord
-    openjdk21
+    openjdk17
     unstable.jetbrains.idea-ultimate
     pympress
     anki
