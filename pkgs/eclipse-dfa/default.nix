@@ -26,7 +26,7 @@ stdenv.mkDerivation rec {
   version = "2.0.0";
   desktopItem = makeDesktopItem {
     name = "DataFlowAnalysis";
-    exec = "env GDK_BACKEND=\"x11\" DataFlowAnalysisBench";
+    exec = "env GDK_BACKEND=\"x11\" WEBKIT_DISABLE_COMPOSITING_MODE=1 WEBKIT_DISABLE_DMABUF_RENDERER=1 DataFlowAnalysisBench";
     icon = "DataFlowAnalysisBench";
     comment = "Integrated Development Environment";
     desktopName = "DataFlowAnalysis";
