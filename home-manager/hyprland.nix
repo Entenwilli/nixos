@@ -208,23 +208,7 @@ in {
         ];
       };
       extraConfig = ''
-        # XDG
-        env = XDG_CURRENT_DESKTOP,Hyprland
-        env = XDG_SESSION_TYPE,wayland
-        env = XDG_SESSION_DESKTOP,Hyprland
-
-        # QT
-        env = QT_AUTO_SCREEN_SCALE_FACTOR,1
-        env = QT_QPA_PLATFORM=wayland;xcb
-        env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
         env = QT_QPA_PLATFORMTHEME,qt6ct
-
-        # Toolkit
-        env = SDL_VIDEODRIVER,wayland
-        env = _JAVA_AWT_WM_NONEREPARENTING,1
-        env = CLUTTER_BACKEND,wayland
-        env = GDK_BACKEND,wayland,x11
-
 
         exec-once = hyprlock;
         exec-once = hyprpaper;
@@ -233,7 +217,7 @@ in {
         exec-once = spotify_player -d;
 
         exec-once = dbus-update-activation-environment --systemd --all
-        exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME DBUS_SESSION_ADDRESS XDG_SESSION_TYPE XDG_CURRENT_DESKTOP
+        exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME DBUS_SESSION_ADDRESS
 
         device {
            name = keychron-keychron-q1-keyboard
