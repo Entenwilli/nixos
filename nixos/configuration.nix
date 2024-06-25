@@ -194,6 +194,16 @@
   #TODO: Only required on laptop
   services.upower.enable = true;
 
+  # Increase file descriptor limit
+  security.pam.loginLimits = [
+    {
+      domain = "*";
+      type = "soft";
+      item = "nofile";
+      value = "65535";
+    }
+  ];
+
   # Setup audio
   security.rtkit.enable = true;
   services.pipewire = {
