@@ -146,7 +146,7 @@ in {
 
           "workspace 2, class:^(firefox)$"
 
-          "noanim, class:^(ueberzugpp_.*)$"
+          "opacity 0.80 0.75,class:^(obsidian)$"
         ];
 
         layerrule = [
