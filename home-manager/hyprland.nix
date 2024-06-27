@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  inputs,
   ...
 }: let
   location = pkgs.writeShellApplication {
@@ -64,7 +65,7 @@ in {
   config = lib.mkIf config.hyprland.enable {
     wayland.windowManager.hyprland = {
       enable = true;
-      package = pkgs.unstable.hyprland;
+      package = pkgs.hyprland;
       systemd.enable = true;
       settings = {
         monitor = [
@@ -109,10 +110,6 @@ in {
         dwindle = {
           pseudotile = "yes";
           preserve_split = "yes";
-        };
-
-        master = {
-          new_is_master = true;
         };
 
         gestures = {
@@ -230,6 +227,10 @@ in {
            kb_layout = us
            kb_variant = altgr-intl
          }
+
+          master {
+              new_status = master
+          }
       '';
     };
 

@@ -31,6 +31,9 @@
 
     # Color theming
     nix-colors.url = "github:misterio77/nix-colors";
+
+    # Hyprland flake
+    # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
   };
 
   outputs = {

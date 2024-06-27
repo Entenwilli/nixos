@@ -20,7 +20,6 @@ in {
       papirus-icon-theme
       libsForQt5.qt5ct
       qt6Packages.qt6ct
-      tokyo-night-gtk
     ];
 
     home.pointerCursor = {
