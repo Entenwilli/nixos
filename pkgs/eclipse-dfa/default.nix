@@ -9,7 +9,7 @@
   libXrender,
   perl,
   zlib,
-  jdk,
+  jdk17,
   glib,
   glib-networking,
   gtk3,
@@ -23,7 +23,7 @@
 }:
 stdenv.mkDerivation rec {
   name = "eclipse-dfa";
-  version = "3.0.0";
+  version = "3.1.0";
   desktopItem = makeDesktopItem {
     name = "DataFlowAnalysis";
     exec = "env GDK_BACKEND=\"x11\" WEBKIT_DISABLE_COMPOSITING_MODE=1 WEBKIT_DISABLE_DMABUF_RENDERER=1 DataFlowAnalysisBench";
@@ -46,7 +46,7 @@ stdenv.mkDerivation rec {
     glib
     gsettings-desktop-schemas
     gtk3
-    jdk
+    jdk17
     libarchive
     libX11
     libXrender
@@ -70,7 +70,7 @@ stdenv.mkDerivation rec {
     # Create wrapper script
     productId=$(sed 's/id=//; t; d' $out/DataFlowAnalysisBench/.eclipseproduct)
     makeWrapper $out/DataFlowAnalysisBench/DataFlowAnalysisBench $out/bin/DataFlowAnalysisBench \
-        --prefix PATH : ${jdk}/bin \
+        --prefix PATH : ${jdk17}/bin \
         --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [glib gtk3 libXtst libsecret webkitgtk]} \
         --prefix GIO_EXTRA_MODULES : "${glib-networking}/lib/gio/modules" \
         --prefix XDG_DATA_DIRS : "$GSETTINGS_SCHEMAS_PATH" \
