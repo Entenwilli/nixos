@@ -36,7 +36,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://updatesite.palladio-simulator.com/DataFlowAnalysis/product/nightly/DataFlowAnalysis.linux.gtk.x86_64.zip";
-    hash = "sha256-m8NEPFEl+zlYqYaimiO18Gdq5Jn94gLCeo9KnFoTNqE=";
+    hash = "sha256-lHCvigFaaYX73Dl26Qi16giTcCFB1JGHg2AGREcZrRA=";
   };
 
   nativeBuildInputs = [makeWrapper perl];
