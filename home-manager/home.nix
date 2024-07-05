@@ -109,6 +109,8 @@
     unstable.jetbrains.idea-ultimate
     pympress
     anki
+    gnome-network-displays
+    thunderbird
   ];
 
   xdg.desktopEntries.webcord = {
