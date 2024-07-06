@@ -139,7 +139,8 @@ in {
           "opacity 0.80 0.75,title:^(spotify_player)$"
           "workspace 4, title:^(spotify_player)$"
 
-          "float,title:^(KeePassXC - Access Request)$"
+          "float, class:^(org.keepassxc.KeePassXC)$, title:^(KeePassXC -  Access Request)$"
+          "center, class:^(org.keepassxc.KeePassXC)$, title:^(KeePassXC -  Access Request)$"
 
           "workspace 2, class:^(firefox)$"
 
