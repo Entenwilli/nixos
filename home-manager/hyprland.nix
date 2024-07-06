@@ -124,7 +124,7 @@ in {
         windowrulev2 = [
           "opacity 0.80 0.75,class:^(kitty)$"
 
-          "opacity 0.80 0.75,class:^(Anki)$"
+          "opacity 0.80 0.75,class:^(anki)$"
 
           "opacity 0.80 0.75,class:^(WebCord)$"
           "workspace 5, class:^(WebCord)$"
@@ -317,7 +317,7 @@ in {
           color = rgba(255, 255, 255, 1)
           font_size = 10
           font_family = FiraCode Nerd Font Mono ExtraBold
-          position = 0, 100
+          position = 0, 350
           halign = center
           valign = center
       }

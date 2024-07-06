@@ -5,6 +5,7 @@
     ripgrep
     jq
     socat
+    fd
   ];
 
   # Enable cat alternative
