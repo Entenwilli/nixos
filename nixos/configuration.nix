@@ -119,6 +119,10 @@
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
+  # Enable steam
+  # TODO: Remove?
+  programs.steam.enable = true;
+
   # Set console keymap to german keyboard
   # TODO: This is hardware dependent
   console = {

@@ -111,6 +111,7 @@
     anki
     gnome-network-displays
     thunderbird
+    xivlauncher
   ];
 
   xdg.desktopEntries.webcord = {
