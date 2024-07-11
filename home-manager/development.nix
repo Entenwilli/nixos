@@ -11,7 +11,6 @@
     valgrind
     bacon
     jetbrains.rust-rover
-    devcontainer
   ];
 
   # Configure git
