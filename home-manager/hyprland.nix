@@ -247,12 +247,27 @@ in {
     '';
 
     home.file.".config/hypr/hypridle.conf".text = ''
-      general {
-          lock_cmd = dunstify "Locking screen!" && hyprlock          # dbus/sysd lock command (loginctl lock-session)
-          unlock_cmd = dunstify "Unlocked screen!"
-          before_sleep_cmd =
-          after_sleep_cmd =
-          ignore_dbus_inhibit = false
+       general {
+        lock_cmd = pidof hyprlock || hyprlock
+        before_sleep_cmd = loginctl lock-session
+        after_sleep_cmd = hyprctl dispatch dpms on
+      }
+
+      listener {
+          timeout = 150
+          on-timeout = brightnessctl -s set 10
+          on-resume = brightnessctl -r
+      }
+
+      listener {
+          timeout = 150
+          on-timeout = brightnessctl -sd rgb:kbd_backlight set 0
+      }
+
+      listener {
+          timeout = 300
+          on-timeout = hyprctl dispatch dpms off
+          on-resume = hyprctl dispatch dpms on
       }
     '';
 
