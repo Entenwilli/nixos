@@ -10,6 +10,7 @@
     llvmPackages_latest.lldb
     valgrind
     bacon
+    clippy
     jetbrains.rust-rover
   ];
 
