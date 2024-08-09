@@ -23,6 +23,7 @@
 
     # Neovim Configuration
     entenvim.url = "github:Entenwilli/neovim";
+    entenvim.inputs.nixpkgs.follows = "nixpkgs-unstable";
     entenvim.inputs.flake-utils.follows = "flake-utils";
 
     # Grub bootloader theme
