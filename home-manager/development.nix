@@ -12,6 +12,9 @@
     bacon
     clippy
     jetbrains.rust-rover
+    texliveFull
+    freerdp
+    qemu
   ];
 
   # Configure git
