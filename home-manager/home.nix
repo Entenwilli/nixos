@@ -112,6 +112,7 @@
     gnome-network-displays
     thunderbird
     xivlauncher
+    zotero
   ];
 
   xdg.desktopEntries.webcord = {
