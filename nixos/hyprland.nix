@@ -19,7 +19,7 @@
 
   programs.hyprland = {
     enable = true;
-    package = pkgs.hyprland;
+    package = pkgs.unstable.hyprland;
   };
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];

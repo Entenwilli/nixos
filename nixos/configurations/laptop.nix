@@ -132,6 +132,7 @@
   # Enable fish
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
+  documentation.man.generateCaches = false;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.felix = {

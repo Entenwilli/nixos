@@ -77,12 +77,12 @@
   hyprland.monitors = [
     {
       name = "DP-1";
-      settings = "2560x1440@144,2560x0,1";
+      settings = "2560x1440@144,0x0,1";
       wallpaper = "/home/felix/Bilder/Wallpaper/snowy-lake.jpg";
     }
     {
       name = "DP-3";
-      settings = "2560x1440@144,0x0,1";
+      settings = "2560x1440@144,2560x0,1";
       wallpaper = "/home/felix/Bilder/Wallpaper/nighttime-in-the-mountains.png";
     }
   ];

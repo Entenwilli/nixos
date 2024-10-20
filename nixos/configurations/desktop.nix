@@ -82,7 +82,6 @@
 
   # Boot splash screen
   boot.consoleLogLevel = 0;
-  boot.kernelParams = ["quiet" "splash" "rd.udev.log-priority=3"];
   boot.initrd.verbose = false;
   boot.plymouth = {
     enable = true;
@@ -116,6 +115,7 @@
   # Enable fish
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
+  documentation.man.generateCaches = false;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.felix = {
@@ -200,15 +200,29 @@
   networking.hostName = "nixos-desktop";
 
   # Nvidia Stuff
+  services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {
     powerManagement.enable = true;
     modesetting.enable = true;
+    open = false;
   };
   hardware.opengl = {
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
+    extraPackages = with pkgs; [
+      nvidia-vaapi-driver
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
   };
+  boot.kernelParams = lib.optionals (lib.elem "nvidia" config.services.xserver.videoDrivers) [
+    "nvidia-drm.modeset=1"
+    "nvidia_drm.fbdev=1"
+    "quiet"
+    "splash"
+    "rd.udev.log-priority=3"
+  ];
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

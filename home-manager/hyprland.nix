@@ -93,7 +93,7 @@ in {
   config = lib.mkIf config.hyprland.enable {
     wayland.windowManager.hyprland = {
       enable = true;
-      package = pkgs.hyprland;
+      package = pkgs.unstable.hyprland;
       systemd.enable = true;
       settings = {
         monitor = builtins.map ({
