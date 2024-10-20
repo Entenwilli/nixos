@@ -12,14 +12,14 @@
   imports = [
     # Include the results of the hardware scan.
     inputs.hardware.nixosModules.dell-xps-13-9310
-    ./hardware-configuration.nix
+    ./laptop-hardware.nix
 
-    ./secrets.nix
-    ./hyprland.nix
-    ./network.nix
-    ./laptop.nix
-    ./nixos-helper.nix
-    ../shells
+    ../secrets.nix
+    ../hyprland.nix
+    ../network.nix
+    ../laptop.nix
+    ../nixos-helper.nix
+    ../../shells
   ];
 
   # Configure nix package manager
@@ -222,6 +222,8 @@
     startAgent = true;
   };
 
+  # Set hostname
+  networking.hostName = "nixos-laptop";
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
   #

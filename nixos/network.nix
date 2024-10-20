@@ -5,23 +5,20 @@
   config,
   ...
 }: {
-   environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     openvpn
     networkmanager-openvpn
     networkmanagerapplet
   ];
 
-  sops.secrets."networks.env" = { 
-    restartUnits = [ "NetworkManager-ensure-profiles.service" ];
+  sops.secrets."networks.env" = {
+    restartUnits = ["NetworkManager-ensure-profiles.service"];
   };
-
-  # Set Hostname
-  networking.hostName = "nixos-laptop";
   # Enable network manager
   networking.networkmanager = {
     enable = true;
-    ensureProfiles ={
-      environmentFiles = [ config.sops.secrets."networks.env".path ];
+    ensureProfiles = {
+      environmentFiles = [config.sops.secrets."networks.env".path];
       profiles = {
         kit = {
           connection = {
@@ -51,7 +48,7 @@
           ipv6 = {
             addr-gen-mode = "stable-privacy";
             method = "auto";
-          }; 
+          };
         };
         "kit-vpn" = {
           connection = {
@@ -154,7 +151,6 @@
             method = "auto";
           };
         };
-
       };
     };
   };

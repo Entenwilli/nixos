@@ -2,7 +2,6 @@
   lib,
   pkgs,
   config,
-  inputs,
   ...
 }: let
   location = pkgs.writeShellApplication {
@@ -58,8 +57,37 @@
     '';
   };
 in {
-  options = {
-    hyprland.enable = lib.mkEnableOption "Enable hyprland";
+  options.hyprland = {
+    enable = lib.mkEnableOption "Enable hyprland";
+    nvidiaFixes = lib.mkEnableOption "Enable Nvidia Fixes";
+    monitors = lib.mkOption {
+      default = [];
+      description = ''
+        Monitors connected to hyprland
+      '';
+      type = lib.types.listOf (lib.types.submodule {
+        options = {
+          name = lib.mkOption {
+            type = lib.types.str;
+            description = ''
+              Name of the monitor
+            '';
+          };
+          settings = lib.mkOption {
+            type = lib.types.str;
+            description = ''
+              Hyprland settings string for monitor
+            '';
+          };
+          wallpaper = lib.mkOption {
+            type = lib.types.str;
+            description = ''
+              Path to the monitor wall paper
+            '';
+          };
+        };
+      });
+    };
   };
 
   config = lib.mkIf config.hyprland.enable {
@@ -68,15 +96,17 @@ in {
       package = pkgs.hyprland;
       systemd.enable = true;
       settings = {
-        monitor = [
-          "eDP-1,1920x1200@60,0x0,1"
-        ];
+        monitor = builtins.map ({
+          name,
+          settings,
+          ...
+        }: "${name},${settings}")
+        config.hyprland.monitors;
 
         "$terminal" = "${pkgs.kitty}/bin/kitty";
         "$menu" = "${pkgs.rofi-wayland}/bin/rofi -modi drun,run -show drun";
 
         input = {
-          kb_layout = "de";
           follow_mouse = "1";
           touchpad = {
             natural_scroll = "no";
@@ -204,9 +234,21 @@ in {
           "$mainMod, mouse:272, movewindow"
           "$mainMod, mouse:273, resizewindow"
         ];
+
+        debug = {
+          disable_logs = false;
+        };
+
+        cursor = lib.mkIf config.hyprland.nvidiaFixes {
+          no_hardware_cursors = true;
+        };
       };
       extraConfig = ''
         env = QT_QPA_PLATFORMTHEME,qt6ct
+        env = LIBVA_DRIVER_NAME,nvidia
+        env = GBM_BACKEND,nvidia-drm
+        env = __GLX_VENDOR_LIBRARY_NAME,nvidiaA
+        env = XDG_SESSION_TYPE,wayland
 
         exec-once = hyprlock;
         exec-once = hyprpaper;
@@ -235,16 +277,21 @@ in {
       '';
     };
 
-    home.file.".config/hypr/hyprpaper.conf".text = ''
-      preload = ~/pictures/Wallpaper/nighttime-in-the-mountains.jpg
-      preload = ~/pictures/Wallpaper/snowy-lake.jpg
+    services.hyprpaper = {
+      enable = true;
+      settings = {
+        splash = false;
 
-      wallpaper = eDP-1,~/pictures/Wallpaper/nighttime-in-the-mountains.jpg
-      wallpaper = DP-1,~/pictures/Wallpaper/snowy-lake.jpg
-      wallpaper = DP-3,~/pictures/Wallpaper/snowy-lake.jpg
+        preload = builtins.map ({wallpaper, ...}: "${wallpaper}") config.hyprland.monitors;
 
-      splash = false
-    '';
+        wallpaper = builtins.map ({
+          name,
+          wallpaper,
+          ...
+        }: "${name},${wallpaper}")
+        config.hyprland.monitors;
+      };
+    };
 
     home.file.".config/hypr/hypridle.conf".text = ''
        general {
@@ -274,7 +321,7 @@ in {
     home.file.".config/hypr/hyprlock.conf".text = ''
       background {
         monitor =
-        path = ~/pictures/Wallpaper/nighttime-in-the-mountains.png
+        path = ~/Bilder/Wallpaper/nighttime-in-the-mountains.png
         blur_passes = 3
         contrast = 0.8916
         brightness = 0.8172

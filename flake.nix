@@ -62,20 +62,37 @@
 
     # NixOS configuration entrypoint
     nixosConfigurations = {
+      nixos-desktop = let
+        specialArgs = {inherit inputs outputs;};
+      in
+       nixpkgs.lib.nixosSystem {
+         specialArgs = specialArgs;
+         modules = [
+           ./nixos/configurations/desktop.nix
+           inputs.sops-nix.nixosModules.sops
+           inputs.home-manager.nixosModules.home-manager
+           {
+             home-manager.extraSpecialArgs = specialArgs;
+             home-manager.useGlobalPkgs = true;
+             home-manager.useUserPackages = true;
+             home-manager.users.felix = import ./home-manager/homes/desktop.nix;
+           }
+         ];
+       };
       nixos-laptop = let
         specialArgs = {inherit inputs outputs;};
       in
         nixpkgs.lib.nixosSystem {
           specialArgs = specialArgs;
           modules = [
-            ./nixos/configuration.nix
+            ./nixos/configurations/laptop.nix
             inputs.sops-nix.nixosModules.sops
             inputs.home-manager.nixosModules.home-manager
             {
               home-manager.extraSpecialArgs = specialArgs;
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.felix = import ./home-manager/home.nix;
+              home-manager.users.felix = import ./home-manager/homes/laptop.nix;
             }
             inputs.grub2-themes.nixosModules.default
           ];

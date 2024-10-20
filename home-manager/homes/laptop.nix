@@ -9,22 +9,22 @@
   imports = [
     inputs.entenvim.homeManagerModules.default
     inputs.nix-colors.homeManagerModules.default
-    ./terminal.nix
-    ./theming.nix
-    ./fish.nix
-    ./development.nix
-    ./cli-tools.nix
-    ./hyprland.nix
-    ./music.nix
-    ./neovim.nix
-    ./rofi.nix
-    ./dunst.nix
-    ./zathura.nix
-    ./waybar.nix
-    ./zoxide.nix
-    ./starship.nix
-    ./yazi.nix
-    ./fastfetch.nix
+    ../terminal.nix
+    ../theming.nix
+    ../fish.nix
+    ../development.nix
+    ../cli-tools.nix
+    ../hyprland.nix
+    ../music.nix
+    ../neovim.nix
+    ../rofi.nix
+    ../dunst.nix
+    ../zathura.nix
+    ../waybar.nix
+    ../zoxide.nix
+    ../starship.nix
+    ../yazi.nix
+    ../fastfetch.nix
   ];
 
   # Enable home-manager
@@ -88,6 +88,13 @@
 
   # Enable hyprland
   hyprland.enable = true;
+  hyprland.monitors = [
+    {
+      name = "eDP-1";
+      settings = "1920x1200@60,0x0,1";
+      wallpaper = "/home/felix/Bilder/Wallpaper/snowy-lake.jpg";
+    }
+  ];
 
   # Enable starship promt
   starship.enable = true;
