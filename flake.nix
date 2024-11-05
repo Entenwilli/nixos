@@ -28,13 +28,15 @@
 
     # Grub bootloader theme
     grub2-themes.url = "github:vinceliuice/grub2-themes";
-    grub2-themes.inputs.nixpkgs.follows = "nixpkgs";
 
     # Color theming
     nix-colors.url = "github:misterio77/nix-colors";
 
     # Hyprland flake
     # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+
+    # Spicetify
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
   outputs = {
@@ -65,20 +67,21 @@
       nixos-desktop = let
         specialArgs = {inherit inputs outputs;};
       in
-       nixpkgs.lib.nixosSystem {
-         specialArgs = specialArgs;
-         modules = [
-           ./nixos/configurations/desktop.nix
-           inputs.sops-nix.nixosModules.sops
-           inputs.home-manager.nixosModules.home-manager
-           {
-             home-manager.extraSpecialArgs = specialArgs;
-             home-manager.useGlobalPkgs = true;
-             home-manager.useUserPackages = true;
-             home-manager.users.felix = import ./home-manager/homes/desktop.nix;
-           }
-         ];
-       };
+        nixpkgs.lib.nixosSystem {
+          specialArgs = specialArgs;
+          modules = [
+            ./nixos/configurations/desktop.nix
+            inputs.sops-nix.nixosModules.sops
+            inputs.home-manager.nixosModules.home-manager
+            {
+              home-manager.extraSpecialArgs = specialArgs;
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.felix = import ./home-manager/homes/desktop.nix;
+            }
+            inputs.grub2-themes.nixosModules.default
+          ];
+        };
       nixos-laptop = let
         specialArgs = {inherit inputs outputs;};
       in

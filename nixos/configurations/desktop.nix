@@ -71,14 +71,36 @@
     packages = with pkgs; [dunst];
   };
 
-  # Use the systemd-boot EFI boot loader.
-  #boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  # Use systemd-boot bootloader
-  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.efiSysMountPoint = "/efi";
-  boot.loader.systemd-boot.xbootldrMountPoint = "/boot";
+
+  # Use grub bootloader
+  boot.loader = {
+    grub = {
+      enable = true;
+      efiSupport = true;
+      devices = ["nodev"];
+      extraEntries = ''
+        menuentry "Windows 11" {
+          insmod part_gpt
+          insmod fat
+          insmod search_fs_uuid
+          insmod chain
+          search --fs-uuid --set=root 462A-1D52
+          chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+        }
+      '';
+      gfxmodeEfi = lib.mkForce "2560x1440";
+      gfxpayloadEfi = "keep";
+    };
+    grub2-theme = {
+      enable = true;
+      theme = "stylish";
+      footer = true;
+      customResolution = "2560x1440";
+    };
+  };
+  boot.supportedFilesystems = ["ntfs"];
 
   # Boot splash screen
   boot.consoleLogLevel = 0;
@@ -89,7 +111,7 @@
 
   # Enable display manager
   services.xserver.enable = true;
-  services.xserver.displayManager = {
+  services.displayManager = {
     sddm = {
       enable = true;
       wayland.enable = true;
@@ -153,12 +175,17 @@
     libarchive
     man-pages
     glibcInfo
-    # Currently broken: eclipse-dfa
+    eclipse-dfa
     gnome.adwaita-icon-theme
     shared-mime-info
     element-desktop
     gnome-network-displays
   ];
+
+  # Create Data Flow Analysis symlink
+  system.activationScripts = {
+    eclipse-dfa.text = "ln -sfn ${pkgs.eclipse-dfa}/DataFlowAnalysisBench/plugins /etc/eclipse-dfa";
+  };
 
   # Ports for gnome-network-displays
   networking.firewall.allowedTCPPorts = [7236 7250];
@@ -166,6 +193,16 @@
   services.avahi.enable = true;
 
   # Setup syncthing
+  sops.secrets."syncthing-desktop-key" = {
+    owner = "felix";
+    group = "users";
+    restartUnits = ["syncthing.service"];
+  };
+  sops.secrets."syncthing-desktop-cert" = {
+    owner = "felix";
+    group = "users";
+    restartUnits = ["syncthing.service"];
+  };
   syncthing.enable = true;
   syncthing.keySecretName = "syncthing-desktop-key";
   syncthing.certSecretName = "syncthing-desktop-cert";

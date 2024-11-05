@@ -23,7 +23,7 @@
 }:
 stdenv.mkDerivation rec {
   name = "eclipse-dfa";
-  version = "3.0.0-nightly-07.08.24";
+  version = "3.0.0-nightly-02-11-2024";
   desktopItem = makeDesktopItem {
     name = "DataFlowAnalysis";
     exec = "env GDK_BACKEND=\"x11\" WEBKIT_DISABLE_COMPOSITING_MODE=1 WEBKIT_DISABLE_DMABUF_RENDERER=1 DataFlowAnalysisBench";
@@ -36,7 +36,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://updatesite.palladio-simulator.com/DataFlowAnalysis/product/nightly/DataFlowAnalysis.linux.gtk.x86_64.zip";
-    hash = "sha256-+njQaXQNBSh/tAlGLwt8RblW5Nqrq3eR0WShvtPdlrk=";
+    hash = "sha256-o4vvXZiALA3tqLi14P/plV/dX9O4sq138Rqd0xXqmZI=";
   };
 
   nativeBuildInputs = [makeWrapper perl];

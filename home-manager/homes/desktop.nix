@@ -15,7 +15,7 @@
     ../development.nix
     ../cli-tools.nix
     ../hyprland.nix
-    ../music.nix
+    ../spicetify.nix
     ../neovim.nix
     ../rofi.nix
     ../dunst.nix
@@ -36,7 +36,6 @@
     homeDirectory = "/home/felix";
     sessionVariables = {
       DMENU_BLUETOOTH_LAUNCHER = "rofi";
-      XDG_CURRENT_DESKTOP = "hyprland";
       EDITOR = "nvim";
       ANKI_WAYLAND = 1;
     };
@@ -78,12 +77,12 @@
     {
       name = "DP-1";
       settings = "2560x1440@144,0x0,1";
-      wallpaper = "/home/felix/Bilder/Wallpaper/snowy-lake.jpg";
+      wallpaper = "/home/felix/pictures/Wallpaper/snowy-lake.jpg";
     }
     {
       name = "DP-3";
       settings = "2560x1440@144,2560x0,1";
-      wallpaper = "/home/felix/Bilder/Wallpaper/nighttime-in-the-mountains.png";
+      wallpaper = "/home/felix/pictures/Wallpaper/nighttime-in-the-mountains.png";
     }
   ];
 
@@ -92,6 +91,9 @@
 
   # Enable yazi
   yazi.enable = true;
+
+  # Enable spicetify
+  spicetify.enable = true;
 
   # Enable XDG Desktop
   xdg.enable = true;
