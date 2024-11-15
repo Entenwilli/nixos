@@ -15,6 +15,8 @@
     texliveFull
     freerdp
     qemu
+    unstable.cargo
+    unstable.rustc
   ];
 
   # Configure git

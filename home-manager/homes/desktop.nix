@@ -7,7 +7,7 @@
 }: {
   # You can import other home-manager modules here
   imports = [
-    inputs.entenvim.homeManagerModules.default
+    # inputs.entenvim.homeManagerModules.default
     inputs.nix-colors.homeManagerModules.default
     ../terminal.nix
     ../theming.nix

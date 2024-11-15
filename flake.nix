@@ -24,7 +24,6 @@
     # Neovim Configuration
     entenvim.url = "github:Entenwilli/neovim";
     entenvim.inputs.nixpkgs.follows = "nixpkgs-unstable";
-    entenvim.inputs.flake-utils.follows = "flake-utils";
 
     # Grub bootloader theme
     grub2-themes.url = "github:vinceliuice/grub2-themes";
@@ -72,6 +71,7 @@
           modules = [
             ./nixos/configurations/desktop.nix
             inputs.sops-nix.nixosModules.sops
+            inputs.entenvim.nixosModules.neovim
             inputs.home-manager.nixosModules.home-manager
             {
               home-manager.extraSpecialArgs = specialArgs;

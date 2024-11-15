@@ -158,8 +158,6 @@
     sops
     git
     fastfetch
-    rustc
-    cargo
     nodejs
     gcc
     prettierd

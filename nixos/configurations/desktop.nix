@@ -163,8 +163,6 @@
     sops
     git
     fastfetch
-    rustc
-    cargo
     nodejs
     gcc
     prettierd
@@ -186,6 +184,9 @@
   system.activationScripts = {
     eclipse-dfa.text = "ln -sfn ${pkgs.eclipse-dfa}/DataFlowAnalysisBench/plugins /etc/eclipse-dfa";
   };
+
+  # Enable own neovim distribution
+  programs.entenvim.enable = true;
 
   # Ports for gnome-network-displays
   networking.firewall.allowedTCPPorts = [7236 7250];
