@@ -10,6 +10,31 @@
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
+    hyprland-patched = let
+      libinput = prev.libinput.overrideAttrs (self: {
+        name = "libinput";
+        version = "1.26.0";
+        src = final.fetchFromGitLab {
+          domain = "gitlab.freedesktop.org";
+          owner = "libinput";
+          repo = "libinput";
+          rev = self.version;
+          hash = "sha256-mlxw4OUjaAdgRLFfPKMZDMOWosW9yKAkzDccwuLGCwQ=";
+        };
+      });
+    in
+      inputs.hyprland.packages.${prev.system}.hyprland.override {
+        libinput = libinput;
+        aquamarine = inputs.hyprland.inputs.aquamarine.packages.${prev.system}.aquamarine.override {
+          libinput = libinput;
+        };
+        wayland = final.unstable.wayland;
+        wayland-scanner = final.unstable.wayland-scanner;
+        wayland-protocols = final.unstable.wayland-protocols;
+      };
+    xdg-desktop-portal-hyprland-patched = inputs.hyprland.packages.${prev.system}.xdg-desktop-portal-hyprland.override {
+      pipewire = final.unstable.pipewire;
+    };
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will

@@ -32,7 +32,20 @@
     nix-colors.url = "github:misterio77/nix-colors";
 
     # Hyprland flake
-    # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprland = {
+      type = "git";
+      url = "https://github.com/hyprwm/hyprland";
+      submodules = true;
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.aquamarine.follows = "aquamarine";
+    };
+
+    # Aquamarine for Hyprland
+    aquamarine = {
+      type = "git";
+      url = "https://github.com/hyprwm/aquamarine";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
 
     # Spicetify
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
@@ -90,6 +103,7 @@
           modules = [
             ./nixos/configurations/laptop.nix
             inputs.sops-nix.nixosModules.sops
+            inputs.entenvim.nixosModules.neovim
             inputs.home-manager.nixosModules.home-manager
             {
               home-manager.extraSpecialArgs = specialArgs;

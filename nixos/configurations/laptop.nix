@@ -178,6 +178,9 @@
     brightnessctl
   ];
 
+  # Enable own neovim distribution
+  programs.entenvim.enable = true;
+
   # Ports for gnome-network-displays
   networking.firewall.allowedTCPPorts = [7236 7250];
   networking.firewall.allowedUDPPorts = [7236 5353];
@@ -219,6 +222,14 @@
 
   programs.ssh = {
     startAgent = true;
+  };
+
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    package = pkgs.mesa.drivers;
+    driSupport32Bit = true;
+    package32 = pkgs.pkgsi686Linux.mesa.drivers;
   };
 
   # Set hostname

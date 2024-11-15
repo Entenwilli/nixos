@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   pkgs,
   config,
@@ -156,6 +157,10 @@ in {
   options.hyprland = {
     enable = lib.mkEnableOption "Enable hyprland";
     nvidiaFixes = lib.mkEnableOption "Enable Nvidia Fixes";
+    keyboardLayout = lib.mkOption {
+      default = "de";
+      type = lib.types.str;
+    };
     monitors = lib.mkOption {
       default = [];
       description = ''
@@ -189,7 +194,7 @@ in {
   config = lib.mkIf config.hyprland.enable {
     wayland.windowManager.hyprland = {
       enable = true;
-      package = pkgs.unstable.hyprland;
+      package = pkgs.hyprland-patched;
       systemd.enable = true;
       settings = {
         monitor = builtins.map ({
@@ -203,6 +208,7 @@ in {
         "$menu" = "${pkgs.rofi-wayland}/bin/rofi -modi drun,run -show drun";
 
         input = {
+          kb_layout = config.hyprland.keyboardLayout;
           follow_mouse = "1";
           touchpad = {
             natural_scroll = "no";
@@ -417,7 +423,7 @@ in {
     home.file.".config/hypr/hyprlock.conf".text = ''
       background {
         monitor =
-        path = ~/Bilder/Wallpaper/nighttime-in-the-mountains.png
+        path = ~/pictures/Wallpaper/nighttime-in-the-mountains.png
         blur_passes = 3
         contrast = 0.8916
         brightness = 0.8172
