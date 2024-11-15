@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     QT_QPA_PLATFORMTHEME = "qt6ct";
@@ -19,6 +15,8 @@
     bc
     grim
     slurp
+    unstable.hyprsunset
+    unstable.hyprpolkitagent
   ];
 
   programs.hyprland = {

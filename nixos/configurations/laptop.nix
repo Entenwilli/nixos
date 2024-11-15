@@ -98,8 +98,7 @@
   };
 
   # Enable display manager
-  services.xserver.enable = true;
-  services.xserver.displayManager = {
+  services.displayManager = {
     sddm = {
       enable = true;
       wayland.enable = true;
@@ -177,6 +176,11 @@
     #TODO: Laptop Only
     brightnessctl
   ];
+
+  # Create Data Flow Analysis symlink
+  system.activationScripts = {
+    eclipse-dfa.text = "ln -sfn ${pkgs.eclipse-dfa}/DataFlowAnalysisBench/plugins /etc/eclipse-dfa";
+  };
 
   # Enable own neovim distribution
   programs.entenvim.enable = true;

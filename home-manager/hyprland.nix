@@ -355,6 +355,7 @@ in {
         exec-once = hyprlock;
         exec-once = hyprpaper;
         exec-once = hypridle;
+        exec-once = systemctl --user start hyprpolkitagent;
         exec-once = keepassxc;
         exec-once = spotify_player -d;
 
