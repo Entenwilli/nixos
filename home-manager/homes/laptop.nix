@@ -51,7 +51,6 @@
     homeDirectory = "/home/felix";
     sessionVariables = {
       DMENU_BLUETOOTH_LAUNCHER = "rofi";
-      XDG_CURRENT_DESKTOP = "hyprland";
       EDITOR = "nvim";
       ANKI_WAYLAND = 1;
     };
