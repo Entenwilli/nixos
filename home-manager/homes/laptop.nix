@@ -118,7 +118,6 @@
     anki
     gnome-network-displays
     thunderbird
-    xivlauncher
     zotero
   ];
 

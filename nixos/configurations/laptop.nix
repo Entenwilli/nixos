@@ -118,12 +118,7 @@
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
-  # Enable steam
-  # TODO: Remove?
-  programs.steam.enable = true;
-
   # Set console keymap to german keyboard
-  # TODO: This is hardware dependent
   console = {
     keyMap = "de-latin1";
   };
@@ -172,8 +167,6 @@
     shared-mime-info
     element-desktop
     gnome-network-displays
-
-    #TODO: Laptop Only
     brightnessctl
   ];
 
@@ -201,7 +194,6 @@
   };
 
   # Setup upower agent
-  #TODO: Only required on laptop
   services.upower.enable = true;
 
   # Setup audio
