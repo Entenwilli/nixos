@@ -108,7 +108,7 @@
 
   # Add stuff for your user as you see fit:
   home.packages = with pkgs; [
-    obsidian
+    unstable.obsidian
     keepassxc
     libsecret
     webcord
