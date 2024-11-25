@@ -3,11 +3,11 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-24.05";
+    home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Hardware configuration
@@ -18,12 +18,11 @@
 
     # Credential management wth sops
     sops-nix.url = "github:Mic92/sops-nix";
-    sops-nix.inputs.nixpkgs.follows = "nixpkgs"; # This could also be unstable
-    sops-nix.inputs.nixpkgs-stable.follows = "nixpkgs";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     # Neovim Configuration
     entenvim.url = "github:Entenwilli/neovim";
-    entenvim.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    entenvim.inputs.nixpkgs.follows = "nixpkgs";
 
     # Grub bootloader theme
     grub2-themes.url = "github:vinceliuice/grub2-themes";

@@ -30,21 +30,6 @@
   # Enable home-manager
   programs.home-manager.enable = true;
 
-  # Configure nix package manager
-  /*
-  nixpkgs = {
-    overlays = [
-      outputs.overlays.additions
-      outputs.overlays.modifications
-      outputs.overlays.unstable-packages
-    ];
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = _: true;
-    };
-  };
-  */
-
   # Set home and username
   home = {
     username = "felix";
@@ -96,7 +81,7 @@
   ];
   hyprland.keyboardLayout = "de";
 
-  # Enable starship promt
+  # Enable starship prompt
   starship.enable = true;
 
   # Enable yazi
@@ -108,12 +93,12 @@
 
   # Add stuff for your user as you see fit:
   home.packages = with pkgs; [
-    unstable.obsidian
+    obsidian
     keepassxc
     libsecret
     webcord
     openjdk17
-    unstable.jetbrains.idea-ultimate
+    jetbrains.idea-ultimate
     pympress
     anki
     gnome-network-displays

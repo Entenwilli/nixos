@@ -16,14 +16,14 @@
   libXtst,
   libsecret,
   gsettings-desktop-schemas,
-  webkitgtk,
+  webkitgtk_4_0,
   makeWrapper,
   fetchurl,
   ...
 }:
 stdenv.mkDerivation rec {
   name = "eclipse-dfa";
-  version = "3.0.0-nightly-02-11-2024";
+  version = "3.0.0-nightly-25-11-2024";
   desktopItem = makeDesktopItem {
     name = "DataFlowAnalysis";
     exec = "env GDK_BACKEND=\"x11\" WEBKIT_DISABLE_COMPOSITING_MODE=1 WEBKIT_DISABLE_DMABUF_RENDERER=1 DataFlowAnalysisBench";
@@ -36,7 +36,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://updatesite.palladio-simulator.com/DataFlowAnalysis/product/nightly/DataFlowAnalysis.linux.gtk.x86_64.zip";
-    hash = "sha256-o4vvXZiALA3tqLi14P/plV/dX9O4sq138Rqd0xXqmZI=";
+    hash = "sha256-N6kB8bF1bqUrTf5iaMOk+g8jX+FPvlWBBKBnbf7a6J0=";
   };
 
   nativeBuildInputs = [makeWrapper perl];
@@ -53,7 +53,7 @@ stdenv.mkDerivation rec {
     libXtst
     libsecret
     zlib
-    webkitgtk
+    webkitgtk_4_0
   ];
 
   buildCommand = ''
@@ -71,7 +71,7 @@ stdenv.mkDerivation rec {
     productId=$(sed 's/id=//; t; d' $out/DataFlowAnalysisBench/.eclipseproduct)
     makeWrapper $out/DataFlowAnalysisBench/DataFlowAnalysisBench $out/bin/DataFlowAnalysisBench \
         --prefix PATH : ${jdk17}/bin \
-        --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [glib gtk3 libXtst libsecret webkitgtk]} \
+        --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [glib gtk3 libXtst libsecret webkitgtk_4_0]} \
         --prefix GIO_EXTRA_MODULES : "${glib-networking}/lib/gio/modules" \
         --prefix XDG_DATA_DIRS : "$GSETTINGS_SCHEMAS_PATH" \
         --add-flags "-configuration \$HOME/.eclipse/''${productId}_${version}/configuration"

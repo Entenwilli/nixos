@@ -102,12 +102,12 @@
 
   # Add stuff for your user as you see fit:
   home.packages = with pkgs; [
-    unstable.obsidian
+    obsidian
     keepassxc
     libsecret
     webcord
     openjdk17
-    unstable.jetbrains.idea-ultimate
+    jetbrains.idea-ultimate
     pympress
     anki
     gnome-network-displays

@@ -134,14 +134,12 @@
     uid = 1000;
     isNormalUser = true;
     shell = pkgs.fish;
-    extraGroups = ["wheel" "audio" "network" "networkmanager" "docker"]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "audio" "network" "networkmanager"]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       eza
       firefox
     ];
   };
-
-  virtualisation.docker.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -163,7 +161,7 @@
     man-pages
     glibcInfo
     eclipse-dfa
-    gnome.adwaita-icon-theme
+    adwaita-icon-theme
     shared-mime-info
     element-desktop
     gnome-network-displays
@@ -220,11 +218,10 @@
     startAgent = true;
   };
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
     package = pkgs.mesa.drivers;
-    driSupport32Bit = true;
+    enable32Bit = true;
     package32 = pkgs.pkgsi686Linux.mesa.drivers;
   };
 

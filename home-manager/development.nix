@@ -13,10 +13,8 @@
     clippy
     jetbrains.rust-rover
     texliveFull
-    freerdp
-    qemu
-    unstable.cargo
-    unstable.rustc
+    cargo
+    rustc
   ];
 
   # Configure git

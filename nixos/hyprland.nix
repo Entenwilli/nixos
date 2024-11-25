@@ -9,20 +9,20 @@
     wirelesstools
     wl-clipboard
     hyprpaper
-    unstable.hyprlock
+    hyprlock
     dunst
-    unstable.hypridle
+    hypridle
     bc
     grim
     slurp
-    unstable.hyprsunset
-    unstable.hyprpolkitagent
+    hyprsunset
+    hyprpolkitagent
   ];
 
   programs.hyprland = {
     enable = true;
-    package = pkgs.hyprland-patched;
-    portalPackage = pkgs.xdg-desktop-portal-hyprland-patched;
+    package = pkgs.hyprland;
+    portalPackage = pkgs.xdg-desktop-portal-hyprland;
   };
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
