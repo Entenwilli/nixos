@@ -57,11 +57,11 @@
     auto-optimise-store = true;
   };
 
-  sops.secrets."github-token" = {
+  sops.secrets."github-token-laptop" = {
     owner = "felix";
   };
   nix.extraOptions = ''
-    !include ${config.sops.secrets."github-token".path}
+    !include ${config.sops.secrets."github-token-laptop".path}
   '';
 
   # Enable nixos-helper

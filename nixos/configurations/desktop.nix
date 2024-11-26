@@ -56,11 +56,11 @@
     auto-optimise-store = true;
   };
 
-  sops.secrets."github-token" = {
+  sops.secrets."github-token-desktop" = {
     owner = "felix";
   };
   nix.extraOptions = ''
-    !include ${config.sops.secrets."github-token".path}
+    !include ${config.sops.secrets."github-token-desktop".path}
   '';
 
   # Enable nixos-helper
@@ -257,6 +257,8 @@
     "quiet"
     "splash"
     "rd.udev.log-priority=3"
+    "perf_event_paranoid=1"
+    "kptr_restrict=0"
   ];
 
   # This option defines the first version of NixOS you have installed on this particular machine,
