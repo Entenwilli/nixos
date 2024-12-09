@@ -164,7 +164,7 @@
     adwaita-icon-theme
     shared-mime-info
     element-desktop
-    gnome-network-displays
+    gnome-network-displays-patched
     brightnessctl
   ];
 
@@ -223,6 +223,10 @@
     package = pkgs.mesa.drivers;
     enable32Bit = true;
     package32 = pkgs.pkgsi686Linux.mesa.drivers;
+    extraPackages = with pkgs; [
+      vaapi-intel-hybrid
+      libvdpau-va-gl
+    ];
   };
 
   # Set hostname

@@ -101,7 +101,6 @@
     jetbrains.idea-ultimate
     pympress
     anki
-    gnome-network-displays
     thunderbird
     zotero
   ];

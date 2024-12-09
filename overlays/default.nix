@@ -35,6 +35,9 @@
     xdg-desktop-portal-hyprland-patched = inputs.hyprland.packages.${prev.system}.xdg-desktop-portal-hyprland.override {
       pipewire = final.unstable.pipewire;
     };
+    gnome-network-displays-patched = prev.gnome-network-displays.overrideAttrs (old: {
+      nativeBuildInputs = old.nativeBuildInputs ++ [prev.glib-networking prev.gst_all_1.gstreamer prev.gst_all_1.gst-plugins-base prev.gst_all_1.gst-vaapi];
+    });
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
