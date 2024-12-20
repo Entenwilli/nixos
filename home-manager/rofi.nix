@@ -12,6 +12,7 @@
     home.packages = with pkgs; [
       rofi-power-menu
       bemoji
+      wtype
     ];
 
     programs.rofi = {
