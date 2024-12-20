@@ -17,7 +17,7 @@
         size = 14;
       };
       shellIntegration.enableFishIntegration = true;
-      themeFile = "tokyo_night_storm";
+      themeFile = "tokyo_night_night";
       extraConfig = ''
         cursor_blink_interval 0
         cursor_shape beam
