@@ -13,7 +13,7 @@
       enable = true;
       font = {
         name = "FiraCode Nerd Font";
-        package = pkgs.nerdfonts.override {fonts = ["FiraCode"];};
+        package = pkgs.unstable.nerd-fonts.fira-code;
         size = 14;
       };
       shellIntegration.enableFishIntegration = true;

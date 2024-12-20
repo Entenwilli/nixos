@@ -216,7 +216,9 @@
 
   # Installing Fonts
   fonts.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["FiraCode"];})
+    unstable.nerd-fonts.fira-code
+    unstable.nerd-fonts.hack
+    unstable.nerd-fonts.jetbrains-mono
     ipafont
   ];
 
