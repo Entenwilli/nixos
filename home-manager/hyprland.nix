@@ -192,6 +192,9 @@ in {
   };
 
   config = lib.mkIf config.hyprland.enable {
+    home.packages = with pkgs; [
+      clipse
+    ];
     wayland.windowManager.hyprland = {
       enable = true;
       package = pkgs.hyprland-patched;
@@ -357,7 +360,7 @@ in {
         exec-once = hypridle;
         exec-once = systemctl --user start hyprpolkitagent;
         exec-once = keepassxc;
-        exec-once = spotify_player -d;
+        exec-once = ${pkgs.clipse}/bin/clipse -listen;
 
         exec-once = dbus-update-activation-environment --systemd --all
         exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME DBUS_SESSION_ADDRESS
