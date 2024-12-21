@@ -27,6 +27,7 @@
       rustc
       openjdk17
       jetbrains.idea-ultimate
+      neovide
     ];
 
     # Configure git
