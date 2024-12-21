@@ -407,19 +407,19 @@ in {
 
       listener {
           timeout = 150
-          on-timeout = brightnessctl -s set 10
-          on-resume = brightnessctl -r
+          on-timeout = [ "$(cat /sys/class/power_supply/AC/online)" = "0" ] && brightnessctl -s set 10
+          on-resume = [ "$(cat /sys/class/power_supply/AC/online)" = "0" ] && brightnessctl -r
       }
 
       listener {
           timeout = 150
-          on-timeout = brightnessctl -sd rgb:kbd_backlight set 0
+          on-timeout = [ "$(cat /sys/class/power_supply/AC/online)" = "0" ] && brightnessctl -sd rgb:kbd_backlight set 0
       }
 
       listener {
           timeout = 300
-          on-timeout = hyprctl dispatch dpms off
-          on-resume = hyprctl dispatch dpms on
+          on-timeout = [ "$(cat /sys/class/power_supply/AC/online)" = "0" ] && hyprctl dispatch dpms off
+          on-resume = [ "$(cat /sys/class/power_supply/AC/online)" = "0" ] && hyprctl dispatch dpms on
       }
     '';
 

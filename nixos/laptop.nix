@@ -29,8 +29,8 @@ in {
 
   services.udev.enable = true;
   services.udev.extraRules = ''
-    SUBSYSTEM=="power_supply", ACTION=="change", ENV{POWER_SUPPLY_ONLINE}=="0", RUN+="${pkgs.systemd}/bin/systemctl --no-block start battery-notify-udev@discharging.service"
-    SUBSYSTEM=="power_supply", ACTION=="change", ENV{POWER_SUPPLY_ONLINE}=="1", RUN+="${pkgs.systemd}/bin/systemctl --no-block start battery-notify-udev@charging.service"
+    SUBSYSTEM=="power_supply", ACTION=="change", ATTR{online}=="0", RUN+="${pkgs.systemd}/bin/systemctl --no-block start battery-notify-udev@discharging.service"
+    SUBSYSTEM=="power_supply", ACTION=="change", ATTR{online}=="1", RUN+="${pkgs.systemd}/bin/systemctl --no-block start battery-notify-udev@charging.service"
   '';
 
   systemd.services."battery-notify-udev@" = {
