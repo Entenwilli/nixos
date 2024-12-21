@@ -347,39 +347,48 @@ in {
           no_hardware_cursors = true;
         };
       };
-      extraConfig = ''
-        env = QT_QPA_PLATFORMTHEME,qt6ct
-        env = LIBVA_DRIVER_NAME,nvidia
-        env = GBM_BACKEND,nvidia-drm
-        env = __GLX_VENDOR_LIBRARY_NAME,nvidia
-        env = XDG_SESSION_TYPE,wayland
+      extraConfig = lib.strings.concatStrings [
+        ''
+          env = QT_QPA_PLATFORMTHEME,qt6ct
+          env = XDG_SESSION_TYPE,wayland
 
-        exec-once = hyprlock;
-        exec-once = hyprpaper;
-        exec-once = hypridle;
-        exec-once = systemctl --user start hyprpolkitagent;
-        exec-once = keepassxc;
-        exec-once = ${pkgs.clipse}/bin/clipse -listen;
+          exec-once = hyprlock;
+          exec-once = hyprpaper;
+          exec-once = hypridle;
+          exec-once = systemctl --user start hyprpolkitagent;
+          exec-once = keepassxc;
+          exec-once = ${pkgs.clipse}/bin/clipse -listen;
 
-        exec-once = dbus-update-activation-environment --systemd --all
-        exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME DBUS_SESSION_ADDRESS
+          exec-once = dbus-update-activation-environment --systemd --all
+          exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME DBUS_SESSION_ADDRESS
 
-        device {
-           name = keychron-keychron-q1-keyboard
-           kb_layout = us
-           kb_variant = altgr-intl
-         }
+          device {
+             name = keychron-keychron-q1-keyboard
+             kb_layout = us
+             kb_variant = altgr-intl
+           }
 
-         device {
-           name = keychron-keychron-q1
-           kb_layout = us
-           kb_variant = altgr-intl
-         }
+           device {
+             name = keychron-keychron-q1
+             kb_layout = us
+             kb_variant = altgr-intl
+           }
 
-          master {
-              new_status = master
-          }
-      '';
+            master {
+                new_status = master
+            }
+        ''
+        (
+          if (config.hyprland.nvidiaFixes)
+          then ''
+            env = LIBVA_DRIVER_NAME,nvidia
+            env = GBM_BACKEND,nvidia-drm
+            env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+
+          ''
+          else ''''
+        )
+      ];
     };
 
     services.hyprpaper = {
@@ -462,7 +471,7 @@ in {
        color = rgb(EFEFEF)
        font_size = 72
        font_family = FiraCode Nerd Font
-       position = 0, -300
+       position = 0, -250
        halign = center
        valign = top
       }
@@ -485,9 +494,9 @@ in {
           color = rgba(255, 255, 255, 1)
           font_size = 10
           font_family = FiraCode Nerd Font Mono ExtraBold
-          position = 0, 350
+          position = 0, -200
           halign = center
-          valign = center
+          valign = top
       }
     '';
   };
