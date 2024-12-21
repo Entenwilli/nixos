@@ -35,9 +35,7 @@
     username = "felix";
     homeDirectory = "/home/felix";
     sessionVariables = {
-      DMENU_BLUETOOTH_LAUNCHER = "rofi";
       EDITOR = "nvim";
-      ANKI_WAYLAND = 1;
     };
   };
 
