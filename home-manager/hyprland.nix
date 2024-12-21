@@ -435,7 +435,7 @@ in {
     home.file.".config/hypr/hyprlock.conf".text = ''
       background {
         monitor =
-        path = ~/pictures/Wallpaper/nighttime-in-the-mountains.png
+        path = ~/pictures/Wallpaper/tom-vining.jpg
         blur_passes = 3
         contrast = 0.8916
         brightness = 0.8172
@@ -444,9 +444,9 @@ in {
       }
 
       general {
-        no_fade_in = false
-        grace = 0
-        disable_loading_bar = true
+        enable_fingerprint = true
+        fingerprint_ready_message = "Scan fingerprint to unlock"
+        fingerprint_present_message = "Scanning fingerprint"
       }
 
       input-field {
@@ -455,7 +455,6 @@ in {
         outer_color = rgb(c0caf5)
         inner_color = rgb(16161e)
         font_color = rgb(EFEFEF)
-        color = rgb(EFEFEF)
         placeholder_text = <i>Input Password...</i>
         hide_input = false
         size = 200, 50
@@ -466,8 +465,19 @@ in {
       }
 
       label {
+        monitor =
+        text = cmd[update:100] echo "$FPRINTMESSAGE"
+        color = rgb(EFEFEF)
+        font_size = 10
+        font_family = FiraCode Nerd Font
+        position= 0, -180
+        halign = center
+        valign = center
+      }
+
+      label {
        monitor =
-       text = cmd[update:1000] echo "$(date +"%-H:%M")"
+       text = cmd[update:1000] echo $TIME
        color = rgb(EFEFEF)
        font_size = 72
        font_family = FiraCode Nerd Font

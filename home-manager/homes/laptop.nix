@@ -79,7 +79,7 @@
     {
       name = "eDP-1";
       settings = "1920x1200@60,0x0,1";
-      wallpaper = "/home/felix/pictures/Wallpaper/snowy-lake.jpg";
+      wallpaper = "/home/felix/pictures/Wallpaper/tom-vining.jpg";
     }
   ];
   hyprland.keyboardLayout = "de";
