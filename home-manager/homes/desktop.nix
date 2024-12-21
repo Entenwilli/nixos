@@ -1,13 +1,9 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{inputs, ...}: {
   # You can import other home-manager modules here
   imports = [
-    # inputs.entenvim.homeManagerModules.default
+    inputs.entenvim.homeManagerModules.default
     inputs.nix-colors.homeManagerModules.default
     ../terminal.nix
     ../theming.nix
@@ -25,6 +21,10 @@
     ../starship.nix
     ../yazi.nix
     ../fastfetch.nix
+    ../discord.nix
+    ../office.nix
+    ../password-manager.nix
+    ../university.nix
   ];
 
   # Enable home-manager
@@ -100,30 +100,20 @@
   xdg.enable = true;
   xdg.mime.enable = true;
 
-  # Add stuff for your user as you see fit:
-  home.packages = with pkgs; [
-    obsidian
-    keepassxc
-    libsecret
-    webcord
-    openjdk17
-    jetbrains.idea-ultimate
-    pympress
-    anki
-    gnome-network-displays
-    thunderbird
-    zotero
-  ];
+  # Enable university tools
+  university.enable = true;
 
-  xdg.desktopEntries.webcord = {
-    name = "Discord";
-    genericName = "Discord";
-    exec = "webcord --enable-features=UseOzonePlatform --ozone-platform=wayland";
-    icon = "webcord";
-    terminal = false;
-    type = "Application";
-    categories = ["Network"];
-  };
+  # Enable office tools
+  office.enable = true;
+
+  # Enable development tools
+  development.enable = true;
+
+  # Enable password manager
+  password-manager.enable = true;
+
+  # Enable discord
+  discord.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

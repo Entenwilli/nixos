@@ -1,10 +1,6 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{inputs, ...}: {
   # You can import other home-manager modules here
   imports = [
     inputs.entenvim.homeManagerModules.default
@@ -15,8 +11,6 @@
     ../development.nix
     ../cli-tools.nix
     ../hyprland.nix
-    ../music.nix
-    ../neovim.nix
     ../rofi.nix
     ../dunst.nix
     ../zathura.nix
@@ -25,6 +19,11 @@
     ../starship.nix
     ../yazi.nix
     ../fastfetch.nix
+    ../discord.nix
+    ../password-manager.nix
+    ../university.nix
+    ../office.nix
+    ../spicetify.nix
   ];
 
   # Enable home-manager
@@ -35,9 +34,7 @@
     username = "felix";
     homeDirectory = "/home/felix";
     sessionVariables = {
-      DMENU_BLUETOOTH_LAUNCHER = "rofi";
       EDITOR = "nvim";
-      ANKI_WAYLAND = 1;
     };
   };
 
@@ -45,6 +42,12 @@
 
   # Enable gtk and qt theming
   theming.enable = true;
+
+  # Enable cli-tools
+  cli-tools.enable = true;
+
+  # Enable development tools
+  development.enable = true;
 
   # Enable fastfetch
   fastfetch.enable = true;
@@ -91,29 +94,20 @@
   xdg.enable = true;
   xdg.mime.enable = true;
 
-  # Add stuff for your user as you see fit:
-  home.packages = with pkgs; [
-    obsidian
-    keepassxc
-    libsecret
-    webcord
-    openjdk17
-    jetbrains.idea-ultimate
-    pympress
-    anki
-    thunderbird
-    zotero
-  ];
+  # Enable discord
+  discord.enable = true;
 
-  xdg.desktopEntries.webcord = {
-    name = "Discord";
-    genericName = "Discord";
-    exec = "webcord --enable-features=UseOzonePlatform --ozone-platform=wayland";
-    icon = "webcord";
-    terminal = false;
-    type = "Application";
-    categories = ["Network"];
-  };
+  # Enable password manager
+  password-manager.enable = true;
+
+  # Enable univerisity tools
+  university.enable = true;
+
+  # Enable office tools
+  office.enable = true;
+
+  # Enable spicetify, a spotify client
+  spicetify.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

@@ -9,6 +9,10 @@
   };
 
   config = lib.mkIf config.rofi.enable {
+    home.sessionVariables = {
+      DMENU_BLUETOOTH_LAUNCHER = "rofi";
+    };
+
     home.packages = with pkgs; [
       rofi-power-menu
       bemoji
