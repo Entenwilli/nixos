@@ -36,4 +36,31 @@
       auth        include     login
     '';
   };
+
+  systemd.user.timers."hyprsunset" = {
+    timerConfig = {
+      OnCalendar = "*-*-* 18:00:00";
+    };
+  };
+
+  systemd.user.services."hyprsunset" = {
+    serviceConfig = {
+      Type = "simple";
+      ExecCondition = "${pkgs.systemd}/bin/systemctl is-active graphical.target";
+      ExecStart = "${pkgs.hyprsunset}/bin/hyprsunset -t 5500";
+    };
+  };
+
+  systemd.user.timers."hyprsunset-disable" = {
+    timerConfig = {
+      OnCalendar = "*-*-* 07:00:00";
+    };
+  };
+
+  systemd.user.services."hyprsunset-disable" = {
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.systemd}/bin/systemctl --user stop hyprsunset";
+    };
+  };
 }
