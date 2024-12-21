@@ -265,18 +265,15 @@ in {
 
           "opacity 0.80 0.75,title:^(Rofi.*)$"
 
-          "opacity 0.80 0.75,class:^(SWT)$"
-          "float,title:^(This product Launcher.*)$"
-
           "opacity 0.80 0.75,class:^(neovide)$"
 
-          "opacity 0.80 0.75,title:^(spotify_player)$"
-          "workspace 4, title:^(spotify_player)$"
+          "float, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC - Browser Access Request$"
+          "center, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC - Browser Access Request$"
 
-          "float, class:^(org.keepassxc.KeePassXC)$, title:^(KeePassXC -  Access Request)$"
-          "center, class:^(org.keepassxc.KeePassXC)$, title:^(KeePassXC -  Access Request)$"
+          "float, class:^org\\.keepassxc\\.KeePassXC$, title:^.*\\[Locked\\] - KeePassXC"
+          "size 880 500, class:^org\\.keepassxc\\.KeePassXC$, title:^.*\\[Locked\\] - KeePassXC"
 
-          "workspace 2, class:^(firefox)$"
+          "workspace 2, class:^firefox$"
 
           "opacity 0.80 0.75,class:^(obsidian)$"
         ];
