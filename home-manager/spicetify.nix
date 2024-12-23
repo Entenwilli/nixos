@@ -39,7 +39,7 @@ in {
       };
 
       colorScheme = "custom";
-      customColorScheme = with config.colorScheme.palette; {
+      customColorScheme = with config.scheme; {
         text = "${base07}";
         subtext = "${base05}";
         nav-active-text = "${base0C}";

@@ -1,15 +1,9 @@
 {
   lib,
   config,
-  inputs,
   pkgs,
   ...
-}: let
-  inherit
-    (inputs.nix-colors.lib-contrib {inherit pkgs;})
-    gtkThemeFromScheme
-    ;
-in {
+}: {
   options = {
     theming.enable = lib.mkEnableOption "Enable theming settings";
   };
@@ -25,9 +19,9 @@ in {
     home.pointerCursor = {
       gtk.enable = true;
       x11.enable = true;
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Ice";
-      size = 1;
+      package = pkgs.catppuccin-cursors.mochaMauve;
+      name = "catppuccin-mocha-mauve-cursors";
+      size = 16;
     };
 
     qt = {
@@ -43,9 +37,19 @@ in {
       gtk4.extraConfig.gtk-application-prefer-dark-theme = true;
 
       theme = {
-        name = "${config.colorScheme.slug}";
-        package = gtkThemeFromScheme {scheme = config.colorScheme;};
+        name = "catppuccin-mocha-mauve-standard";
+        package = pkgs.catppuccin-gtk.override {
+          variant = "mocha";
+          accents = ["mauve"];
+        };
       };
+    };
+    xdg.configFile = let
+      gtk4Dir = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0";
+    in {
+      "gtk-4.0/assets".source = "${gtk4Dir}/assets";
+      "gtk-4.0/gtk.css".source = "${gtk4Dir}/gtk.css";
+      "gtk-4.0/gtk-dark.css".source = "${gtk4Dir}/gtk-dark.css";
     };
   };
 }

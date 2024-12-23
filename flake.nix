@@ -24,11 +24,10 @@
     entenvim.url = "github:Entenwilli/neovim";
     entenvim.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Grub bootloader theme
-    grub2-themes.url = "github:vinceliuice/grub2-themes";
-
     # Color theming
-    nix-colors.url = "github:misterio77/nix-colors";
+    base16.url = "github:SenchoPens/base16.nix";
+    color-schemes.url = "github:tinted-theming/schemes";
+    color-schemes.flake = false;
 
     # Hyprland flake
     hyprland = {
@@ -80,6 +79,10 @@
         nixpkgs.lib.nixosSystem {
           specialArgs = specialArgs;
           modules = [
+            inputs.base16.nixosModule
+            {
+              scheme = "${inputs.color-schemes}/base24/catppuccin-mocha.yaml";
+            }
             ./nixos/configurations/desktop.nix
             inputs.sops-nix.nixosModules.sops
             inputs.entenvim.nixosModules.neovim
@@ -90,7 +93,6 @@
               home-manager.useUserPackages = true;
               home-manager.users.felix = import ./home-manager/homes/desktop.nix;
             }
-            inputs.grub2-themes.nixosModules.default
           ];
         };
       nixos-laptop = let
@@ -99,6 +101,10 @@
         nixpkgs.lib.nixosSystem {
           specialArgs = specialArgs;
           modules = [
+            inputs.base16.nixosModule
+            {
+              scheme = "${inputs.color-schemes}/base24/catppuccin-mocha.yaml";
+            }
             ./nixos/configurations/laptop.nix
             inputs.sops-nix.nixosModules.sops
             inputs.entenvim.nixosModules.neovim
@@ -109,7 +115,6 @@
               home-manager.useUserPackages = true;
               home-manager.users.felix = import ./home-manager/homes/laptop.nix;
             }
-            inputs.grub2-themes.nixosModules.default
           ];
         };
     };

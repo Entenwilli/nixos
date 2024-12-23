@@ -81,10 +81,10 @@
       enable = true;
       device = "nodev";
       efiSupport = true;
-    };
-    grub2-theme = {
-      enable = true;
-      theme = "vimix";
+      gfxmodeEfi = lib.mkForce "1920x1200";
+      gfxpayloadEfi = "keep";
+      theme = "${pkgs.catppuccin-grub}";
+      splashImage = "${pkgs.catppuccin-grub}/background.png";
     };
   };
 
@@ -94,6 +94,12 @@
   boot.initrd.verbose = false;
   boot.plymouth = {
     enable = true;
+    themePackages = with pkgs; [
+      (catppuccin-plymouth.override {
+        variant = "mocha";
+      })
+    ];
+    theme = "catppuccin-mocha";
   };
 
   # Enable display manager
@@ -207,6 +213,7 @@
     unstable.nerd-fonts.fira-code
     unstable.nerd-fonts.hack
     unstable.nerd-fonts.jetbrains-mono
+    jetbrains-mono
     ipafont
   ];
 

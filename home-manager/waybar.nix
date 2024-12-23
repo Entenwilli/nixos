@@ -22,7 +22,7 @@
           layer = "top";
           position = "top";
           height = 0;
-          margin-top = 20;
+          margin-top = 10;
           margin-left = 10;
           margin-right = 10;
           output = [
@@ -55,7 +55,7 @@
           "mpris" = {
             format = " {title} - {artist}";
             interval = 3;
-            dynamic-len = 30;
+            dynamic-len = 20;
           };
           "hyprland/window" = {
           };
@@ -105,41 +105,43 @@
               weeks-pos = "left";
               on-scroll = 1;
               format = {
-                days = "<span color='#${config.colorScheme.palette.base05}'><b>{}</b></span>";
-                weeks = "<span color='#${config.colorScheme.palette.base09}'><b>W{:%W}</b></span>";
-                weekdays = "<span color='#${config.colorScheme.palette.base05}'><b>{}</b></span>";
-                today = "<span color='#${config.colorScheme.palette.base08}'><b><u>{}</u></b></span>";
+                days = "<span color='#${config.scheme.base05}'><b>{}</b></span>";
+                weeks = "<span color='#${config.scheme.base09}'><b>W{:%W}</b></span>";
+                weekdays = "<span color='#${config.scheme.base05}'><b>{}</b></span>";
+                today = "<span color='#${config.scheme.base08}'><b><u>{}</u></b></span>";
               };
             };
           };
         };
       };
-      style = ''
+      style = let
+        margin = "0 0.5em";
+      in ''
         * {
           border: none;
           border-radius: 0;
           font-family: FiraCode Nerd Font;
-          font-size: 13px;
+          font-size: 11px;
           min-height: 0;
         }
 
         window#waybar {
-          color: #ffffff;
+          color: ${config.scheme.withHashtag.base06};
           background-color: transparent;
         }
 
         #custom-launcher {
-          color: #7a95c9;
-          background-color: #${config.colorScheme.palette.base02};
+          background-color: ${config.scheme.withHashtag.base0D};
+          color: #${config.scheme.base02};
           padding: 0 0.5em;
           margin-left: 0.5em;
-          font-size: 25px;
+          font-size: 20px;
           border-top-left-radius: 0.5em;
           border-bottom-left-radius: 0.5em;
         }
 
         #workspaces {
-          background-color: #${config.colorScheme.palette.base02};
+          background-color: #${config.scheme.base02};
           border-top-right-radius: 0.5em;
           border-bottom-right-radius: 0.5em;
         }
@@ -151,91 +153,90 @@
         }
 
         #workspaces button.active {
-          color: #${config.colorScheme.palette.base0B};
+          color: #${config.scheme.base0B};
           font-weight: 700;
         }
 
         #workspaces button.urgent {
-          color: #${config.colorScheme.palette.base08};
+          color: #${config.scheme.base08};
         }
 
         #mpris{
-          color: #${config.colorScheme.palette.base0D};
-          background-color: #${config.colorScheme.palette.base02};
-          margin-left: 2em;
+          background-color: #${config.scheme.base0B};
+          color: #${config.scheme.base02};
+          padding: 0.5em;
+          border-radius: 0.5em;
+          margin: ${margin};
         }
 
         #custom-weather {
-          color: #${config.colorScheme.palette.base0D};
-          background-color: #${config.colorScheme.palette.base02};
+          background-color: #${config.scheme.base0D};
+          color: #${config.scheme.base02};
           padding: 0 0.5em;
-          border-top-left-radius: 0.5em;
-          border-bottom-left-radius: 0.5em;
+          border-radius: 0.5em;
+          margin: ${margin};
         }
 
         #backlight {
-          color: #${config.colorScheme.palette.base09};
-          background-color: #${config.colorScheme.palette.base02};
+          background-color: #${config.scheme.base09};
+          color: #${config.scheme.base02};
           padding: 0 0.5em;
+          border-radius: 0.5em;
+          margin: ${margin};
         }
 
         #pulseaudio {
-          color: #${config.colorScheme.palette.base0C};
-          background-color: #${config.colorScheme.palette.base02};
+          background-color: #${config.scheme.base0C};
+          color: #${config.scheme.base02};
           padding: 0 0.5em;
-          border-top-right-radius: 0.5em;
-          border-bottom-right-radius: 0.5em;
+          border-radius: 0.5em;
+          margin: ${margin};
         }
 
         #pulseaudio.muted {
-          color: #${config.colorScheme.palette.base06};
+          background-color: #${config.scheme.base06};
         }
 
 
 
         #bluetooth {
-          color: #${config.colorScheme.palette.base06};
-          background-color: #${config.colorScheme.palette.base02};
+          background-color: #${config.scheme.base06};
+          color: #${config.scheme.base02};
           padding: 0 0.5em;
-          border-top-left-radius: 0.5em;
-          border-bottom-left-radius: 0.5em;
-          margin-left: 2em;
+          border-radius: 0.5em;
+          margin: ${margin};
         }
 
         #bluetooth.on {
-          color: #${config.colorScheme.palette.base0E};
+          background-color: #${config.scheme.base0E};
         }
 
         #bluetooth.connected {
-          color: #${config.colorScheme.palette.base0B};
+          background-color: #${config.scheme.base0B};
         }
 
         #network {
-          color: #${config.colorScheme.palette.base0A};
-          background-color: #${config.colorScheme.palette.base02};
+          background-color: #${config.scheme.base0A};
+          color: #${config.scheme.base02};
           padding: 0 0.5em;
-          border-top-right-radius: 0.5em;
-          border-bottom-right-radius: 0.5em;
+          border-radius: 0.5em;
+          margin: ${margin};
         }
 
         #network.disconnected {
-          color: #f53c3c;
+          background-color: #f53c3c;
         }
 
-
-
         #battery {
-          color: #${config.colorScheme.palette.base05};
-          background-color: #${config.colorScheme.palette.base02};
+          background-color: #${config.scheme.base05};
+          color: #${config.scheme.base02};
           padding: 0 0.5em;
-          margin-left: 2em;
-          margin-right: 0px;
-          border-top-left-radius: 0.5em;
-          border-bottom-left-radius: 0.5em;
+          border-radius: 0.5em;
+          margin: ${margin};
         }
 
         #battery.charging {
-          color: #${config.colorScheme.palette.base0B};
+          background-color: #${config.scheme.base0B};
         }
 
         @keyframes blink {
@@ -245,7 +246,7 @@
         }
 
         #battery.critical:not(.charging) {
-          color: #${config.colorScheme.palette.base08};
+          background-color: #${config.scheme.base08};
           animation-name: blink;
           animation-duration: 0.5s;
           animation-timing-function: linear;
@@ -255,13 +256,11 @@
 
 
         #clock {
-          color: #${config.colorScheme.palette.base0D};
-          background-color: #${config.colorScheme.palette.base02};
+          background-color: #${config.scheme.base0D};
+          color: #${config.scheme.base02};
           padding: 0px 0.5em;
-          margin-left: 0px;
-          margin-right: 0.5em;
-          border-top-right-radius: 0.5em;
-          border-bottom-right-radius: 0.5em;
+          margin: ${margin};
+          border-radius: 0.5em;
         }
       '';
     };

@@ -4,7 +4,10 @@
   # You can import other home-manager modules here
   imports = [
     inputs.entenvim.homeManagerModules.default
-    inputs.nix-colors.homeManagerModules.default
+    inputs.base16.homeManagerModule
+    {
+      scheme = "${inputs.color-schemes}/base24/catppuccin-mocha.yaml";
+    }
     ../terminal.nix
     ../theming.nix
     ../fish.nix
@@ -38,8 +41,6 @@
       EDITOR = "nvim";
     };
   };
-
-  colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
 
   # Enable gtk and qt theming
   theming.enable = true;

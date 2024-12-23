@@ -37,12 +37,12 @@
 
       theme = let
         inherit (config.lib.formats.rasi) mkLiteral;
-        background = mkLiteral "#${config.colorScheme.palette.base00}B3";
-        background-alt = mkLiteral "#${config.colorScheme.palette.base03}B3";
-        foreground = mkLiteral "#${config.colorScheme.palette.base06}FF";
-        selected = mkLiteral "#${config.colorScheme.palette.base02}B3";
-        active = mkLiteral "#${config.colorScheme.palette.base03}FF";
-        urgent = mkLiteral "#${config.colorScheme.palette.base0F}FF";
+        background = mkLiteral "#${config.scheme.base00}B3";
+        background-alt = mkLiteral "#${config.scheme.base03}B3";
+        foreground = mkLiteral "#${config.scheme.base06}FF";
+        selected = mkLiteral "#${config.scheme.base02}B3";
+        active = mkLiteral "#${config.scheme.base03}FF";
+        urgent = mkLiteral "#${config.scheme.base0F}FF";
       in {
         "*" = {
           border-color = selected;

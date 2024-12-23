@@ -55,7 +55,7 @@
 
           # Draw lines between multiple notifications
           seperator_height = 6;
-          seperator_color = "#272f57";
+          seperator_color = config.scheme.withHashtag.base04;
 
           # Notification padding
           padding = 16;
@@ -120,32 +120,32 @@
         };
 
         urgency_low = {
-          background = "#282a36";
-          foreground = "#f8f8f2";
-          frame_color = "#44475a";
-          highlight = "#50fa7b";
+          background = config.scheme.withHashtag.base00;
+          foreground = config.scheme.withHashtag.base06;
+          frame_color = config.scheme.withHashtag.base04;
+          highlight = config.scheme.withHashtag.base0E;
           timeout = 2;
         };
 
         urgency_normal = {
-          background = "#282a36";
-          foreground = "#f8f8f2";
-          frame_color = "#44475a";
-          highlight = "#50fa7b";
+          background = config.scheme.withHashtag.base00;
+          foreground = config.scheme.withHashtag.base05;
+          frame_color = config.scheme.withHashtag.base04;
+          highlight = config.scheme.withHashtag.base0E;
           timeout = 2;
         };
 
         urgency_critical = {
-          background = "#282a36";
-          foreground = "#ff5555";
-          frame_color = "#44475a";
-          highlight = "#50fa7b";
+          background = config.scheme.withHashtag.base00;
+          foreground = config.scheme.withHashtag.base0F;
+          frame_color = config.scheme.withHashtag.base04;
+          highlight = config.scheme.withHashtag.base0E;
           timeout = 10;
         };
 
         backlight = {
           appname = "Backlight";
-          highlight = "#fc7b80";
+          highlight = config.scheme.withHashtag.base0A;
         };
 
         music = {
@@ -154,7 +154,7 @@
 
         volume = {
           summary = "Volume*";
-          highlight = "#cb8cf4";
+          highlight = config.scheme.withHashtag.base0E;
         };
 
         battery = {
