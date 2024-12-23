@@ -38,7 +38,7 @@
     };
   };
 
-  colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-terminal-dark;
+  colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
 
   # Enable gtk and qt theming
   theming.enable = true;

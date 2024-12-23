@@ -256,16 +256,16 @@ in {
         };
 
         windowrulev2 = [
-          "opacity 0.80 0.75,class:^(kitty)$"
+          "opacity 0.90 0.85,class:^(kitty)$"
 
-          "opacity 0.80 0.75,class:^(anki)$"
+          "opacity 0.90 0.85,class:^(anki)$"
 
-          "opacity 0.80 0.75,class:^(WebCord)$"
+          "opacity 0.90 0.85,class:^(WebCord)$"
           "workspace 5, class:^(WebCord)$"
 
-          "opacity 0.80 0.75,title:^(Rofi.*)$"
+          "opacity 0.90 0.85,title:^(Rofi.*)$"
 
-          "opacity 0.80 0.75,class:^(neovide)$"
+          "opacity 0.90 0.85,class:^(neovide)$"
 
           "float, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC - Browser Access Request$"
           "center, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC - Browser Access Request$"
@@ -275,7 +275,7 @@ in {
 
           "workspace 2, class:^firefox$"
 
-          "opacity 0.80 0.75,class:^(obsidian)$"
+          "opacity 0.90 0.85,class:^(obsidian)$"
         ];
 
         layerrule = [

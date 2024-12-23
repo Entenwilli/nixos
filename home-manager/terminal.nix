@@ -17,7 +17,7 @@
         size = 14;
       };
       shellIntegration.enableFishIntegration = true;
-      themeFile = "tokyo_night_night";
+      themeFile = "Catppuccin-Mocha";
       extraConfig = ''
         cursor_blink_interval 0
         cursor_shape beam
