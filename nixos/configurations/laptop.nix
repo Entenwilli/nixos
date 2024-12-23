@@ -165,6 +165,7 @@
     element-desktop
     gnome-network-displays-patched
     brightnessctl
+    mesa
   ];
 
   # Create Data Flow Analysis symlink
@@ -221,12 +222,14 @@
 
   hardware.graphics = {
     enable = true;
-    package = pkgs.mesa.drivers;
     enable32Bit = true;
-    package32 = pkgs.pkgsi686Linux.mesa.drivers;
     extraPackages = with pkgs; [
-      vaapi-intel-hybrid
-      libvdpau-va-gl
+      mesa
+      intel-media-driver
+    ];
+    extraPackages32 = with pkgs.driversi686Linux; [
+      mesa
+      intel-media-driver
     ];
   };
 
