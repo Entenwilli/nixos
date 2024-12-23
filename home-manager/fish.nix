@@ -12,10 +12,14 @@
     # Dependencies
     home.packages = with pkgs; [
       eza
-      bat
       fastfetch
       zoxide
+      bat
     ];
+
+    home.sessionVariables = {
+      MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+    };
 
     programs.fish = {
       enable = true;
