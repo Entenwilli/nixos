@@ -30,8 +30,8 @@
             "DP-1"
             "DP-3"
           ];
-          modules-left = ["custom/launcher" "hyprland/workspaces" "mpris"];
-          # modules-center = ["hyprland/window"];
+          modules-left = ["custom/launcher" "hyprland/workspaces"];
+          modules-center = ["mpris"];
           modules-right = ["custom/weather" "backlight" "pulseaudio" "bluetooth" "network" "battery" "clock"];
 
           "custom/launcher" = {
@@ -53,8 +53,9 @@
             };
           };
           "mpris" = {
-            format = " {title} - {artist} [{position}/{length}]";
+            format = " {title} - {artist}";
             interval = 3;
+            dynamic-len = 30;
           };
           "hyprland/window" = {
           };
@@ -62,7 +63,7 @@
             tooltip = true;
             format = "{}";
             interval = 30;
-            exec = "wttrbar --custom-indicator \"{ICON} {temp_C}°\"";
+            exec = "${pkgs.wttrbar}/bin/wttrbar --custom-indicator \"{ICON} {temp_C}°\"";
             return-type = "json";
           };
           "backlight" = {
@@ -92,7 +93,7 @@
               critical = 15;
             };
             format = "{capacity}% {icon}";
-            format-icons = ["󰁹" "󰂂" "󰂁" "󰂀" "󰁿" "󰁾" "󰁽" "󰁼" "󰁻" "󰁺"];
+            format-icons = ["󰁺" "󰁻" "󰁻" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
             format-charging = "{capacity}% 󰂄";
           };
           "clock" = {
@@ -158,9 +159,9 @@
           color: #${config.colorScheme.palette.base08};
         }
 
-        #mpris {
-          color: #${config.colorScheme.palette.base0B};
-          background: transparent;
+        #mpris{
+          color: #${config.colorScheme.palette.base0D};
+          background-color: #${config.colorScheme.palette.base02};
           margin-left: 2em;
         }
 
