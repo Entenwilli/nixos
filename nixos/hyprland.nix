@@ -9,7 +9,7 @@
     wirelesstools
     wl-clipboard
     hyprpaper
-    hyprlock
+    unstable.hyprlock
     dunst
     hypridle
     bc

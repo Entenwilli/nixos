@@ -441,10 +441,13 @@ in {
         vibrancy_darkness = 0.0
       }
 
-      general {
-        enable_fingerprint = true
-        fingerprint_ready_message = "Scan fingerprint to unlock"
-        fingerprint_present_message = "Scanning fingerprint"
+
+      auth {
+        fingerprint {
+          enabled = true
+          ready_message = "Scan fingerprint to unlock"
+          present_message = "Scanning fingerprint"
+        }
       }
 
       input-field {
