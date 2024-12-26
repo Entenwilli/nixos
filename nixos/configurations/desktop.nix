@@ -130,6 +130,8 @@
     EDITOR = "nvim";
   };
 
+  programs.firefox.enable = true;
+
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
@@ -150,7 +152,8 @@
     extraGroups = ["wheel" "audio" "network" "networkmanager"]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       eza
-      firefox
+      libva
+      ffmpeg
     ];
   };
 
@@ -254,6 +257,7 @@
       nvidia-vaapi-driver
       vaapiVdpau
       libvdpau-va-gl
+      libva
     ];
   };
   boot.kernelParams = lib.optionals (lib.elem "nvidia" config.services.xserver.videoDrivers) [

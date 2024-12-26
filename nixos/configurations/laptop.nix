@@ -142,9 +142,12 @@
     extraGroups = ["wheel" "audio" "network" "networkmanager"]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       eza
-      firefox
+      libva
+      ffmpeg
     ];
   };
+
+  programs.firefox.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -233,6 +236,7 @@
     extraPackages = with pkgs; [
       mesa
       intel-media-driver
+      libva
     ];
     extraPackages32 = with pkgs.driversi686Linux; [
       mesa
