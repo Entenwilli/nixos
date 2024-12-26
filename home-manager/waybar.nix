@@ -72,13 +72,13 @@
           };
           "pulseaudio" = {
             format = "{volume}% {icon}";
-            format-muted = "0% ";
-            format-icons = ["" "" ""];
+            format-muted = "0% 󰝟 ";
+            format-icons = ["" " " " " ""];
           };
           "bluetooth" = {
             format = " {status}";
             format-connected = " {device_alias}";
-            format-connected-battery = " {device_alias} {device_battery_percentage}%";
+            format-connected-battery = " {device_alias} | {device_battery_percentage}%";
             on-click = "DMENU_BLUETOOTH_LAUNCHER=\"rofi\" ${pkgs.dmenu-bluetooth}/bin/dmenu-bluetooth&";
           };
           "network" = {
@@ -243,6 +243,10 @@
           to {
             color: #ffffff;
           }
+        }
+
+        #battery.warning:not(.charging) {
+          background-color: ${config.scheme.withHashtag.base0A};
         }
 
         #battery.critical:not(.charging) {

@@ -1,4 +1,14 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  hyprsunset-check = pkgs.writeShellApplication {
+    name = "hyprsunset-boot";
+    text = ''
+      H=$(date +%H)
+      if (( 10#$H <= 8 || 10#$H >= 18 )); then
+        ${pkgs.systemd}/bin/systemctl --user start hyprsunset.service
+      fi
+    '';
+  };
+in {
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     QT_QPA_PLATFORMTHEME = "qt6ct";
@@ -46,9 +56,16 @@
   systemd.user.services."hyprsunset" = {
     serviceConfig = {
       Type = "simple";
-      ExecCondition = "${pkgs.systemd}/bin/systemctl is-active graphical.target";
       ExecStart = "${pkgs.hyprsunset}/bin/hyprsunset -t 5500";
     };
+  };
+
+  systemd.user.services."hyprsunset-boot" = {
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${hyprsunset-check}/bin/hyprsunset-boot";
+    };
+    wantedBy = ["graphical-session.target"];
   };
 
   systemd.user.timers."hyprsunset-disable" = {
