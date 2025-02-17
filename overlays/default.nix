@@ -36,7 +36,7 @@
       pipewire = final.unstable.pipewire;
     };
     gnome-network-displays-patched = prev.gnome-network-displays.overrideAttrs (old: {
-      nativeBuildInputs = old.nativeBuildInputs ++ [prev.glib-networking prev.gst_all_1.gstreamer prev.gst_all_1.gst-plugins-base prev.gst_all_1.gst-vaapi];
+      nativeBuildInputs = old.nativeBuildInputs ++ [prev.gtk3 prev.wpa_supplicant prev.glib-networking prev.gst_all_1.gstreamer prev.gst_all_1.gst-plugins-base prev.gst_all_1.gst-vaapi];
     });
   };
 
