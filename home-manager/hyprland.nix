@@ -268,6 +268,9 @@ in {
 
           "opacity 0.90 0.85,class:^(neovide)$"
 
+          "float, class:^org\\.keepassxc\\.KeePassXC$, title:^Unlock Database - KeePassXC$"
+          "center, class:^org\\.keepassxc\\.KeePassXC$, title:^Unlock Database - KeePassXC$"
+
           "float, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC - Browser Access Request$"
           "center, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC - Browser Access Request$"
 
