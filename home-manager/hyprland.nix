@@ -197,7 +197,7 @@ in {
     ];
     wayland.windowManager.hyprland = {
       enable = true;
-      package = pkgs.hyprland-patched;
+      package = pkgs.hyprland;
       systemd.enable = true;
       settings = {
         monitor = builtins.map ({
@@ -470,7 +470,7 @@ in {
 
       label {
         monitor =
-        text = cmd[update:100] echo "$FPRINTMESSAGE"
+        text = cmd[update:100] echo "$FPRINTPROMPT"
         color = rgb(EFEFEF)
         font_size = 10
         font_family = FiraCode Nerd Font

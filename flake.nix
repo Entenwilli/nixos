@@ -30,20 +30,22 @@
     color-schemes.flake = false;
 
     # Hyprland flake
-    hyprland = {
-      type = "git";
-      url = "https://github.com/hyprwm/hyprland";
-      submodules = true;
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.aquamarine.follows = "aquamarine";
-    };
+    # FIXME: This is currently not required, as hyprland should work correctly!
+    # hyprland = {
+    #  type = "git";
+    #  url = "https://github.com/hyprwm/hyprland";
+    #  submodules = true;
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #  inputs.aquamarine.follows = "aquamarine";
+    # };
 
     # Aquamarine for Hyprland
-    aquamarine = {
-      type = "git";
-      url = "https://github.com/hyprwm/aquamarine";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
+    # FIXME: This is currently not required, as hyprland should work correctly!
+    # aquamarine = {
+    #   type = "git";
+    #   url = "https://github.com/hyprwm/aquamarine";
+    #   inputs.nixpkgs.follows = "nixpkgs-unstable";
+    # };
 
     # Spicetify
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
