@@ -66,6 +66,9 @@
   # Enable nixos-helper
   nixos-helper.enable = true;
 
+  programs.ssh.enableAskPassword = true;
+  programs.ssh.askPassword = "${pkgs.seahorse}/libexec/seahorse/ssh-askpass";
+
   services.dbus = {
     enable = true;
     packages = with pkgs; [dunst];

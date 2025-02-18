@@ -64,6 +64,9 @@
     !include ${config.sops.secrets."github-token-laptop".path}
   '';
 
+  programs.ssh.enableAskPassword = true;
+  programs.ssh.askPassword = "${pkgs.seahorse}/libexec/seahorse/ssh-askpass";
+
   # Enable nixos-helper
   nixos-helper.enable = true;
 
