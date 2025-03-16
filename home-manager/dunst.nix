@@ -106,7 +106,7 @@
 
           # ------- Misc -------
           dmenu = "${pkgs.rofi-wayland}/bin/rofi -dmenu -p dunst:";
-          browser = "${pkgs.firefox}/bin/firefox -new-tab";
+          browser = "${pkgs.floorp}/bin/floorp -new-tab";
 
           # Window manager options
           title = "Dunst";

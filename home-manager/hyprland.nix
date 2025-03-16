@@ -277,7 +277,7 @@ in {
           "float, class:^org\\.keepassxc\\.KeePassXC$, title:^.*\\[Locked\\] - KeePassXC"
           "size 880 500, class:^org\\.keepassxc\\.KeePassXC$, title:^.*\\[Locked\\] - KeePassXC"
 
-          "workspace 2, class:^firefox$"
+          "workspace 2, class:^floorp$"
 
           "opacity 0.90 0.85,class:^(obsidian)$"
         ];

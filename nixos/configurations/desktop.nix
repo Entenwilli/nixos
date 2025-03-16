@@ -133,8 +133,6 @@
     EDITOR = "nvim";
   };
 
-  programs.firefox.enable = true;
-
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
