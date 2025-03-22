@@ -27,6 +27,7 @@
     ../university.nix
     ../office.nix
     ../spicetify.nix
+    ../browser.nix
   ];
 
   # Enable home-manager
@@ -110,8 +111,8 @@
   # Enable spicetify, a spotify client
   spicetify.enable = true;
 
-  # Enable floorp browser
-  programs.floorp.enable = true;
+  # Enable browser
+  browser.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

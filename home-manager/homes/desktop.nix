@@ -28,6 +28,7 @@
     ../office.nix
     ../password-manager.nix
     ../university.nix
+    ../browser.nix
   ];
 
   # Enable home-manager
@@ -114,8 +115,8 @@
   # Enable discord
   discord.enable = true;
 
-  # Enable floorp browser
-  programs.floorp.enable = true;
+  # Enable browser
+  browser.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
