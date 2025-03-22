@@ -23,7 +23,7 @@
 }:
 stdenv.mkDerivation rec {
   name = "eclipse-dfa";
-  version = "3.0.0-nightly-11-12-2024";
+  version = "4.0.0";
   desktopItem = makeDesktopItem {
     name = "DataFlowAnalysis";
     exec = "env GDK_BACKEND=\"x11\" WEBKIT_DISABLE_COMPOSITING_MODE=1 WEBKIT_DISABLE_DMABUF_RENDERER=1 DataFlowAnalysisBench";
@@ -35,8 +35,8 @@ stdenv.mkDerivation rec {
   };
 
   src = fetchurl {
-    url = "https://updatesite.palladio-simulator.com/DataFlowAnalysis/product/nightly/DataFlowAnalysis.linux.gtk.x86_64.zip";
-    hash = "sha256-2Int/Vr3aT0pgZpgxCAxQzdDzIQIlfeTCYXKCoW8x9w=";
+    url = "https://github.com/DataFlowAnalysis/product/releases/download/v4.0.0/DataFlowAnalysis.linux.gtk.x86_64.tar.gz";
+    hash = "sha256-stt9ySyT5/tsW/jsmPPo5+JmL0V+deBK0UI7uTQNkGM=";
   };
 
   nativeBuildInputs = [makeWrapper perl];
@@ -60,6 +60,14 @@ stdenv.mkDerivation rec {
     # Extract download
     mkdir -p $out/DataFlowAnalysisBench
     bsdtar -xf $src -C $out/DataFlowAnalysisBench/
+
+    # Rename jars to remove date of build (only name and version should be in the name)
+    for file in $out/DataFlowAnalysisBench/plugins/*.jar; do
+      if [ -e "$file" ]; then
+        newname=$(echo "$file" | sed -r 's|(.*)\_([0-9]+\.[0-9]+\.[0-9]+).*$|\1\2.jar|')
+        mv "$file" "$newname"
+      fi
+    done
 
     # Patch binaries
     interpreter="$(cat $NIX_BINTOOLS/nix-support/dynamic-linker)"
