@@ -70,6 +70,9 @@
   # Enable nixos-helper
   nixos-helper.enable = true;
 
+  # Enable docker
+  virtualisation.docker.enable = true;
+
   services.dbus = {
     enable = true;
     packages = with pkgs; [dunst];
@@ -142,7 +145,7 @@
     uid = 1000;
     isNormalUser = true;
     shell = pkgs.fish;
-    extraGroups = ["wheel" "audio" "network" "networkmanager"]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "audio" "network" "networkmanager" "docker"]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       eza
       libva
@@ -176,6 +179,8 @@
     gnome-network-displays-patched
     brightnessctl
     mesa
+    docker
+    docker-compose
   ];
 
   # Create Data Flow Analysis symlink
