@@ -62,7 +62,8 @@ stdenv.mkDerivation rec {
     bsdtar -xf $src -C $out/DataFlowAnalysisBench/
 
     # Rename jars to remove date of build (only name and version should be in the name)
-    for file in $out/DataFlowAnalysisBench/plugins/*.jar; do
+    cp -r $out/DataFlowAnalysisBench/plugins $out/DataFlowAnalysisBench/plugins-normalized
+    for file in $out/DataFlowAnalysisBench/plugins-normalized/*.jar; do
       if [ -e "$file" ]; then
         newname=$(echo "$file" | sed -r 's|(.*)\_([0-9]+\.[0-9]+\.[0-9]+).*$|\1\2.jar|')
         mv "$file" "$newname"

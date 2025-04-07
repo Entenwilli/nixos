@@ -185,7 +185,7 @@
 
   # Create Data Flow Analysis symlink
   system.activationScripts = {
-    eclipse-dfa.text = "ln -sfn ${pkgs.eclipse-dfa}/DataFlowAnalysisBench/plugins /etc/eclipse-dfa";
+    eclipse-dfa.text = "ln -sfn ${pkgs.eclipse-dfa}/DataFlowAnalysisBench/plugins-normalized /etc/eclipse-dfa";
   };
 
   # Enable own neovim distribution
