@@ -22,7 +22,7 @@
 
     # Neovim Configuration
     entenvim.url = "github:Entenwilli/neovim";
-    entenvim.inputs.nixpkgs.follows = "nixpkgs";
+    entenvim.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     # Color theming
     base16.url = "github:SenchoPens/base16.nix";
