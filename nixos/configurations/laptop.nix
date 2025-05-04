@@ -3,7 +3,6 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
   inputs,
-  outputs,
   lib,
   config,
   pkgs,
@@ -19,65 +18,15 @@
     ../network.nix
     ../laptop.nix
     ../nixos-helper.nix
+    ../common.nix
     ../../shells
   ];
-
-  # Configure nix package manager
-  nixpkgs = {
-    overlays = [
-      outputs.overlays.additions
-      outputs.overlays.modifications
-      outputs.overlays.unstable-packages
-    ];
-    config = {
-      allowUnfree = true;
-    };
-  };
-
-  # This will add each flake input as a registry
-  # To make nix3 commands consistent with your flake
-  nix.registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
-
-  # This will additionally add your inputs to the system's legacy channels
-  # Making legacy nix commands consistent as well, awesome!
-  nix.nixPath = ["/etc/nix/path"];
-  environment.etc =
-    lib.mapAttrs'
-    (name: value: {
-      name = "nix/path/${name}";
-      value.source = value.flake;
-    })
-    config.nix.registry;
-
-  # NixOS Configuration
-  nix.settings = {
-    # Enable flakes and new 'nix' command
-    experimental-features = "nix-command flakes";
-    # Deduplicate and optimize nix store
-    auto-optimise-store = true;
-  };
-
   sops.secrets."github-token-laptop" = {
     owner = "felix";
   };
   nix.extraOptions = ''
     !include ${config.sops.secrets."github-token-laptop".path}
   '';
-
-  programs.ssh.enableAskPassword = true;
-  programs.ssh.askPassword = "${pkgs.seahorse}/libexec/seahorse/ssh-askpass";
-
-  # Enable nixos-helper
-  nixos-helper.enable = true;
-
-  # Enable docker
-  virtualisation.docker.enable = true;
-
-  services.dbus = {
-    enable = true;
-    packages = with pkgs; [dunst];
-  };
-
   # Use the systemd-boot EFI boot loader.
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -94,107 +43,10 @@
     };
   };
 
-  # Boot splash screen
-  boot.consoleLogLevel = 0;
-  boot.kernelParams = ["quiet" "splash" "rd.udev.log-priority=3"];
-  boot.initrd.verbose = false;
-  boot.plymouth = {
-    enable = true;
-    themePackages = with pkgs; [
-      (catppuccin-plymouth.override {
-        variant = "mocha";
-      })
-    ];
-    theme = "catppuccin-mocha";
-  };
-
-  # Enable display manager
-  services.displayManager = {
-    sddm = {
-      enable = true;
-      wayland.enable = true;
-      settings = {
-        Autologin = {
-          Session = "hyprland.desktop";
-          User = "felix";
-        };
-      };
-    };
-  };
-
-  environment.sessionVariables = {
-    EDITOR = "nvim";
-  };
-
-  # Set your time zone.
-  time.timeZone = "Europe/Berlin";
-
   # Set console keymap to german keyboard
   console = {
     keyMap = "de-latin1";
   };
-
-  # Enable fish
-  programs.fish.enable = true;
-  users.defaultUserShell = pkgs.fish;
-  documentation.man.generateCaches = false;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.felix = {
-    hashedPassword = "$y$j9T$hHy3Jnr8hvdSqLRV3z2760$G.Hr/DOnqhA6c2IfcAcPDGByVm8EOrtvKTnrGKYPodB";
-    uid = 1000;
-    isNormalUser = true;
-    shell = pkgs.fish;
-    extraGroups = ["wheel" "audio" "network" "networkmanager" "docker"]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      eza
-      libva
-      ffmpeg
-    ];
-  };
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    age
-    sops
-    git
-    fastfetch
-    nodejs
-    gcc
-    prettierd
-    playerctl
-    pamixer
-    pulseaudio
-    binutils
-    libarchive
-    man-pages
-    glibcInfo
-    eclipse-dfa
-    adwaita-icon-theme
-    shared-mime-info
-    element-desktop
-    gnome-network-displays-patched
-    brightnessctl
-    mesa
-    docker
-    docker-compose
-  ];
-
-  # Create Data Flow Analysis symlink
-  system.activationScripts = {
-    eclipse-dfa.text = "ln -sfn ${pkgs.eclipse-dfa}/DataFlowAnalysisBench/plugins-normalized /etc/eclipse-dfa";
-  };
-
-  # Enable own neovim distribution
-  programs.entenvim.enable = true;
-
-  # Ports for gnome-network-displays
-  networking.firewall.allowedTCPPorts = [7236 7250];
-  networking.firewall.allowedUDPPorts = [7236 5353];
-  services.avahi.enable = true;
 
   # Setup syncthing
   services = {
@@ -206,35 +58,12 @@
     };
   };
 
-  # Setup upower agent
-  services.upower.enable = true;
-
-  # Setup audio
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    pulse.enable = true;
-  };
-
-  # Installing Fonts
-  fonts.packages = with pkgs; [
-    unstable.nerd-fonts.fira-code
-    unstable.nerd-fonts.hack
-    unstable.nerd-fonts.jetbrains-mono
-    jetbrains-mono
-    ipafont
+  environment.systemPackages = with pkgs; [
+    brightnessctl
   ];
 
-  # Configure bluetooth
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = false;
-  };
-
-  programs.ssh = {
-    startAgent = true;
-  };
+  # Setup upower agent
+  services.upower.enable = true;
 
   hardware.graphics = {
     enable = true;
