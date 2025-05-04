@@ -178,5 +178,16 @@
   services.openssh.enable = true;
 
   # Japanese IMEs
-  i18n.inputMethod.ibus.engines = [];
+  i18n.inputMethod = {
+    type = "fcitx5";
+    enable = true;
+    fcitx5 = {
+      waylandFrontend = true;
+      addons = with pkgs; [
+        fcitx5-gtk
+        fcitx5-mozc
+        catppuccin-fcitx5
+      ];
+    };
+  };
 }

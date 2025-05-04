@@ -29,6 +29,7 @@
     ../password-manager.nix
     ../university.nix
     ../browser.nix
+    ../languages.nix
   ];
 
   # Enable home-manager

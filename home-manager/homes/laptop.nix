@@ -28,6 +28,7 @@
     ../office.nix
     ../spicetify.nix
     ../browser.nix
+    ../languages.nix
   ];
 
   # Enable home-manager

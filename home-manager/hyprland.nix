@@ -359,6 +359,7 @@ in {
           exec-once = systemctl --user start hyprpolkitagent;
           exec-once = keepassxc;
           exec-once = ${pkgs.clipse}/bin/clipse -listen;
+          exec-once = fcitx5 -d
 
           exec-once = dbus-update-activation-environment --systemd --all
           exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME DBUS_SESSION_ADDRESS
