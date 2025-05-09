@@ -3,7 +3,21 @@
   pkgs,
   config,
   ...
-}: {
+}: let
+  typing = pkgs.writeShellApplication {
+    name = "typing";
+
+    text = ''
+      value=$(fcitx5-remote -n)
+
+      if [ "$value" == "keyboard-us" ]; then
+        hyprctl devices -j | jq -r '.keyboards[] | .layout' | head -n1
+      elif [ "$value" == "mozc" ]; then
+        echo "jp"
+      fi
+    '';
+  };
+in {
   options = {
     waybar.enable = lib.mkEnableOption "Enable waybar";
   };
@@ -32,7 +46,7 @@
           ];
           modules-left = ["custom/launcher" "hyprland/workspaces"];
           modules-center = ["mpris"];
-          modules-right = ["custom/weather" "backlight" "pulseaudio" "bluetooth" "network" "battery" "clock"];
+          modules-right = ["custom/typing" "custom/weather" "backlight" "pulseaudio" "bluetooth" "network" "battery" "clock"];
 
           "custom/launcher" = {
             format = "󱄅";
@@ -58,6 +72,11 @@
             dynamic-len = 20;
           };
           "hyprland/window" = {
+          };
+          "custom/typing" = {
+            exec = "${typing}/bin/typing";
+            format = "  {}";
+            interval = 3;
           };
           "custom/weather" = {
             tooltip = true;
@@ -165,6 +184,14 @@
           background-color: #${config.scheme.base0B};
           color: #${config.scheme.base02};
           padding: 0.5em;
+          border-radius: 0.5em;
+          margin: ${margin};
+        }
+
+        #custom-typing {
+          background-color: #${config.scheme.base0A};
+          color: #${config.scheme.base02};
+          padding: 0 0.5em;
           border-radius: 0.5em;
           margin: ${margin};
         }
