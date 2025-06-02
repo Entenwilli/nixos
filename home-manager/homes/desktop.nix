@@ -88,6 +88,7 @@
       wallpaper = "/home/felix/pictures/Wallpaper/nighttime-in-the-mountains.png";
     }
   ];
+  hyprland.hyprpaper.enable = false;
   hyprland.keyboardLayout = "us";
 
   # Enable starship promt

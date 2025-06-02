@@ -86,6 +86,7 @@
     }
   ];
   hyprland.keyboardLayout = "de";
+  hyprland.hyprpaper.enable = true;
 
   # Enable starship prompt
   starship.enable = true;

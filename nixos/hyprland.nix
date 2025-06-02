@@ -18,7 +18,6 @@ in {
     dmenu-bluetooth
     wirelesstools
     wl-clipboard
-    hyprpaper
     unstable.hyprlock
     dunst
     hypridle

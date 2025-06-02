@@ -155,11 +155,11 @@
 in {
   options.hyprland = {
     enable = lib.mkEnableOption "Enable hyprland";
-    nvidiaFixes = lib.mkEnableOption "Enable Nvidia Fixes";
     keyboardLayout = lib.mkOption {
       default = "de";
       type = lib.types.str;
     };
+    hyprpaper.enable = lib.mkEnableOption "Enable hyprpaper";
     monitors = lib.mkOption {
       default = [];
       description = ''
@@ -343,10 +343,6 @@ in {
         debug = {
           disable_logs = false;
         };
-
-        cursor = lib.mkIf config.hyprland.nvidiaFixes {
-          no_hardware_cursors = true;
-        };
       };
       extraConfig = lib.strings.concatStrings [
         ''
@@ -354,7 +350,6 @@ in {
           env = XDG_SESSION_TYPE,wayland
 
           exec-once = hyprlock;
-          exec-once = hyprpaper;
           exec-once = hypridle;
           exec-once = systemctl --user start hyprpolkitagent;
           exec-once = keepassxc;
@@ -381,20 +376,19 @@ in {
             }
         ''
         (
-          if (config.hyprland.nvidiaFixes)
+          if (config.hyprland.hyprpaper.enable)
           then ''
-            env = LIBVA_DRIVER_NAME,nvidia
-            env = GBM_BACKEND,nvidia-drm
-            env = __GLX_VENDOR_LIBRARY_NAME,nvidia
-
+            exec-once = hyprpaper;
           ''
-          else ''''
+          else ''
+            exec-once = mpvpaper -o "no-audio --loop-playlist shuffle" ALL ~/Downloads/AQDyddWmZavupSh_Autumn\ is\ Here_4_111328.mp4;
+          ''
         )
       ];
     };
 
     services.hyprpaper = {
-      enable = true;
+      enable = config.hyprland.hyprpaper.enable;
       settings = {
         splash = false;
 
