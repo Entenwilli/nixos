@@ -37,16 +37,16 @@
       efiSupport = true;
       devices = ["nodev"];
       extraEntries = ''
-        menuentry "Windows 11" {
+        menuentry "Windows 11" --class windows {
           insmod part_gpt
           insmod fat
           insmod search_fs_uuid
           insmod chain
-          search --fs-uuid --set=root 462A-1D52
+          search --fs-uuid --set=root 9237-E870
           chainloader /EFI/Microsoft/Boot/bootmgfw.efi
         }
       '';
-      gfxmodeEfi = lib.mkForce "2560x1440";
+      gfxmodeEfi = "1920x1080";
       gfxpayloadEfi = "keep";
       theme = "${pkgs.catppuccin-grub}";
       splashImage = "${pkgs.catppuccin-grub}/background.png";
@@ -56,50 +56,37 @@
 
   # Enable steam
   programs.steam.enable = true;
+  programs.steam.package = pkgs.steam.override {
+    extraProfile = ''
+      unset TZ
+    '';
+  };
+  environment.systemPackages = with pkgs; [mpvpaper];
+
   # Setup syncthing
-  sops.secrets."syncthing-desktop-key" = {
-    owner = "felix";
-    group = "users";
-    restartUnits = ["syncthing.service"];
+  services = {
+    syncthing = {
+      enable = true;
+      user = "felix";
+      dataDir = "/home/felix";
+      configDir = "/home/felix/.config/syncthing";
+    };
   };
-  sops.secrets."syncthing-desktop-cert" = {
-    owner = "felix";
-    group = "users";
-    restartUnits = ["syncthing.service"];
-  };
-  syncthing.enable = true;
-  syncthing.keySecretName = "syncthing-desktop-key";
-  syncthing.certSecretName = "syncthing-desktop-cert";
 
   # Set Hostname
   networking.hostName = "nixos-desktop";
 
-  # Nvidia Stuff
-  services.xserver.videoDrivers = ["nvidia"];
-  hardware.nvidia = {
-    powerManagement.enable = true;
-    modesetting.enable = true;
-    open = false;
-  };
   hardware.graphics = {
     enable = true;
+    package = pkgs.unstable.mesa;
     enable32Bit = true;
-    extraPackages = with pkgs; [
-      nvidia-vaapi-driver
-      vaapiVdpau
-      libvdpau-va-gl
-      libva
-    ];
   };
-  boot.kernelParams = lib.optionals (lib.elem "nvidia" config.services.xserver.videoDrivers) [
-    "nvidia-drm.modeset=1"
-    "nvidia_drm.fbdev=1"
-    "quiet"
-    "splash"
-    "rd.udev.log-priority=3"
-    "perf_event_paranoid=1"
-    "kptr_restrict=0"
-  ];
+
+  hardware.amdgpu = {
+    initrd.enable = true;
+  };
+
+  services.xserver.videoDrivers = ["amdgpu"];
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
@@ -117,5 +104,5 @@
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 }

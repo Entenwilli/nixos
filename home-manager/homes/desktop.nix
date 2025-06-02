@@ -1,6 +1,10 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{inputs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   # You can import other home-manager modules here
   imports = [
     inputs.entenvim.homeManagerModules.default
@@ -15,7 +19,6 @@
     ../cli-tools.nix
     ../hyprland.nix
     ../spicetify.nix
-    ../neovim.nix
     ../rofi.nix
     ../dunst.nix
     ../zathura.nix
@@ -73,16 +76,15 @@
 
   # Enable hyprland
   hyprland.enable = true;
-  hyprland.nvidiaFixes = true;
   hyprland.monitors = [
     {
-      name = "DP-1";
-      settings = "2560x1440@144,0x0,1";
+      name = "DP-2";
+      settings = "2560x1440@144,2560x0,1";
       wallpaper = "/home/felix/pictures/Wallpaper/snowy-lake.jpg";
     }
     {
       name = "DP-3";
-      settings = "2560x1440@144,2560x0,1";
+      settings = "2560x1440@144,0x0,1";
       wallpaper = "/home/felix/pictures/Wallpaper/nighttime-in-the-mountains.png";
     }
   ];
@@ -118,6 +120,15 @@
 
   # Enable browser
   browser.enable = true;
+
+  # HACK: Allow hardware acceleration in obsidian
+  xdg.desktopEntries.obsidian = {
+    name = "Obsidian";
+    exec = "${pkgs.obsidian}/bin/obsidian --use-vulkan --use-gl=egl --enable-zero-copy --enable-hardware-overlays --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,CanvasOopRasterization,VaapiIgnoreDriverChecks --disable-features=UseSkiaRenderer,UseChromeOSDirectVideoDecoder --ignore-gpu-blocklist %u";
+    icon = "obsidian";
+    mimeType = ["x-scheme-handler/obsidian"];
+    type = "Application";
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
