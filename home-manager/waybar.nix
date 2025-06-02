@@ -25,6 +25,7 @@ in {
   config = lib.mkIf config.waybar.enable {
     home.packages = with pkgs; [
       wttrbar
+      pavucontrol
     ];
 
     programs.waybar = {
@@ -42,6 +43,7 @@ in {
           output = [
             "eDP-1"
             "DP-1"
+            "DP-2"
             "DP-3"
           ];
           modules-left = ["custom/launcher" "hyprland/workspaces"];
@@ -93,6 +95,7 @@ in {
             format = "{volume}% {icon}";
             format-muted = "0% 󰝟 ";
             format-icons = ["" " " " " ""];
+            on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
           };
           "bluetooth" = {
             format = " {status}";
