@@ -190,4 +190,9 @@
       ];
     };
   };
+
+  programs.gnupg = {
+    agent.enable = true;
+    agent.pinentryPackage = pkgs.pinentry-rofi;
+  };
 }

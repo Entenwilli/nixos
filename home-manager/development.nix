@@ -16,7 +16,6 @@
       gnumake
       libgcc
       cmake
-      pwndbg
       llvmPackages_latest.lldb
       valgrind
       bacon
@@ -35,12 +34,24 @@
       enable = true;
       userName = "Felix Schwickerath";
       userEmail = "felix@fschwickerath.de";
+
+      signing.key = "E89650BA7BEC8079";
+      signing.signByDefault = true;
+      extraConfig = {
+        init.defaultBranch = "main";
+        url = {
+          "git@github.com:" = {
+            insteadOf = ["https://github.com/" "gh:" "github:"];
+          };
+        };
+      };
     };
 
     # Configure lazygit
     programs.lazygit = {
       enable = true;
       settings = {
+        gui.nerdFontsVersion = "3";
         gui.shortTimeFormat = "15:04:05";
         customCommands = [
           {
@@ -49,7 +60,7 @@
             description = "commit with commitizen";
             context = "files";
             loadingText = "opening commit tool";
-            subprocess = true;
+            output = "terminal";
           }
         ];
       };
