@@ -29,6 +29,10 @@
     color-schemes.url = "github:tinted-theming/schemes";
     color-schemes.flake = false;
 
+    # Zen Browser
+    zen-browser.url = "github:youwen5/zen-browser-flake";
+    zen-browser.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
     # Hyprland flake
     # FIXME: This is currently not required, as hyprland should work correctly!
     # hyprland = {

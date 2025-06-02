@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   pkgs,
   config,
@@ -106,7 +107,7 @@
 
           # ------- Misc -------
           dmenu = "${pkgs.rofi-wayland}/bin/rofi -dmenu -p dunst:";
-          browser = "${pkgs.floorp}/bin/floorp -new-tab";
+          browser = "${inputs.zen-browser.packages.${pkgs.system}.default}/bin/zen -new-tab";
 
           # Window manager options
           title = "Dunst";
