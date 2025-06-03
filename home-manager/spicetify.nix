@@ -20,6 +20,17 @@ in {
   };
 
   config = lib.mkIf config.spicetify.enable {
+    programs.ncspot = {
+      enable = true;
+      package = pkgs.ncspot.override {
+        withCover = true;
+      };
+      settings = {
+        notify = true;
+        use_nerd_font = true;
+      };
+    };
+
     programs.spicetify = {
       enable = true;
       theme = {

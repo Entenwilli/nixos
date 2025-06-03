@@ -109,7 +109,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    gnome-network-displays-patched
+    gnome-network-displays
     mesa
     docker
     docker-compose
