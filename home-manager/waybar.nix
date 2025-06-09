@@ -26,6 +26,7 @@ in {
     home.packages = with pkgs; [
       wttrbar
       pavucontrol
+      jq
     ];
 
     programs.waybar = {
@@ -94,7 +95,7 @@ in {
           "pulseaudio" = {
             format = "{volume}% {icon}";
             format-muted = "0% 󰝟 ";
-            format-icons = ["" " " " " ""];
+            format-icons = ["" " " " "];
             on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
           };
           "bluetooth" = {
