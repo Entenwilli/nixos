@@ -16,18 +16,27 @@ in {
   imports = [inputs.spicetify-nix.homeManagerModules.default];
 
   options = {
-    spicetify.enable = lib.mkEnableOption "Enables Spicetify";
+    spotify.enable = lib.mkEnableOption "Enables Spotify";
   };
 
-  config = lib.mkIf config.spicetify.enable {
-    programs.ncspot = {
+  config = lib.mkIf config.spotify.enable {
+    sops.secrets."spotify-client-id" = {};
+
+    programs.spotify-player = {
       enable = true;
-      package = pkgs.ncspot.override {
-        withCover = true;
-      };
       settings = {
-        notify = true;
-        use_nerd_font = true;
+        client_id_command = {
+          command = "${pkgs.coreutils}/bin/cat";
+          args = ["${config.sops.secrets."spotify-client-id".path}"];
+        };
+        device = {
+          name = "NixOS";
+          device_type = "computer";
+          bitrate = 320;
+          autoplay = false;
+        };
+        cover_img_width = 14;
+        cover_img_length = 32;
       };
     };
 

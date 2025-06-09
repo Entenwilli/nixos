@@ -26,9 +26,11 @@
     ../password-manager.nix
     ../university.nix
     ../office.nix
-    ../spicetify.nix
+    ../spotify.nix
     ../browser.nix
     ../languages.nix
+    ../coverart.nix
+    ../secrets.nix
   ];
 
   # Enable home-manager

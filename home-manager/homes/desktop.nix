@@ -18,7 +18,7 @@
     ../development.nix
     ../cli-tools.nix
     ../hyprland.nix
-    ../spicetify.nix
+    ../spotify.nix
     ../rofi.nix
     ../dunst.nix
     ../zathura.nix
@@ -33,6 +33,8 @@
     ../university.nix
     ../browser.nix
     ../languages.nix
+    ../coverart.nix
+    ../secrets.nix
   ];
 
   # Enable home-manager
@@ -97,8 +99,11 @@
   # Enable yazi
   yazi.enable = true;
 
-  # Enable spicetify
-  spicetify.enable = true;
+  # Enable spotify
+  spotify.enable = true;
+
+  # Enable Cover Script
+  coverart.enable = true;
 
   # Enable XDG Desktop
   xdg.enable = true;
