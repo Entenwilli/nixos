@@ -4,6 +4,19 @@
   config,
   ...
 }: let
+  wallpaper-switcher = pkgs.writeShellApplication {
+    name = "wallpaper-switcher";
+    text = ''
+      wallpaper_dir="$HOME/pictures/wallpaper/video"
+      mapfile -t wallpapers < <(ls "$wallpaper_dir")
+      wallpaper_list=$(printf "%s\n" "''${wallpapers[@]}")
+      selected_wallpaper=$(echo -e "$wallpaper_list" | rofi -dmenu -p "Select a wallpaper:")
+      wallpaper_path="$wallpaper_dir/$selected_wallpaper"
+      pkill .mpvpaper-wrapp
+      echo "Switching to wallpaper at $wallpaper_path"
+      mpvpaper -o '--gpu-api=vulkan --hwdec=auto --vulkan-device="00000000-1200-0000-0000-000000000000" no-audio --loop-playlist shuffle' ALL "$wallpaper_path" &
+    '';
+  };
   volume = pkgs.writeShellApplication {
     name = "volume";
     text = ''
@@ -194,7 +207,12 @@ in {
     home.packages = with pkgs; [
       clipse
       catppuccin-cursors.mochaMauve
+      wallpaper-switcher
     ];
+    xdg.desktopEntries.wallpaper-switcher = {
+      name = "Wallpaper Switcher";
+      exec = "${wallpaper-switcher}/bin/wallpaper-switcher";
+    };
     wayland.windowManager.hyprland = {
       enable = true;
       package = pkgs.hyprland;
@@ -280,6 +298,13 @@ in {
           "workspace 2, class:^floorp$"
 
           "opacity 0.90 0.85,class:^(obsidian)$"
+
+          "float, class:^(ueberzug.*)$"
+          "noanim, class:^(ueberzug.*)$"
+          "noborder, class:^(ueberzug.*)$"
+          "noshadow, class:^(ueberzug.*)$"
+
+          "size, 150 150, class:cover"
         ];
 
         layerrule = [
@@ -381,7 +406,7 @@ in {
             exec-once = hyprpaper;
           ''
           else ''
-            exec-once = mpvpaper -o "no-audio --loop-playlist shuffle" ALL ~/Downloads/AQDyddWmZavupSh_Autumn\ is\ Here_4_111328.mp4;
+            exec-once = mpvpaper -o '--gpu-api=vulkan --hwdec=auto --vulkan-device="00000000-1200-0000-0000-000000000000" no-audio --loop-playlist shuffle' ALL ~/pictures/wallpaper/video/autumn-wallpaper.mp4;
           ''
         )
       ];
@@ -431,7 +456,7 @@ in {
     home.file.".config/hypr/hyprlock.conf".text = ''
       background {
         monitor =
-        path = ~/pictures/Wallpaper/tom-vining.jpg
+        path = ~/pictures/wallpaper/tom-vining.jpg
         blur_passes = 3
         contrast = 0.8916
         brightness = 0.8172
