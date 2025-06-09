@@ -97,6 +97,9 @@
               home-manager.extraSpecialArgs = specialArgs;
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.sharedModules = [
+                inputs.sops-nix.homeManagerModules.sops
+              ];
               home-manager.users.felix = import ./home-manager/homes/desktop.nix;
             }
           ];
@@ -119,6 +122,9 @@
               home-manager.extraSpecialArgs = specialArgs;
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.sharedModules = [
+                inputs.sops-nix.homeManagerModules.sops
+              ];
               home-manager.users.felix = import ./home-manager/homes/laptop.nix;
             }
           ];
