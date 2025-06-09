@@ -61,7 +61,9 @@
       unset TZ
     '';
   };
-  environment.systemPackages = with pkgs; [mpvpaper];
+  environment.systemPackages = with pkgs; [mpvpaper xivlauncher gamemode];
+
+  programs.noisetorch.enable = true;
 
   # Setup syncthing
   services = {
