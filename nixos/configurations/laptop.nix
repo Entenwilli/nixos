@@ -19,6 +19,7 @@
     ../laptop.nix
     ../nixos-helper.nix
     ../common.nix
+    ../notifications.nix
     ../../shells
   ];
   sops.secrets."github-token-laptop" = {

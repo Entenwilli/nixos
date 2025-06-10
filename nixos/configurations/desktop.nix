@@ -17,6 +17,7 @@
     ../nixos-helper.nix
     ../syncthing.nix
     ../common.nix
+    ../notifications.nix
     ../../shells
   ];
 
