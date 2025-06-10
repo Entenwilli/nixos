@@ -88,6 +88,11 @@
     initrd.enable = true;
   };
 
+  services.hardware.openrgb = {
+    enable = true;
+    motherboard = "amd";
+  };
+
   services.xserver.videoDrivers = ["amdgpu"];
 
   # This option defines the first version of NixOS you have installed on this particular machine,
