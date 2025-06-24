@@ -112,8 +112,8 @@
   # Enable office tools
   office.enable = true;
 
-  # Enable spicetify, a spotify client
-  spicetify.enable = true;
+  # Enable spotify
+  spotify.enable = true;
 
   # Enable browser
   browser.enable = true;
