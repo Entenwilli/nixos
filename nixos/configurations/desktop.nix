@@ -56,11 +56,15 @@
   boot.supportedFilesystems = ["ntfs"];
 
   # Enable steam
-  programs.steam.enable = true;
-  programs.steam.package = pkgs.steam.override {
-    extraProfile = ''
-      unset TZ
-    '';
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    package = pkgs.steam.override {
+      extraProfile = ''
+        unset TZ
+      '';
+    };
+    extraCompatPackages = with pkgs; [proton-ge-bin];
   };
   environment.systemPackages = with pkgs; [mpvpaper xivlauncher gamemode];
 
