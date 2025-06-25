@@ -31,25 +31,13 @@
 
     # Zen Browser
     zen-browser.url = "github:youwen5/zen-browser-flake";
-    zen-browser.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    zen-browser.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Pwndbg
+    pwndbg.url = "github:pwndbg/pwndbg";
 
     # Hyprland flake
-    # FIXME: This is currently not required, as hyprland should work correctly!
-    # hyprland = {
-    #  type = "git";
-    #  url = "https://github.com/hyprwm/hyprland";
-    #  submodules = true;
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #  inputs.aquamarine.follows = "aquamarine";
-    # };
-
-    # Aquamarine for Hyprland
-    # FIXME: This is currently not required, as hyprland should work correctly!
-    # aquamarine = {
-    #   type = "git";
-    #   url = "https://github.com/hyprwm/aquamarine";
-    #   inputs.nixpkgs.follows = "nixpkgs-unstable";
-    # };
+    hyprland.url = "github:hyprwm/Hyprland";
 
     # Spicetify
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
