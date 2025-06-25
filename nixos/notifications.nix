@@ -1,6 +1,9 @@
 {pkgs, ...}: {
-  systemd.user.timers."break".timerConfig = {
-    OnBootSec = "4hrs";
+  systemd.user.timers."break" = {
+    timerConfig = {
+      OnBootSec = "4h";
+    };
+    wantedBy = ["timers.target"];
   };
   systemd.user.services."break" = {
     serviceConfig = {
@@ -10,8 +13,11 @@
     wantedBy = ["break.timer"];
   };
 
-  systemd.user.timers."late".timerConfig = {
-    OnCalendar = "*-*-* 18:00:00";
+  systemd.user.timers."late" = {
+    timerConfig = {
+      OnCalendar = "*-*-* 18:00:00";
+    };
+    wantedBy = ["timers.target"];
   };
   systemd.user.services."late" = {
     serviceConfig = {

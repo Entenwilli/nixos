@@ -50,6 +50,7 @@ in {
     timerConfig = {
       OnCalendar = "*-*-* 18:00:00";
     };
+    wantedBy = ["timers.target"];
   };
 
   systemd.user.services."hyprsunset" = {
@@ -71,6 +72,7 @@ in {
     timerConfig = {
       OnCalendar = "*-*-* 07:00:00";
     };
+    wantedBy = ["timers.target"];
   };
 
   systemd.user.services."hyprsunset-disable" = {
