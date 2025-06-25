@@ -81,12 +81,22 @@
   hyprland.monitors = [
     {
       name = "DP-2";
-      settings = "2560x1440@144,2560x0,1";
+      mode = "2560x1440@144";
+      position = "2560x0";
+      scale = 1.0;
+      hdr = true;
+      sdr_min_luminance = 0.005;
+      sdr_max_luminance = 200;
       wallpaper = "/home/felix/pictures/Wallpaper/snowy-lake.jpg";
     }
     {
       name = "DP-3";
-      settings = "2560x1440@144,0x0,1";
+      mode = "2560x1440@144";
+      position = "0x0";
+      scale = 1.0;
+      hdr = true;
+      sdr_min_luminance = 0.005;
+      sdr_max_luminance = 200;
       wallpaper = "/home/felix/pictures/Wallpaper/nighttime-in-the-mountains.png";
     }
   ];

@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   pkgs,
   config,
@@ -186,10 +187,38 @@ in {
               Name of the monitor
             '';
           };
-          settings = lib.mkOption {
+          mode = lib.mkOption {
             type = lib.types.str;
+            default = "auto";
             description = ''
-              Hyprland settings string for monitor
+              Hyprland resolution for monitor
+            '';
+          };
+          position = lib.mkOption {
+            type = lib.types.str;
+            default = "0x0";
+            description = ''
+              Hyprland position of the display
+            '';
+          };
+          scale = lib.mkOption {
+            type = lib.types.float;
+            default = 1.0;
+            description = ''
+              Scale of the monitor
+            '';
+          };
+          hdr = lib.mkEnableOption "Enable hdr";
+          sdr_min_luminance = lib.mkOption {
+            type = lib.types.float;
+            description = ''
+              SDR minimum lumninace used for SDR → HDR mapping. Set to 0.005 for true black matching HDR black
+            '';
+          };
+          sdr_max_luminance = lib.mkOption {
+            type = lib.types.int;
+            description = ''
+              SDR maximum luminance. Can be used to adjust overall SDR → HDR brightness. 80 - 400 is a reasonable range. The desired value is likely between 200 and 250
             '';
           };
           wallpaper = lib.mkOption {
@@ -215,15 +244,33 @@ in {
     };
     wayland.windowManager.hyprland = {
       enable = true;
-      package = pkgs.hyprland;
+      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
       systemd.enable = true;
+      importantPrefixes = ["$" "name" "bezier" "output"];
       settings = {
-        monitor = builtins.map ({
-          name,
-          settings,
-          ...
-        }: "${name},${settings}")
-        config.hyprland.monitors;
+        monitorv2 =
+          builtins.map ({
+            name,
+            mode,
+            position,
+            hdr,
+            sdr_min_luminance,
+            sdr_max_luminance,
+            ...
+          }: {
+            output = name;
+            mode = mode;
+            position = position;
+            supports_wide_color = hdr;
+            supports_hdr = hdr;
+            sdr_min_luminance = sdr_min_luminance;
+            sdr_max_luminance = sdr_max_luminance;
+          })
+          config.hyprland.monitors;
+
+        experimental = {
+          xx_color_management_v4 = true;
+        };
 
         "$terminal" = "${pkgs.kitty}/bin/kitty";
         "$menu" = "${pkgs.rofi-wayland}/bin/rofi -modi drun,run -show drun";
@@ -364,7 +411,6 @@ in {
           "$mainMod, mouse:272, movewindow"
           "$mainMod, mouse:273, resizewindow"
         ];
-
         debug = {
           disable_logs = false;
         };
@@ -406,7 +452,7 @@ in {
             exec-once = hyprpaper;
           ''
           else ''
-            exec-once = mpvpaper -o '--gpu-api=vulkan --hwdec=auto --vulkan-device="00000000-1200-0000-0000-000000000000" no-audio --loop-playlist shuffle' ALL ~/pictures/wallpaper/video/autumn-wallpaper.mp4;
+            exec-once = mpvpaper -o '--gpu-api=vulkan --hwdec=auto --vulkan-device="00000000-1200-0000-0000-000000000000" no-audio --loop-playlist shuffle' ALL ~/pictures/wallpaper/video/flower-shop-beachside.mp4;
           ''
         )
       ];
