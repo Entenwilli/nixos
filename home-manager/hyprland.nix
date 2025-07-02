@@ -246,6 +246,7 @@ in {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
       systemd.enable = true;
+      systemd.enableXdgAutostart = true;
       importantPrefixes = ["$" "name" "bezier" "output"];
       settings = {
         monitorv2 =
