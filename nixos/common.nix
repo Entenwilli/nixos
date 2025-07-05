@@ -60,6 +60,7 @@
 
   # Boot splash screen
   boot.consoleLogLevel = 0;
+  boot.kernelParams = ["quiet" "systemd.show_status=auto" "rd.udev.log_level=0"];
   boot.initrd.verbose = false;
   boot.plymouth = {
     enable = true;
@@ -68,6 +69,7 @@
         variant = "mocha";
       })
     ];
+    logo = "${pkgs.nixos-icons}/share/icons/hicolor/128x128/apps/nix-snowflake-white.png";
     theme = "catppuccin-mocha";
   };
 
