@@ -37,7 +37,8 @@
       userName = "Felix Schwickerath";
       userEmail = "felix@fschwickerath.de";
 
-      signing.key = "E89650BA7BEC8079";
+      signing.format = "ssh";
+      signing.key = "~/.ssh/sign_default.pub";
       signing.signByDefault = true;
       extraConfig = {
         init.defaultBranch = "main";
