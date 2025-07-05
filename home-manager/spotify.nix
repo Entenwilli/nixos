@@ -36,7 +36,13 @@ in {
 
     programs.spicetify = {
       enable = true;
-      theme = spicetifyPkgs.themes.sleek;
+      theme = {
+        name = "SleekHyDE";
+        src = pkgs.fetchzip {
+          url = "https://github.com/HyDE-Project/HyDE/raw/refs/heads/master/Source/arcs/Spotify_Sleek.tar.gz";
+          hash = "sha256-kGdCHGht3ij3n118+x76SR3cAeIpjPHjq0Ow0YRW21I=";
+        };
+      };
       colorScheme = "custom";
       customColorScheme = with config.scheme; {
         text = "${base07}";
