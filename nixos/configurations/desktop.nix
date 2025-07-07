@@ -20,6 +20,9 @@
     ../../shells
   ];
 
+  nixpkgs.config.rocmSupport = true;
+  virtualisation.docker.enable = true;
+
   sops.secrets."github-token-desktop" = {
     owner = "felix";
   };
@@ -65,7 +68,14 @@
     };
     extraCompatPackages = with pkgs; [proton-ge-bin];
   };
-  environment.systemPackages = with pkgs; [mpvpaper xivlauncher gamemode];
+
+  # Desktop packages only
+  environment.systemPackages = with pkgs; [
+    mpvpaper
+    xivlauncher
+    gamemode
+    btop-rocm
+  ];
 
   programs.noisetorch.enable = true;
 
@@ -86,6 +96,9 @@
     enable = true;
     package = pkgs.unstable.mesa;
     enable32Bit = true;
+    extraPackages = with pkgs; [
+      rocmPackages.clr.icd
+    ];
   };
 
   hardware.amdgpu = {
