@@ -7,7 +7,7 @@
     name = "hyprsunset-boot";
     text = ''
       H=$(date +%H)
-      if (( 10#$H <= 8 || 10#$H >= 18 )); then
+      if (( 10#$H <= 5 || 10#$H >= 22 )); then
         ${pkgs.systemd}/bin/systemctl --user start hyprsunset.service
       fi
     '';
@@ -52,7 +52,7 @@ in {
 
   systemd.user.timers."hyprsunset" = {
     timerConfig = {
-      OnCalendar = "*-*-* 18:00:00";
+      OnCalendar = "*-*-* 21:00:00";
     };
     wantedBy = ["timers.target"];
   };
@@ -74,7 +74,7 @@ in {
 
   systemd.user.timers."hyprsunset-disable" = {
     timerConfig = {
-      OnCalendar = "*-*-* 07:00:00";
+      OnCalendar = "*-*-* 05:30:00";
     };
     wantedBy = ["timers.target"];
   };
