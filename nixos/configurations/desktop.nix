@@ -84,6 +84,10 @@
     mangohud
   ];
 
+  boot.extraModprobeConfig = ''
+    options v4l2loopback devices=2 video_nr=0,1 card_label="Webcam,OBS Virtual Cam" exclusive_caps=1,1
+  '';
+
   programs.obs-studio.enable = true;
   programs.obs-studio.enableVirtualCamera = true;
   programs.obs-studio.plugins = with pkgs.obs-studio-plugins; [
