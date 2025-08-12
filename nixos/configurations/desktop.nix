@@ -61,6 +61,7 @@
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
+    gamescopeSession.enable = true;
     package = pkgs.steam.override {
       extraProfile = ''
         unset TZ
@@ -69,12 +70,40 @@
     extraCompatPackages = with pkgs; [proton-ge-bin];
   };
 
+  programs.gamemode.enable = true;
+
   # Desktop packages only
   environment.systemPackages = with pkgs; [
     mpvpaper
     xivlauncher
     gamemode
     btop-rocm
+    scrcpy
+    android-tools
+    v4l-utils
+    mangohud
+  ];
+
+  programs.obs-studio.enable = true;
+  programs.obs-studio.enableVirtualCamera = true;
+  programs.obs-studio.plugins = with pkgs.obs-studio-plugins; [
+    obs-ndi
+    wlrobs
+    obs-backgroundremoval
+    obs-pipewire-audio-capture
+    obs-composite-blur
+    obs-shaderfilter
+    obs-scale-to-sound
+    obs-move-transition
+    obs-gradient-source
+    obs-replay-source
+    obs-source-clone
+    obs-3d-effect
+    obs-livesplit-one
+    waveform
+    obs-gstreamer
+    obs-vaapi
+    obs-vkcapture
   ];
 
   programs.noisetorch.enable = true;
