@@ -38,7 +38,7 @@ in
 
     src = fetchurl {
       url = "${url}/DataFlowAnalysis.linux.gtk.x86_64.tar.gz";
-      hash = "sha256-mjNx/8/CFO0e4sjpR98KFlIKGLSutc0Wrg3uZHa9vJA=";
+      hash = "sha256-RSW0LtjdmhuNNFUDVuTTcs9QpslOPIMzsFEdPZPuxEU=";
     };
 
     nativeBuildInputs = [makeWrapper perl];

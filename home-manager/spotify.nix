@@ -40,7 +40,7 @@ in {
         name = "SleekHyDE";
         src = pkgs.fetchzip {
           url = "https://github.com/HyDE-Project/HyDE/raw/refs/heads/master/Source/arcs/Spotify_Sleek.tar.gz";
-          hash = "sha256-kGdCHGht3ij3n118+x76SR3cAeIpjPHjq0Ow0YRW21I=";
+          hash = "sha256-zOTygEhGkW3n/kpDcX7oNeEyFsDSs5iMQy9OzGqkEi8=";
         };
       };
       colorScheme = "custom";
