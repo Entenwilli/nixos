@@ -61,7 +61,11 @@
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
-    gamescopeSession.enable = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+    gamescopeSession = {
+      enable = true;
+    };
     package = pkgs.steam.override {
       extraProfile = ''
         unset TZ
@@ -71,6 +75,7 @@
   };
 
   programs.gamemode.enable = true;
+  programs.gamescope.enable = true;
 
   # Desktop packages only
   environment.systemPackages = with pkgs; [
@@ -82,9 +87,12 @@
     android-tools
     v4l-utils
     mangohud
+    via
+    lact
   ];
 
   boot.extraModprobeConfig = ''
+    options amdgpu ppfeaturemask=0xFFF7FFFF
     options v4l2loopback devices=2 video_nr=0,1 card_label="Webcam,OBS Virtual Cam" exclusive_caps=1,1
   '';
 
@@ -142,6 +150,9 @@
     enable = true;
     motherboard = "amd";
   };
+
+  systemd.packages = with pkgs; [lact];
+  systemd.services.lactd.wantedBy = ["multi-user.target"];
 
   services.xserver.videoDrivers = ["amdgpu"];
 
