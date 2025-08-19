@@ -16,7 +16,7 @@
   boot.initrd.kernelModules = ["dm-snapshot"];
   boot.kernelModules = ["kvm-amd"];
   boot.extraModulePackages = [];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackagesFor pkgs.linux_latest;
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/8a247aca-51d3-4a40-8f02-58d338dcdd65";
@@ -38,6 +38,10 @@
     device = "/dev/disk/by-uuid/9237-E870";
     fsType = "vfat";
     options = ["fmask=0022" "dmask=0022"];
+  };
+  fileSystems."/steam-library" = {
+    device = "/dev/disk/by-uuid/def7cbb4-3114-48ad-8060-d28fd5046e1a";
+    fsType = "btrfs";
   };
 
   swapDevices = [
