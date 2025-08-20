@@ -174,6 +174,14 @@ in {
       type = lib.types.str;
     };
     hyprpaper.enable = lib.mkEnableOption "Enable hyprpaper";
+    additional_config = lib.mkOption {
+      type = lib.types.str;
+      default = "";
+      description = ''
+        Additional config for hypr.conf
+      '';
+    };
+
     monitors = lib.mkOption {
       default = [];
       description = ''
@@ -456,6 +464,7 @@ in {
             exec-once = mpvpaper -o '--gpu-api=vulkan --hwdec=auto --vulkan-device="00000000-1200-0000-0000-000000000000" no-audio --loop-playlist shuffle' ALL ~/pictures/wallpaper/video/flower-shop-beachside.mp4;
           ''
         )
+        config.hyprland.additional_config
       ];
     };
 
