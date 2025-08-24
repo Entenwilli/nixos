@@ -89,6 +89,7 @@
     mangohud
     via
     lact
+    prismlauncher
   ];
 
   boot.extraModprobeConfig = ''
