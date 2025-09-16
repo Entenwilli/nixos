@@ -4,13 +4,13 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }: {
   imports = [
     # Include the results of the hardware scan.
     ./desktop-hardware.nix
 
+    ../audio.nix
     ../secrets.nix
     ../hyprland.nix
     ../network.nix
@@ -18,6 +18,10 @@
     ../syncthing.nix
     ../common.nix
     ../notifications.nix
+    ../openrgb.nix
+    ../obs.nix
+    ../drawing.nix
+    ../gaming.nix
     ../../shells
   ];
 
@@ -59,83 +63,17 @@
   boot.supportedFilesystems = ["ntfs"];
 
   # Enable steam
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    localNetworkGameTransfers.openFirewall = true;
-    gamescopeSession = {
-      enable = true;
-    };
-    package = pkgs.steam.override {
-      extraProfile = ''
-        unset TZ
-      '';
-    };
-    extraCompatPackages = with pkgs; [proton-ge-bin];
-  };
-
-  programs.gamemode.enable = true;
-  programs.gamescope.enable = true;
-
   # Desktop packages only
   environment.systemPackages = with pkgs; [
     mpvpaper
-    xivlauncher
-    gamemode
     btop-rocm
     scrcpy
     android-tools
-    v4l-utils
-    mangohud
     via
     lact
-    prismlauncher
-    krita
-  ];
-
-  hardware.opentabletdriver = {
-    enable = true;
-    daemon.enable = true;
-  };
-
-  boot.extraModprobeConfig = ''
-    options amdgpu ppfeaturemask=0xFFF7FFFF
-    options v4l2loopback devices=2 video_nr=0,1 card_label="Webcam,OBS Virtual Cam" exclusive_caps=1,1
-  '';
-
-  programs.obs-studio.enable = true;
-  programs.obs-studio.enableVirtualCamera = true;
-  programs.obs-studio.plugins = with pkgs.obs-studio-plugins; [
-    obs-ndi
-    wlrobs
-    obs-backgroundremoval
-    obs-pipewire-audio-capture
-    obs-composite-blur
-    obs-shaderfilter
-    obs-scale-to-sound
-    obs-move-transition
-    obs-gradient-source
-    obs-replay-source
-    obs-source-clone
-    obs-3d-effect
-    obs-livesplit-one
-    waveform
-    obs-gstreamer
-    obs-vaapi
-    obs-vkcapture
   ];
 
   programs.streamcontroller.enable = true;
-
-  programs.noisetorch.enable = true;
-  systemd.user.services.noisetorch = {
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.noisetorch}/bin/noisetorch -i 'alsa_input.usb-M-Audio_M-Track_2X2-00.analog-stereo'";
-    };
-    wantedBy = ["graphical-session.target"];
-  };
 
   # Setup syncthing
   services = {
@@ -161,24 +99,6 @@
 
   hardware.amdgpu = {
     initrd.enable = true;
-  };
-
-  services.hardware.openrgb = {
-    enable = true;
-    motherboard = "amd";
-  };
-
-  systemd.services.openrgb = {
-    description = "OpenRGB server daemon";
-    after = ["network.target"];
-    wants = ["dev-usb.device"];
-    wantedBy = ["multi-user.target"];
-    serviceConfig = {
-      StateDirectory = "OpenRGB";
-      WorkingDirectory = "/var/lib/OpenRGB";
-      ExecStart = lib.mkForce "${pkgs.openrgb}/bin/openrgb --server --server-port 6742 --profile Default.orp";
-      Restart = "always";
-    };
   };
 
   systemd.packages = with pkgs; [lact];

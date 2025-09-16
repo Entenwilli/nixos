@@ -56,6 +56,7 @@
       settings = {
         gui.nerdFontsVersion = "3";
         gui.shortTimeFormat = "15:04:05";
+        git.overrideGpg = true;
         customCommands = [
           {
             key = "c";
