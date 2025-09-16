@@ -147,6 +147,7 @@
     adwaita-icon-theme
     shared-mime-info
     element-desktop
+    xdg-user-dirs
   ];
 
   # Create Data Flow Analysis symlink
