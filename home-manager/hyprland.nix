@@ -216,6 +216,13 @@ in {
               Scale of the monitor
             '';
           };
+          mirror = lib.mkOption {
+            type = lib.types.str;
+            default = "";
+            description = ''
+              Mirrors the display to the given monitor
+            '';
+          };
           hdr = lib.mkEnableOption "Enable hdr";
           sdr_min_luminance = lib.mkOption {
             type = lib.types.float;
@@ -257,16 +264,24 @@ in {
       systemd.enableXdgAutostart = true;
       importantPrefixes = ["$" "name" "bezier" "output"];
       settings = {
-        monitorv2 =
-          builtins.map ({
-            name,
-            mode,
-            position,
-            hdr,
-            sdr_min_luminance,
-            sdr_max_luminance,
-            ...
-          }: {
+        monitorv2 = builtins.map ({
+          name,
+          mode,
+          position,
+          mirror,
+          hdr,
+          sdr_min_luminance,
+          sdr_max_luminance,
+          ...
+        }:
+          if (mirror != "")
+          then {
+            output = name;
+            mode = "prefered";
+            position = "auto";
+            mirror = mirror;
+          }
+          else {
             output = name;
             mode = mode;
             position = position;
@@ -275,7 +290,7 @@ in {
             sdr_min_luminance = sdr_min_luminance;
             sdr_max_luminance = sdr_max_luminance;
           })
-          config.hyprland.monitors;
+        config.hyprland.monitors;
 
         experimental = {
           xx_color_management_v4 = true;
@@ -286,6 +301,7 @@ in {
 
         input = {
           kb_layout = config.hyprland.keyboardLayout;
+          kb_variant = "altgr-intl";
           follow_mouse = "1";
           touchpad = {
             natural_scroll = "no";
@@ -319,10 +335,6 @@ in {
         dwindle = {
           pseudotile = "yes";
           preserve_split = "yes";
-        };
-
-        gestures = {
-          workspace_swipe = "on";
         };
 
         misc = {
@@ -439,21 +451,9 @@ in {
           exec-once = dbus-update-activation-environment --systemd --all
           exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME DBUS_SESSION_ADDRESS
 
-          device {
-             name = keychron-keychron-q1-keyboard
-             kb_layout = us
-             kb_variant = altgr-intl
-           }
-
-           device {
-             name = keychron-keychron-q1
-             kb_layout = us
-             kb_variant = altgr-intl
-           }
-
-            master {
-                new_status = master
-            }
+          master {
+              new_status = master
+          }
         ''
         (
           if (config.hyprland.hyprpaper.enable)
