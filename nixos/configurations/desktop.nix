@@ -125,6 +125,8 @@
     obs-vkcapture
   ];
 
+  programs.streamcontroller.enable = true;
+
   programs.noisetorch.enable = true;
   systemd.user.services.noisetorch = {
     serviceConfig = {
