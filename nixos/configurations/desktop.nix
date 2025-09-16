@@ -90,7 +90,13 @@
     via
     lact
     prismlauncher
+    krita
   ];
+
+  hardware.opentabletdriver = {
+    enable = true;
+    daemon.enable = true;
+  };
 
   boot.extraModprobeConfig = ''
     options amdgpu ppfeaturemask=0xFFF7FFFF
