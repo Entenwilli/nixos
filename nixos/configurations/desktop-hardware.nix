@@ -23,6 +23,13 @@
     fsType = "btrfs";
   };
 
+  fileSystems."/nix" = {
+    device = "/dev/disk/by-uuid/1b4b9852-65f1-41f6-b75f-061a3746b514";
+    fsType = "btrfs";
+    neededForBoot = true;
+    options = ["noatime" "compress=zstd"];
+  };
+
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/2ac0fb26-4944-4f30-8655-ba005d00f059";
     fsType = "btrfs";
