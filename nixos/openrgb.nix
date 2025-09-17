@@ -16,7 +16,7 @@
     serviceConfig = {
       StateDirectory = "OpenRGB";
       WorkingDirectory = "/var/lib/OpenRGB";
-      ExecStart = lib.mkForce "${pkgs.openrgb}/bin/openrgb --server --server-port 6742 --profile Default.orp";
+      ExecStart = lib.mkForce "${pkgs.openrgb}/bin/openrgb --server --profile Default.orp";
       Restart = "always";
     };
   };
