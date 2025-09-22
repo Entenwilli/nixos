@@ -82,7 +82,7 @@
   hyprland.enable = true;
   hyprland.monitors = [
     {
-      name = "DP-2";
+      name = "DP-3";
       mode = "2560x1440@144";
       position = "2560x0";
       scale = 1.0;
@@ -92,7 +92,7 @@
       wallpaper = "/home/felix/pictures/Wallpaper/snowy-lake.jpg";
     }
     {
-      name = "DP-3";
+      name = "DP-2";
       mode = "2560x1440@144";
       position = "0x0";
       scale = 1.0;
@@ -100,6 +100,15 @@
       sdr_min_luminance = 0.005;
       sdr_max_luminance = 200;
       wallpaper = "/home/felix/pictures/Wallpaper/nighttime-in-the-mountains.png";
+    }
+    {
+      name = "HDMI-A-1";
+      mode = "2560x1600@60";
+      position = "5120x0";
+      scale = "1.0";
+      sdr_min_luminance = 0.005;
+      sdr_max_luminance = 200;
+
     }
   ];
   hyprland.hyprpaper.enable = false;
