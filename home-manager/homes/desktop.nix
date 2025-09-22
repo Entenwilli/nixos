@@ -9,9 +9,11 @@
   imports = [
     inputs.entenvim.homeManagerModules.default
     inputs.base16.homeManagerModule
+    inputs.impermanence.homeManagerModules.impermanence
     {
       scheme = "${inputs.color-schemes}/base24/catppuccin-mocha.yaml";
     }
+    ../impermanence.nix
     ../terminal.nix
     ../theming.nix
     ../fish.nix

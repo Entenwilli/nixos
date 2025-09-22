@@ -1,0 +1,52 @@
+{...}: {
+  home.persistence."/persistent/home/felix" = {
+    directories = [
+      ".factorio"
+      ".ssh"
+      ".xlcore"
+      ".gnupg"
+      "development"
+      "documents"
+      "downloads"
+      "general"
+      "music"
+      "nixos"
+      "pictures"
+      ".config/syncthing"
+      ".local/share/Anki2"
+      ".local/share/zoxide"
+      ".local/share/nvim"
+      ".config/fcitx5"
+      ".config/obsidian"
+      ".config/keepassxc"
+      ".config/JetBrains"
+      ".config/OpenTabletDriver"
+      ".config/StardewValley"
+      ".config/Vencord"
+      ".config/discord"
+      ".config/spotify"
+      ".cache/spotify/Storage"
+      ".local/share/PrismLauncher"
+      ".local/share/nvim/spell"
+      ".var/app/com.core447.StreamController"
+      ".zen"
+      {
+        directory = ".local/share/Steam";
+        method = "symlink";
+      }
+    ];
+    files = [
+      "start-webcam"
+      ".config/user-dirs.dirs"
+      ".config/kritadisplayrc"
+      ".config/kritarc"
+      ".config/kritashortcutsrc"
+      ".config/sops/age/keys.txt"
+      ".cache/keepassxc/keepassxc.ini"
+      ".local/state/lazygit/state.yml"
+      ".cache/rofi-entry-history.yml"
+      ".local/share/zoxide/db.zo"
+    ];
+    allowOther = true;
+  };
+}

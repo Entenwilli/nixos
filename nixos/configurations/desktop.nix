@@ -10,6 +10,7 @@
     # Include the results of the hardware scan.
     ./desktop-hardware.nix
 
+    ../impermanence.nix
     ../audio.nix
     ../secrets.nix
     ../hyprland.nix

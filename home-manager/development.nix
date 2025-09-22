@@ -28,7 +28,7 @@
       openjdk17
       jetbrains.idea-ultimate
       neovide
-      inputs.pwndbg.packages.${pkgs.system}.pwndbg
+      #inputs.pwndbg.packages.${pkgs.system}.pwndbg
     ];
 
     # Configure git

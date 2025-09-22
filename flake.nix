@@ -10,6 +10,9 @@
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    # Impermanence
+    impermanence.url = "github:nix-community/impermanence";
+
     # Hardware configuration
     hardware.url = "github:nixos/nixos-hardware";
 
@@ -73,6 +76,7 @@
         nixpkgs.lib.nixosSystem {
           specialArgs = specialArgs;
           modules = [
+            inputs.impermanence.nixosModules.impermanence
             inputs.base16.nixosModule
             {
               scheme = "${inputs.color-schemes}/base24/catppuccin-mocha.yaml";
