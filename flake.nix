@@ -89,6 +89,7 @@
               home-manager.extraSpecialArgs = specialArgs;
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
               home-manager.sharedModules = [
                 inputs.sops-nix.homeManagerModules.sops
               ];

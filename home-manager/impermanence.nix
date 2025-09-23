@@ -16,6 +16,7 @@
       ".local/share/Anki2"
       ".local/share/zoxide"
       ".local/share/nvim"
+      ".local/share/krita"
       ".config/fcitx5"
       ".config/obsidian"
       ".config/keepassxc"
@@ -27,13 +28,14 @@
       ".config/spotify"
       ".cache/spotify/Storage"
       ".local/share/PrismLauncher"
-      ".local/share/nvim/spell"
       ".var/app/com.core447.StreamController"
       ".zen"
+      ".mozilla"
       {
         directory = ".local/share/Steam";
         method = "symlink";
       }
+      ".local/share/fish"
     ];
     files = [
       "start-webcam"
@@ -44,7 +46,8 @@
       ".config/sops/age/keys.txt"
       ".cache/keepassxc/keepassxc.ini"
       ".local/state/lazygit/state.yml"
-      ".cache/rofi-entry-history.yml"
+      ".cache/rofi-entry-history.txt"
+      ".cache/rofi3.druncache"
       ".local/share/zoxide/db.zo"
     ];
     allowOther = true;
