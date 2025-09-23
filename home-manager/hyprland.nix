@@ -372,7 +372,7 @@ in {
           "noborder, class:^(ueberzug.*)$"
           "noshadow, class:^(ueberzug.*)$"
 
-          "size, 150 150, class:cover"
+          "size 150 150, class:cover"
         ];
 
         layerrule = [
