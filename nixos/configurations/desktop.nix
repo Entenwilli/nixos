@@ -75,6 +75,17 @@
   ];
 
   programs.streamcontroller.enable = true;
+  systemd.user.services."streamcontroller" = {
+    wantedBy = ["hyprland-session.target"];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.streamcontroller}/bin/streamcontroller -b";
+    };
+    path = with pkgs; [
+      playerctl
+      config.programs.hyprland.package
+    ];
+  };
 
   # Setup syncthing
   services = {
