@@ -14,6 +14,7 @@
       scheme = "${inputs.color-schemes}/base24/catppuccin-mocha.yaml";
     }
     ../impermanence.nix
+    ../wallpaper-switcher.nix
     ../terminal.nix
     ../theming.nix
     ../fish.nix
@@ -89,7 +90,7 @@
       hdr = true;
       sdr_min_luminance = 0.005;
       sdr_max_luminance = 200;
-      wallpaper = "/home/felix/pictures/Wallpaper/snowy-lake.jpg";
+      wallpaper = "/home/felix/pictures/wallpaper/snowy-lake.jpg";
     }
     {
       name = "DP-2";
@@ -99,7 +100,7 @@
       hdr = true;
       sdr_min_luminance = 0.005;
       sdr_max_luminance = 200;
-      wallpaper = "/home/felix/pictures/Wallpaper/nighttime-in-the-mountains.png";
+      wallpaper = "/home/felix/pictures/wallpaper/nighttime-in-the-mountains.png";
     }
     {
       name = "HDMI-A-1";
@@ -108,10 +109,11 @@
       scale = "1.0";
       sdr_min_luminance = 0.005;
       sdr_max_luminance = 200;
-
+      wallpaper = "/home/felix/pictures/wallpaper/nighttime-in-the-mountains.png";
     }
   ];
-  hyprland.hyprpaper.enable = false;
+  hyprland.hyprpaper.enable = true;
+  wallpaper-switcher.enable = true;
   hyprland.keyboardLayout = "us";
 
   # Enable starship promt

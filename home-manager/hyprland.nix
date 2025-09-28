@@ -5,19 +5,6 @@
   config,
   ...
 }: let
-  wallpaper-switcher = pkgs.writeShellApplication {
-    name = "wallpaper-switcher";
-    text = ''
-      wallpaper_dir="$HOME/pictures/wallpaper/video"
-      mapfile -t wallpapers < <(ls "$wallpaper_dir")
-      wallpaper_list=$(printf "%s\n" "''${wallpapers[@]}")
-      selected_wallpaper=$(echo -e "$wallpaper_list" | rofi -dmenu -p "Select a wallpaper:")
-      wallpaper_path="$wallpaper_dir/$selected_wallpaper"
-      pkill .mpvpaper-wrapp
-      echo "Switching to wallpaper at $wallpaper_path"
-      mpvpaper -o '--gpu-api=vulkan --hwdec=auto --vulkan-device="00000000-1200-0000-0000-000000000000" no-audio --loop-playlist shuffle' ALL "$wallpaper_path" &
-    '';
-  };
   volume = pkgs.writeShellApplication {
     name = "volume";
     text = ''
@@ -239,7 +226,7 @@ in {
           wallpaper = lib.mkOption {
             type = lib.types.str;
             description = ''
-              Path to the monitor wall paper
+              Path to the monitor wallpaper
             '';
           };
         };
@@ -251,12 +238,7 @@ in {
     home.packages = with pkgs; [
       clipse
       catppuccin-cursors.mochaMauve
-      wallpaper-switcher
     ];
-    xdg.desktopEntries.wallpaper-switcher = {
-      name = "Wallpaper Switcher";
-      exec = "${wallpaper-switcher}/bin/wallpaper-switcher";
-    };
     wayland.windowManager.hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
