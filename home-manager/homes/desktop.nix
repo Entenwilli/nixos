@@ -85,7 +85,7 @@
     {
       name = "DP-3";
       mode = "2560x1440@144";
-      position = "2560x0";
+      position = "0x0";
       scale = 1.0;
       hdr = true;
       sdr_min_luminance = 0.005;
@@ -95,7 +95,7 @@
     {
       name = "DP-2";
       mode = "2560x1440@144";
-      position = "0x0";
+      position = "2560x0";
       scale = 1.0;
       hdr = true;
       sdr_min_luminance = 0.005;
