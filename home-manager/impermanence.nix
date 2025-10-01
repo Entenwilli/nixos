@@ -31,6 +31,7 @@
       ".var/app/com.core447.StreamController"
       ".zen"
       ".mozilla"
+      ".local/share/bemoji"
       {
         directory = ".local/share/Steam";
         method = "symlink";
