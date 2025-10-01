@@ -11,6 +11,14 @@
 
   config = lib.mkIf config.dunst.enable {
     home.packages = with pkgs; [papirus-icon-theme];
+    systemd.user.services.dunst = {
+      Install = {
+        WantedBy = ["hyprland-session.target"];
+      };
+      Unit = {
+        After = ["hyprland-session.target"];
+      };
+    };
     services.dunst = {
       enable = true;
       iconTheme = {
