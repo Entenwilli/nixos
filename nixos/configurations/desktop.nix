@@ -22,7 +22,6 @@
     ../openrgb.nix
     ../obs.nix
     ../drawing.nix
-    ../gaming.nix
     ../../shells
   ];
 
@@ -114,6 +113,9 @@
   hardware.amdgpu = {
     initrd.enable = true;
   };
+
+  # Enable gaming tools
+  gaming.enable = true;
 
   services.xserver.videoDrivers = ["amdgpu"];
 

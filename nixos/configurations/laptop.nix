@@ -24,9 +24,6 @@
     ../common.nix
     ../notifications.nix
     ../../shells
-
-    # FIXME: Remove after laptop is not used for any gaming
-    ../gaming.nix
   ];
   sops.secrets."github-token-laptop" = {
     owner = "felix";
@@ -64,6 +61,10 @@
       configDir = "/home/felix/.config/syncthing";
     };
   };
+
+  # Enable gaming tools
+  # FIXME: Remove when laptop is not used for gaming
+  gaming.enable = true;
 
   environment.systemPackages = with pkgs; [
     brightnessctl

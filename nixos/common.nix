@@ -6,6 +6,10 @@
   outputs,
   ...
 }: {
+  imports = [
+    ./gaming.nix
+  ];
+
   # Configure nix package manager
   nixpkgs = {
     overlays = [
