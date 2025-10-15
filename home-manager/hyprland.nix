@@ -291,6 +291,12 @@ in {
           sensitivity = "-0.3";
         };
 
+        device = {
+          name = "keychron-keychron-q1";
+          kb_layout = "us";
+          kb_variant = "altgr-intl";
+        };
+
         general = {
           gaps_in = 5;
           gaps_out = 10;

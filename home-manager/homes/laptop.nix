@@ -95,8 +95,8 @@
       wallpaper = "/home/felix/pictures/wallpaper/tom-vining.jpg";
     }
   ];
-  # FIXME: Undo after pc part replacement
-  hyprland.keyboardLayout = "us";
+
+  hyprland.keyboardLayout = "de";
   hyprland.hyprpaper.enable = true;
   wallpaper-switcher.enable = true;
 
