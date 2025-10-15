@@ -283,7 +283,7 @@ in {
 
         input = {
           kb_layout = config.hyprland.keyboardLayout;
-          kb_variant = "altgr-intl";
+          kb_variant = lib.mkIf (config.hyprland.keyboardLayout == "us") "altgr-intl";
           follow_mouse = "1";
           touchpad = {
             natural_scroll = "no";
