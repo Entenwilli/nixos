@@ -5,10 +5,12 @@
   imports = [
     inputs.entenvim.homeManagerModules.default
     inputs.base16.homeManagerModule
+    inputs.impermanence.homeManagerModules.impermanence
     {
       scheme = "${inputs.color-schemes}/base24/catppuccin-mocha.yaml";
     }
     ../terminal.nix
+    ../impermanence.nix
     ../theming.nix
     ../fish.nix
     ../development.nix
@@ -31,6 +33,7 @@
     ../languages.nix
     ../coverart.nix
     ../secrets.nix
+    ../wallpaper-switcher.nix
   ];
 
   # Enable home-manager
@@ -92,8 +95,10 @@
       wallpaper = "/home/felix/pictures/wallpaper/tom-vining.jpg";
     }
   ];
-  hyprland.keyboardLayout = "de";
+  # FIXME: Undo after pc part replacement
+  hyprland.keyboardLayout = "us";
   hyprland.hyprpaper.enable = true;
+  wallpaper-switcher.enable = true;
 
   # Enable starship prompt
   starship.enable = true;

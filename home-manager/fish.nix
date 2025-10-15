@@ -34,15 +34,23 @@
         set -g fish_greeting
         set -g theme_date_format "+%a %H:%M"
       '';
-      interactiveShellInit = ''
-        set -x _ZO_RESOLVE_SYMLINKS "1"
-        set -x _ZO_DATA_DIR "/persistent/home/felix/.local/share"
-        set -x GPG_TTP $(tty)
-        set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent
-        ssh-add
-        clear
-        fastfetch
-      '';
+      interactiveShellInit = lib.strings.concatStrings [
+        (
+          if config.impermanence.enable
+          then ''
+            set -x _ZO_DATA_DIR "/persistent/home/felix/.local/share"
+          ''
+          else ""
+        )
+        ''
+          set -x _ZO_RESOLVE_SYMLINKS "1"
+          set -x GPG_TTP $(tty)
+          set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent
+          ssh-add
+          clear
+          fastfetch
+        ''
+      ];
     };
   };
 }

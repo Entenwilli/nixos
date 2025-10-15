@@ -86,6 +86,9 @@
     ];
   };
 
+  # Enable impermanence
+  impermanence.enable = true;
+
   # Setup syncthing
   services = {
     syncthing = {

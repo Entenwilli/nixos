@@ -1,10 +1,6 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{inputs, ...}: {
   # You can import other home-manager modules here
   imports = [
     inputs.entenvim.homeManagerModules.default
@@ -13,6 +9,7 @@
     {
       scheme = "${inputs.color-schemes}/base24/catppuccin-mocha.yaml";
     }
+    ../common.nix
     ../impermanence.nix
     ../wallpaper-switcher.nix
     ../terminal.nix
@@ -51,6 +48,9 @@
       EDITOR = "nvim";
     };
   };
+
+  # Enable impermanence
+  impermanence.enable = true;
 
   # Enable gtk and qt theming
   theming.enable = true;
@@ -149,15 +149,6 @@
 
   # Enable browser
   browser.enable = true;
-
-  # HACK: Allow hardware acceleration in obsidian
-  xdg.desktopEntries.obsidian = {
-    name = "Obsidian";
-    exec = "${pkgs.obsidian}/bin/obsidian --use-vulkan --use-gl=egl --enable-zero-copy --enable-hardware-overlays --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,CanvasOopRasterization,VaapiIgnoreDriverChecks --disable-features=UseSkiaRenderer,UseChromeOSDirectVideoDecoder --ignore-gpu-blocklist %u";
-    icon = "obsidian";
-    mimeType = ["x-scheme-handler/obsidian"];
-    type = "Application";
-  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

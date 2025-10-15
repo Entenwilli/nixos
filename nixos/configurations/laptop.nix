@@ -12,7 +12,10 @@
     # Include the results of the hardware scan.
     inputs.hardware.nixosModules.dell-xps-13-9310
     ./laptop-hardware.nix
-
+    ../impermanence.nix
+    ../audio.nix
+    ../syncthing.nix
+    ../drawing.nix
     ../secrets.nix
     ../hyprland.nix
     ../network.nix
@@ -21,6 +24,9 @@
     ../common.nix
     ../notifications.nix
     ../../shells
+
+    # FIXME: Remove after laptop is not used for any gaming
+    ../gaming.nix
   ];
   sops.secrets."github-token-laptop" = {
     owner = "felix";

@@ -103,6 +103,7 @@
         nixpkgs.lib.nixosSystem {
           specialArgs = specialArgs;
           modules = [
+            inputs.impermanence.nixosModules.impermanence
             inputs.base16.nixosModule
             {
               scheme = "${inputs.color-schemes}/base24/catppuccin-mocha.yaml";
