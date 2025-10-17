@@ -282,19 +282,20 @@ in {
         "$menu" = "${pkgs.rofi-wayland}/bin/rofi -modi drun,run -show drun";
 
         input = {
-          kb_layout = config.hyprland.keyboardLayout;
+          kb_layout = lib.strings.concatStrings [
+            config.hyprland.keyboardLayout
+            (
+              if config.hyprland.keyboardLayout != "us"
+              then ",us"
+              else ""
+            )
+          ];
           kb_variant = lib.mkIf (config.hyprland.keyboardLayout == "us") "altgr-intl";
           follow_mouse = "1";
           touchpad = {
             natural_scroll = "no";
           };
           sensitivity = "-0.3";
-        };
-
-        device = {
-          name = "keychron-keychron-q1";
-          kb_layout = "us";
-          kb_variant = "altgr-intl";
         };
 
         general = {
@@ -438,6 +439,21 @@ in {
 
           exec-once = dbus-update-activation-environment --systemd --all
           exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME DBUS_SESSION_ADDRESS
+
+          device {
+            name = keychron-keychron-q1
+            kb_layout = us
+            kb_variant = altgr-intl
+            resolve_binds_by_sym = 1
+          }
+
+          device {
+            name = keychron-keychron-q1-keyboard
+            kb_layout = us
+            kb_variant = altgr-intl
+            resolve_binds_by_sym = 1
+          }
+
 
           master {
               new_status = master
