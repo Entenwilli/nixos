@@ -152,6 +152,7 @@
     shared-mime-info
     element-desktop
     xdg-user-dirs
+    mecab
   ];
 
   # Create Data Flow Analysis symlink
