@@ -153,6 +153,9 @@
     element-desktop
     xdg-user-dirs
     mecab
+    qbittorrent
+    goldendict-ng
+    hunspell
   ];
 
   # Create Data Flow Analysis symlink
