@@ -46,6 +46,7 @@
           method = "symlink";
         }
         ".local/share/fish"
+        ".local/share/shiori"
       ];
       files = [
         "start-webcam"
