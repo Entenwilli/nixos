@@ -377,6 +377,7 @@ in {
           "$mainModShift, E, exec, rofi -show p -modi p:'rofi-power-menu'"
           "$mainMod, V, togglefloating"
           "$mainMod, D, exec, $menu"
+          "$mainMod, C, exec, rofi -show calc -modi calc -no-show-match -no-sort"
           "$mainMod, P, pseudo"
           "$mainMod, J, togglesplit"
           "$mainMod, F, fullscreen"

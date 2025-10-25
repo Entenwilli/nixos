@@ -38,8 +38,7 @@ in {
       exec = "${wallpaper-switcher}/bin/wallpaper-switcher";
     };
 
-    home.packages = with pkgs; [
-      rofi-wayland
+    home.packages = [
       wallpaper-switcher
     ];
     xdg.dataFile."rofi/themes/wallpaper-switcher.rasi".text = ''
