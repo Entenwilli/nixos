@@ -349,6 +349,9 @@ in {
           "float, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC - Browser Access Request$"
           "center, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC - Browser Access Request$"
 
+          "float, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC - Passkey credentials$"
+          "center, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC - Passkey credentials$"
+
           "float, class:^org\\.keepassxc\\.KeePassXC$, title:^.*\\[Locked\\] - KeePassXC"
           "size 880 500, class:^org\\.keepassxc\\.KeePassXC$, title:^.*\\[Locked\\] - KeePassXC"
 
