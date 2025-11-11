@@ -35,6 +35,7 @@
         ".config/Vencord"
         ".config/discord"
         ".config/spotify"
+        ".cache/spotify"
         ".cache/spotify/Storage"
         ".local/share/PrismLauncher"
         ".var/app/com.core447.StreamController"
