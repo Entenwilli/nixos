@@ -15,7 +15,6 @@
     ../impermanence.nix
     ../audio.nix
     ../syncthing.nix
-    ../drawing.nix
     ../secrets.nix
     ../hyprland.nix
     ../network.nix
@@ -61,10 +60,6 @@
       configDir = "/home/felix/.config/syncthing";
     };
   };
-
-  # Enable gaming tools
-  # FIXME: Remove when laptop is not used for gaming
-  gaming.enable = true;
 
   environment.systemPackages = with pkgs; [
     brightnessctl
