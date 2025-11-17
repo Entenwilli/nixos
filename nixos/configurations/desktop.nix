@@ -22,10 +22,10 @@
     ../openrgb.nix
     ../obs.nix
     ../drawing.nix
+    ../rocm.nix
     ../../shells
   ];
 
-  nixpkgs.config.rocmSupport = true;
   virtualisation.docker.enable = true;
 
   sops.secrets."github-token-desktop" = {
@@ -105,9 +105,6 @@
     enable = true;
     package = pkgs.mesa;
     enable32Bit = true;
-    extraPackages = with pkgs; [
-      rocmPackages.clr.icd
-    ];
   };
 
   hardware.amdgpu = {
