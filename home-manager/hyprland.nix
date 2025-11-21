@@ -241,7 +241,7 @@ in {
     ];
     wayland.windowManager.hyprland = {
       enable = true;
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      package = pkgs.unstable.hyprland;
       systemd.enable = true;
       systemd.enableXdgAutostart = true;
       importantPrefixes = ["$" "name" "bezier" "output"];
