@@ -42,6 +42,8 @@
         ".zen"
         ".mozilla"
         ".local/share/bemoji"
+        ".config/qt5ct"
+        ".config/qt6ct"
         {
           directory = ".local/share/Steam";
           method = "symlink";

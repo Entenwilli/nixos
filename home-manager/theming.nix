@@ -10,7 +10,6 @@
 
   config = lib.mkIf config.theming.enable {
     home.packages = with pkgs; [
-      adwaita-qt
       papirus-icon-theme
       libsForQt5.qt5ct
       qt6Packages.qt6ct
@@ -26,9 +25,8 @@
 
     qt = {
       enable = true;
-      platformTheme.name = "gtk";
-      style.name = "adwaita-dark";
-      style.package = pkgs.adwaita-qt;
+      style.package = with pkgs; [darkly darkly-qt5];
+      platformTheme = "qtct";
     };
 
     gtk = {
