@@ -279,7 +279,7 @@ in {
         };
 
         "$terminal" = "${pkgs.kitty}/bin/kitty";
-        "$menu" = "${pkgs.rofi-wayland}/bin/rofi -modi drun,run -show drun";
+        "$menu" = "${pkgs.rofi}/bin/rofi -modi drun,run -show drun";
 
         input = {
           kb_layout = lib.strings.concatStrings [

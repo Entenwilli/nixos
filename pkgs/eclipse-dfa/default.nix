@@ -16,7 +16,7 @@
   libXtst,
   libsecret,
   gsettings-desktop-schemas,
-  webkitgtk_4_0,
+  webkitgtk_4_1,
   makeWrapper,
   fetchurl,
   ...
@@ -38,7 +38,7 @@ in
 
     src = fetchurl {
       url = "${url}/DataFlowAnalysis.linux.gtk.x86_64.tar.gz";
-      hash = "sha256-RSW0LtjdmhuNNFUDVuTTcs9QpslOPIMzsFEdPZPuxEU=";
+      hash = "sha256-r8zNCfgyoOGyADgnW9vXoG7oLJ11UxH0q4CzchoOSFw=";
     };
 
     nativeBuildInputs = [makeWrapper perl];
@@ -55,7 +55,7 @@ in
       libXtst
       libsecret
       zlib
-      webkitgtk_4_0
+      webkitgtk_4_1
     ];
 
     buildCommand = ''
@@ -82,7 +82,7 @@ in
       productId=$(sed 's/id=//; t; d' $out/DataFlowAnalysisBench/.eclipseproduct)
       makeWrapper $out/DataFlowAnalysisBench/DataFlowAnalysisBench $out/bin/DataFlowAnalysisBench \
           --prefix PATH : ${jdk17}/bin \
-          --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [glib gtk3 libXtst libsecret webkitgtk_4_0]} \
+          --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [glib gtk3 libXtst libsecret webkitgtk_4_1]} \
           --prefix GIO_EXTRA_MODULES : "${glib-networking}/lib/gio/modules" \
           --prefix XDG_DATA_DIRS : "$GSETTINGS_SCHEMAS_PATH" \
           --add-flags "-configuration \$HOME/.eclipse/''${productId}_${version}/configuration"

@@ -114,7 +114,7 @@
           history_length = 100;
 
           # ------- Misc -------
-          dmenu = "${pkgs.rofi-wayland}/bin/rofi -dmenu -p dunst:";
+          dmenu = "${pkgs.rofi}/bin/rofi -dmenu -p dunst:";
           browser = "${inputs.zen-browser.packages.${pkgs.system}.default}/bin/zen -new-tab";
 
           # Window manager options
