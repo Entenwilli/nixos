@@ -26,7 +26,7 @@
     qt = {
       enable = true;
       style.package = with pkgs; [darkly darkly-qt5];
-      platformTheme = "qtct";
+      platformTheme.name = "qtct";
     };
 
     gtk = {

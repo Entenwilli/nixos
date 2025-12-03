@@ -34,13 +34,9 @@
     # Configure git
     programs.git = {
       enable = true;
-      userName = "Felix Schwickerath";
-      userEmail = "felix@fschwickerath.de";
-
-      signing.format = "ssh";
-      signing.key = "~/.ssh/sign_default.pub";
-      signing.signByDefault = true;
-      extraConfig = {
+      settings = {
+        user.name = "Felix Schwickerath";
+        user.email = "felix@fschwickerath.de";
         init.defaultBranch = "main";
         url = {
           "git@github.com:" = {
@@ -48,6 +44,10 @@
           };
         };
       };
+
+      signing.format = "ssh";
+      signing.key = "~/.ssh/sign_default.pub";
+      signing.signByDefault = true;
     };
 
     # Configure lazygit

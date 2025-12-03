@@ -115,7 +115,7 @@
 
           # ------- Misc -------
           dmenu = "${pkgs.rofi}/bin/rofi -dmenu -p dunst:";
-          browser = "${inputs.zen-browser.packages.${pkgs.system}.default}/bin/zen -new-tab";
+          browser = "${inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/zen -new-tab";
 
           # Window manager options
           title = "Dunst";
