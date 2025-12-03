@@ -333,8 +333,10 @@ in {
 
         windowrulev2 = [
           "opacity 0.90 0.85,class:^(kitty)$"
-
           "opacity 0.90 0.85,class:^(anki)$"
+          "opacity 0.90 0.85,class:^(zen-twilight)$"
+          "opacity 0.90 0.85,class:^(discord)$"
+          "opacity 0.90 0.85,class:^(spotify)$"
 
           "opacity 0.90 0.85,class:^(WebCord)$"
           "workspace 5, class:^(WebCord)$"
