@@ -37,10 +37,7 @@ in {
         main = {
           layer = "top";
           position = "top";
-          height = 0;
-          margin-top = 10;
-          margin-left = 10;
-          margin-right = 10;
+          height = 10;
           output = [
             "eDP-1"
             "DP-1"
@@ -48,9 +45,50 @@ in {
             "DP-3"
             "HDMI-A-1"
           ];
-          modules-left = ["custom/launcher" "hyprland/workspaces"];
-          modules-center = ["mpris"];
-          modules-right = ["custom/typing" "custom/weather" "backlight" "pulseaudio" "bluetooth" "network" "battery" "clock"];
+          modules-left = ["group/pill-left"];
+          modules-center = ["group/pill-center"];
+          modules-right = ["group/pill-right"];
+
+          "group/pill-workspaces" = {
+            orientation = "inherit";
+            modules = ["custom/launcher" "hyprland/workspaces"];
+          };
+
+          "group/pill-media-time" = {
+            orientation = "inherit";
+            modules = ["clock" "mpris"];
+          };
+
+          "group/pill-left" = {
+            "orientation" = "inherit";
+            "modules" = ["group/pill-workspaces" "group/pill-media-time"];
+          };
+
+          "group/pill-center" = {
+            "orientation" = "inherit";
+            "modules" = [
+              "wlr/taskbar"
+            ];
+          };
+
+          "group/pill-right" = {
+            orientation = "inherit";
+            modules = ["custom/typing" "custom/weather" "backlight" "pulseaudio" "bluetooth" "network" "battery"];
+          };
+
+          "wlr/taskbar" = {
+            "all-outputs" = true;
+            "active-first" = false;
+            "markup" = true;
+            "format" = "{icon}";
+            "rotate" = 0;
+            "spacing" = 20;
+            "tooltip-format" = "{title} | {app_id}";
+            "on-click" = "activate";
+            "on-click-right" = "fullscreen";
+            "on-click-middle" = "close";
+            "class" = "no-margin-padding";
+          };
 
           "custom/launcher" = {
             format = "󱄅";
@@ -109,6 +147,7 @@ in {
           "network" = {
             format-wifi = "{essid}  ";
             format-disconnected = "Offline 󱚼 ";
+            format-ethernet = ""; # Hide module
             on-click = "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu&";
           };
           "battery" = {
@@ -123,7 +162,7 @@ in {
           };
           "clock" = {
             interval = 60;
-            format = "{:%a %d.%m.%Y - %H:%M}";
+            format = "{:%d.%m.%Y - %H:%M}";
             tooltip-format = "<tt><small>{calendar}</small></tt>";
             calendar = {
               mode = "month";
@@ -146,130 +185,154 @@ in {
           border: none;
           border-radius: 0;
           font-family: FiraCode Nerd Font;
-          font-size: 11px;
           min-height: 0;
+          font-size: 10px;
         }
 
         window#waybar {
-          color: ${config.scheme.withHashtag.base06};
-          background-color: transparent;
+          background: rgba(0,0,0,0.2);
+        }
+
+        #pill-media-time,
+        #pill-workspaces,
+        #pill-right,
+        #pill-center {
+          padding: 0em 1em;
+          border-radius: 20pt 20pt 20pt 20pt;
+          background: rgba(30,30,46,0.7);
+          color: #FFFFFF;
         }
 
         #custom-launcher {
-          background-color: ${config.scheme.withHashtag.base0D};
+          background: #b4befe;
           color: #${config.scheme.base02};
-          padding: 0 0.5em;
-          margin-left: 0.5em;
-          font-size: 20px;
-          border-top-left-radius: 0.5em;
-          border-bottom-left-radius: 0.5em;
+          border-radius: 20pt 20pt 20pt 20pt;
+          padding-left: 1.2em;
+          padding-right: 1.2em;
+          margin-right: 1em;
+          margin-bottom: 0.3em;
+          margin-top: 0.3em;
         }
 
-        #workspaces {
-          background-color: #${config.scheme.base02};
-          border-top-right-radius: 0.5em;
-          border-bottom-right-radius: 0.5em;
+        #pill-workspaces {
+          margin: 0 1em;
         }
 
         #workspaces button {
-          padding: 0 0.5em;
-          color: #FFFFFF;
-          margin: 0.25em;
+            box-shadow: none;
+            text-shadow: none;
+            padding: 0em;
+            margin-top: 0.3em;
+            margin-bottom: 0.3em;
+            margin-left: 0em;
+            padding-left: 0.3em;
+            padding-right: 0.3em;
+            margin-right: 0em;
+            animation: ws_normal 20s ease-in-out 1;
+            border-radius: 20pt 20pt 20pt 20pt;
         }
 
         #workspaces button.active {
-          color: #${config.scheme.base0B};
-          font-weight: 700;
+            background: #b4befe;
+            color: rgba(30,30,46,0.7);
+            margin-left: 0.3em;
+            padding-left: 1.2em;
+            padding-right: 1.2em;
+            margin-right: 0.3em;
+            animation: ws_active 20s ease-in-out 1;
+            transition: all 0.4s cubic-bezier(.55, -0.68, .48, 1.682);
+            border-radius: 20pt 20pt 20pt 20pt;
+        }
+
+        #workspaces button:hover {
+            background: #b4befe;
+            color: rgba(30,30,46,0.7);
+            animation: ws_hover 20s ease-in-out 1;
+            transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
+            border-radius: 20pt 20pt 20pt 20pt;
+        }
+
+        #taskbar button {
+            box-shadow: none;
+            text-shadow: none;
+            padding: 0em;
+            margin-top: 0.3em;
+            margin-bottom: 0.3em;
+            margin-left: 0em;
+            padding-left: 0.3em;
+            padding-right: 0.3em;
+            margin-right: 0em;
+            animation: tb_normal 20s ease-in-out 1;
+        }
+
+        #taskbar button.active {
+            background: #b4befe;
+            margin-left: 0.3em;
+            padding-left: 1.2em;
+            padding-right: 1.2em;
+            margin-right: 0.3em;
+            animation: tb_active 20s ease-in-out 1;
+            transition: all 0.4s cubic-bezier(.55, -0.68, .48, 1.682);
+            border-radius: 20pt 20pt 20pt 20pt;
+        }
+
+        #taskbar button:hover {
+            background: #b4befe;
+            animation: tb_hover 20s ease-in-out 1;
+            transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
+            border-radius: 20pt 20pt 20pt 20pt;
         }
 
         #workspaces button.urgent {
-          color: #${config.scheme.base08};
         }
 
         #mpris{
-          background-color: #${config.scheme.base0B};
-          color: #${config.scheme.base02};
-          padding: 0.5em;
-          border-radius: 0.5em;
-          margin: ${margin};
+          margin-left: 2em;
         }
 
         #custom-typing {
-          background-color: #${config.scheme.base0A};
-          color: #${config.scheme.base02};
-          padding: 0 0.5em;
-          border-radius: 0.5em;
-          margin: ${margin};
+          margin: 0 1em;
         }
 
         #custom-weather {
-          background-color: #${config.scheme.base0D};
-          color: #${config.scheme.base02};
-          padding: 0 0.5em;
-          border-radius: 0.5em;
-          margin: ${margin};
+          margin: 0 1em;
         }
 
         #backlight {
-          background-color: #${config.scheme.base09};
-          color: #${config.scheme.base02};
-          padding: 0 0.5em;
-          border-radius: 0.5em;
-          margin: ${margin};
+          margin: 0 1em;
         }
 
         #pulseaudio {
-          background-color: #${config.scheme.base0C};
-          color: #${config.scheme.base02};
-          padding: 0 0.5em;
-          border-radius: 0.5em;
-          margin: ${margin};
+          margin: 0 1em;
         }
 
         #pulseaudio.muted {
-          background-color: #${config.scheme.base06};
         }
 
 
 
         #bluetooth {
-          background-color: #${config.scheme.base06};
-          color: #${config.scheme.base02};
-          padding: 0 0.5em;
-          border-radius: 0.5em;
-          margin: ${margin};
+          margin: 0 1em;
         }
 
         #bluetooth.on {
-          background-color: #${config.scheme.base0E};
         }
 
         #bluetooth.connected {
-          background-color: #${config.scheme.base0B};
         }
 
         #network {
-          background-color: #${config.scheme.base0A};
-          color: #${config.scheme.base02};
-          padding: 0 0.5em;
-          border-radius: 0.5em;
-          margin: ${margin};
+          margin: 0 1em;
         }
 
         #network.disconnected {
-          background-color: #f53c3c;
         }
 
         #battery {
-          background-color: #${config.scheme.base05};
-          color: #${config.scheme.base02};
-          padding: 0 0.5em;
-          border-radius: 0.5em;
-          margin: ${margin};
+          margin: 0 1em;
         }
 
         #battery.charging {
-          background-color: #${config.scheme.base0B};
         }
 
         @keyframes blink {
@@ -279,11 +342,9 @@ in {
         }
 
         #battery.warning:not(.charging) {
-          background-color: ${config.scheme.withHashtag.base0A};
         }
 
         #battery.critical:not(.charging) {
-          background-color: #${config.scheme.base08};
           animation-name: blink;
           animation-duration: 0.5s;
           animation-timing-function: linear;
@@ -293,11 +354,7 @@ in {
 
 
         #clock {
-          background-color: #${config.scheme.base0D};
-          color: #${config.scheme.base02};
-          padding: 0px 0.5em;
-          margin: ${margin};
-          border-radius: 0.5em;
+          margin: 0 1em;
         }
       '';
     };
