@@ -15,11 +15,8 @@
       fastfetch
       zoxide
       bat
+      bat-extras.core
     ];
-
-    home.sessionVariables = {
-      MANPAGER = "sh -c 'awk '\''{ gsub(/\x1B\[[0-9;]*m/, \"\", \$0); gsub(/.\x08/, \"\", \$0); print }'\'' | bat -p -lman'";
-    };
 
     programs.fish = {
       enable = true;
@@ -33,6 +30,7 @@
       shellInit = ''
         set -g fish_greeting
         set -g theme_date_format "+%a %H:%M"
+        batman --export-env | source
       '';
       interactiveShellInit = lib.strings.concatStrings [
         (
