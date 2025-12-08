@@ -241,7 +241,7 @@ in {
     ];
     wayland.windowManager.hyprland = {
       enable = true;
-      package = pkgs.unstable.hyprland;
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
       systemd.enable = true;
       systemd.enableXdgAutostart = true;
       importantPrefixes = ["$" "name" "bezier" "output"];
@@ -331,51 +331,51 @@ in {
           disable_splash_rendering = 1;
         };
 
-        windowrulev2 = [
-          "opacity 0.90 0.85,class:^(kitty)$"
-          "opacity 0.90 0.85,class:^(anki)$"
-          "opacity 0.90 0.85,class:^(zen-twilight)$"
-          "opacity 0.90 0.85,class:^(discord)$"
-          "opacity 0.90 0.85,class:^(spotify)$"
+        windowrule = [
+          "opacity 0.90 0.85,match:class ^(kitty)$"
+          "opacity 0.90 0.85,match:class ^(anki)$"
+          "opacity 0.90 0.85,match:class ^(zen-twilight)$"
+          "opacity 0.90 0.85,match:class ^(discord)$"
+          "opacity 0.90 0.85,match:class ^(spotify)$"
 
-          "opacity 0.90 0.85,class:^(WebCord)$"
-          "workspace 5, class:^(WebCord)$"
+          "opacity 0.90 0.85,match:class ^(WebCord)$"
+          "workspace 5, match:class ^(WebCord)$"
 
-          "opacity 0.90 0.85,title:^(Rofi.*)$"
+          "opacity 0.90 0.85,match:title ^(Rofi.*)$"
 
-          "opacity 0.90 0.85,class:^(neovide)$"
+          "opacity 0.90 0.85,match:class ^(neovide)$"
 
-          "float, class:^org\\.keepassxc\\.KeePassXC$, title:^Unlock Database - KeePassXC$"
-          "center, class:^org\\.keepassxc\\.KeePassXC$, title:^Unlock Database - KeePassXC$"
+          "float on, match:class ^org\\.keepassxc\\.KeePassXC$, match:title ^Unlock Database - KeePassXC$"
+          "center on, match:class ^org\\.keepassxc\\.KeePassXC$, match:title ^Unlock Database - KeePassXC$"
 
-          "float, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC - Browser Access Request$"
-          "center, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC - Browser Access Request$"
+          "float on, match:class ^org\\.keepassxc\\.KeePassXC$, match:title ^KeePassXC - Browser Access Request$"
+          "center on, match:class ^org\\.keepassxc\\.KeePassXC$, match:title ^KeePassXC - Browser Access Request$"
 
-          "float, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC -  Access Request$"
-          "center, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC -  Access Request$"
+          "float on, match:class ^org\\.keepassxc\\.KeePassXC$, match:title ^KeePassXC -  Access Request$"
+          "center on, match:class ^org\\.keepassxc\\.KeePassXC$, match:title ^KeePassXC -  Access Request$"
 
-          "float, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC - Passkey credentials$"
-          "center, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC - Passkey credentials$"
+          "float on, match:class ^org\\.keepassxc\\.KeePassXC$, match:title ^KeePassXC - Passkey credentials$"
+          "center on, match:class ^org\\.keepassxc\\.KeePassXC$, match:title ^KeePassXC - Passkey credentials$"
 
-          "float, class:^org\\.keepassxc\\.KeePassXC$, title:^.*\\[Locked\\] - KeePassXC"
-          "size 880 500, class:^org\\.keepassxc\\.KeePassXC$, title:^.*\\[Locked\\] - KeePassXC"
+          "float on, match:class ^org\\.keepassxc\\.KeePassXC$, match:title ^.*\\[Locked\\] - KeePassXC"
+          "size 880 500, match:class ^org\\.keepassxc\\.KeePassXC$, match:title ^.*\\[Locked\\] - KeePassXC"
 
-          "float, class:^XIVLauncher\.Core$"
+          "float on, match:class ^XIVLauncher\.Core$"
 
-          "workspace 2, class:^floorp$"
+          "workspace 2, match:class ^floorp$"
 
-          "opacity 0.90 0.85,class:^(obsidian)$"
+          "opacity 0.90 0.85,match:class ^(obsidian)$"
 
-          "float, class:^(ueberzug.*)$"
-          "noanim, class:^(ueberzug.*)$"
-          "noborder, class:^(ueberzug.*)$"
-          "noshadow, class:^(ueberzug.*)$"
+          "float on, match:class ^(ueberzug.*)$"
+          "no_anim on, match:class ^(ueberzug.*)$"
+          "border_size 0, match:class ^(ueberzug.*)$"
+          "no_shadow on, match:class ^(ueberzug.*)$"
 
-          "size 150 150, class:cover"
+          "size 150 150, match:class cover"
         ];
 
         layerrule = [
-          "blur,rofi"
+          "blur on,match:namespace rofi"
         ];
 
         "$mainMod" = "SUPER";
@@ -384,7 +384,7 @@ in {
         bind = [
           "$mainMod, Return, exec, $terminal"
           "$mainModShift, Q, killactive"
-          "$mainModShift, E, exec, rofi -show p -modi p:'rofi-power-menu'"
+          "$mainModShift, E, exec, wlogout"
           "$mainMod, V, togglefloating"
           "$mainMod, D, exec, $menu"
           "$mainMod, C, exec, rofi -show calc -modi calc -no-show-match -no-sort"

@@ -42,6 +42,9 @@
     # Hyprland flake
     hyprland.url = "github:hyprwm/Hyprland";
 
+    # Hyprshutdown flake
+    hyprshutdown.url = "github:hyprwm/hyprshutdown";
+
     # Spicetify
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";

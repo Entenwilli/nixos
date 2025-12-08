@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  inputs,
   ...
 }: {
   options = {
@@ -9,14 +10,38 @@
   };
 
   config = lib.mkIf config.rofi.enable {
+    programs.wlogout = {
+      enable = true;
+      layout = [
+        {
+          label = "Lock";
+          action = "${pkgs.hyprlock}/bin/hyprlock";
+          text = "Lock";
+          keybind = "l";
+        }
+        {
+          label = "shutdown";
+          action = "hyprshutdown --dry-run --verbose --post-cmd 'systemctl poweroff'";
+          text = "Shutdown";
+          keybind = "s";
+        }
+        {
+          label = "reboot";
+          action = "hyprshutdown --dry-run --verbose --post-cmd 'systemctl reboot'";
+          text = "Reboot";
+          keybind = "r";
+        }
+      ];
+    };
+
     home.sessionVariables = {
       DMENU_BLUETOOTH_LAUNCHER = "rofi";
     };
 
     home.packages = with pkgs; [
-      rofi-power-menu
       bemoji
       wtype
+      inputs.hyprshutdown.packages.${stdenv.hostPlatform.system}.hyprshutdown
     ];
 
     programs.rofi = {
