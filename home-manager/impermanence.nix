@@ -26,6 +26,7 @@
         ".local/share/zoxide"
         ".local/share/nvim"
         ".local/share/krita"
+        ".local/state/wireplumber"
         ".config/fcitx5"
         ".config/obsidian"
         ".config/keepassxc"

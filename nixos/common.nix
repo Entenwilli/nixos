@@ -108,7 +108,7 @@
   # Enable fish
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
-  documentation.man.generateCaches = false;
+  documentation.man.generateCaches = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.felix = {
@@ -175,6 +175,7 @@
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
+    wireplumber.enable = true;
     alsa.enable = true;
     pulse.enable = true;
   };
