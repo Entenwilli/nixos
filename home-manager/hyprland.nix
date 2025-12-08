@@ -485,6 +485,7 @@ in {
 
     services.hyprpaper = {
       enable = config.hyprland.hyprpaper.enable;
+      package = inputs.hyprpaper.packages.${pkgs.stdenv.hostPlatform.system}.hyprpaper;
       settings = {
         splash = false;
 

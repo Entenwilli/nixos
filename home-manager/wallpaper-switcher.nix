@@ -13,7 +13,7 @@
         selected_wallpaper=$(for a in "$wallpaper_dir"/*.png; do echo -en "$a\0icon\x1f$a\n" ; done | rofi -dmenu -theme wallpaper-switcher -p "Select a wallpaper:")
         current_monitor=$(hyprctl monitors -j | jq -r '.[] | select(.focused==true) | .name')
         echo "Switching wallpaper for $current_monitor to $selected_wallpaper"
-        hyprctl hyprpaper reload "$current_monitor","$selected_wallpaper"
+        hyprctl hyprpaper wallpaper "$current_monitor","$selected_wallpaper"
 
       ''
       else ''

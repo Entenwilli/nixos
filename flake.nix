@@ -42,6 +42,9 @@
     # Hyprland flake
     hyprland.url = "github:hyprwm/Hyprland";
 
+    # Hyprpaper flake
+    hyprpaper.url = "github:hyprwm/Hyprpaper";
+
     # Hyprshutdown flake
     hyprshutdown.url = "github:hyprwm/hyprshutdown";
 
