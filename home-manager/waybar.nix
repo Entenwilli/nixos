@@ -113,6 +113,9 @@ in {
             format = " {title} - {artist}";
             interval = 3;
             dynamic-len = 20;
+            ignored-players = [
+              "firefox"
+            ];
           };
           "hyprland/window" = {
           };
