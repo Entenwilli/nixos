@@ -25,7 +25,7 @@
 in
   stdenv.mkDerivation rec {
     name = "eclipse-dfa";
-    version = "4.0.0-nightly170625";
+    version = "5.0.0-nightly02122025";
     desktopItem = makeDesktopItem {
       name = "DataFlowAnalysis";
       exec = "env GDK_BACKEND=\"x11\" WEBKIT_DISABLE_COMPOSITING_MODE=1 WEBKIT_DISABLE_DMABUF_RENDERER=1 DataFlowAnalysisBench";
