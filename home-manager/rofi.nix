@@ -14,7 +14,7 @@
       enable = true;
       layout = [
         {
-          label = "Lock";
+          label = "lock";
           action = "${pkgs.hyprlock}/bin/hyprlock";
           text = "Lock";
           keybind = "l";
@@ -32,6 +32,113 @@
           keybind = "r";
         }
       ];
+      style = ''
+        * {
+          background-image: none;
+          font-size: 20px;
+        }
+
+        window {
+            background-color: transparent;
+        }
+
+        button {
+            color: #cba6f7;
+            background-color: #313244;
+            outline-style: none;
+            border: none;
+            border-width: 0px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 20%;
+            border-radius: 0px;
+            box-shadow: none;
+            text-shadow: none;
+            animation: gradient_f 20s ease-in infinite;
+        }
+
+        button:focus {
+            background-color: #cba6f7;
+            color: #cdd6f4;
+            background-size: 30%;
+        }
+
+        button:hover {
+            background-color: #cba6f7;
+            color: #cdd6f4;
+            background-size: 40%;
+            border-radius: 20px;
+            animation: gradient_f 20s ease-in infinite;
+            transition: all 0.3s cubic-bezier(.55,0.0,.28,1.682);
+        }
+
+        button:hover#lock {
+            border-radius: 20px;
+            margin : 20px 0px 20px 5px;
+        }
+
+        button:hover#logout {
+            border-radius: 20px;
+            margin : 20px 0px 20px 5px;
+        }
+
+        button:hover#suspend {
+            border-radius: 20px;
+            margin : 20px 0px 20px 5px;
+        }
+
+        button:hover#shutdown {
+            border-radius: 20px;
+            margin : 20px 0px 20px 5px;
+        }
+
+        button:hover#hibernate {
+            border-radius: 20px;
+            margin : 20px 0px 20px 5px;
+        }
+
+        button:hover#reboot {
+            border-radius: 20px;
+            margin : 20px 0px 20px 5px;
+        }
+
+        #logout,
+        #suspend,
+        #shutdown,
+        #hibernate,
+        #reboot,
+        #lock {
+            margin : 5px 0px 5px 0px;
+        }
+
+        #logout {
+          background-image: image(url("${./wlogout/logout.png}"));
+        }
+
+        #suspend {
+          background-image: image(url("${./wlogout/suspend.png}"));
+        }
+
+        #shutdown {
+          background-image: image(url("${./wlogout/shutdown.png}"));
+        }
+
+        #hibernate {
+          background-image: image(url("${./wlogout/hibernate.png}"));
+        }
+
+        #reboot {
+          background-image: image(url("${./wlogout/reboot.png}"));
+            border-radius: 0px 20px 20px 0px;
+            margin : 5px 5px 5px 0px;
+        }
+
+        #lock {
+          background-image: image(url("${./wlogout/lock.png}"));
+            border-radius: 20px 0px 0px 20px;
+            margin : 5px 0px 5px 5px;
+        }
+      '';
     };
 
     home.sessionVariables = {

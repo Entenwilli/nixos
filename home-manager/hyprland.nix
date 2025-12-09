@@ -375,6 +375,7 @@ in {
         ];
 
         layerrule = [
+          "blur on,match:namespace logout_dialog"
           "blur on,match:namespace rofi"
         ];
 
