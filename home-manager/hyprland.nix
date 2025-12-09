@@ -332,18 +332,21 @@ in {
         };
 
         windowrule = [
-          "opacity 0.90 0.85,match:class ^(kitty)$"
-          "opacity 0.90 0.85,match:class ^(anki)$"
-          "opacity 0.90 0.85,match:class ^(zen-twilight)$"
-          "opacity 0.90 0.85,match:class ^(discord)$"
-          "opacity 0.90 0.85,match:class ^(spotify)$"
+          "opacity 0.90 0.90,match:class ^(zen-twilight)$"
+          "opacity 1 override 1 override,match:class ^(zen-twilight)$ match:title (.*)(- Youtube)(.*)"
+          "opacity 1 override 1 override,match:class ^(zen-twilight)$ match:title (.*)(-Twitch)(.*)"
 
-          "opacity 0.90 0.85,match:class ^(WebCord)$"
+          "opacity 0.80 0.80,match:class ^(kitty)$"
+          "opacity 0.80 0.80,match:class ^(anki)$"
+          "opacity 0.80 0.80,match:class ^(discord)$"
+          "opacity 0.80 0.80,match:class ^(spotify)$"
+
+          "opacity 0.80 0.80,match:class ^(WebCord)$"
           "workspace 5, match:class ^(WebCord)$"
 
-          "opacity 0.90 0.85,match:title ^(Rofi.*)$"
+          "opacity 0.80 0.88,match:title ^(Rofi.*)$"
 
-          "opacity 0.90 0.85,match:class ^(neovide)$"
+          "opacity 0.80 0.80,match:class ^(neovide)$"
 
           "float on, match:class ^org\\.keepassxc\\.KeePassXC$, match:title ^Unlock Database - KeePassXC$"
           "center on, match:class ^org\\.keepassxc\\.KeePassXC$, match:title ^Unlock Database - KeePassXC$"
@@ -364,7 +367,7 @@ in {
 
           "workspace 2, match:class ^floorp$"
 
-          "opacity 0.90 0.85,match:class ^(obsidian)$"
+          "opacity 0.80 0.80,match:class ^(obsidian)$"
 
           "float on, match:class ^(ueberzug.*)$"
           "no_anim on, match:class ^(ueberzug.*)$"
