@@ -27,6 +27,9 @@
     entenvim.url = "github:Entenwilli/neovim";
     entenvim.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
+    # Quickshell
+    entenshell.url = "git+ssh://git@github.com/Entenwilli/shell";
+
     # Color theming
     base16.url = "github:SenchoPens/base16.nix";
     color-schemes.url = "github:tinted-theming/schemes";

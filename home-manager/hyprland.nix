@@ -480,7 +480,7 @@ in {
             exec-once = hyprpaper;
           ''
           else ''
-            exec-once = mpvpaper -o '--gpu-api=vulkan --hwdec=auto --vulkan-device="00000000-1200-0000-0000-000000000000" no-audio --loop-playlist shuffle' ALL ~/pictures/wallpaper/video/flower-shop-beachside.mp4;
+            exec-once = entenshell;
           ''
         )
         config.hyprland.additional_config
