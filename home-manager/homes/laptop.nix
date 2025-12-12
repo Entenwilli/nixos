@@ -9,6 +9,7 @@
     {
       scheme = "${inputs.color-schemes}/base24/catppuccin-mocha.yaml";
     }
+    ../media.nix
     ../terminal.nix
     ../impermanence.nix
     ../theming.nix

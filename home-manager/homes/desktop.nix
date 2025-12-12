@@ -13,6 +13,7 @@
     {
       scheme = "${inputs.color-schemes}/base24/catppuccin-mocha.yaml";
     }
+    ../media.nix
     ../common.nix
     ../impermanence.nix
     ../wallpaper-switcher.nix

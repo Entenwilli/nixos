@@ -109,6 +109,10 @@
     device = "/dev/disk/by-uuid/def7cbb4-3114-48ad-8060-d28fd5046e1a";
     fsType = "btrfs";
   };
+  fileSystems."/media" = {
+    device = "/dev/disk/by-uuid/e25d4296-b173-479b-8e48-78fa4d5837fc";
+    fsType = "btrfs";
+  };
 
   swapDevices = [
     {device = "/dev/disk/by-uuid/38303ad4-0b74-47b4-ada1-89062250ac84";}
