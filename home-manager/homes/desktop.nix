@@ -119,6 +119,7 @@
   ];
   home.packages = [
     inputs.entenshell.packages.${pkgs.stdenv.hostPlatform.system}.entenshell
+    pkgs.protonvpn-gui
     (pkgs.writeShellApplication {
       name = "typing";
 

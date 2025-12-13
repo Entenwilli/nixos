@@ -51,6 +51,8 @@
         }
         ".local/share/fish"
         ".local/share/shiori"
+        ".local/share/qBittorrent"
+        ".config/qBittorrent"
       ];
       files = [
         "start-webcam"

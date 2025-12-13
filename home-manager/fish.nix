@@ -26,6 +26,8 @@
         "ll" = "eza --icons -lah";
         "cat" = "bat";
         "dmenu" = "rofi -dmenu";
+        "download-video" = "yt-dlp --embed-metadata --format bestvideo/best";
+        "download-audio" = "yt-dlp --format '(bestaudio[acodec^=opus]/bestaudio)/best' --verbose --force-ipv4 --sleep-requests 1 --sleep-interval 5 --max-sleep-interval 30 --ignore-errors --no-continue --no-overwrites --add-metadata --parse-metadata '%(title)s:%(meta_title)s' --parse-metadata '%(uploader)s:%(meta_artist)s' --extract-audio --check-formats --concurrent-fragments 3 --output '%(uploader)s - %(upload_date)s - %(title)s [%(id)s].%(ext)s'";
       };
       shellInit = ''
         set -g fish_greeting
