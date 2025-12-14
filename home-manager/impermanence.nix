@@ -21,6 +21,7 @@
         "music"
         "nixos"
         "pictures"
+        ".thunderbird"
         ".config/syncthing"
         ".local/share/Anki2"
         ".local/share/zoxide"
