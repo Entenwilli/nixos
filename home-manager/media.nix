@@ -17,4 +17,11 @@
       vo = "gpu";
     };
   };
+
+  xdg.configFile."mpv/script-opts/uosc.conf".text = ''
+    default_directory=/media/videos/
+
+    languages=jp,jpn,japanese
+    subtitles_directory=/media/videos/anime/Subtitles/
+  '';
 }
