@@ -1,6 +1,10 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{inputs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   # You can import other home-manager modules here
   imports = [
     inputs.entenvim.homeManagerModules.default
@@ -71,7 +75,7 @@
   zathura.enable = true;
 
   # Enable waybar
-  waybar.enable = true;
+  waybar.enable = false;
 
   # Enable zoxide
   zoxide.enable = true;
@@ -98,7 +102,26 @@
   ];
 
   hyprland.keyboardLayout = "de";
-  hyprland.hyprpaper.enable = true;
+  home.packages = [
+    inputs.entenshell.packages.${pkgs.stdenv.hostPlatform.system}.entenshell
+    pkgs.protonvpn-gui
+    (pkgs.writeShellApplication {
+      name = "typing";
+
+      text = ''
+        value=$(fcitx5-remote -n)
+
+        if [ "$value" == "keyboard-us" ]; then
+          hyprctl devices -j | jq -r '.keyboards[] | .layout' | head -n1
+        elif [ "$value" == "mozc" ]; then
+          echo "jp"
+        fi
+      '';
+    })
+    pkgs.jq
+  ];
+
+  hyprland.hyprpaper.enable = false;
   wallpaper-switcher.enable = true;
 
   # Enable starship prompt
