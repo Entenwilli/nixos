@@ -8,7 +8,8 @@
   };
 
   config = lib.mkIf config.impermanence.enable {
-    home.persistence."/persistent/home/felix" = {
+    home.persistence."/persistent" = {
+      hideMounts = true;
       directories = [
         ".factorio"
         ".ssh"
@@ -46,14 +47,13 @@
         ".local/share/bemoji"
         ".config/qt5ct"
         ".config/qt6ct"
-        {
-          directory = ".local/share/Steam";
-          method = "symlink";
-        }
+        ".local/share/Steam"
         ".local/share/fish"
         ".local/share/shiori"
         ".local/share/qBittorrent"
         ".config/qBittorrent"
+        ".config/unity3d/Ludeon Studios/RimWorld by Ludeon Studios/"
+        ".config/unity3d/Vedal/Abandoned Archive/"
       ];
       files = [
         "start-webcam"
@@ -66,9 +66,7 @@
         ".local/state/lazygit/state.yml"
         ".cache/rofi-entry-history.txt"
         ".cache/rofi3.druncache"
-        ".local/share/zoxide/db.zo"
       ];
-      allowOther = true;
     };
   };
 }

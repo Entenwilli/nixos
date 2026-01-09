@@ -63,7 +63,7 @@
     done
 
     btrfs subvolume create /btrfs_tmp/home
-    chown -R 1000:1000 /btrfs_tmp/home
+    chown -R 1000:100 /btrfs_tmp/home
     umount /btrfs_tmp
 
   '';
@@ -91,6 +91,7 @@
   fileSystems."/home/felix" = {
     device = "/dev/disk/by-uuid/2ac0fb26-4944-4f30-8655-ba005d00f059";
     fsType = "btrfs";
+    neededForBoot = true;
     options = ["subvol=home"];
   };
 
