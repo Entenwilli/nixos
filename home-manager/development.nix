@@ -26,7 +26,7 @@
       cargo
       rustc
       openjdk17
-      jetbrains.idea-ultimate
+      jetbrains.idea
       neovide
       #inputs.pwndbg.packages.${pkgs.system}.pwndbg
     ];
