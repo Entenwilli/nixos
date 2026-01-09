@@ -70,6 +70,7 @@
     scrcpy
     android-tools
     via
+    wonderdraft
   ];
 
   programs.streamcontroller.enable = true;
