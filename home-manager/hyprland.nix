@@ -274,10 +274,6 @@ in {
           })
         config.hyprland.monitors;
 
-        experimental = {
-          xx_color_management_v4 = true;
-        };
-
         "$terminal" = "${pkgs.kitty}/bin/kitty";
         "$menu" = "${pkgs.rofi}/bin/rofi -modi drun,run -show drun";
 
