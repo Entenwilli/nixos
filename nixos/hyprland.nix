@@ -31,6 +31,7 @@ in {
     hyprsunset
     hyprpolkitagent
   ];
+  environment.etc."xdg/menus/applications.menu".source = "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
   programs.hyprland = {
     enable = true;

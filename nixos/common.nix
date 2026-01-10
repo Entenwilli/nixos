@@ -61,6 +61,8 @@
   # Enable nixos-helper
   nixos-helper.enable = true;
 
+  services.udisks2.enable = true;
+
   programs.ssh.enableAskPassword = true;
   programs.ssh.askPassword = "${pkgs.seahorse}/libexec/seahorse/ssh-askpass";
 
