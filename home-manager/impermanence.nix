@@ -38,6 +38,7 @@
         ".config/Vencord"
         ".config/discord"
         ".config/spotify"
+        ".config/Element"
         ".cache/spotify"
         ".cache/spotify/Storage"
         ".local/share/PrismLauncher"
