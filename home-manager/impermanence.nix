@@ -55,12 +55,20 @@
         ".config/qBittorrent"
         ".config/unity3d/Ludeon Studios/RimWorld by Ludeon Studios/"
         ".config/unity3d/Vedal/Abandoned Archive/"
+        ".zotero"
+        ".local/share/JetBrains"
       ];
       files = [
         "start-webcam"
         ".config/user-dirs.dirs"
         ".config/kritadisplayrc"
-        ".config/kritarc"
+        {
+          file = ".config/kritarc";
+          method = "symlink";
+        }
+        ".local/state/dolphinstaterc"
+        ".config/filetypesrc"
+        ".config/mimeapps.list"
         ".config/kritashortcutsrc"
         ".config/sops/age/keys.txt"
         ".cache/keepassxc/keepassxc.ini"
