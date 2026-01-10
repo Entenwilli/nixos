@@ -9,7 +9,7 @@
   };
 
   config = lib.mkIf config.yazi.enable {
-    home.packages = with pkgs; [ueberzugpp];
+    home.packages = with pkgs; [ueberzugpp kdePackages.dolphin];
 
     programs.yazi = {
       enable = true;

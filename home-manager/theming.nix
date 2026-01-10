@@ -13,6 +13,11 @@
       papirus-icon-theme
       libsForQt5.qt5ct
       qt6Packages.qt6ct
+      (catppuccin-kde.override
+        {
+          flavour = ["mocha"];
+          accents = ["mauve"];
+        })
     ];
 
     home.pointerCursor = {
@@ -48,6 +53,11 @@
       "gtk-4.0/assets".source = "${gtk4Dir}/assets";
       "gtk-4.0/gtk.css".source = "${gtk4Dir}/gtk.css";
       "gtk-4.0/gtk-dark.css".source = "${gtk4Dir}/gtk-dark.css";
+
+      "kdeglobals".text = ''
+        [UiSettings]
+        ColorScheme=Catppuccin-mocha-mauve
+      '';
     };
   };
 }

@@ -66,6 +66,7 @@
         ".local/state/lazygit/state.yml"
         ".cache/rofi-entry-history.txt"
         ".cache/rofi3.druncache"
+        ".config/dolphinrc"
       ];
     };
   };
