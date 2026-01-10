@@ -297,9 +297,9 @@ in {
         general = {
           gaps_in = 5;
           gaps_out = 10;
-          border_size = 2;
-          "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-          "col.inactive_border" = "rgba(595959aa)";
+          border_size = 1;
+          "col.active_border" = "rgba(0DB7D455)";
+          "col.inactive_border" = "rgba(31313600)";
           layout = "dwindle";
           allow_tearing = false;
         };
@@ -315,6 +315,28 @@ in {
             "fade, 1, 7, default"
             "workspaces, 1, 6, default"
           ];
+        };
+
+        decoration = {
+          rounding_power = 2.4;
+          rounding = 18;
+
+          blur = {
+            enabled = true;
+            xray = true;
+            new_optimizations = true;
+            size = 10;
+            passes = 3;
+          };
+
+          shadow = {
+            enabled = true;
+            ignore_window = true;
+            range = 50;
+            offset = "0 4";
+            render_power = 10;
+            color = "rgba(00000027)";
+          };
         };
 
         dwindle = {
