@@ -57,6 +57,7 @@
         ".config/unity3d/Vedal/Abandoned Archive/"
         ".zotero"
         ".local/share/JetBrains"
+        ".local/share/Wonderdraft"
       ];
       files = [
         "start-webcam"
