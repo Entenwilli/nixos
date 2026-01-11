@@ -90,14 +90,15 @@
   impermanence.enable = true;
 
   # Setup syncthing
-  services = {
-    syncthing = {
-      enable = true;
-      user = "felix";
-      dataDir = "/home/felix";
-      configDir = "/home/felix/.config/syncthing";
-    };
+  syncthing.enable = true;
+  sops.secrets."syncthing-desktop-key" = {
+    restartUnits = ["syncthing.service"];
   };
+  syncthing.keySecretName = "syncthing-desktop-key";
+  sops.secrets."syncthing-desktop-cert" = {
+    restartUnits = ["syncthing.service"];
+  };
+  syncthing.certSecretName = "syncthing-desktop-cert";
 
   # Set Hostname
   networking.hostName = "nixos-desktop";
