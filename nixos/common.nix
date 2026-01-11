@@ -63,6 +63,11 @@
 
   services.udisks2.enable = true;
 
+  programs.java = {
+    enable = true;
+    package = pkgs.javaPackages.compiler.openjdk17;
+  };
+
   programs.ssh.enableAskPassword = true;
   programs.ssh.askPassword = "${pkgs.seahorse}/libexec/seahorse/ssh-askpass";
 
