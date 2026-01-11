@@ -201,6 +201,8 @@
       };
     };
 
+    home.sessionVariables.BROWSER = "${config.programs.zen-browser.package}/bin/zen";
+
     xdg.mimeApps = let
       value = let
         zen-browser = inputs.zen-browser.packages.${system}.twilight;
