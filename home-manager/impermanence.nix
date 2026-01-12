@@ -58,25 +58,38 @@
         ".zotero"
         ".local/share/JetBrains"
         ".local/share/Wonderdraft"
+        ".config/session"
       ];
       files = [
         "start-webcam"
         ".config/user-dirs.dirs"
-        ".config/kritadisplayrc"
+        {
+          file = ".config/kritadisplayrc";
+          method = "symlink";
+        }
         {
           file = ".config/kritarc";
           method = "symlink";
         }
-        ".local/state/dolphinstaterc"
+        {
+          file = ".local/state/dolphinstaterc";
+          method = "symlink";
+        }
         ".config/filetypesrc"
         ".config/mimeapps.list"
-        ".config/kritashortcutsrc"
+        {
+          file = ".config/kritashortcutsrc";
+          method = "symlink";
+        }
         ".config/sops/age/keys.txt"
         ".cache/keepassxc/keepassxc.ini"
         ".local/state/lazygit/state.yml"
         ".cache/rofi-entry-history.txt"
         ".cache/rofi3.druncache"
-        ".config/dolphinrc"
+        {
+          file = ".config/dolphinrc";
+          method = "symlink";
+        }
       ];
     };
   };
