@@ -90,6 +90,11 @@
           file = ".config/dolphinrc";
           method = "symlink";
         }
+        {
+          file = ".local/share/user-places.xbel";
+          method = "symlink";
+        }
+        ".local/share/kxmlgui5/dolphin/dolphinui.rc"
       ];
     };
   };
