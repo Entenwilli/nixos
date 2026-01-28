@@ -164,6 +164,7 @@
     qbittorrent
     goldendict-ng
     hunspell
+    solidtime-desktop
   ];
 
   # Create Data Flow Analysis symlink

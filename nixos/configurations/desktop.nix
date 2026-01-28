@@ -71,6 +71,8 @@
     android-tools
     via
     wonderdraft
+    trackma-qt
+    ryubing
   ];
 
   programs.streamcontroller = {

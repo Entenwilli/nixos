@@ -30,6 +30,8 @@ in {
     slurp
     hyprsunset
     hyprpolkitagent
+    hyprpwcenter
+    easyeffects
   ];
   environment.etc."xdg/menus/applications.menu".source = "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
