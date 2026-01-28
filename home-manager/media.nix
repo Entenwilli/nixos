@@ -7,16 +7,29 @@
     scripts = with pkgs.mpvScripts; [
       mpris
       uosc
+      mpvacious
+      autosubsync-mpv
     ];
     config = {
-      profile = "gpu-hq";
-      gpu-context = "wayland";
-      ytdl-format = "bestvideo+bestaudio";
-      cache-default = 4000000;
-      hwdec = "auto-safe";
-      vo = "gpu";
     };
   };
+
+  xdg.configFile."mpv/mpv.conf".text = ''
+    profile=gpu-hq
+    gpu-context=wayland
+    ytdl-format=bestvideo+bestaudio
+    hwdec=auto-safe
+    vo=gpu
+
+    alang=ja,jp,jpn,japanese,en,eng,english,English,enUS,en-US
+    slang=ja,jp,jpn,japanese,en,eng,english,English,enUS,en-US
+    save-position-on-quit=yes
+    sub-auto=fuzzy
+    subs-with-matching-audio=yes
+    sub-ass-override=force
+    sub-file-paths=ass:srt:sub:subs:subtitles
+    af-add=scaletempo2
+  '';
 
   xdg.configFile."mpv/script-opts/uosc.conf".text = ''
     default_directory=/media/videos/
