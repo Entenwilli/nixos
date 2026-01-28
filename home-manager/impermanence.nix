@@ -59,6 +59,7 @@
         ".local/share/JetBrains"
         ".local/share/Wonderdraft"
         ".config/session"
+        ".config/Ryujinx"
       ];
       files = [
         "start-webcam"
@@ -75,8 +76,14 @@
           file = ".local/state/dolphinstaterc";
           method = "symlink";
         }
-        ".config/filetypesrc"
-        ".config/mimeapps.list"
+        {
+          file = ".config/filetypesrc";
+          method = "symlink";
+        }
+        {
+          file = ".config/mimeapps.list";
+          method = "symlink";
+        }
         {
           file = ".config/kritashortcutsrc";
           method = "symlink";
@@ -95,6 +102,8 @@
           method = "symlink";
         }
         ".local/share/kxmlgui5/dolphin/dolphinui.rc"
+        ".config/mpv/script-opts/subs2srs.conf"
+        ".config/qView/qView.conf"
       ];
     };
   };
