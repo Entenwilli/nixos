@@ -88,6 +88,8 @@
     path = with pkgs; [
       playerctl
       config.programs.hyprland.package
+      mpv
+      procps
     ];
   };
 
