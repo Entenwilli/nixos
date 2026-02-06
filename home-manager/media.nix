@@ -18,6 +18,7 @@
     profile=gpu-hq
     gpu-context=wayland
     ytdl-format=bestvideo+bestaudio
+    ytdl-raw-options-append="extractor-args=youtube:player-client=android_vr"
     hwdec=auto-safe
     vo=gpu
 
