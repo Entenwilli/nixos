@@ -25,7 +25,7 @@
 in
   stdenv.mkDerivation rec {
     name = "eclipse-dfa";
-    version = "5.0.0-nightly02122025";
+    version = "4.0.0-nightly-10.02.2026";
     desktopItem = makeDesktopItem {
       name = "DataFlowAnalysis";
       exec = "env GDK_BACKEND=\"x11\" WEBKIT_DISABLE_COMPOSITING_MODE=1 WEBKIT_DISABLE_DMABUF_RENDERER=1 DataFlowAnalysisBench";
@@ -38,7 +38,7 @@ in
 
     src = fetchurl {
       url = "${url}/DataFlowAnalysis.linux.gtk.x86_64.tar.gz";
-      hash = "sha256-r8zNCfgyoOGyADgnW9vXoG7oLJ11UxH0q4CzchoOSFw=";
+      hash = "sha256-eayxhG3kOAkHrulvbH/tpk+6aJdUjhZBZzbOR8WbtWA=";
     };
 
     nativeBuildInputs = [makeWrapper perl];
