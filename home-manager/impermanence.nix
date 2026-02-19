@@ -57,9 +57,13 @@
         ".config/unity3d/Vedal/Abandoned Archive/"
         ".zotero"
         ".local/share/JetBrains"
+        ".cache/JetBrains"
         ".local/share/Wonderdraft"
         ".config/session"
         ".config/Ryujinx"
+        ".config/solidtime"
+        ".config/trackma"
+        ".config/TeamSpeak"
       ];
       files = [
         "start-webcam"
