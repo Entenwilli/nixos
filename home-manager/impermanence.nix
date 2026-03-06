@@ -44,7 +44,7 @@
         ".cache/spotify/Storage"
         ".local/share/PrismLauncher"
         ".var/app/com.core447.StreamController"
-        ".zen"
+        ".config/zen"
         ".mozilla"
         ".local/share/bemoji"
         ".config/qt5ct"
