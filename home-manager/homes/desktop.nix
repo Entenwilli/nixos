@@ -133,6 +133,7 @@
       '';
     })
     pkgs.jq
+    pkgs.foliate
   ];
   hyprland.hyprpaper.enable = false;
   wallpaper-switcher.enable = false;
