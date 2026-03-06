@@ -12,10 +12,7 @@
 
   config = lib.mkIf config.discord.enable {
     home.packages = with pkgs; [
-      (discord.override {
-        withOpenASAR = true;
-        withVencord = true;
-      })
+      vesktop
       teamspeak6-client
     ];
   };

@@ -36,6 +36,7 @@
         ".config/OpenTabletDriver"
         ".config/StardewValley"
         ".config/Vencord"
+        ".config/vesktop"
         ".config/discord"
         ".config/spotify"
         ".config/Element"
