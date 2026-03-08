@@ -84,17 +84,17 @@
         spaces = {
           "Default" = {
             id = "79106985-252e-431b-8b2f-d080c4ddc8d3";
-            position = 1001;
+            position = 1000;
             icon = "📂";
           };
           "Study" = {
             id = "32cf9052-c37c-4e61-bcb1-757b7e116213";
-            position = 1002;
+            position = 2000;
             icon = "📚";
           };
           "D&D" = {
             id = "418596af-98cd-4f8e-a205-c338b2b6428d";
-            position = 1003;
+            position = 3000;
             icon = "🐉";
           };
         };
@@ -105,21 +105,21 @@
         in {
           "Timetracking" = {
             id = "ad28fe9d-de70-412a-bb80-484ff2f72feb";
-            container = containers.Default.id;
+            workspace = workspaces.Default.id;
             url = "https://time.fschwickerath.de";
             isEssential = true;
             position = 101;
           };
           "Dashboard" = {
             id = "c8de7133-2962-4e73-959e-e6e42c1f9d6a";
-            container = containers.Default.id;
+            workspace = workspaces.Default.id;
             url = "https://dashboard.fschwickerath.de";
             isEssential = true;
             position = 102;
           };
           "Wanikani" = {
             id = "4797778b-04a1-4308-bdc1-97a124494346";
-            container = containers.Default.id;
+            workspace = workspaces.Default.id;
             url = "https://wanikani.com";
             isEssential = true;
             position = 103;
@@ -127,7 +127,7 @@
           "Illias" = {
             id = "017c7063-718e-4ad5-a992-48c6000aba2c";
             workspace = workspaces."Study".id;
-            url = "https://illias.studium.kit.edu";
+            url = "https://ilias.studium.kit.edu";
             position = 200;
           };
         };
