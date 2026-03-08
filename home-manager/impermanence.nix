@@ -11,6 +11,7 @@
     home.persistence."/persistent" = {
       hideMounts = true;
       directories = [
+        ".android"
         ".factorio"
         ".ssh"
         ".xlcore"
