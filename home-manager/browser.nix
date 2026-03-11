@@ -17,7 +17,6 @@
   config = lib.mkIf config.browser.enable {
     programs.zen-browser = {
       enable = true;
-      suppressXdgMigrationWarning = true;
       policies = {
         AutofillAddressEnabled = false;
         AutofillCreditCardEnabled = false;
@@ -183,7 +182,7 @@
             }
             {
               name = "KIT Illias";
-              url = "https://illias.studium.kit.edu";
+              url = "https://ilias.studium.kit.edu";
             }
             {
               name = "KIT Campus Management";

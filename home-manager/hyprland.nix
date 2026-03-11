@@ -411,7 +411,6 @@ in {
           "$mainMod, D, exec, $menu"
           "$mainMod, C, exec, rofi -show calc -modi calc -no-show-match -no-sort"
           "$mainMod, P, pseudo"
-          "$mainMod, J, togglesplit"
           "$mainMod, F, fullscreen"
           "$mainMod, left, movefocus, l"
           "$mainMod, right, movefocus, r"
