@@ -25,6 +25,7 @@
         "pictures"
         ".thunderbird"
         ".config/syncthing"
+        ".nix-csp-wine"
         ".local/share/Anki2"
         ".local/share/zoxide"
         ".local/share/nvim"

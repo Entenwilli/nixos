@@ -15,6 +15,7 @@
   # Enable network manager
   networking.networkmanager = {
     enable = true;
+    plugins = with pkgs; [networkmanager-openvpn];
     ensureProfiles = {
       environmentFiles = [config.sops.secrets."networks.env".path];
       profiles = {

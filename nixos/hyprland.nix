@@ -22,7 +22,7 @@ in {
     dmenu-bluetooth
     wirelesstools
     wl-clipboard
-    unstable.hyprlock
+    hyprlock
     dunst
     hypridle
     bc
@@ -37,13 +37,13 @@ in {
 
   programs.hyprland = {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    #package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    #portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     #package = pkgs.unstable.hyprland;
     #portalPackage = pkgs.unstable.xdg-desktop-portal-hyprland;
   };
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  #xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome];
 
   security.pam.services.hyprlock = {
     name = "hyprlock";

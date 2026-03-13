@@ -4,7 +4,7 @@
   systemd.tmpfiles.rules = let
     rocmEnv = pkgs.symlinkJoin {
       name = "rocm-combined";
-      paths = with pkgs.unstable.rocmPackages; [
+      paths = with pkgs.rocmPackages; [
         rocblas
         hipblas
         clr
@@ -14,7 +14,7 @@
     "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
   ];
 
-  hardware.graphics.extraPackages = with pkgs.unstable; [
+  hardware.graphics.extraPackages = with pkgs; [
     rocmPackages.clr.icd
   ];
 }

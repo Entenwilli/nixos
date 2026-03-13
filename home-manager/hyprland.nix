@@ -241,9 +241,14 @@ in {
     ];
     wayland.windowManager.hyprland = {
       enable = true;
-      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+
+      package = null;
+      portalPackage = null;
+
       systemd.enable = true;
       systemd.enableXdgAutostart = true;
+      systemd.variables = ["--all"];
+
       importantPrefixes = ["$" "name" "bezier" "output"];
       settings = {
         monitorv2 = builtins.map ({
@@ -267,10 +272,10 @@ in {
             output = name;
             mode = mode;
             position = position;
-            supports_wide_color = hdr;
-            supports_hdr = hdr;
-            sdr_min_luminance = sdr_min_luminance;
-            sdr_max_luminance = sdr_max_luminance;
+            #supports_wide_color = hdr;
+            #supports_hdr = hdr;
+            #sdr_min_luminance = sdr_min_luminance;
+            #sdr_max_luminance = sdr_max_luminance;
           })
         config.hyprland.monitors;
 
@@ -349,55 +354,62 @@ in {
           disable_splash_rendering = 1;
         };
 
-        windowrule = [
-          "opacity 0.90 0.90,match:class ^(zen-twilight)$"
-          "opacity 1 override 1 override,match:class ^(zen-twilight)$ match:title (.*)(- Youtube)(.*)"
-          "opacity 1 override 1 override,match:class ^(zen-twilight)$ match:title (.*)(-Twitch)(.*)"
+        windowrulev2 = [
+          "noinitialfocus, class:(jetbrains-)(.*), float:1"
 
-          "opacity 0.80 0.80,match:class ^(kitty)$"
-          "opacity 0.80 0.80,match:class ^(anki)$"
-          "opacity 0.80 0.80,match:class ^(discord)$"
-          "opacity 0.80 0.80,match:class ^(spotify)$"
+          "bordersize 0, class:^(clipstudiopaint.exe)$"
+          "rounding 0, class:^(clipstudiopaint.exe)$"
+          "float, class:^(clipstudiopaint.exe)$"
 
-          "opacity 0.80 0.80,match:class ^(WebCord)$"
-          "workspace 5, match:class ^(WebCord)$"
+          "opacity 0.90 0.90,class:^(zen-twilight)$"
+          "opacity 1 override 1 override,class:^(zen-twilight)$, title:(.*)(- Youtube)(.*)"
+          "opacity 1 override 1 override,class:^(zen-twilight)$, title:(.*)(-Twitch)(.*)"
 
-          "opacity 0.80 0.88,match:title ^(Rofi.*)$"
+          "opacity 0.90 0.85,class:^(kitty)$"
+          "opacity 0.90 0.85,class:^(anki)$"
+          "opacity 0.90 0.85,class:^(zen-twilight)$"
+          "opacity 0.90 0.85,class:^(discord)$"
+          "opacity 0.90 0.85,class:^(spotify)$"
 
-          "opacity 0.80 0.80,match:class ^(neovide)$"
+          "opacity 0.90 0.85,class:^(WebCord)$"
+          "workspace 5, class:^(WebCord)$"
 
-          "float on, match:class ^org\\.keepassxc\\.KeePassXC$, match:title ^Unlock Database - KeePassXC$"
-          "center on, match:class ^org\\.keepassxc\\.KeePassXC$, match:title ^Unlock Database - KeePassXC$"
+          "opacity 0.90 0.85,title:^(Rofi.*)$"
 
-          "float on, match:class ^org\\.keepassxc\\.KeePassXC$, match:title ^KeePassXC - Browser Access Request$"
-          "center on, match:class ^org\\.keepassxc\\.KeePassXC$, match:title ^KeePassXC - Browser Access Request$"
+          "opacity 0.90 0.85,class:^(neovide)$"
 
-          "float on, match:class ^org\\.keepassxc\\.KeePassXC$, match:title ^KeePassXC -  Access Request$"
-          "center on, match:class ^org\\.keepassxc\\.KeePassXC$, match:title ^KeePassXC -  Access Request$"
+          "float, class:^org\\.keepassxc\\.KeePassXC$, title:^Unlock Database - KeePassXC$"
+          "center, class:^org\\.keepassxc\\.KeePassXC$, title:^Unlock Database - KeePassXC$"
 
-          "float on, match:class ^org\\.keepassxc\\.KeePassXC$, match:title ^KeePassXC - Passkey credentials$"
-          "center on, match:class ^org\\.keepassxc\\.KeePassXC$, match:title ^KeePassXC - Passkey credentials$"
+          "float, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC - Browser Access Request$"
+          "center, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC - Browser Access Request$"
 
-          "float on, match:class ^org\\.keepassxc\\.KeePassXC$, match:title ^.*\\[Locked\\] - KeePassXC"
-          "size 880 500, match:class ^org\\.keepassxc\\.KeePassXC$, match:title ^.*\\[Locked\\] - KeePassXC"
+          "float, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC -  Access Request$"
+          "center, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC -  Access Request$"
 
-          "float on, match:class ^XIVLauncher\.Core$"
+          "float, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC - Passkey credentials$"
+          "center, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC - Passkey credentials$"
 
-          "workspace 2, match:class ^floorp$"
+          "float, class:^org\\.keepassxc\\.KeePassXC$, title:^.*\\[Locked\\] - KeePassXC"
+          "size 880 500, class:^org\\.keepassxc\\.KeePassXC$, title:^.*\\[Locked\\] - KeePassXC"
 
-          "opacity 0.80 0.80,match:class ^(obsidian)$"
+          "float, class:^XIVLauncher\.Core$"
 
-          "float on, match:class ^(ueberzug.*)$"
-          "no_anim on, match:class ^(ueberzug.*)$"
-          "border_size 0, match:class ^(ueberzug.*)$"
-          "no_shadow on, match:class ^(ueberzug.*)$"
+          "workspace 2, class:^floorp$"
 
-          "size 150 150, match:class cover"
+          "opacity 0.90 0.85,class:^(obsidian)$"
+
+          "float, class:^(ueberzug.*)$"
+          "noanim, class:^(ueberzug.*)$"
+          "noborder, class:^(ueberzug.*)$"
+          "noshadow, class:^(ueberzug.*)$"
+
+          "size 150 150, class:cover"
         ];
 
         layerrule = [
-          "blur on,match:namespace logout_dialog"
-          "blur on,match:namespace rofi"
+          "blur,logout_dialog"
+          "blur,rofi"
         ];
 
         "$mainMod" = "SUPER";

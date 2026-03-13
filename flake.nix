@@ -58,6 +58,8 @@
     # Spicetify
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    csp.url = "github:h-banii/clip-studio-paint-nix";
   };
 
   outputs = {
