@@ -43,12 +43,6 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Pwndbg
-    pwndbg.url = "github:pwndbg/pwndbg";
-
-    # Hyprland flake
-    hyprland.url = "github:hyprwm/Hyprland";
-
     # Hyprpaper flake
     hyprpaper.url = "github:hyprwm/Hyprpaper";
 
