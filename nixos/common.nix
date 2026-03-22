@@ -104,6 +104,15 @@
     };
   };
 
+  security.pam.loginLimits = [
+    {
+      domain = "*";
+      type = "-";
+      item = "nofile";
+      value = "524288";
+    }
+  ];
+
   environment.sessionVariables = {
     EDITOR = "nvim";
   };

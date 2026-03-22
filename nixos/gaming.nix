@@ -9,6 +9,11 @@
   };
 
   config = lib.mkIf config.gaming.enable {
+    environment.sessionVariables = {
+      PROTON_USE_NTSYNC = 1;
+      PROTON_USE_WOW64 = 1;
+    };
+
     environment.systemPackages = with pkgs; [
       xivlauncher
       gamemode
