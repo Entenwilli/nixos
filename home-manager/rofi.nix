@@ -14,6 +14,12 @@
       enable = true;
       layout = [
         {
+          label = "suspend";
+          action = "${pkgs.systemd}/bin/systemctl suspend";
+          text = "Suspend";
+          keybind = "s";
+        }
+        {
           label = "lock";
           action = "${pkgs.hyprlock}/bin/hyprlock";
           text = "Lock";
@@ -22,14 +28,26 @@
         {
           label = "shutdown";
           action = "hyprshutdown --dry-run --verbose --post-cmd 'systemctl poweroff'";
-          text = "Shutdown";
-          keybind = "s";
+          text = "Power Down";
+          keybind = "p";
         }
         {
           label = "reboot";
           action = "hyprshutdown --dry-run --verbose --post-cmd 'systemctl reboot'";
           text = "Reboot";
           keybind = "r";
+        }
+        {
+          label = "hibernate";
+          action = "systemctl hibernate";
+          text = "Hibernate";
+          keybind = "h";
+        }
+        {
+          label = "logout";
+          action = "loginctl terminate-user $USER";
+          text = "Logout";
+          keybind = "e";
         }
       ];
       style = ''
