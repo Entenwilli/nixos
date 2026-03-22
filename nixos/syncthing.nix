@@ -23,6 +23,10 @@
     environment.persistence."/persistent".directories = [
       "/var/lib/syncthing/"
     ];
+    systemd.services."syncthing-init" = {
+      wantedBy = lib.mkForce ["graphical.target"];
+      after = lib.mkForce ["syncthing.service" "graphical.target"];
+    };
     services.syncthing = {
       enable = true;
       systemService = true;
