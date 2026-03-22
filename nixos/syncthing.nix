@@ -20,6 +20,9 @@
   };
 
   config = lib.mkIf config.syncthing.enable {
+    environment.persistence."/persistent".directories = [
+      "/var/lib/syncthing/"
+    ];
     services.syncthing = {
       enable = true;
       systemService = true;
