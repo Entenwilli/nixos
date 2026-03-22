@@ -26,8 +26,6 @@
     ../../shells
   ];
 
-  virtualisation.docker.enable = true;
-
   sops.secrets."github-token-desktop" = {
     owner = "felix";
   };
