@@ -25,7 +25,7 @@
 
     # Credential management wth sops
     sops-nix.url = "github:Mic92/sops-nix";
-    sops-nix.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     # Neovim Configuration
     entenvim.url = "github:Entenwilli/neovim";
