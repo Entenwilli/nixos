@@ -39,6 +39,7 @@
     ../languages.nix
     ../coverart.nix
     ../secrets.nix
+    ../zellij.nix
   ];
 
   # Enable home-manager
@@ -79,6 +80,9 @@
 
   # Enable rofi
   rofi.enable = true;
+
+  # Enable zellij
+  zellij.enable = true;
 
   # Enable fish
   fish.enable = true;
