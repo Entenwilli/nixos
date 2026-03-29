@@ -14,10 +14,10 @@
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = ["dm-snapshot"];
-  boot.kernelParams = ["processor.max_cstate=1" "split_lock_detect=off"];
+  boot.kernelParams = ["split_lock_detect=off"];
   boot.kernelModules = ["kvm-amd" "ntsync"];
   boot.extraModulePackages = [];
-  boot.kernelPackages = pkgs.linuxPackagesFor pkgs.linux_latest;
+  boot.kernelPackages = pkgs.linuxPackagesFor pkgs.linux_zen;
 
   boot.initrd.postResumeCommands = lib.mkAfter ''
     mkdir /btrfs_tmp
