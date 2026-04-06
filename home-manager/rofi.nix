@@ -27,13 +27,13 @@
         }
         {
           label = "shutdown";
-          action = "hyprshutdown --dry-run --verbose --post-cmd 'systemctl poweroff'";
+          action = "hyprshutdown --verbose --post-cmd 'systemctl poweroff'";
           text = "Power Down";
           keybind = "p";
         }
         {
           label = "reboot";
-          action = "hyprshutdown --dry-run --verbose --post-cmd 'systemctl reboot'";
+          action = "hyprshutdown --verbose --post-cmd 'systemctl reboot'";
           text = "Reboot";
           keybind = "r";
         }
