@@ -12,6 +12,7 @@
     {
       scheme = "${inputs.color-schemes}/base24/catppuccin-mocha.yaml";
     }
+    ../shell.nix
     ../media.nix
     ../common.nix
     ../impermanence.nix
@@ -121,7 +122,6 @@
     }
   ];
   home.packages = [
-    inputs.entenshell.packages.${pkgs.stdenv.hostPlatform.system}.entenshell
     pkgs.protonvpn-gui
     (pkgs.writeShellApplication {
       name = "typing";

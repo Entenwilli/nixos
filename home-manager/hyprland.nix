@@ -509,7 +509,6 @@ in {
             exec-once = hyprpaper;
           ''
           else ''
-            exec-once = entenshell;
           ''
         )
         config.hyprland.additional_config
