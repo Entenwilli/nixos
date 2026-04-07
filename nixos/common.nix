@@ -117,6 +117,12 @@
     EDITOR = "nvim";
   };
 
+  programs.direnv = {
+    enable = true;
+    enableFishIntegration = true;
+    loadInNixShell = true;
+  };
+
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
