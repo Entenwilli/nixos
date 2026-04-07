@@ -124,11 +124,11 @@
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1775506058,
-        "narHash": "sha256-kchTEHn1mI0YjTDvGkHxpk/7k06eJd0GHD/dAUnDUYM=",
+        "lastModified": 1775593362,
+        "narHash": "sha256-1gofvQveWA/fiMCPKT1ycUKWK/hr+oVQJqq86oT8Af8=",
         "ref": "refs/heads/main",
-        "rev": "b39887c82e698029aa24c35a13c767c949407187",
-        "revCount": 6,
+        "rev": "851fcbfb31577200c1504a638cf0bb5c36b3d4a4",
+        "revCount": 8,
         "type": "git",
         "url": "ssh://git@github.com/Entenwilli/shell"
       },
@@ -833,11 +833,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1775036866,
-        "narHash": "sha256-ZojAnPuCdy657PbTq5V0Y+AHKhZAIwSIT2cb8UgAz/U=",
+        "lastModified": 1775423009,
+        "narHash": "sha256-vPKLpjhIVWdDrfiUM8atW6YkIggCEKdSAlJPzzhkQlw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "6201e203d09599479a3b3450ed24fa81537ebc4e",
+        "rev": "68d8aa3d661f0e6bd5862291b5bb263b2a6595c9",
         "type": "github"
       },
       "original": {
@@ -933,11 +933,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1775505845,
-        "narHash": "sha256-cf6fY2Fpkw7TagQ05vkcpIt8Q2dRyUs866LlfRFaQeU=",
+        "lastModified": 1775592371,
+        "narHash": "sha256-/KqLend8jskEEGQAs8G69Bs4ktGf2GRHGBR6sztNvQI=",
         "owner": "nix-community",
         "repo": "nur",
-        "rev": "e82249778a71979f579e73ef0f21b7e6a8577634",
+        "rev": "1406889102135d6440b95f01881665b06331daec",
         "type": "github"
       },
       "original": {
