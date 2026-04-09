@@ -49,9 +49,11 @@
   # Flake caching
   nix.settings = {
     substituters = [
+      "https://binarycache.fschwickerath.de"
       "https://hyprland.cachix.org"
     ];
     trusted-public-keys = [
+      "binarycache.fschwickerath.de:485gFIlZC//bI79ITfHsCQqlCDaRlQI7HPaxDKhI7TM="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
     ];
   };
