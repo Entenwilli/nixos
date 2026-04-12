@@ -26,9 +26,11 @@ jobs:
       - uses: DeterminateSystems/determinate-nix-action@v3
       - uses: DeterminateSystems/update-flake-lock@834c491b2ece4de0bbd00d85214bb5e83b4da5c6
         with:
+          token: ${{ secrets.GH_TOKEN }}
           pr-title: "Update Nix flake inputs"
           pr-labels: |
             dependencies
             automated
           commit-msg: |
             chore: Update flake inputs
+          git-author-name: "flake-bot[bot]"
