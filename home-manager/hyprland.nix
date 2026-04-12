@@ -293,6 +293,7 @@ in {
           ];
           kb_variant = lib.mkIf (config.hyprland.keyboardLayout == "us") "altgr-intl";
           follow_mouse = "1";
+          mouse_refocus = false;
           touchpad = {
             natural_scroll = "no";
           };
@@ -359,7 +360,8 @@ in {
 
           "bordersize 0, class:^(clipstudiopaint.exe)$"
           "rounding 0, class:^(clipstudiopaint.exe)$"
-          "float, class:^(clipstudiopaint.exe)$"
+          #"stayfocused, class:^(clipstudiopaint.exe)$, title:^()$"
+          "noblur, class:^()$, title:^()$"
 
           "opacity 0.90 0.90,class:^(zen-twilight)$"
           "opacity 1 override 1 override,class:^(zen-twilight)$, title:(.*)(- Youtube)(.*)"

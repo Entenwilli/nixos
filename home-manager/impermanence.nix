@@ -33,8 +33,8 @@
         ".local/state/wireplumber"
         ".config/fcitx5"
         ".config/obsidian"
+        ".config/easyeffects"
         ".config/keepassxc"
-        ".config/JetBrains"
         ".config/OpenTabletDriver"
         ".config/StardewValley"
         ".config/Vencord"
@@ -43,6 +43,8 @@
         ".config/spotify"
         ".config/Element"
         ".cache/spotify"
+        ".wine-csp"
+        ".local/share/cspenguin"
         ".cache/spotify/Storage"
         ".local/share/PrismLauncher"
         ".var/app/com.core447.StreamController"
@@ -59,8 +61,11 @@
         ".config/unity3d/Ludeon Studios/RimWorld by Ludeon Studios/"
         ".config/unity3d/Vedal/Abandoned Archive/"
         ".zotero"
+
         ".local/share/JetBrains"
         ".cache/JetBrains"
+        ".config/JetBrains"
+
         ".local/share/Wonderdraft"
         ".config/session"
         ".config/Ryujinx"
@@ -71,6 +76,8 @@
       files = [
         "start-webcam"
         ".config/user-dirs.dirs"
+        ".local/share/applications/clipstudio.desktop"
+        ".local/share/applications/clipstudiopaint.desktop"
         {
           file = ".config/kritadisplayrc";
           method = "symlink";
