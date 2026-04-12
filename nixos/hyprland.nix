@@ -17,6 +17,15 @@ in {
     NIXOS_OZONE_WL = "1";
     QT_QPA_PLATFORMTHEME = "qt6ct";
   };
+
+  systemd.user.services."easyeffects" = {
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.easyeffects}/bin/easyeffects --service-mode --hide-window";
+    };
+    wantedBy = ["pipewire-pulse.service"];
+  };
+
   environment.systemPackages = with pkgs; [
     networkmanager_dmenu
     dmenu-bluetooth
