@@ -32,3 +32,4 @@ jobs:
             automated
           commit-msg: |
             chore: Update flake inputs
+          git-author-name: "flake-bot[bot]"
