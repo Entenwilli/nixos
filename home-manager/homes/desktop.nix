@@ -138,8 +138,9 @@
     })
     pkgs.jq
     pkgs.foliate
-    pkgs.wineWow64Packages.stable
-    pkgs.winetricks
+    #pkgs.wineWow64Packages.stable
+    pkgs.wine11
+    pkgs.unstable.winetricks
   ];
   hyprland.hyprpaper.enable = false;
   wallpaper-switcher.enable = false;
