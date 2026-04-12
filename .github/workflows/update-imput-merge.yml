@@ -1,0 +1,19 @@
+name: Flake update auto-merge
+on: 
+  pull_request:
+    types: [opened, synchronize]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  flake-auto-merge:
+    runs-on: ubuntu-latest
+    if: github.actor == 'Entenwilli' && github.event.pull_request.title == 'Update Nix flake inputs'
+    steps:
+      - name: Enable auto-merge for Flake Input Update PRs
+        run: gh pr merge --auto --rebase "$PR_URL"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
