@@ -124,11 +124,11 @@
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1775989799,
-        "narHash": "sha256-rFNouzn2NoKL3gf+28bnSvIxXUS4sGUne34mwgQaouI=",
+        "lastModified": 1776024694,
+        "narHash": "sha256-zsLyOuAhkOidcYwMB+SksOt06iOst4P3qe6QA3vabiA=",
         "ref": "refs/heads/main",
-        "rev": "fcf28f11b45a1081a7942f49a33cc264ed6a0d18",
-        "revCount": 11,
+        "rev": "8b064823b49dd5921599e9258b40385c76cd792c",
+        "revCount": 12,
         "type": "git",
         "url": "ssh://git@github.com/Entenwilli/shell"
       },
@@ -933,11 +933,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1775998845,
-        "narHash": "sha256-6mumafCtcKloXc4js6J57gf+/QQIw7sD2zHW8J5OLfM=",
+        "lastModified": 1776059126,
+        "narHash": "sha256-7qONtOmvpA6mb9Y7nyuwroPZkoFRcHK/JZtYQTeHTwo=",
         "owner": "nix-community",
         "repo": "nur",
-        "rev": "8528f8e48e09ad367e08119da5e8274ac701d6b0",
+        "rev": "d728dc3c80817748d2b35b50617dff3bc267af80",
         "type": "github"
       },
       "original": {
