@@ -3,4 +3,5 @@
 {pkgs, ...}: {
   eclipse-dfa = pkgs.callPackage ./eclipse-dfa {};
   wonderdraft = pkgs.callPackage ./wonderdraft {};
+  lnxlink = pkgs.callPackage ./lnxlink {};
 }
