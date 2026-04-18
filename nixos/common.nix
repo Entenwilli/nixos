@@ -181,20 +181,19 @@
     lnxlink
   ];
 
-  sops.secrets."desktop-lnxlink.yml" = {
-    path = "/var/lib/lnxlink/lnxlink.yml";
-    owner = config.users.users.felix.name;
-    group = config.users.users.felix.group;
-    restartUnits = ["lnxlink.service"];
-  };
-
-  systemd.services.lnxlink = {
+  systemd.user.services.lnxlink = {
     serviceConfig = {
-      ExecStart = "${pkgs.lnxlink}/bin/lnxlink -c ${config.sops.secrets."desktop-lnxlink.yml".path} -i";
+      ExecStart = "${pkgs.lnxlink}/bin/lnxlink -c ${config.home-manager.users.felix.sops.secrets."desktop-lnxlink.yml".path} -i";
       Restart = "always";
       RestartSec = "5";
     };
-    requires = ["network.target"];
+    path = with pkgs; [
+      ethtool
+      gawk
+      steam
+      wl-clipboard
+      sudo
+    ];
     wantedBy = ["default.target"];
   };
 

@@ -42,6 +42,7 @@ python3Packages.buildPythonApplication rec {
     pygobject3
     speechrecognition
     docker
+    sdbus-networkmanager
     ewmh
     flask
     opencv4
