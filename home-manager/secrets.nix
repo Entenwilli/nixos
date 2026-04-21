@@ -6,4 +6,7 @@
   sops.secrets."desktop-lnxlink.yml" = {
     mode = "0660";
   };
+  sops.secrets."laptop-lnxlink.yml" = {
+    mode = "0660";
+  };
 }

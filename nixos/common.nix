@@ -181,22 +181,6 @@
     lnxlink
   ];
 
-  systemd.user.services.lnxlink = {
-    serviceConfig = {
-      ExecStart = "${pkgs.lnxlink}/bin/lnxlink -c ${config.home-manager.users.felix.sops.secrets."desktop-lnxlink.yml".path} -i";
-      Restart = "always";
-      RestartSec = "5";
-    };
-    path = with pkgs; [
-      ethtool
-      gawk
-      steam
-      wl-clipboard
-      sudo
-    ];
-    wantedBy = ["default.target"];
-  };
-
   # Create Data Flow Analysis symlink
   system.activationScripts = {
     eclipse-dfa.text = "ln -sfn ${pkgs.eclipse-dfa}/DataFlowAnalysisBench/plugins-normalized /etc/eclipse-dfa";
