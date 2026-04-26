@@ -145,11 +145,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1775378226,
-        "narHash": "sha256-RWvdv+utzd5Jx+QdI1OXgNtzPpYkEjYiEYR7I8w+c5s=",
+        "lastModified": 1777207552,
+        "narHash": "sha256-9zUgv6LfI6+3gnuDMozB981ksd5PhBe/22cnYaOllHc=",
         "owner": "Entenwilli",
         "repo": "neovim",
-        "rev": "b5f7bdcc26df51bd2b838b222134465fc093f46f",
+        "rev": "a0cd8ef50dccec88a3d7ec1a186389cc48ff8462",
         "type": "github"
       },
       "original": {

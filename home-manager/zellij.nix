@@ -15,6 +15,8 @@
 
     programs.zellij = {
       enable = true;
+      # HACK: Unstable until fixed in stable
+      package = pkgs.unstable.zellij;
       enableFishIntegration = true;
       exitShellOnExit = true;
       settings = {
