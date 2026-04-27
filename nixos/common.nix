@@ -218,6 +218,7 @@
     nerd-fonts.jetbrains-mono
     jetbrains-mono
     ipafont
+    ipaexfont
   ];
 
   # Configure bluetooth
