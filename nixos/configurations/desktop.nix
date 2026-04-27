@@ -87,6 +87,7 @@
     wonderdraft
     trackma-qt
     ryubing
+    eclipses.eclipse-modeling
   ];
 
   programs.streamcontroller = {
