@@ -85,7 +85,7 @@
     android-tools
     via
     wonderdraft
-    trackma-qt
+    trackma-gtk
     ryubing
     eclipses.eclipse-modeling
   ];
