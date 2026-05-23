@@ -4,4 +4,5 @@
   eclipse-dfa = pkgs.callPackage ./eclipse-dfa {};
   wonderdraft = pkgs.callPackage ./wonderdraft {};
   lnxlink = pkgs.callPackage ./lnxlink {};
+  hyprland-preview-share-picker = pkgs.callPackage ./hyprland-preview-share-picker {};
 }

@@ -179,6 +179,7 @@
     hunspell
     solidtime-desktop
     lnxlink
+    hyprland-preview-share-picker
   ];
 
   # Create Data Flow Analysis symlink

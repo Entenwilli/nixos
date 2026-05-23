@@ -559,6 +559,50 @@ in {
       }
     '';
 
+    home.file.".config/hypr/xdph.conf".text = ''
+      screencopy {
+        max_fps = 144
+        allow_token_by_default = true
+        custom_picker_binary = ${pkgs.hyprland-preview-share-picker}/bin/hyprland-preview-share-picker
+      }
+    '';
+
+    home.file.".config/hyprland-preview-share-picker/config.yaml".text = ''
+      # default page selected when the picker is opened
+      default_page: outputs
+
+      window:
+        height: 500
+        width: 1000
+
+      image:
+        resize_size: 200
+        widget_size: 150
+
+      windows:
+        # minimum amount of image cards per row on the windows page
+        min_per_row: 3
+        # maximum amount of image cards per row on the windows page
+        max_per_row: 999
+        # number of clicks needed to select a window
+        clicks: 2
+        # spacing in pixels between the window cards
+        spacing: 12
+
+      outputs:
+        # number of clicks needed to select an output
+        clicks: 1
+        # show the label with the output name
+        show_label: true
+
+      region:
+        # the output needs to be in the <output>@<x>,<y>,<w>,<h> (e.g. DP-3@2789,436,756,576) format
+        command: slurp -f '%o@%x,%y,%w,%h'
+
+      # hide the token restore checkbox and use the default value instead
+      hide_token_restore: true
+    '';
+
     home.file.".config/hypr/hyprlock.conf".text = ''
       background {
         monitor =
