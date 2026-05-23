@@ -36,49 +36,17 @@ in {
 
     programs.spicetify = {
       enable = true;
-      theme = {
-        name = "SleekHyDE";
-        src = pkgs.fetchzip {
-          url = "https://github.com/HyDE-Project/HyDE/raw/refs/heads/master/Source/arcs/Spotify_Sleek.tar.gz";
-          hash = "sha256-zOTygEhGkW3n/kpDcX7oNeEyFsDSs5iMQy9OzGqkEi8=";
-        };
-      };
-      colorScheme = "custom";
-      customColorScheme = with config.scheme; {
-        text = "${base07}";
-        subtext = "${base05}";
-        nav-active-text = "${base0C}";
-        main = "${base01}";
-        main-secondary = "${base00}";
-        main-elevated = "${base01}";
-        main-transition = "${base01}";
-        highlight = "${base03}";
-        highlight-elevated = "${base03}";
-        sidebar = "${base00}";
-        player = "${base00}";
-        card = "${base00}";
-        window = "${base00}";
-        shadow = "${base00}";
-        button = "${base0C}";
-        button-secondary = "${base07}";
-        button-active = "${base0C}";
-        button-disabled = "${base07}";
-        nav-active = "${base02}";
-        tab-active = "${base02}";
-        notification = "${base03}";
-        notification-error = "${base08}";
-        playback-bar = "${base0C}";
-        play-button = "${base0C}";
-        play-button-active = "${base0C}";
-        progress-fg = "${base0C}";
-        progress-bg = "${base01}";
-        pagelink-active = "${base03}";
-        radio-btn-active = "${base03}";
-        misc = "000000";
-      };
+      theme = spicetifyPkgs.themes.catppuccin;
+      colorScheme = "mocha";
 
       enabledExtensions = with spicetifyPkgs.extensions; [
         fullAppDisplay
+        sectionMarker
+        sessionStats
+      ];
+
+      enabledCustomApps = with spicetifyPkgs.apps; [
+        lyricsPlus
       ];
     };
 
