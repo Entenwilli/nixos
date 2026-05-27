@@ -65,6 +65,7 @@
         ".local/share/JetBrains"
         ".cache/JetBrains"
         ".config/JetBrains"
+        ".java/.userPrefs/jetbrains"
 
         ".local/share/Wonderdraft"
         ".config/session"
