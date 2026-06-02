@@ -139,7 +139,8 @@
     pkgs.jq
     pkgs.foliate
     #pkgs.wineWow64Packages.stable
-    pkgs.wine11
+    #pkgs.wine11
+    pkgs.wine64Packages.unstableFull
     pkgs.unstable.winetricks
   ];
   hyprland.hyprpaper.enable = false;

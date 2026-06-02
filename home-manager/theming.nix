@@ -30,7 +30,7 @@
 
     qt = {
       enable = true;
-      style.package = with pkgs; [darkly darkly-qt5];
+      style.package = with pkgs; [darkly];
       platformTheme.name = "qtct";
     };
 
@@ -39,6 +39,7 @@
       colorScheme = "dark";
       gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
       gtk4.extraConfig.gtk-application-prefer-dark-theme = true;
+      gtk4.theme = config.gtk.theme;
 
       theme = {
         name = "catppuccin-mocha-mauve-standard";

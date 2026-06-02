@@ -36,7 +36,7 @@
           # Set font
           font = "FiraCode Nerd Font 11";
 
-          icon_path = "${pkgs.papirus-icon-theme}/share/icons/Papirus-Dark/symbolic/status";
+          #icon_path = "${pkgs.papirus-icon-theme}/share/icons/Papirus-Dark/symbolic/status";
 
           # Follow monitor with mouse
           follow = "mouse";
