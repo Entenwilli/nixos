@@ -103,7 +103,7 @@
 
   hyprland.keyboardLayout = "de";
   home.packages = [
-    pkgs.protonvpn-gui
+    pkgs.proton-vpn
     (pkgs.writeShellApplication {
       name = "typing";
 

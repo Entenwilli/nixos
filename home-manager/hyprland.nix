@@ -250,8 +250,16 @@ in {
       systemd.variables = ["--all"];
 
       importantPrefixes = ["$" "name" "bezier" "output"];
+      configType = "lua";
       settings = {
-        monitorv2 = builtins.map ({
+        mainMod = {
+          _var = "SUPER";
+        };
+        mainModShift = {
+          _var = "SUPER + SHIFT";
+        };
+
+        monitor = builtins.map ({
           name,
           mode,
           position,
@@ -279,242 +287,477 @@ in {
           })
         config.hyprland.monitors;
 
-        "$terminal" = "${pkgs.kitty}/bin/kitty";
-        "$menu" = "${pkgs.rofi}/bin/rofi -modi drun,run -show drun";
+        config = {
+          general = {
+            gaps_in = 5;
+            gaps_out = 10;
+            border_size = 1;
+            "col.active_border" = "rgba(0DB7D455)";
+            "col.inactive_border" = "rgba(31313600)";
+            layout = "dwindle";
+            allow_tearing = false;
+          };
 
-        input = {
-          kb_layout = lib.strings.concatStrings [
-            config.hyprland.keyboardLayout
-            (
-              if config.hyprland.keyboardLayout != "us"
-              then ",us"
-              else ""
-            )
+          input = {
+            kb_layout = lib.strings.concatStrings [
+              config.hyprland.keyboardLayout
+              (
+                if config.hyprland.keyboardLayout != "us"
+                then ",us"
+                else ""
+              )
+            ];
+            kb_variant = lib.mkIf (config.hyprland.keyboardLayout == "us") "altgr-intl";
+            follow_mouse = 1;
+            mouse_refocus = false;
+            touchpad = {
+              natural_scroll = false;
+            };
+            sensitivity = "-0.3";
+          };
+
+          decoration = {
+            rounding_power = 2.4;
+            rounding = 18;
+
+            blur = {
+              enabled = true;
+              xray = true;
+              new_optimizations = true;
+              size = 10;
+              passes = 3;
+            };
+
+            shadow = {
+              enabled = true;
+              range = 50;
+              offset = "0 4";
+              render_power = 10;
+              color = "rgba(00000027)";
+            };
+          };
+
+          dwindle = {
+            preserve_split = true;
+          };
+
+          misc = {
+            disable_hyprland_logo = 1;
+            disable_splash_rendering = 1;
+          };
+
+          debug = {
+            disable_logs = false;
+          };
+        };
+
+        #animations = {
+        #  enabled = "yes";
+        #  bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
+        #  animation = [
+        #    "windows, 1, 7, myBezier"
+        #    "windowsOut, 1, 7, default, popin 80%"
+        #    "border, 1, 10, default"
+        #    "borderangle, 1, 8, default"
+        #    "fade, 1, 7, default"
+        #    "workspaces, 1, 6, default"
+        #  ];
+        #};
+
+        window_rule = [
+          {
+            no_initial_focus = true;
+            match.class = "(jetbrains-)(.*)";
+            match.float = true;
+          }
+          {
+            border_size = 0;
+            rounding = 0;
+            match.class = "^(clipstudiopaint.exe)$";
+          }
+          {
+            opacity = "0.90 0.90";
+            match.class = "^(zen-twilight)$";
+          }
+          {
+            opacity = "1 override 1 override";
+            match.class = "^(zen-twilight)$";
+            match.title = "(.*)(- Youtube)(.*)";
+          }
+          {
+            opacity = "1 override 1 override";
+            match.class = "^(zen-twilight)$";
+            match.title = "(.*)(-Twitch)(.*)";
+          }
+          {
+            opacity = "0.90 0.85";
+            match.class = "^(kitty)$";
+          }
+          {
+            opacity = "0.90 0.85";
+            match.class = "^(anki)$";
+          }
+          {
+            opacity = "0.90 0.85";
+            match.class = "^(discord)$";
+          }
+          {
+            opacity = "0.90 0.85";
+            match.class = "^(spotify)$";
+          }
+          {
+            opacity = "0.90 0.85";
+            match.class = "^(VenCord)$";
+          }
+          {
+            opacity = "0.90 0.85";
+            match.title = "^(Rofi.*)$";
+          }
+          {
+            opacity = "0.90 0.85";
+            match.class = "^(neovide)$";
+          }
+          {
+            float = true;
+            center = true;
+            match.class = "^org\\.keepassxc\\.KeePassXC$, title:^Unlock Database - KeePassXC$";
+          }
+          {
+            float = true;
+            center = true;
+            match.class = "^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC - Browser Access Request$";
+          }
+          {
+            float = true;
+            center = true;
+            match.class = "^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC -  Access Request$";
+          }
+          {
+            float = true;
+            center = true;
+            match.class = "^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC - Passkey credentials$";
+          }
+          {
+            float = true;
+            size = "880 500";
+            match.class = "^org\\.keepassxc\\.KeePassXC$, title:^.*\\[Locked\\] - KeePassXC";
+          }
+          {
+            float = true;
+            match.class = "^XIVLauncher\.Core$";
+          }
+          {
+            opacity = "0.90 0.85";
+            match.class = "^(obsidian)$";
+          }
+          {
+            float = true;
+            no_anim = true;
+            no_shadow = true;
+            border_size = 0;
+            match.class = "^(ueberzug.*)$";
+          }
+          {
+            size = "150 150";
+            match.class = "cover";
+          }
+        ];
+
+        layer_rule = [
+          {
+            blur = true;
+            match.namespace = "logout_dialog";
+          }
+          {
+            blur = true;
+            match.namespace = "rofi";
+          }
+        ];
+
+        bind =
+          [
+            {
+              _args = [
+                (lib.generators.mkLuaInline "mainMod ..\"+ Return\"")
+                (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"kitty\")")
+              ];
+            }
+            {
+              _args = [
+                (lib.generators.mkLuaInline "mainModShift ..\"+ Q\"")
+                (lib.generators.mkLuaInline "hl.dsp.window.close()")
+              ];
+            }
+            {
+              _args = [
+                (lib.generators.mkLuaInline "mainModShift ..\"+ E\"")
+                (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"wlogout\")")
+              ];
+            }
+            {
+              _args = [
+                (lib.generators.mkLuaInline "mainMod ..\"+ V\"")
+                (lib.generators.mkLuaInline "hl.dsp.window.float({ action = \"toggle\"})")
+              ];
+            }
+            {
+              _args = [
+                (lib.generators.mkLuaInline "mainMod ..\"+ D\"")
+                (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.rofi}/bin/rofi -modi drun,run -show drun\")")
+              ];
+            }
+            {
+              _args = [
+                (lib.generators.mkLuaInline "mainMod ..\"+ C\"")
+                (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"rofi -show calc -modi calc -no-show-match -no-sort\")")
+              ];
+            }
+            {
+              _args = [
+                (lib.generators.mkLuaInline "mainMod..\"+ Period\"")
+                (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.bemoji}/bin/bemoji -t\")")
+              ];
+            }
+            {
+              _args = [
+                (lib.generators.mkLuaInline "mainMod ..\"+ P\"")
+                (lib.generators.mkLuaInline "hl.dsp.window.pseudo()")
+              ];
+            }
+            {
+              _args = [
+                (lib.generators.mkLuaInline "mainMod ..\"+ F\"")
+                (lib.generators.mkLuaInline "hl.dsp.window.fullscreen()")
+              ];
+            }
+            {
+              _args = [
+                (lib.generators.mkLuaInline "mainMod ..\"+ S\"")
+                (lib.generators.mkLuaInline "hl.dsp.workspace.toggle_special(\"magic\")")
+              ];
+            }
+            {
+              _args = [
+                (lib.generators.mkLuaInline "mainMod..\"+ SHIFT + S\"")
+                (lib.generators.mkLuaInline "hl.dsp.window.move({workspace = \"special:magic\"})")
+              ];
+            }
+            {
+              _args = [
+                (lib.generators.mkLuaInline "mainMod..\"+ mouse_down\"")
+                (lib.generators.mkLuaInline "hl.dsp.focus({workspace = \"e+1\"})")
+              ];
+            }
+            {
+              _args = [
+                (lib.generators.mkLuaInline "mainMod..\"+ mouse_up\"")
+                (lib.generators.mkLuaInline "hl.dsp.focus({workspace = \"e-1\"})")
+              ];
+            }
+            {
+              _args = [
+                "XF86AudioRaiseVolume"
+                (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${volume}/bin/volume inc 3\")")
+              ];
+            }
+            {
+              _args = [
+                "XF86AudioLowerVolume"
+                (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${volume}/bin/volume dec 3\")")
+              ];
+            }
+            {
+              _args = [
+                "XF86AudioMute"
+                (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${volume}/bin/volume mute\")")
+              ];
+            }
+            {
+              _args = [
+                "XF86AudioPlay"
+                (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.playerctl}/bin/playerctl play-pause\")")
+              ];
+            }
+            {
+              _args = [
+                "XF86AudioPause"
+                (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.playerctl}/bin/playerctl play-pause\")")
+              ];
+            }
+            {
+              _args = [
+                "XF86MonBrightnessUp"
+                #TODO: Convert to nix
+                (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"/home/felix/.config/scripts/backlight.sh inc 5\")")
+              ];
+            }
+            {
+              _args = [
+                "XF86MonBrightnessDown"
+                #TODO: Convert to nix
+                (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"/home/felix/.config/scripts/backlight.sh dec 5\")")
+              ];
+            }
+            {
+              _args = [
+                (lib.generators.mkLuaInline "mainMod ..\" + mouse:272\"")
+                (lib.generators.mkLuaInline "hl.dsp.window.drag()")
+                {mouse = true;}
+              ];
+            }
+            {
+              _args = [
+                (lib.generators.mkLuaInline "mainMod ..\" + mouse:273\"")
+                (lib.generators.mkLuaInline "hl.dsp.window.resize()")
+                {mouse = true;}
+              ];
+            }
+          ]
+          ++ builtins.map ({
+            key,
+            workspace,
+          }: {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. \" + ${builtins.toString key}\"")
+              (lib.generators.mkLuaInline "hl.dsp.focus({ workspace = ${builtins.toString workspace}})")
+            ];
+          }) [
+            {
+              key = 1;
+              workspace = 1;
+            }
+            {
+              key = 2;
+              workspace = 2;
+            }
+            {
+              key = 3;
+              workspace = 3;
+            }
+            {
+              key = 4;
+              workspace = 4;
+            }
+            {
+              key = 5;
+              workspace = 5;
+            }
+            {
+              key = 6;
+              workspace = 6;
+            }
+            {
+              key = 7;
+              workspace = 7;
+            }
+            {
+              key = 8;
+              workspace = 8;
+            }
+            {
+              key = 9;
+              workspace = 9;
+            }
+            {
+              key = 0;
+              workspace = 10;
+            }
+          ]
+          ++ builtins.map ({
+            key,
+            workspace,
+          }: {
+            _args = [
+              (lib.generators.mkLuaInline "mainMod .. \" + SHIFT + ${builtins.toString key}\"")
+              (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = ${builtins.toString workspace}})")
+            ];
+          }) [
+            {
+              key = 1;
+              workspace = 1;
+            }
+            {
+              key = 2;
+              workspace = 2;
+            }
+            {
+              key = 3;
+              workspace = 3;
+            }
+            {
+              key = 4;
+              workspace = 4;
+            }
+            {
+              key = 5;
+              workspace = 5;
+            }
+            {
+              key = 6;
+              workspace = 6;
+            }
+            {
+              key = 7;
+              workspace = 7;
+            }
+            {
+              key = 8;
+              workspace = 8;
+            }
+            {
+              key = 9;
+              workspace = 9;
+            }
+            {
+              key = 0;
+              workspace = 10;
+            }
           ];
-          kb_variant = lib.mkIf (config.hyprland.keyboardLayout == "us") "altgr-intl";
-          follow_mouse = "1";
-          mouse_refocus = false;
-          touchpad = {
-            natural_scroll = "no";
-          };
-          sensitivity = "-0.3";
-        };
-
-        general = {
-          gaps_in = 5;
-          gaps_out = 10;
-          border_size = 1;
-          "col.active_border" = "rgba(0DB7D455)";
-          "col.inactive_border" = "rgba(31313600)";
-          layout = "dwindle";
-          allow_tearing = false;
-        };
-
-        animations = {
-          enabled = "yes";
-          bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
-          animation = [
-            "windows, 1, 7, myBezier"
-            "windowsOut, 1, 7, default, popin 80%"
-            "border, 1, 10, default"
-            "borderangle, 1, 8, default"
-            "fade, 1, 7, default"
-            "workspaces, 1, 6, default"
+        on = {
+          _args = [
+            "hyprland.start"
+            (lib.generators.mkLuaInline ("function()\n"
+              + lib.strings.concatMapStrings (command: "hl.exec_cmd(\"${command}\")\n") [
+                "hyprlock"
+                "hypridle"
+                "systemctl --user start hyprpolkitagent"
+                "keepassxc"
+                "${pkgs.clipse}/bin/clipse -listen"
+                "fcitx5 -d"
+                "systemctl --user import-environment QT_QPA_PLATFORMTHEME DBUS_SESSION_ADDRESS"
+              ]
+              + "end"))
           ];
         };
-
-        decoration = {
-          rounding_power = 2.4;
-          rounding = 18;
-
-          blur = {
-            enabled = true;
-            xray = true;
-            new_optimizations = true;
-            size = 10;
-            passes = 3;
-          };
-
-          shadow = {
-            enabled = true;
-            ignore_window = true;
-            range = 50;
-            offset = "0 4";
-            render_power = 10;
-            color = "rgba(00000027)";
-          };
-        };
-
-        dwindle = {
-          pseudotile = "yes";
-          preserve_split = "yes";
-        };
-
-        misc = {
-          disable_hyprland_logo = 1;
-          disable_splash_rendering = 1;
-        };
-
-        windowrulev2 = [
-          "noinitialfocus, class:(jetbrains-)(.*), float:1"
-
-          "bordersize 0, class:^(clipstudiopaint.exe)$"
-          "rounding 0, class:^(clipstudiopaint.exe)$"
-          #"stayfocused, class:^(clipstudiopaint.exe)$, title:^()$"
-          "noblur, class:^()$, title:^()$"
-
-          "opacity 0.90 0.90,class:^(zen-twilight)$"
-          "opacity 1 override 1 override,class:^(zen-twilight)$, title:(.*)(- Youtube)(.*)"
-          "opacity 1 override 1 override,class:^(zen-twilight)$, title:(.*)(-Twitch)(.*)"
-
-          "opacity 0.90 0.85,class:^(kitty)$"
-          "opacity 0.90 0.85,class:^(anki)$"
-          "opacity 0.90 0.85,class:^(zen-twilight)$"
-          "opacity 0.90 0.85,class:^(discord)$"
-          "opacity 0.90 0.85,class:^(spotify)$"
-
-          "opacity 0.90 0.85,class:^(WebCord)$"
-          "workspace 5, class:^(WebCord)$"
-
-          "opacity 0.90 0.85,title:^(Rofi.*)$"
-
-          "opacity 0.90 0.85,class:^(neovide)$"
-
-          "float, class:^org\\.keepassxc\\.KeePassXC$, title:^Unlock Database - KeePassXC$"
-          "center, class:^org\\.keepassxc\\.KeePassXC$, title:^Unlock Database - KeePassXC$"
-
-          "float, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC - Browser Access Request$"
-          "center, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC - Browser Access Request$"
-
-          "float, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC -  Access Request$"
-          "center, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC -  Access Request$"
-
-          "float, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC - Passkey credentials$"
-          "center, class:^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC - Passkey credentials$"
-
-          "float, class:^org\\.keepassxc\\.KeePassXC$, title:^.*\\[Locked\\] - KeePassXC"
-          "size 880 500, class:^org\\.keepassxc\\.KeePassXC$, title:^.*\\[Locked\\] - KeePassXC"
-
-          "float, class:^XIVLauncher\.Core$"
-
-          "workspace 2, class:^floorp$"
-
-          "opacity 0.90 0.85,class:^(obsidian)$"
-
-          "float, class:^(ueberzug.*)$"
-          "noanim, class:^(ueberzug.*)$"
-          "noborder, class:^(ueberzug.*)$"
-          "noshadow, class:^(ueberzug.*)$"
-
-          "size 150 150, class:cover"
+        env = [
+          {
+            _args = [
+              "QT_QPA_PLATFORMTHEME"
+              "qt6ct"
+            ];
+          }
+          {
+            _args = [
+              "XDG_SESSION_TYPE"
+              "wayland"
+            ];
+          }
         ];
-
-        layerrule = [
-          "blur,logout_dialog"
-          "blur,rofi"
+        device = [
+          {
+            name = "keychron-keychron-q1";
+            kb_layout = "us";
+            kb_variant = "altgr-intl";
+            resolve_binds_by_sym = true;
+          }
+          {
+            name = "keychron-keychron-q1-keyboard";
+            kb_layout = "us";
+            kb_variant = "altgr-intl";
+            resolve_binds_by_sym = true;
+          }
         ];
-
-        "$mainMod" = "SUPER";
-        "$mainModShift" = "SUPER_SHIFT";
-
-        bind = [
-          "$mainMod, Return, exec, $terminal"
-          "$mainModShift, Q, killactive"
-          "$mainModShift, E, exec, wlogout"
-          "$mainMod, V, togglefloating"
-          "$mainMod, D, exec, $menu"
-          "$mainMod, C, exec, rofi -show calc -modi calc -no-show-match -no-sort"
-          "$mainMod, P, pseudo"
-          "$mainMod, F, fullscreen"
-          "$mainMod, left, movefocus, l"
-          "$mainMod, right, movefocus, r"
-          "$mainMod, up, movefocus, u"
-          "$mainMod, down, movefocus, d"
-          "$mainMod, 1, workspace, 1"
-          "$mainMod, 2, workspace, 2"
-          "$mainMod, 3, workspace, 3"
-          "$mainMod, 4, workspace, 4"
-          "$mainMod, 5, workspace, 5"
-          "$mainMod, 6, workspace, 6"
-          "$mainMod, 7, workspace, 7"
-          "$mainMod, 8, workspace, 8"
-          "$mainMod, 9, workspace, 9"
-          "$mainMod, 0, workspace, 10"
-          "$mainMod SHIFT, 1, movetoworkspace, 1"
-          "$mainMod SHIFT, 2, movetoworkspace, 2"
-          "$mainMod SHIFT, 3, movetoworkspace, 3"
-          "$mainMod SHIFT, 4, movetoworkspace, 4"
-          "$mainMod SHIFT, 5, movetoworkspace, 5"
-          "$mainMod SHIFT, 6, movetoworkspace, 6"
-          "$mainMod SHIFT, 7, movetoworkspace, 7"
-          "$mainMod SHIFT, 8, movetoworkspace, 8"
-          "$mainMod SHIFT, 9, movetoworkspace, 9"
-          "$mainMod SHIFT, 0, movetoworkspace, 10"
-          "$mainMod, S, togglespecialworkspace, magic"
-          "$mainMod SHIFT, S, movetoworkspace, special:magic"
-          "$mainMod, mouse_down, workspace, e+1"
-          "$mainMod, mouse_up, workspace, e-1"
-          ",XF86AudioRaiseVolume,       exec, ${volume}/bin/volume inc 3"
-          ",XF86AudioLowerVolume,       exec, ${volume}/bin/volume dec 3"
-          ",XF86AudioMute,              exec, ${volume}/bin/volume mute"
-          ",XF86AudioPlay,              exec, playerctl play-pause"
-          ",XF86AudioPause,             exec, playerctl play-pause"
-          ",XF86MonBrightnessUp,        exec, /home/felix/.config/scripts/backlight.sh inc 5"
-          ",XF86MonBrightnessDown,      exec, /home/felix/.config/scripts/backlight.sh dec 5"
-          "$mainMod,Period,             exec, ${pkgs.bemoji}/bin/bemoji -t"
-        ];
-        bindm = [
-          "$mainMod, mouse:272, movewindow"
-          "$mainMod, mouse:273, resizewindow"
-        ];
-        debug = {
-          disable_logs = false;
-        };
       };
-      extraConfig = lib.strings.concatStrings [
-        ''
-          env = QT_QPA_PLATFORMTHEME,qt6ct
-          env = XDG_SESSION_TYPE,wayland
-
-          exec-once = hyprlock;
-          exec-once = hypridle;
-          exec-once = systemctl --user start hyprpolkitagent;
-          exec-once = keepassxc;
-          exec-once = ${pkgs.clipse}/bin/clipse -listen;
-          exec-once = fcitx5 -d
-
-          exec-once = dbus-update-activation-environment --systemd --all
-          exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME DBUS_SESSION_ADDRESS
-
-          device {
-            name = keychron-keychron-q1
-            kb_layout = us
-            kb_variant = altgr-intl
-            resolve_binds_by_sym = 1
-          }
-
-          device {
-            name = keychron-keychron-q1-keyboard
-            kb_layout = us
-            kb_variant = altgr-intl
-            resolve_binds_by_sym = 1
-          }
-
-
-          master {
-              new_status = master
-          }
-        ''
-        (
-          if (config.hyprland.hyprpaper.enable)
-          then ''
-            exec-once = hyprpaper;
-          ''
-          else ''
-          ''
-        )
-        config.hyprland.additional_config
-      ];
     };
 
     services.hyprpaper = {
