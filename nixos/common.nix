@@ -16,6 +16,7 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
+      outputs.overlays.darkly
       inputs.nur.overlays.default
     ];
     config = {

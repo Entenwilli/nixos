@@ -34,4 +34,12 @@
       config.allowUnfree = true;
     };
   };
+
+  #FIXME: Remove darkly-qt5 and flake input when qt5 is no longer used
+  darkly = final: _prev: {
+    darkly_nixpkgs = import inputs.darkly_nixpkgs {
+      system = final.stdenv.hostPlatform.system;
+      config.allowUnfree = true;
+    };
+  };
 }

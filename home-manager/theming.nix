@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   config,
   pkgs,
@@ -30,7 +31,8 @@
 
     qt = {
       enable = true;
-      style.package = with pkgs; [darkly];
+      #FIXME: Remove darkly-qt5 and flake input when qt5 is no longer used
+      style.package = with pkgs; [(lib.hiPrio darkly) pkgs.darkly_nixpkgs.darkly-qt5];
       platformTheme.name = "qtct";
     };
 
