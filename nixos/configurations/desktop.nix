@@ -58,23 +58,12 @@
       enable = true;
       efiSupport = true;
       devices = ["nodev"];
-      extraEntries = ''
-        menuentry "Windows 11" --class windows {
-          insmod part_gpt
-          insmod fat
-          insmod search_fs_uuid
-          insmod chain
-          search --fs-uuid --set=root 9237-E870
-          chainloader /EFI/Microsoft/Boot/bootmgfw.efi
-        }
-      '';
       gfxmodeEfi = "1920x1080";
       gfxpayloadEfi = "keep";
       theme = "${pkgs.catppuccin-grub}";
       splashImage = "${pkgs.catppuccin-grub}/background.png";
     };
   };
-  boot.supportedFilesystems = ["ntfs"];
 
   # Enable steam
   # Desktop packages only
