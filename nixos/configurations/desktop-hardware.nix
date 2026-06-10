@@ -130,7 +130,7 @@
     fsType = "btrfs";
   };
   fileSystems."/media" = {
-    device = "/dev/disk/by-uuid/e25d4296-b173-479b-8e48-78fa4d5837fc";
+    device = "/dev/sdc1";
     fsType = "btrfs";
   };
 
