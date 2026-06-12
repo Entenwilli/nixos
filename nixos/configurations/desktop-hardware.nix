@@ -29,13 +29,17 @@
 
     services.prune-subvolumes = {
       requiredBy = ["initrd.target"];
-      before = ["local-fs-pre.target"];
+      before = ["sysroot.mount"];
       after = [
         "initrd-root-device.target"
-        "systemd-hibernate-resume.service"
+        "local-fs-pre.target"
       ];
       unitConfig.DefaultDependencies = false;
-      serviceConfig.Type = "oneshot";
+      serviceConfig = {
+        Type = "oneshot";
+        StandardOutput = "journal+console";
+        StandardError = "journal+console";
+      };
       script = ''
         mkdir /btrfs_tmp
         mount /dev/NixOS/Root /btrfs_tmp
