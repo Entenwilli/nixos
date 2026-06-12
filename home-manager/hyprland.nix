@@ -249,7 +249,7 @@ in {
       systemd.enableXdgAutostart = true;
       systemd.variables = ["--all"];
 
-      importantPrefixes = ["$" "name" "bezier" "output"];
+      importantPrefixes = ["$" "name" "bezier" "output" "curve"];
       configType = "lua";
       settings = {
         mainMod = {
@@ -345,26 +345,65 @@ in {
             disable_hyprland_logo = 1;
             disable_splash_rendering = 1;
           };
-
-          debug = {
-            disable_logs = false;
-          };
         };
 
-        #animations = {
-        #  enabled = "yes";
-        #  bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
-        #  animation = [
-        #    "windows, 1, 7, myBezier"
-        #    "windowsOut, 1, 7, default, popin 80%"
-        #    "border, 1, 10, default"
-        #    "borderangle, 1, 8, default"
-        #    "fade, 1, 7, default"
-        #    "workspaces, 1, 6, default"
-        #  ];
-        #};
+        animation = [
+          {
+            leaf = "windows";
+            enabled = true;
+            speed = 7;
+            bezier = "windowBezier";
+          }
+          {
+            leaf = "windowsOut";
+            enabled = true;
+            speed = 7;
+            bezier = "default";
+          }
+          {
+            leaf = "border";
+            enabled = true;
+            speed = 10;
+            bezier = "default";
+          }
+          {
+            leaf = "borderangle";
+            enabled = true;
+            speed = 8;
+            bezier = "default";
+          }
+          {
+            leaf = "fade";
+            enabled = true;
+            speed = 7;
+            bezier = "default";
+          }
+          {
+            leaf = "workspaces";
+            enabled = true;
+            speed = 6;
+            bezier = "default";
+          }
+        ];
+
+        curve = [
+          {
+            _args = [
+              "windowBezier"
+              {
+                type = "bezier";
+                points = [[0.05 0.90] [0.1 1.05]];
+              }
+            ];
+          }
+        ];
 
         window_rule = [
+          # Default rule
+          {
+            opacity = "0.85 0.80";
+            match.class = ".*";
+          }
           {
             no_initial_focus = true;
             match.class = "(jetbrains-)(.*)";
@@ -373,82 +412,46 @@ in {
           {
             border_size = 0;
             rounding = 0;
+            opacity = "1 override 1 override";
             match.class = "^(clipstudiopaint.exe)$";
           }
           {
-            opacity = "0.90 0.90";
-            match.class = "^(zen-twilight)$";
-          }
-          {
             opacity = "1 override 1 override";
             match.class = "^(zen-twilight)$";
-            match.title = "(.*)(- Youtube)(.*)";
-          }
-          {
-            opacity = "1 override 1 override";
-            match.class = "^(zen-twilight)$";
-            match.title = "(.*)(-Twitch)(.*)";
-          }
-          {
-            opacity = "0.90 0.85";
-            match.class = "^(kitty)$";
-          }
-          {
-            opacity = "0.90 0.85";
-            match.class = "^(anki)$";
-          }
-          {
-            opacity = "0.90 0.85";
-            match.class = "^(discord)$";
-          }
-          {
-            opacity = "0.90 0.85";
-            match.class = "^(spotify)$";
-          }
-          {
-            opacity = "0.90 0.85";
-            match.class = "^(VenCord)$";
-          }
-          {
-            opacity = "0.90 0.85";
-            match.title = "^(Rofi.*)$";
-          }
-          {
-            opacity = "0.90 0.85";
-            match.class = "^(neovide)$";
           }
           {
             float = true;
             center = true;
-            match.class = "^org\\.keepassxc\\.KeePassXC$, title:^Unlock Database - KeePassXC$";
+            match.class = "^org\\.keepassxc\\.KeePassXC$";
+            match.title = "^Unlock Database - KeePassXC$";
           }
           {
             float = true;
             center = true;
-            match.class = "^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC - Browser Access Request$";
+            match.class = "^org\\.keepassxc\\.KeePassXC$";
+            match.title = "^KeePassXC - Browser Access Request$";
           }
           {
             float = true;
             center = true;
-            match.class = "^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC -  Access Request$";
+            match.class = "^org\\.keepassxc\\.KeePassXC$";
+            match.title = "^KeePassXC -  Access Request$";
           }
           {
             float = true;
             center = true;
-            match.class = "^org\\.keepassxc\\.KeePassXC$, title:^KeePassXC - Passkey credentials$";
+            match.class = "^org\\.keepassxc\\.KeePassXC$";
+            match.title = "^KeePassXC - Passkey credentials$";
           }
           {
             float = true;
             size = "880 500";
-            match.class = "^org\\.keepassxc\\.KeePassXC$, title:^.*\\[Locked\\] - KeePassXC";
+            match.class = "^org\\.keepassxc\\.KeePassXC$";
+            match.title = "^.*\\[Locked\\] - KeePassXC";
           }
           {
             float = true;
             match.class = "^XIVLauncher\.Core$";
-          }
-          {
-            opacity = "0.90 0.85";
-            match.class = "^(obsidian)$";
           }
           {
             float = true;
