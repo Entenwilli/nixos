@@ -287,6 +287,26 @@
         "type": "github"
       }
     },
+    "helium-browser": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1781264587,
+        "narHash": "sha256-SoILyWu6VcW2XApd1h3GnaM5iTL3WtF7Llx5OpWYk9g=",
+        "owner": "oxcl",
+        "repo": "nix-flake-helium-browser",
+        "rev": "4da5eba67ece1400e61a2500b85fc02df9497497",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxcl",
+        "repo": "nix-flake-helium-browser",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -1009,6 +1029,7 @@
         "entenvim": "entenvim",
         "flake-utils": "flake-utils_2",
         "hardware": "hardware",
+        "helium-browser": "helium-browser",
         "home-manager": "home-manager",
         "hyprpaper": "hyprpaper",
         "hyprshutdown": "hyprshutdown",

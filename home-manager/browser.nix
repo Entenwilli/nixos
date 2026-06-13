@@ -8,6 +8,7 @@
 }: {
   imports = [
     inputs.zen-browser.homeModules.twilight
+    inputs.helium-browser.homeModules.default
   ];
 
   options = {
@@ -202,6 +203,15 @@
     };
 
     home.sessionVariables.BROWSER = "${config.programs.zen-browser.package}/bin/zen";
+
+    programs.helium = {
+      enable = true;
+      policies = {
+        "BrowserSignin" = 0;
+        "PasswordManagerEnabled" = false;
+        "SyncDisabled" = true;
+      };
+    };
 
     xdg.mimeApps = let
       value = let

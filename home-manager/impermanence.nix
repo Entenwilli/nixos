@@ -32,6 +32,8 @@
         ".local/share/krita"
         ".local/state/wireplumber"
         ".config/fcitx5"
+        ".config/helium"
+        ".config/net.imput.helium"
         ".config/obsidian"
         ".config/easyeffects"
         ".config/keepassxc"
