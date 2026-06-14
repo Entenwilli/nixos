@@ -180,6 +180,7 @@
     solidtime-desktop
     lnxlink
     hyprland-preview-share-picker
+    mecab
   ];
 
   # Create Data Flow Analysis symlink
