@@ -173,13 +173,13 @@
     shared-mime-info
     element-desktop
     xdg-user-dirs
-    mecab
     qbittorrent
     goldendict-ng
     hunspell
     solidtime-desktop
     lnxlink
     hyprland-preview-share-picker
+    mecab
   ];
 
   # Create Data Flow Analysis symlink
