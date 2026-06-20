@@ -98,10 +98,6 @@
           method = "symlink";
         }
         {
-          file = ".config/mimeapps.list";
-          method = "symlink";
-        }
-        {
           file = ".config/kritashortcutsrc";
           method = "symlink";
         }

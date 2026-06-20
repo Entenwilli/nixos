@@ -202,7 +202,7 @@
       };
     };
 
-    home.sessionVariables.BROWSER = "${config.programs.zen-browser.package}/bin/zen";
+    home.sessionVariables.BROWSER = "${config.programs.helium.package}/bin/helium";
 
     programs.helium = {
       enable = true;
@@ -214,11 +214,7 @@
     };
 
     xdg.mimeApps = let
-      value = let
-        zen-browser = inputs.zen-browser.packages.${system}.twilight;
-      in
-        zen-browser.meta.desktopFileName;
-
+      value = "helium.desktop";
       associations = builtins.listToAttrs (map (name: {
           inherit name value;
         }) [
@@ -239,6 +235,7 @@
           "text/html"
         ]);
     in {
+      enable = true;
       associations.added = associations;
       defaultApplications = associations;
     };
