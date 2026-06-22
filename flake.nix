@@ -1,6 +1,11 @@
 {
   description = "Entenwilli's NixOS config";
 
+  nixConfig = {
+    abort-on-warn = true;
+    allow-import-from-derivation = false;
+  };
+
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
@@ -61,85 +66,25 @@
     # Darkly
     # FIXME: Remove when qt5 (currently in keepassxc) is no longer used
     darkly_nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+
+    # Flake Parts
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
+    # Import Tree
+    import-tree.url = "github:vic/import-tree";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    ...
-  } @ inputs: let
-    inherit (self) outputs;
-    # Supported systems for your flake packages, shell, etc.
-    systems = [
-      "x86_64-linux"
-    ];
-    forAllSystems = nixpkgs.lib.genAttrs systems;
-  in {
-    # Your custom packages
-    # Accessible through 'nix build', 'nix shell', etc
-    packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
-    # Formatter for your nix files, available through 'nix fmt'
-    # Other options beside 'alejandra' include 'nixpkgs-fmt'
-    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
-
-    # Your custom packages and modifications, exported as overlays
-    overlays = import ./overlays {inherit inputs;};
-
-    # NixOS configuration entrypoint
-    nixosConfigurations = {
-      nixos-desktop = let
-        specialArgs = {inherit inputs outputs;};
-      in
-        nixpkgs.lib.nixosSystem {
-          specialArgs = specialArgs;
-          modules = [
-            inputs.impermanence.nixosModules.impermanence
-            inputs.base16.nixosModule
-            {
-              scheme = "${inputs.color-schemes}/base24/catppuccin-mocha.yaml";
-            }
-            ./nixos/configurations/desktop.nix
-            inputs.sops-nix.nixosModules.sops
-            inputs.entenvim.nixosModules.neovim
-            inputs.home-manager.nixosModules.home-manager
-            {
-              home-manager.extraSpecialArgs = specialArgs;
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.backupFileExtension = "backup";
-              home-manager.sharedModules = [
-                inputs.sops-nix.homeManagerModules.sops
-              ];
-              home-manager.users.felix = import ./home-manager/homes/desktop.nix;
-            }
-          ];
-        };
-      nixos-laptop = let
-        specialArgs = {inherit inputs outputs;};
-      in
-        nixpkgs.lib.nixosSystem {
-          specialArgs = specialArgs;
-          modules = [
-            inputs.impermanence.nixosModules.impermanence
-            inputs.base16.nixosModule
-            {
-              scheme = "${inputs.color-schemes}/base24/catppuccin-mocha.yaml";
-            }
-            ./nixos/configurations/laptop.nix
-            inputs.sops-nix.nixosModules.sops
-            inputs.entenvim.nixosModules.neovim
-            inputs.home-manager.nixosModules.home-manager
-            {
-              home-manager.extraSpecialArgs = specialArgs;
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.sharedModules = [
-                inputs.sops-nix.homeManagerModules.sops
-              ];
-              home-manager.users.felix = import ./home-manager/homes/laptop.nix;
-            }
-          ];
-        };
+  outputs = inputs: let
+    inherit (inputs.nixpkgs) lib;
+    inherit (lib.fileset) toList fileFilter;
+    isNixModule = file: file.hasExt "nix" && !lib.hasPrefix "_" file.name;
+    importTree = path: toList (fileFilter isNixModule path);
+    mkFlake = inputs.flake-parts.lib.mkFlake {inherit inputs;};
+  in
+    mkFlake {
+      imports = [inputs.flake-parts.flakeModules.flakeModules] ++ importTree ./modules;
+      systems = [
+        "x86_64-linux"
+      ];
     };
-  };
 }

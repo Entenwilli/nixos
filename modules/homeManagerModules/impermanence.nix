@@ -1,0 +1,127 @@
+{...}: {
+  flake.homeManagerModules.impermanence = {
+    pkgs,
+    config,
+    lib,
+    ...
+  }: {
+    options = {
+      impermanence.enable = lib.mkEnableOption "Enable impermanence";
+    };
+
+    config = lib.mkIf config.impermanence.enable {
+      home.persistence."/persistent" = {
+        hideMounts = true;
+        directories = [
+          ".android"
+          ".factorio"
+          ".ssh"
+          ".xlcore"
+          ".gnupg"
+          "development"
+          "documents"
+          "downloads"
+          "general"
+          "music"
+          "nixos"
+          "pictures"
+          ".thunderbird"
+          ".config/syncthing"
+          ".nix-csp-wine"
+          ".local/share/Anki2"
+          ".local/share/zoxide"
+          ".local/share/nvim"
+          ".local/share/krita"
+          ".local/state/wireplumber"
+          ".config/fcitx5"
+          ".config/helium"
+          ".config/net.imput.helium"
+          ".config/obsidian"
+          ".config/easyeffects"
+          ".config/keepassxc"
+          ".config/OpenTabletDriver"
+          ".eclipse/org.eclipse.platform_4.39"
+          ".config/StardewValley"
+          ".config/Vencord"
+          ".config/vesktop"
+          ".config/discord"
+          ".config/spotify"
+          ".config/Element"
+          ".cache/spotify"
+          ".wine-csp"
+          ".local/share/cspenguin"
+          ".cache/spotify/Storage"
+          ".local/share/PrismLauncher"
+          ".var/app/com.core447.StreamController"
+          ".config/zen"
+          ".mozilla"
+          ".local/share/bemoji"
+          ".config/qt5ct"
+          ".config/qt6ct"
+          ".local/share/Steam"
+          ".local/share/fish"
+          ".local/share/shiori"
+          ".local/share/qBittorrent"
+          ".config/qBittorrent"
+          ".config/unity3d/Ludeon Studios/RimWorld by Ludeon Studios/"
+          ".config/unity3d/Vedal/Abandoned Archive/"
+          ".zotero"
+
+          ".local/share/JetBrains"
+          ".cache/JetBrains"
+          ".config/JetBrains"
+          ".java/.userPrefs/jetbrains"
+
+          ".local/share/Wonderdraft"
+          ".config/session"
+          ".config/Ryujinx"
+          ".config/solidtime"
+          ".config/trackma"
+          ".config/TeamSpeak"
+        ];
+        files = [
+          "start-webcam"
+          ".config/user-dirs.dirs"
+          ".local/share/applications/clipstudio.desktop"
+          ".local/share/applications/clipstudiopaint.desktop"
+          {
+            file = ".config/kritadisplayrc";
+            method = "symlink";
+          }
+          {
+            file = ".config/kritarc";
+            method = "symlink";
+          }
+          {
+            file = ".local/state/dolphinstaterc";
+            method = "symlink";
+          }
+          {
+            file = ".config/filetypesrc";
+            method = "symlink";
+          }
+          {
+            file = ".config/kritashortcutsrc";
+            method = "symlink";
+          }
+          ".config/sops/age/keys.txt"
+          ".cache/keepassxc/keepassxc.ini"
+          ".local/state/lazygit/state.yml"
+          ".cache/rofi-entry-history.txt"
+          ".cache/rofi3.druncache"
+          {
+            file = ".config/dolphinrc";
+            method = "symlink";
+          }
+          {
+            file = ".local/share/user-places.xbel";
+            method = "symlink";
+          }
+          ".local/share/kxmlgui5/dolphin/dolphinui.rc"
+          ".config/mpv/script-opts/subs2srs.conf"
+          ".config/qView/qView.conf"
+        ];
+      };
+    };
+  };
+}
