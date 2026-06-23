@@ -14,6 +14,7 @@
       {
         scheme = "${inputs.color-schemes}/base24/catppuccin-mocha.yaml";
       }
+      self.homeManagerModules.niri
       self.homeManagerModules.browser
       self.homeManagerModules.covers
       self.homeManagerModules.cli-tools

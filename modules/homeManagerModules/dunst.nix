@@ -13,10 +13,10 @@
       home.packages = with pkgs; [papirus-icon-theme];
       systemd.user.services.dunst = {
         Install = {
-          WantedBy = ["hyprland-session.target"];
+          WantedBy = ["graphical.target"];
         };
         Unit = {
-          After = ["hyprland-session.target"];
+          After = ["graphical.target"];
         };
       };
       services.dunst = {

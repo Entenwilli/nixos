@@ -9,7 +9,7 @@
       package = pkgs.unstable.streamcontroller;
     };
     systemd.user.services."streamcontroller" = {
-      wantedBy = ["hyprland-session.target"];
+      wantedBy = ["graphical.target"];
       serviceConfig = {
         Type = "simple";
         ExecStart = "${pkgs.unstable.streamcontroller}/bin/streamcontroller -b";

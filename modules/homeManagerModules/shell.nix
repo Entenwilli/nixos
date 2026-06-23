@@ -19,7 +19,6 @@
       Unit = {
         Description = "quickshell";
         Documentation = "https://quickshell.outfoxxed.me/docs/";
-        After = ["hyprland-session.target"];
       };
 
       Service = {
@@ -27,7 +26,7 @@
         Restart = "on-failure";
       };
 
-      Install.WantedBy = ["hyprland-session.target"];
+      Install.WantedBy = ["graphical.target"];
     };
   };
 }

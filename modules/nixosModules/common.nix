@@ -19,6 +19,7 @@
       self.nixosModules.laptop-additions
       self.nixosModules.lnxlink
       self.nixosModules.network
+      self.nixosModules.niri
       self.nixosModules.nix
       self.nixosModules.nixos-helper
       self.nixosModules.notifications
@@ -120,7 +121,7 @@
         wayland.enable = true;
         settings = {
           Autologin = {
-            Session = "hyprland.desktop";
+            Session = "niri.desktop";
             User = "felix";
           };
         };
