@@ -1,4 +1,5 @@
 {
+  lib,
   inputs,
   self,
   ...
@@ -39,6 +40,6 @@
       }
     ];
 
-    hyprland.keyboardLayout = "de";
+    hyprland.keyboardLayout = lib.mkForce "de";
   };
 }

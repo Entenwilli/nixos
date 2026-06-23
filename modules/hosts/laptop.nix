@@ -30,7 +30,7 @@
     ];
     systemd.user.services.lnxlink = {
       serviceConfig = {
-        ExecStart = "${pkgs.lnxlink}/bin/lnxlink -c ${config.home-manager.users.felix.sops.secrets."laptop-lnxlink.yml".path} -i";
+        ExecStart = lib.mkForce "${pkgs.lnxlink}/bin/lnxlink -c ${config.home-manager.users.felix.sops.secrets."laptop-lnxlink.yml".path} -i";
         Restart = "always";
         RestartSec = "5";
       };
