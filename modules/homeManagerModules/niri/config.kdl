@@ -89,6 +89,11 @@ layer-rule {
   }
 }
 
+layer-rule {
+    match namespace="entenshell-background-overview$"
+    place-within-backdrop true
+}
+
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 

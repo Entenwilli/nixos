@@ -140,11 +140,11 @@
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1776076581,
-        "narHash": "sha256-CcgraLwtLNM1EA4Q1wKew79omkqs9UXI2d8kRBQg4og=",
+        "lastModified": 1782383228,
+        "narHash": "sha256-r8iz1wrMtPWtH5FbSX+B+PX1ImFXmX9J7uk+6vveBIE=",
         "ref": "refs/heads/main",
-        "rev": "78835dfc61f1ad9a871c4ffc5f0cedab035dab63",
-        "revCount": 12,
+        "rev": "f303d713c0cae20c9ac8b3e098d3fbfed0745c2f",
+        "revCount": 13,
         "type": "git",
         "url": "ssh://git@github.com/Entenwilli/shell"
       },

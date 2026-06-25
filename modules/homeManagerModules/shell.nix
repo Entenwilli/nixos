@@ -17,6 +17,9 @@
 
     systemd.user.services.quickshell = {
       Unit = {
+        PartOf = "graphical-session.target";
+        After = "graphical-session.target";
+        Requisite = "graphical-session.target";
         Description = "quickshell";
         Documentation = "https://quickshell.outfoxxed.me/docs/";
       };
@@ -26,7 +29,7 @@
         Restart = "on-failure";
       };
 
-      Install.WantedBy = ["graphical.target"];
+      Install.WantedBy = ["graphical-session.target"];
     };
   };
 }

@@ -13,6 +13,8 @@
       useNautilus = false;
     };
 
+    services.gnome.gnome-keyring.enable = lib.mkForce false;
+
     environment.systemPackages = with pkgs; [
       xwayland-satellite
     ];
