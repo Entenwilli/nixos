@@ -50,6 +50,7 @@
             "explorer.excludeGitIgnore" = true;
             "editor.minimap.enabled" = false;
             "ltex.java.path" = "${config.programs.java.package}/lib/openjdk";
+            "ltex.ltex-ls.path" = "${pkgs.ltex-ls-plus}";
             "ltex.additionalRules.enablePickyRules" = true;
             "ltex.additionalRules.motherTongue" = "de-DE";
             "latex-workshop.formatting.latex" = "latexindent";
