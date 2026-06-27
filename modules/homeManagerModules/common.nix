@@ -18,6 +18,7 @@
       self.homeManagerModules.browser
       self.homeManagerModules.covers
       self.homeManagerModules.cli-tools
+      self.homeManagerModules.codium
       self.homeManagerModules.development
       self.homeManagerModules.discord
       self.homeManagerModules.dunst
@@ -72,6 +73,9 @@
 
     # Enable zathura
     zathura.enable = true;
+
+    # Enable codium
+    codium.enable = true;
 
     # Enable waybar
     waybar.enable = false;
