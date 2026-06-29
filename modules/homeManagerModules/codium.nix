@@ -27,6 +27,8 @@
               ltex-plus.vscode-ltex-plus
               jgclark.vscode-todo-highlight
               leonardssh.vscord
+              jnoortheen.nix-ide
+              rust-lang.rust-analyzer
             ]
             ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
               {
@@ -62,6 +64,7 @@
             "todohighlight.defaultStyle" = {
               "isWholeLine" = true;
             };
+            "nix.enableLanguageServer" = true;
           };
         };
       };
