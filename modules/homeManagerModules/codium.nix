@@ -26,6 +26,7 @@
               catppuccin.catppuccin-vsc-icons
               ltex-plus.vscode-ltex-plus
               jgclark.vscode-todo-highlight
+              leonardssh.vscord
             ]
             ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
               {
