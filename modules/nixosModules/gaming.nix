@@ -17,6 +17,7 @@
 
       environment.systemPackages = with pkgs; [
         xivlauncher
+        ffxiv-teamcraft
         gamemode
         mangohud
         prismlauncher
