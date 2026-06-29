@@ -6,6 +6,9 @@
       gnome-network-displays-patched = prev.gnome-network-displays.overrideAttrs (old: {
         nativeBuildInputs = old.nativeBuildInputs ++ [prev.gtk3 prev.wpa_supplicant prev.glib-networking prev.gst_all_1.gstreamer prev.gst_all_1.gst-plugins-base prev.gst_all_1.gst-vaapi];
       });
+      vesktop = prev.vesktop.override {
+        pnpm_10_29_2 = final.pnpm_10;
+      };
       wine11 = prev.wineWowPackages.stableFull_11.overrideAttrs (old: {
         version = "11.4";
         src = prev.fetchurl {
