@@ -13,6 +13,7 @@
       home.persistence."/persistent" = {
         hideMounts = true;
         directories = [
+          ".config/ffxiv-teamcraft/"
           ".android"
           ".factorio"
           ".ssh"

@@ -10,4 +10,10 @@
     hash = "sha256-hfQYm11qgoeZjgwGS1gb8+BKLyIAPW2LyH5alJTujus=";
   };
 in
-  appimageTools.wrapType2 {inherit pname version src;}
+  appimageTools.wrapType2 {
+    inherit pname version src;
+    extraPkgs = pkgs:
+      with pkgs; [
+        libunwind
+      ];
+  }
