@@ -5,7 +5,6 @@
 }: {
   flake.nixosConfigurations.nixos-laptop = inputs.nixpkgs.lib.nixosSystem {
     modules = [
-      inputs.impermanence.nixosModules.impermanence
       inputs.base16.nixosModule
       {
         scheme = "${inputs.color-schemes}/base24/catppuccin-mocha.yaml";
@@ -28,6 +27,7 @@
       self.nixosModules.common
       self.nixosModules.laptop-hardware
     ];
+
     systemd.user.services.lnxlink = {
       serviceConfig = {
         ExecStart = lib.mkForce "${pkgs.lnxlink}/bin/lnxlink -c ${config.home-manager.users.felix.sops.secrets."laptop-lnxlink.yml".path} -i";

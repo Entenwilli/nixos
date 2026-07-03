@@ -22,7 +22,7 @@
     };
 
     config = lib.mkIf config.syncthing.enable {
-      environment.persistence."/persistent".directories = [
+      environment.persistence."/persistent".directories = lib.mkIf config.impermanence.enable [
         "/var/lib/syncthing/"
       ];
       systemd.services."syncthing-init" = {
