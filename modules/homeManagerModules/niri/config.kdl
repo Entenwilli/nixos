@@ -1,22 +1,4 @@
-input {
-    keyboard {
-        xkb {
-            layout "us(altgr-intl)"
-        }
-        numlock
-    }
 
-    touchpad {
-        tap
-        natural-scroll
-    }
-
-    mouse {
-        accel-profile "flat"
-        accel-speed 0.5
-    }
-    focus-follows-mouse
-}
 
 layout {
     gaps 16

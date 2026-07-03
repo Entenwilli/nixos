@@ -41,5 +41,6 @@
     ];
 
     hyprland.keyboardLayout = lib.mkForce "de";
+    niri.keyboardLayout = "de";
   };
 }

@@ -95,6 +95,8 @@
     # Enable hyprland
     hyprland.enable = true;
 
+    niri.enable = true;
+
     home.packages = [
       pkgs.proton-vpn
       (pkgs.writeShellApplication {
