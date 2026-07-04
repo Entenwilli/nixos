@@ -9,6 +9,12 @@
       vue-language-server = prev.vue-language-server.override {
         pnpm = final.pnpm_10;
       };
+      eclipses.eclipse-modeling = prev.eclipses.eclipse-modeling.overrideAttrs {
+        src = prev.fetchurl {
+          url = "https://www.eclipse.org/downloads/download.php?r=1&nf=1&file=/technology/epp/downloads/release/2026-06/R/eclipse-modeling-2026-06-R-linux-gtk-x86_64.tar.gz";
+          hash = "sha256-jWeFmMGKEJvUAWzUx+b/ErcFBNiwTktpcc86oaxgL3A=";
+        };
+      };
       wine11 = prev.wineWowPackages.stableFull_11.overrideAttrs (old: {
         version = "11.4";
         src = prev.fetchurl {
