@@ -7,9 +7,6 @@
   }: {
     options = {
       impermanence.enable = lib.mkEnableOption "Enable impermanence";
-      home.persistence."/persistent" = lib.mkOption {
-        default = [];
-      };
     };
 
     config = lib.mkIf config.impermanence.enable {

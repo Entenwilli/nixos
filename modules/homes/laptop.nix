@@ -27,20 +27,28 @@
     config,
     ...
   }: {
-    hyprland.monitors = [
-      {
-        name = "eDP-1";
-        mode = "1920x1200@60";
-        position = "0x0";
-        scale = 1.0;
-        hdr = false;
-        sdr_min_luminance = 0.005;
-        sdr_max_luminance = 200;
-        wallpaper = "/home/felix/pictures/wallpaper/tom-vining.jpg";
-      }
-    ];
+    options = {
+      home.persistence."/persistent" = lib.mkOption {
+        default = [];
+      };
+    };
 
-    hyprland.keyboardLayout = lib.mkForce "de";
-    niri.keyboardLayout = "de";
+    config = {
+      hyprland.monitors = [
+        {
+          name = "eDP-1";
+          mode = "1920x1200@60";
+          position = "0x0";
+          scale = 1.0;
+          hdr = false;
+          sdr_min_luminance = 0.005;
+          sdr_max_luminance = 200;
+          wallpaper = "/home/felix/pictures/wallpaper/tom-vining.jpg";
+        }
+      ];
+
+      hyprland.keyboardLayout = lib.mkForce "de";
+      niri.keyboardLayout = "de";
+    };
   };
 }

@@ -9,6 +9,10 @@
     };
 
     config = lib.mkIf config.terminal.enable {
+      home.sessionVariables = {
+        TERMINAL = "kitty";
+      };
+
       programs.kitty = {
         enable = true;
         font = {
