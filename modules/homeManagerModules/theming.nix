@@ -60,6 +60,8 @@
         "kdeglobals".text = ''
           [UiSettings]
           ColorScheme=Catppuccin-mocha-mauve
+          TerminalApplication=kitty
+          TerminalService=kitty.desktop
         '';
       };
     };
