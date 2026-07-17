@@ -79,10 +79,13 @@
           ".config/solidtime"
           ".config/trackma"
           ".config/TeamSpeak"
+          ".local/share/com.github.johnfactotum.Foliate"
+          ".local/share/direnv"
         ];
         files = [
           "start-webcam"
           ".config/user-dirs.dirs"
+          ".config/gtk-3.0/bookmarks"
           ".local/share/applications/clipstudio.desktop"
           ".local/share/applications/clipstudiopaint.desktop"
           {
