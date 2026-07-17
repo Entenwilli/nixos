@@ -33,7 +33,6 @@
       wirelesstools
       wl-clipboard
       hyprlock
-      dunst
       hypridle
       bc
       grim

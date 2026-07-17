@@ -27,6 +27,7 @@
       self.nixosModules.openrgb
       self.nixosModules.rocm
       self.nixosModules.secrets
+      self.nixosModules.shell
       self.nixosModules.streamcontroller
       self.nixosModules.syncthing
     ];
@@ -95,7 +96,6 @@
 
     services.dbus = {
       enable = true;
-      packages = with pkgs; [dunst];
     };
 
     # Boot splash screen

@@ -10,10 +10,10 @@
       text = ''
         if [ "$1" == "charging" ]
           then
-          DISPLAY=:0 ${pkgs.dunst}/bin/dunstify -r 1 -i battery-good-charging-symbolic -h "string:fgcolor:#44ff44" -a "System" "Power cable plugged in."
+          DISPLAY=:0 ${pkgs.libnotify}/bin/notify-send -r 1 -i battery-good-charging-symbolic -h "string:fgcolor:#44ff44" -a "System" "Power cable plugged in."
         elif [ "$1" == "discharging" ]
           then
-          DISPLAY=:0 ${pkgs.dunst}/bin/dunstify -r 1 -i battery-low-symbolic -h "string:fgcolor:#ff4444" -a "System" "Power cable unplugged."
+          DISPLAY=:0 ${pkgs.libnotify}/bin/notify-send -r 1 -i battery-low-symbolic -h "string:fgcolor:#ff4444" -a "System" "Power cable unplugged."
         fi
       '';
     };

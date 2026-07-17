@@ -33,7 +33,6 @@
       self.homeManagerModules.password-manager
       self.homeManagerModules.rofi
       self.homeManagerModules.secrets
-      self.homeManagerModules.shell
       self.homeManagerModules.spotify
       self.homeManagerModules.starship
       self.homeManagerModules.terminal
@@ -69,7 +68,7 @@
     terminal.enable = true;
 
     # Enable dunst
-    dunst.enable = true;
+    dunst.enable = false;
 
     # Enable zathura
     zathura.enable = true;
