@@ -25,7 +25,8 @@
       self.nixosModules.notifications
       self.nixosModules.obs
       self.nixosModules.openrgb
-      self.nixosModules.rocm
+      # FIXME: ROCm GPU acceleration makes the build very slow
+      #self.nixosModules.rocm
       self.nixosModules.secrets
       self.nixosModules.shell
       self.nixosModules.streamcontroller
