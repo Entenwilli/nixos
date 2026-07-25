@@ -6,9 +6,6 @@
       gnome-network-displays-patched = prev.gnome-network-displays.overrideAttrs (old: {
         nativeBuildInputs = old.nativeBuildInputs ++ [prev.gtk3 prev.wpa_supplicant prev.glib-networking prev.gst_all_1.gstreamer prev.gst_all_1.gst-plugins-base prev.gst_all_1.gst-vaapi];
       });
-      vue-language-server = prev.vue-language-server.override {
-        pnpm = final.pnpm_10;
-      };
       eclipses.eclipse-modeling = prev.eclipses.eclipse-modeling.overrideAttrs {
         src = prev.fetchurl {
           url = "https://www.eclipse.org/downloads/download.php?r=1&nf=1&file=/technology/epp/downloads/release/2026-06/R/eclipse-modeling-2026-06-R-linux-gtk-x86_64.tar.gz";
@@ -33,14 +30,6 @@
 
     unstable-packages = final: _prev: {
       unstable = import inputs.nixpkgs-unstable {
-        system = final.stdenv.hostPlatform.system;
-        config.allowUnfree = true;
-      };
-    };
-
-    #FIXME: Remove darkly-qt5 and flake input when qt5 is no longer used
-    darkly = final: _prev: {
-      darkly_nixpkgs = import inputs.darkly_nixpkgs {
         system = final.stdenv.hostPlatform.system;
         config.allowUnfree = true;
       };

@@ -39,7 +39,6 @@
         self.overlays.additions
         self.overlays.modifications
         self.overlays.unstable-packages
-        self.overlays.darkly
         inputs.nur.overlays.default
       ];
       config = {

@@ -63,10 +63,6 @@
 
     csp.url = "github:h-banii/clip-studio-paint-nix";
 
-    # Darkly
-    # FIXME: Remove when qt5 (currently in keepassxc) is no longer used
-    darkly_nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-
     # Flake Parts
     flake-parts.url = "github:hercules-ci/flake-parts";
 

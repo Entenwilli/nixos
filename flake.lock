@@ -117,22 +117,6 @@
         "type": "github"
       }
     },
-    "darkly_nixpkgs": {
-      "locked": {
-        "lastModified": 1782847189,
-        "narHash": "sha256-twXPFqFsrrY5r28Zh7Homgcp2gUMBgQ6WDS98Q/3xFI=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "b6018f87da91d19d0ab4cf979885689b469cdd41",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-25.11",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "entenshell": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -1072,7 +1056,6 @@
         "base16": "base16",
         "color-schemes": "color-schemes",
         "csp": "csp",
-        "darkly_nixpkgs": "darkly_nixpkgs",
         "entenshell": "entenshell",
         "entenvim": "entenvim",
         "flake-parts": "flake-parts_2",
