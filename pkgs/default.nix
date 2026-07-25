@@ -6,4 +6,5 @@
   lnxlink = pkgs.callPackage ./lnxlink {};
   hyprland-preview-share-picker = pkgs.callPackage ./hyprland-preview-share-picker {};
   ffxiv-teamcraft = pkgs.callPackage ./ffxivteamcraft {};
+  xivlauncher-rb = pkgs.callPackage ./xivlauncher-rb {};
 }

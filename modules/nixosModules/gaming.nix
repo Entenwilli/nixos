@@ -16,7 +16,7 @@
       };
 
       environment.systemPackages = with pkgs; [
-        xivlauncher
+        xivlauncher-rb
         ffxiv-teamcraft
         gamemode
         mangohud
