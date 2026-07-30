@@ -62,6 +62,17 @@ window-rule {
   }
 }
 
+window-rule {
+  match title="KeePassXC -  Access Request"
+  match app-id="org.keepassxc.KeePassXC"
+  open-floating true
+}
+
+window-rule {
+  match app-id="XIVLauncher.Core"
+  open-floating true
+}
+
 layer-rule {
   match namespace="rofi"
   match namespace="logout_dialog"

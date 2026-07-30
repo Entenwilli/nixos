@@ -16,7 +16,7 @@
     services.gnome.gnome-keyring.enable = lib.mkForce false;
 
     environment.systemPackages = with pkgs; [
-      xwayland-satellite
+      xwayland-satellite-updated
     ];
 
     services.gnome.gcr-ssh-agent.enable = lib.mkForce false;

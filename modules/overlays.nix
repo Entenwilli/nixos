@@ -12,6 +12,20 @@
           hash = "sha256-jWeFmMGKEJvUAWzUx+b/ErcFBNiwTktpcc86oaxgL3A=";
         };
       };
+      xwayland-satellite-updated = prev.xwayland-satellite.overrideAttrs (finalAttrs: prevAttrs: rec {
+        cargoHash = "sha256-Saa3SRsQuY6u6pfBGezaEExOt/ReblnrG7pAXjA6Dk8=";
+        version = "0.8.2";
+        src = prev.fetchFromGitHub {
+          owner = "Supreeeme";
+          repo = "xwayland-satellite";
+          tag = "v${version}";
+          hash = "sha256-Mb7jpqnrcYCfNSItIkkHpuR3YxWFxPuIBfcwNKlRBkk=";
+        };
+        cargoDeps = prev.rustPlatform.fetchCargoVendor {
+          inherit (finalAttrs) pname src version;
+          hash = finalAttrs.cargoHash;
+        };
+      });
       wine11 = prev.wineWowPackages.stableFull_11.overrideAttrs (old: {
         version = "11.4";
         src = prev.fetchurl {
