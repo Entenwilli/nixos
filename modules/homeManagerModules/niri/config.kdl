@@ -63,8 +63,14 @@ window-rule {
 }
 
 window-rule {
-  match title="KeePassXC -  Access Request"
-  match app-id="org.keepassxc.KeePassXC"
+  match title="KeePassXC -  Access Request" app-id="org.keepassxc.KeePassXC"
+  open-floating true
+}
+
+window-rule {
+  match title="Passwords.kdbx [Locked] - KeePassXC" app-id="org.keepassxc.KeePassXC"
+  default-column-width { fixed 880; }
+  default-window-height { fixed 500; }
   open-floating true
 }
 
