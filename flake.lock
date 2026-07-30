@@ -124,11 +124,11 @@
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1785406575,
-        "narHash": "sha256-uLlAa526HXAHpDarPw4vAsZLptCPapa6pS2M23dcVUs=",
+        "lastModified": 1785446469,
+        "narHash": "sha256-x3r4vaaOcFOrIwF0JlFrSfOZvkrezVd2Umc20Dsg4eY=",
         "ref": "refs/heads/main",
-        "rev": "01437ea023b26890690a7d4baa45e3aa6a109c7b",
-        "revCount": 17,
+        "rev": "e00f0dfe0481ac767c1f3680624f6684a0f32edc",
+        "revCount": 18,
         "type": "git",
         "url": "ssh://git@github.com/Entenwilli/shell"
       },
@@ -920,15 +920,15 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1775403759,
-        "narHash": "sha256-cGyKiTspHEUx3QwAnV3RfyT+VOXhHLs+NEr17HU34Wo=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "5e11f7acce6c3469bef9df154d78534fa7ae8b6c",
-        "type": "github"
+        "lastModified": 1785318670,
+        "narHash": "sha256-JfsUqyQ4MGL0SvJNPFikXYlUdXg0xMzBdjwTPawZSl4=",
+        "rev": "0954f7ee2f6bb3dc7d4e3d0d8bcb8fd4bde4cfc5",
+        "type": "tarball",
+        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1043649.0954f7ee2f6b/nixexprs.tar.xz"
       },
       "original": {
         "id": "nixpkgs",
+        "ref": "nixos-unstable",
         "type": "indirect"
       }
     },
