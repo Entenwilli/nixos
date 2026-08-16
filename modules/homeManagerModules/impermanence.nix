@@ -37,6 +37,7 @@
           ".config/fcitx5"
           ".config/helium"
           ".config/net.imput.helium"
+          ".cache/net.imput.helium"
           ".config/obsidian"
           ".config/easyeffects"
           ".config/keepassxc"
