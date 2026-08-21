@@ -88,6 +88,8 @@
     lib,
     ...
   }: {
+    system.nixos.tags = ["freetime"];
+
     # Enable gaming tools
     gaming.enable = true;
   };
