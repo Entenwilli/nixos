@@ -21,6 +21,7 @@
         gamemode
         mangohud
         prismlauncher
+        ryubing
       ];
 
       programs.steam = {
