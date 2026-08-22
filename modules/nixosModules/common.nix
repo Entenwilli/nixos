@@ -67,6 +67,15 @@
       experimental-features = "nix-command flakes";
       # Deduplicate and optimize nix store
       auto-optimise-store = true;
+
+      # Sane Nix defaults
+      allow-import-from-derivation = false;
+      abort-on-warn = true;
+
+      # Download speed enhancement
+      http-connections = 128;
+      max-substitution-jobs = 128;
+      max-jobs = "auto";
     };
 
     # Flake caching
