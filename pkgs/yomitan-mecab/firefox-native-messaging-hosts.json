@@ -1,0 +1,10 @@
+{
+  "name": "yomitan_mecab",
+  "description": "MeCab for Yomitan",
+  "type": "stdio",
+  "path": "@out@/bin/mecab.py",
+  "allowed_extensions": [
+    "{6b733b82-9261-47ee-a595-2dda294a4d08}",
+    "{e4b27483-2e73-4762-b2ec-8d988a143a40}"
+  ]
+}

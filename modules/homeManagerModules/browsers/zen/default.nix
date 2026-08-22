@@ -1,4 +1,5 @@
 {
+  self,
   inputs,
   lib,
   ...
@@ -10,6 +11,10 @@
   }: {
     imports = [
       inputs.zen-browser.homeModules.twilight
+      self.homeManagerModules.zen-browser-extensions
+      self.homeManagerModules.zen-browser-pins
+      self.homeManagerModules.zen-browser-policies
+      self.homeManagerModules.zen-browser-spaces
     ];
 
     options = {
@@ -19,18 +24,19 @@
     config = lib.mkIf config.zen-browser.enable {
       programs.zen-browser = {
         enable = true;
+
+        nativeMessagingHosts = with pkgs; [
+          keepassxc
+          yomitan-api
+          yomitan-mecab
+        ];
+
         profiles."default" = {
           isDefault = true;
           settings = {
             "zen.welcome-screen.seen" = true;
             "zen.workspaces.continue-where-left-off" = true;
           };
-
-          # TODO: Can also add native messaging hosts for yomitan and mecab api here
-          # Should be a package/derivation exposing native messaging host file under lib/mozilla/native-messaging-hosts/<NAME>.json
-          nativeMessagingHosts.packages = with pkgs; [
-            keepassxc
-          ];
 
           # No containers because of bugs with extensions
           containersForce = true;

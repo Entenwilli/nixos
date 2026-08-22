@@ -3,19 +3,11 @@
   lib,
   ...
 }: {
-  flake.homeManagerModules.zen-browser = {
+  flake.homeManagerModules.zen-browser-policies = {
     pkgs,
     config,
     ...
   }: {
-    imports = [
-      inputs.zen-browser.homeModules.twilight
-    ];
-
-    options = {
-      zen-browser.enable = lib.mkEnableOption "Enable Zen Browser";
-    };
-
     config = lib.mkIf config.zen-browser.enable {
       programs.zen-browser.policies = {
         AutofillAddressEnabled = false;

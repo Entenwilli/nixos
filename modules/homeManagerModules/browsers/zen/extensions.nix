@@ -3,19 +3,11 @@
   lib,
   ...
 }: {
-  flake.homeManagerModules.zen-browser = {
+  flake.homeManagerModules.zen-browser-extensions = {
     pkgs,
     config,
     ...
   }: {
-    imports = [
-      inputs.zen-browser.homeModules.twilight
-    ];
-
-    options = {
-      zen-browser.enable = lib.mkEnableOption "Enable Zen Browser";
-    };
-
     config = lib.mkIf config.zen-browser.enable {
       programs.zen-browser.profiles.default = {
         extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
@@ -29,7 +21,11 @@
           tampermonkey
           youtube-recommended-videos # Unhook
           yomitan
-          asbplayer
+          (asbplayer.override rec {
+            version = "1.20.1";
+            url = "https://github.com/asbplayer/asbplayer/releases/download/v${version}/asbplayer-extension-firefox-${version}.xpi";
+            sha256 = "sha256-CYKguAT4tiq292jQte5BX9ESpqbDzkI2Q9vKoTl3Cq8=";
+          })
           refined-github
           indie-wiki-buddy
         ];

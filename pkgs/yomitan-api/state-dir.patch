@@ -1,0 +1,21 @@
+diff --git a/yomitan_api.py b/yomitan_api.py
+index 9b024e5..9149682 100755
+--- a/yomitan_api.py
++++ b/yomitan_api.py
+@@ -18,7 +18,7 @@ PROCESS_STARTUP_WAIT = 5
+ YOMITAN_API_NATIVE_MESSAGING_VERSION = 1
+ BLACKLISTED_PATHS = ["favicon.ico"]
+ 
+-script_path = os.path.realpath(os.path.dirname(__file__))
++script_path = os.path.realpath(os.path.expanduser("~/.local/state/yomitan_api/"))
+ crowbarfile_path = script_path + "/.crowbar"
+ 
+ def error_log(message: str, error: str = "") -> None:
+@@ -109,6 +109,7 @@ class RequestHandler(http.server.BaseHTTPRequestHandler):
+     do_PATCH = handle_invalid_method
+ 
+ try:
++    os.makedirs(script_path, exist_ok=True)
+     ensure_single_instance()
+     httpd = http.server.HTTPServer((ADDR, PORT), RequestHandler)
+     httpd.serve_forever()

@@ -7,4 +7,6 @@
   hyprland-preview-share-picker = pkgs.callPackage ./hyprland-preview-share-picker {};
   ffxiv-teamcraft = pkgs.callPackage ./ffxivteamcraft {};
   xivlauncher-rb = pkgs.callPackage ./xivlauncher-rb {};
+  yomitan-api = pkgs.callPackage ./yomitan-api {};
+  yomitan-mecab = pkgs.callPackage ./yomitan-mecab {};
 }
