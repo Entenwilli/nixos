@@ -15,6 +15,7 @@
         scheme = "${inputs.color-schemes}/base24/catppuccin-mocha.yaml";
       }
       self.homeManagerModules.niri
+      self.homeManagerModules.sunsetr
       self.homeManagerModules.browser
       self.homeManagerModules.covers
       self.homeManagerModules.cli-tools
@@ -69,6 +70,9 @@
 
     # Enable dunst
     dunst.enable = false;
+
+    # Enable sunsetr
+    sunsetr.enable = true;
 
     # Enable zathura
     zathura.enable = true;
