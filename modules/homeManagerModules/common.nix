@@ -9,7 +9,6 @@
     ...
   }: {
     imports = [
-      inputs.entenvim.homeManagerModules.default
       inputs.base16.homeManagerModule
       {
         scheme = "${inputs.color-schemes}/base24/catppuccin-mocha.yaml";

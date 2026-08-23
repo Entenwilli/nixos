@@ -210,15 +210,13 @@
       lnxlink
       hyprland-preview-share-picker
       mecab
+      inputs.entenvim.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
     # Create Data Flow Analysis symlink
     system.activationScripts = {
       eclipse-dfa.text = "ln -sfn ${pkgs.eclipse-dfa}/DataFlowAnalysisBench/plugins-normalized /etc/eclipse-dfa";
     };
-
-    # Enable own neovim distribution
-    programs.entenvim.enable = true;
 
     # Ports for gnome-network-displays
     networking.firewall.allowedTCPPorts = [7236 7250];

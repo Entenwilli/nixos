@@ -33,8 +33,8 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     # Neovim Configuration
-    entenvim.url = "github:Entenwilli/neovim";
-    entenvim.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    entenvim.url = "github:Entenwilli/neovim/nixvim";
+    entenvim.inputs.nixpkgs.follows = "nixpkgs";
 
     # Quickshell
     entenshell.url = "git+ssh://git@github.com/Entenwilli/shell";

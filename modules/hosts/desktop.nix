@@ -11,7 +11,6 @@
         scheme = "${inputs.color-schemes}/base24/catppuccin-mocha.yaml";
       }
       inputs.sops-nix.nixosModules.sops
-      inputs.entenvim.nixosModules.neovim
       self.nixosModules.desktop
       self.nixosModules.desktop-home-manager
     ];
