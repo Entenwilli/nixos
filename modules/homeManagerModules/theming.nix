@@ -59,6 +59,7 @@
         "kdeglobals".text = ''
           [UiSettings]
           ColorScheme=Catppuccin-mocha-mauve
+          [General]
           TerminalApplication=kitty
           TerminalService=kitty.desktop
         '';
