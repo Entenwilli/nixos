@@ -19,6 +19,8 @@
 
     config = lib.mkIf config.browser.enable {
       zen-browser.enable = true;
+      zen-browser.defaultBrowser = true;
+
       helium-browser.enable = true;
     };
   };

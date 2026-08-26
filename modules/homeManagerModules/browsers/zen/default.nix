@@ -17,13 +17,20 @@
       self.homeManagerModules.zen-browser-spaces
     ];
 
-    options = {
-      zen-browser.enable = lib.mkEnableOption "Enable Zen Browser";
+    options.zen-browser = {
+      enable = lib.mkEnableOption "Enable Zen Browser";
+      defaultBrowser = lib.mkOption {
+        default = false;
+        description = "Enable default browser";
+        type = lib.types.bool;
+      };
     };
 
     config = lib.mkIf config.zen-browser.enable {
+      xdg.mimeApps.enable = config.zen-browser.defaultBrowser;
       programs.zen-browser = {
         enable = true;
+        setAsDefaultBrowser = config.zen-browser.defaultBrowser;
 
         nativeMessagingHosts = with pkgs; [
           keepassxc

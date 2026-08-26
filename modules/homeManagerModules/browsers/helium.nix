@@ -12,12 +12,13 @@
       inputs.helium-browser.homeModules.default
     ];
 
-    options = {
-      helium-browser.enable = lib.mkEnableOption "Enable Helium Browser";
+    options.helium-browser = {
+      enable = lib.mkEnableOption "Enable Helium Browser";
+      defaultBrowser = lib.mkEnableOption "Mark as Standard Browser";
     };
 
     config = lib.mkIf config.helium-browser.enable {
-      home.sessionVariables.BROWSER = "${config.programs.helium.package}/bin/helium";
+      home.sessionVariables.BROWSER = lib.mkIf config.helium-browser.defaultBrowser "${config.programs.helium.package}/bin/helium";
 
       programs.helium = {
         enable = true;
@@ -49,11 +50,12 @@
             "text/plain"
             "text/html"
           ]);
-      in {
-        enable = true;
-        associations.added = associations;
-        defaultApplications = associations;
-      };
+      in
+        lib.mkIf config.helium-browser.defaultBrowser {
+          enable = true;
+          associations.added = associations;
+          defaultApplications = associations;
+        };
     };
   };
 }
