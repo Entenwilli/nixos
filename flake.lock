@@ -147,11 +147,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1787519196,
-        "narHash": "sha256-D3MBqnWIYTaXzXsBylczwZJelXPNjE+ygZb00m0Nve4=",
+        "lastModified": 1787898880,
+        "narHash": "sha256-6grdcfBwMOXbmO6GtbjQcQ6hiuV1tCWrl8uBfdasFEg=",
         "owner": "Entenwilli",
         "repo": "neovim",
-        "rev": "7184e74ae7f132397914b4d4edcdabf2fffcd38e",
+        "rev": "78269d784a18d5c7fd63b6804f6424dc9de771f1",
         "type": "github"
       },
       "original": {
