@@ -9,4 +9,5 @@
   xivlauncher-rb = pkgs.callPackage ./xivlauncher-rb {};
   yomitan-api = pkgs.callPackage ./yomitan-api {};
   yomitan-mecab = pkgs.callPackage ./yomitan-mecab {};
+  readest-updated = pkgs.callPackage ./readest {};
 }

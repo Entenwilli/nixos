@@ -80,7 +80,8 @@
           ".config/solidtime"
           ".config/trackma"
           ".config/TeamSpeak"
-          ".local/share/com.github.johnfactotum.Foliate"
+          ".local/share/com.bilingify.readest"
+          ".config/com.bilingify.readest"
           ".local/share/direnv"
         ];
         files = [
