@@ -52,6 +52,12 @@
             url = "https://app.asbplayer.dev";
             position = 300;
           };
+          natively = {
+            id = "f3586b92-f86c-41c6-8f8d-0f2b31f29c5a";
+            workspace = workspaces.japanese.id;
+            url = "https://learnnatively.com";
+            position = 301;
+          };
         };
       };
     };
