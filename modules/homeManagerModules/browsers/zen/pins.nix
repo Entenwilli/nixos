@@ -58,6 +58,12 @@
             url = "https://learnnatively.com";
             position = 301;
           };
+          wanitrack = {
+            id = "3efb7458-81cd-4a97-8f99-f465fad09a1b";
+            workspace = workspaces.japanese.id;
+            url = "https://wanitrack.com";
+            position = 302;
+          };
         };
       };
     };
