@@ -89,7 +89,6 @@
 
       environment.systemPackages = with pkgs; [
         brightnessctl
-        eclipses.eclipse-modeling
       ];
 
       # Setup upower agent

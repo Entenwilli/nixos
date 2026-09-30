@@ -43,7 +43,6 @@
       via
       wonderdraft
       trackma-gtk
-      eclipses.eclipse-modeling
     ];
 
     # Enable impermanence
