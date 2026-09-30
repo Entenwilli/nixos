@@ -15,6 +15,7 @@
       self.nixosModules.drawing
       self.nixosModules.gaming
       self.nixosModules.hyprland
+      self.nixosModules.i18n
       self.nixosModules.impermanence
       self.nixosModules.laptop-additions
       self.nixosModules.lnxlink
@@ -49,6 +50,8 @@
         ];
       };
     };
+
+    i18n.enable = true;
 
     # This will add each flake input as a registry
     # To make nix3 commands consistent with your flake
