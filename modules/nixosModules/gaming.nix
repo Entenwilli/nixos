@@ -32,6 +32,9 @@
         gamescopeSession = {
           enable = true;
         };
+        extraPackages = with pkgs; [
+          mono
+        ];
         package = pkgs.steam.override {
           extraProfile = ''
             unset TZ
