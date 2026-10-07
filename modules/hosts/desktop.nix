@@ -48,6 +48,9 @@
     # Enable impermanence
     impermanence.enable = true;
 
+    # Enable virtualization
+    virtualization.enable = true;
+
     # Setup syncthing
     syncthing.enable = true;
     sops.secrets."syncthing-desktop-key" = {

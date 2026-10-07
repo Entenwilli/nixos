@@ -32,6 +32,7 @@
       self.nixosModules.shell
       self.nixosModules.streamcontroller
       self.nixosModules.syncthing
+      self.nixosModules.virtualization
     ];
 
     # Configure nix package manager
