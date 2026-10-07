@@ -30,13 +30,13 @@
           }
           {
             label = "shutdown";
-            action = "hyprshutdown --verbose --post-cmd 'systemctl poweroff'";
+            action = "systemctl poweroff";
             text = "Power Down";
             keybind = "p";
           }
           {
             label = "reboot";
-            action = "hyprshutdown --verbose --post-cmd 'systemctl reboot'";
+            action = "systemctl reboot";
             text = "Reboot";
             keybind = "r";
           }
