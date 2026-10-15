@@ -27,6 +27,7 @@
         openjdk17
         jetbrains.idea
         neovide
+        claude-code
       ];
 
       # Configure git
