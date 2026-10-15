@@ -83,8 +83,11 @@
           ".local/share/com.bilingify.readest"
           ".config/com.bilingify.readest"
           ".local/share/direnv"
+
+          ".claude"
         ];
         files = [
+          ".claude.json"
           "start-webcam"
           ".config/user-dirs.dirs"
           ".config/gtk-3.0/bookmarks"
