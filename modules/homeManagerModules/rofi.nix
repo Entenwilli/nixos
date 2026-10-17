@@ -24,7 +24,7 @@
           }
           {
             label = "lock";
-            action = "${pkgs.hyprlock}/bin/hyprlock";
+            action = "${pkgs.systemd}/bin/systemctl lock-session";
             text = "Lock";
             keybind = "l";
           }

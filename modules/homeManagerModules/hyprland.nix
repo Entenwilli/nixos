@@ -721,7 +721,6 @@
               "hyprland.start"
               (lib.generators.mkLuaInline ("function()\n"
                 + lib.strings.concatMapStrings (command: "hl.exec_cmd(\"${command}\")\n") [
-                  "hyprlock"
                   "hypridle"
                   "systemctl --user start hyprpolkitagent"
                   "keepassxc"
@@ -782,7 +781,7 @@
 
       home.file.".config/hypr/hypridle.conf".text = ''
          general {
-          lock_cmd = pidof hyprlock || hyprlock
+          lock_cmd = loginctl lock-session
           before_sleep_cmd = loginctl lock-session
           after_sleep_cmd = hyprctl dispatch dpms on
         }
@@ -847,87 +846,6 @@
 
         # hide the token restore checkbox and use the default value instead
         hide_token_restore: true
-      '';
-
-      home.file.".config/hypr/hyprlock.conf".text = ''
-        background {
-          monitor =
-          path = ~/pictures/wallpaper/tom-vining.jpg
-          blur_passes = 3
-          contrast = 0.8916
-          brightness = 0.8172
-          vibrancy = 0.1696
-          vibrancy_darkness = 0.0
-        }
-
-
-        auth {
-          fingerprint {
-            enabled = true
-            ready_message = "Scan fingerprint to unlock"
-            present_message = "Scanning fingerprint"
-          }
-        }
-
-        input-field {
-          monitor =
-          fade_on_empty = false
-          outer_color = rgb(c0caf5)
-          inner_color = rgb(16161e)
-          font_color = rgb(EFEFEF)
-          placeholder_text = <i>Input Password...</i>
-          hide_input = false
-          size = 200, 50
-
-          position= 0, -120
-          halign = center
-          valign = center
-        }
-
-        label {
-          monitor =
-          text = cmd[update:100] echo "$FPRINTPROMPT"
-          color = rgb(EFEFEF)
-          font_size = 10
-          font_family = FiraCode Nerd Font
-          position= 0, -180
-          halign = center
-          valign = center
-        }
-
-        label {
-         monitor =
-         text = cmd[update:1000] echo $TIME
-         color = rgb(EFEFEF)
-         font_size = 72
-         font_family = FiraCode Nerd Font
-         position = 0, -250
-         halign = center
-         valign = top
-        }
-
-        label {
-          monitor =
-          text = Hi there, $USER
-          color = rgba(200, 200, 200, 1.0)
-          font_size = 25
-          font_family = FiraCode Nerd Font
-
-          position = 0, -40
-          halign = center
-          valign = center
-        }
-
-        label {
-            monitor =
-            text = cmd[update:1000] echo "$(${location}/bin/location) $(${weather}/bin/weather)"
-            color = rgba(255, 255, 255, 1)
-            font_size = 10
-            font_family = FiraCode Nerd Font Mono ExtraBold
-            position = 0, -200
-            halign = center
-            valign = top
-        }
       '';
     };
   };

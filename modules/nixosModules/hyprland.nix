@@ -32,7 +32,6 @@
       dmenu-bluetooth
       wirelesstools
       wl-clipboard
-      hyprlock
       hypridle
       bc
       grim
@@ -53,16 +52,6 @@
     };
     xdg.portal.enable = true;
     #xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome];
-
-    security.pam.services.hyprlock = {
-      name = "hyprlock";
-      text = ''
-        # PAM configuration file for hyprlock
-        # the 'login' configuration file (see /etc/pam.d/login)
-
-        auth        include     login
-      '';
-    };
 
     systemd.user.timers."hyprsunset" = {
       timerConfig = {
