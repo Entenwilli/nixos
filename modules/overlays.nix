@@ -1,6 +1,10 @@
 {inputs, ...}: {
   flake.overlays = {
-    additions = final: _prev: import ../pkgs {pkgs = final;};
+    additions = final: _prev:
+      import ../pkgs {pkgs = final;}
+      // {
+        entenshell = inputs.entenshell.packages.${final.stdenv.hostPlatform.system}.entenshell;
+      };
 
     modifications = final: prev: {
       gnome-network-displays-patched = prev.gnome-network-displays.overrideAttrs (old: {
