@@ -57,7 +57,7 @@
               type = "vpn";
             };
             vpn = {
-              ca = "/home/felix/.cert/nm-openvpn/kit-v6-ca.pem";
+              #ca = "/home/felix/.cert/nm-openvpn/kit-v6-ca.pem";
               connection-type = "password";
               dev = "tun";
               password-flags = "0";

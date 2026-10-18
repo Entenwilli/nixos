@@ -494,7 +494,13 @@
               {
                 _args = [
                   (lib.generators.mkLuaInline "mainModShift ..\"+ E\"")
-                  (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"wlogout\")")
+                  (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.entenshell}/bin/entenshell ipc call powermenu toggle\")")
+                ];
+              }
+              {
+                _args = [
+                  (lib.generators.mkLuaInline "mainModShift ..\"+ Escape\"")
+                  (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.entenshell}/bin/entenshell ipc call lock lock\")")
                 ];
               }
               {

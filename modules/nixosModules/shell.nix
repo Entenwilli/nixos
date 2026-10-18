@@ -11,6 +11,13 @@
     package =
       inputs.entenshell.packages.${pkgs.stdenv.hostPlatform.system}.entenshell;
   in {
+    imports = [inputs.entenshell.nixosModules.default];
+
+    programs.entenshell = {
+      enable = true;
+      package = package;
+    };
+
     environment.systemPackages = [
       package
     ];
