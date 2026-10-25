@@ -5,6 +5,7 @@
   libarchive,
   python3,
   mecab,
+  mecab-ipadic-neologd,
   ...
 }:
 stdenv.mkDerivation rec {
@@ -45,9 +46,12 @@ stdenv.mkDerivation rec {
     cp $src/mecab.py $out/bin/mecab.py
     patchShebangs $out/bin/mecab.py
 
-    # Copy dictionary
+    # Copy dictionaries
     mkdir -p "$out/bin/data"
     bsdtar -xf $unidict -C $out/bin/data/
+
+    mkdir -p "$out/bin/data/ipadic-neologd"
+    cp -r ${mecab-ipadic-neologd}/* "$out/bin/data/ipadic-neologd/"
 
     cp $src/mecabrc $out/bin/mecabrc
 

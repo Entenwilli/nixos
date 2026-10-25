@@ -1,6 +1,8 @@
-# Custom packages, that can be defined similarly to ones from nixpkgs
-# You can build them using 'nix build .#example'
-{pkgs, ...}: {
+{
+  pkgs,
+  prev,
+  ...
+}: {
   eclipse-dfa = pkgs.callPackage ./eclipse-dfa {};
   wonderdraft = pkgs.callPackage ./wonderdraft {};
   lnxlink = pkgs.callPackage ./lnxlink {};
@@ -9,5 +11,6 @@
   xivlauncher-rb = pkgs.callPackage ./xivlauncher-rb {};
   yomitan-api = pkgs.callPackage ./yomitan-api {};
   yomitan-mecab = pkgs.callPackage ./yomitan-mecab {};
+  mecab-ipadic-neologd = pkgs.callPackage ./mecab-ipadic-neologd {mecab = prev.mecab;};
   readest-updated = pkgs.callPackage ./readest {};
 }
