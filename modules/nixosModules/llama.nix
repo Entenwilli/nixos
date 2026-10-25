@@ -40,12 +40,12 @@
       systemd.services.llama-cpp = {
         environment = {
           HOME = "/var/lib/llama-cpp";
-          XDG_CACHE_HOME = "/var/cache/private/llama-cpp";
-          MESA_SHADER_CACHE_DIR = "/var/cache/private/llama-cpp";
+          XDG_CACHE_HOME = "/var/cache/llama-cpp";
+          MESA_SHADER_CACHE_DIR = "/var/cache/llama-cpp";
         };
+        serviceConfig.DynamicUser = lib.mkForce false;
       };
       environment.persistence."/persistent".directories = lib.mkIf config.impermanence.enable [
-        "/var/lib/llama-cpp"
         "/var/cache/llama-cpp"
       ];
     };
