@@ -20,6 +20,16 @@
           ln -s ${prev.mecab-ipadic-neologd} $out/lib/mecab/dic/ipadic
         '';
       });
+
+      streamcontroller = prev.streamcontroller.overrideAttrs (_old: {
+        version = "1.5.0-beta.16";
+        src = final.fetchFromGitHub {
+          owner = "StreamController";
+          repo = "StreamController";
+          rev = "745b4940ecdd35adbfedecac62ce1609f09c3dfd";
+          hash = "sha256-59ICaBt2v06AdcZQET8bFa4a9HCkhU1ubDzGXIwi8YQ=";
+        };
+      });
     };
 
     unstable-packages = final: _prev: {
