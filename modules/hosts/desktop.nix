@@ -25,6 +25,7 @@
     imports = [
       self.nixosModules.desktop-hardware
       self.nixosModules.common
+      self.nixosModules.llama
     ];
 
     specialisation.freetime = {
@@ -44,6 +45,8 @@
       wonderdraft
       trackma-gtk
     ];
+
+    llama.enable = true;
 
     # Enable impermanence
     impermanence.enable = true;
