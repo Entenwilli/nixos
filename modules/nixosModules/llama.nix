@@ -21,11 +21,14 @@
         enable = true;
         package = pkgs.llama-cpp-vulkan;
         modelsPreset = {
-          "Qwen3.8-27B" = {
+          "Qwen3.8-27B Speed" = {
             np = 1;
+            ngl = 99999;
             hf = "unsloth/Qwen3.8-27B-GGUF";
             hf-file = "Qwen3.8-27B-UD-IQ3_S.gguf";
-            alias = "Qwen3.8";
+            alias = "Qwen3.8 Speed";
+            mmproj-offload = true;
+            # kv-offload = true;
             models-max = 1;
             sleep-idle-seconds = 900;
             ctx-size = 65536;
@@ -35,6 +38,24 @@
             min-p = 0.0;
             parallel = 1;
           };
+          "Qwen3.8-27B Accuracy" = {
+            np = 1;
+            ngl = 99999;
+            hf = "unsloth/Qwen3.8-27B-GGUF";
+            hf-file = "Qwen3.8-27B-UD-Q4_K_S.gguf";
+            alias = "Qwen3.8 Accuracy";
+            mmproj-offload = true;
+            kv-offload = true;
+            models-max = 1;
+            sleep-idle-seconds = 900;
+            ctx-size = 65536;
+            temp = 1.0;
+            top-p = 0.95;
+            top-k = 20;
+            min-p = 0.0;
+            parallel = 1;
+          };
+
           "Gemma4-26B-A4B" = {
             np = 1;
             hf = "unsloth/gemma-4-26B-A4B-it-GGUF";
