@@ -30,6 +30,7 @@
       self.homeManagerModules.media
       self.homeManagerModules.obsidian
       self.homeManagerModules.office
+      self.homeManagerModules.opencode
       self.homeManagerModules.password-manager
       self.homeManagerModules.rofi
       self.homeManagerModules.secrets
@@ -60,6 +61,9 @@
 
     # Enable gtk and qt theming
     theming.enable = true;
+
+    # Enable opencode
+    opencode.enable = true;
 
     # Enable fastfetch
     fastfetch.enable = true;
