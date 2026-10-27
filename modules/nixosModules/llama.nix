@@ -58,6 +58,9 @@
             alias = "Qwen3.8 Speed";
             mmproj-offload = true;
             # kv-offload = true;
+            flash-attn = "on";
+            cache-type-k = "q8_0";
+            cache-type-v = "q8_0";
             models-max = 1;
             sleep-idle-seconds = 900;
             ctx-size = 65536;
@@ -75,6 +78,9 @@
             alias = "Qwen3.8 Accuracy";
             mmproj-offload = true;
             kv-offload = true;
+            flash-attn = "on";
+            cache-type-k = "q8_0";
+            cache-type-v = "q8_0";
             models-max = 1;
             sleep-idle-seconds = 900;
             ctx-size = 65536;
@@ -90,6 +96,10 @@
             hf = "unsloth/gemma-4-26B-A4B-it-GGUF";
             hf-file = "gemma-4-26B-A4B-it-Q8_0.gguf";
             alias = "Gemma4";
+            n-cpu-moe = 16;
+            flash-attn = "on";
+            cache-type-k = "q8_0";
+            cache-type-v = "q8_0";
             models-max = 1;
             sleep-idle-seconds = 900;
             ctx-size = 65536;
@@ -117,6 +127,8 @@
       services.udev.extraRules = ''
         ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x1002", ATTR{device}=="0x7550", ATTR{power_dpm_force_performance_level}="high"
       '';
+
+      powerManagement.cpuFreqGovernor = "performance";
     };
   };
 }
