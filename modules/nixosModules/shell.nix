@@ -30,6 +30,9 @@
       after = ["graphical-session.target"];
       requisite = ["graphical-session.target"];
       description = "quickshell";
+      environment = {
+        DRI_PRIME = "1";
+      };
       documentation = ["https://quickshell.outfoxxed.me/docs/"];
 
       serviceConfig = {

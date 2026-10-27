@@ -23,6 +23,9 @@
         text =
           lib.readFile ./config.kdl
           + ''
+            debug {
+              render-drm-device "/dev/dri/renderD129"
+            }
             input {
                 keyboard {
                     xkb {

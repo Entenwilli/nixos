@@ -159,6 +159,10 @@
     # Enable browser
     browser.enable = true;
 
+    home.file.".config/electron-flags.conf".text = ''
+      --ozone-platform=wayland --force_low_power_gpu
+    '';
+
     # Nicely reload system units when changing configs
     systemd.user.startServices = "sd-switch";
 

@@ -32,6 +32,11 @@
         enable = true;
         setAsDefaultBrowser = config.zen-browser.defaultBrowser;
 
+        env = {
+          # Offload to iGPU
+          DRI_PRIME = "1";
+        };
+
         nativeMessagingHosts = with pkgs; [
           keepassxc
           yomitan-api
