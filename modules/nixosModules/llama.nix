@@ -17,13 +17,42 @@
     };
 
     config = lib.mkIf config.llama.enable {
+      services.open-webui = {
+        enable = true;
+        port = 8081;
+        environment = {
+          WEBUI_AUTH = "False";
+        };
+      };
+      users.users.open-webui = {
+        isSystemUser = true;
+        group = "open-webui";
+      };
+      users.groups.open-webui = {};
+
+      systemd.services.open-webui = {
+        serviceConfig = {
+          DynamicUser = lib.mkForce false;
+          ProtectProc = lib.mkForce "default";
+          User = "open-webui";
+          Group = "open-webui";
+        };
+      };
+
       services.llama-cpp = {
         enable = true;
-        package = pkgs.llama-cpp-vulkan;
+        package = pkgs.llama-cpp-vulkan.overrideAttrs (oldAttrs: {
+          cmakeFlags =
+            (lib.filter (flag: !(lib.strings.hasInfix "GGML_NATIVE" flag)) oldAttrs.cmakeFlags)
+            ++ [
+              (lib.cmakeFeature "CMAKE_C_FLAGS" "-march=znver5")
+              (lib.cmakeFeature "CMAKE_CXX_FLAGS" "-march=znver5")
+            ];
+        });
         modelsPreset = {
           "Qwen3.8-27B Speed" = {
             np = 1;
-            ngl = 99999;
+            fit = "on";
             hf = "unsloth/Qwen3.8-27B-GGUF";
             hf-file = "Qwen3.8-27B-UD-IQ3_S.gguf";
             alias = "Qwen3.8 Speed";
@@ -40,7 +69,7 @@
           };
           "Qwen3.8-27B Accuracy" = {
             np = 1;
-            ngl = 99999;
+            fit = "on";
             hf = "unsloth/Qwen3.8-27B-GGUF";
             hf-file = "Qwen3.8-27B-UD-Q4_K_S.gguf";
             alias = "Qwen3.8 Accuracy";
@@ -76,14 +105,18 @@
           HOME = "/var/lib/llama-cpp";
           XDG_CACHE_HOME = "/var/cache/llama-cpp";
           MESA_SHADER_CACHE_DIR = "/var/cache/llama-cpp";
-          HSA_OVERRIDE_GFX_VERSION = "12.0.1";
         };
         serviceConfig.DynamicUser = lib.mkForce false;
-        serviceConfig.ProtectProc = lib.mkForce "default";
       };
+
       environment.persistence."/persistent".directories = lib.mkIf config.impermanence.enable [
         "/var/cache/llama-cpp"
+        "/var/lib/open-webui"
       ];
+
+      services.udev.extraRules = ''
+        ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x1002", ATTR{device}=="0x7550", ATTR{power_dpm_force_performance_level}="high"
+      '';
     };
   };
 }
