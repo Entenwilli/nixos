@@ -119,7 +119,6 @@
         '';
       })
       pkgs.jq
-      pkgs.readest-updated
       pkgs.wine64Packages.unstableFull
       pkgs.unstable.winetricks
     ];

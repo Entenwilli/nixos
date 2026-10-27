@@ -80,8 +80,6 @@
           ".config/solidtime"
           ".config/trackma"
           ".config/TeamSpeak"
-          ".local/share/com.bilingify.readest"
-          ".config/com.bilingify.readest"
           ".local/share/direnv"
 
           ".claude"
