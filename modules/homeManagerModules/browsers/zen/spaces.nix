@@ -36,6 +36,15 @@
             position = 4000;
             icon = "🐉";
           };
+          video = {
+            name = "Video";
+            id = "e329728e-c558-421c-adee-1a79eae55dad";
+            position = 5000;
+            icon = "🎬";
+            routes."YouTube" = {
+              reference = "youtube.com";
+            };
+          };
         };
       };
     };
