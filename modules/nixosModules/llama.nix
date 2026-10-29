@@ -69,6 +69,7 @@
             top-k = 20;
             min-p = 0.0;
             parallel = 1;
+            fit-target = 256;
           };
           "Qwen3.8-27B Accuracy" = {
             np = 1;
@@ -89,6 +90,7 @@
             top-k = 20;
             min-p = 0.0;
             parallel = 1;
+            fit-target = 256;
           };
 
           "Gemma4-26B-A4B" = {
@@ -107,6 +109,7 @@
             top-p = 0.95;
             top-k = 64;
             parallel = 1;
+            fit-target = 256;
           };
         };
       };
