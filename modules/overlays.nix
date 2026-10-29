@@ -14,6 +14,19 @@
         nativeBuildInputs = old.nativeBuildInputs ++ [prev.gtk3 prev.wpa_supplicant prev.glib-networking prev.gst_all_1.gstreamer prev.gst_all_1.gst-plugins-base prev.gst_all_1.gst-vaapi];
       });
 
+      # FIXME: Remove when fixed upstream
+      pythonPackagesExtensions =
+        prev.pythonPackagesExtensions
+        ++ [
+          (
+            py_final: py_prev: {
+              fpdf2 = py_prev.fpdf2.overrideAttrs (old: {
+                disabledTests = old.disabledTests ++ ["test_image_with_explicit_dimensions"];
+              });
+            }
+          )
+        ];
+
       mecab = prev.mecab.overrideAttrs (_: {
         postInstall = ''
           mkdir -p $out/lib/mecab/dic
