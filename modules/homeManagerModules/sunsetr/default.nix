@@ -45,14 +45,14 @@
 
         smoothing = true;
 
-        night_temp = 3300;
+        night_temp = 2700;
         day_temp = 6500;
         night_gamma = 80;
         day_gamma = 100;
         update_interval = "auto";
 
         sunset = "19:00:00";
-        sunrise = "06:00:00";
+        sunrise = "04:30:00";
         transition_duration = 90;
       };
     };
