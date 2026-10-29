@@ -14,7 +14,7 @@
       };
       home.packages = with pkgs; [
         zotero
-        anki
+        unstable.anki
         glib
       ];
     };
