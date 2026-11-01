@@ -1,0 +1,13 @@
+name = "Animal Garden - Manatee"
+filename = "animalgarden-manatee-1.0.0-neoforge-1.21.1-21.1.209.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/XzTcXQrj/versions/VTSrsT3b/animalgarden-manatee-1.0.0-neoforge-1.21.1-21.1.209.jar"
+hash-format = "sha512"
+hash = "7f7d32fe3c140f32c7166e90d13ba9a813b59d19844ec3a870e019fb269646b5ff1fdb04bb1f213f041013c50c4f3c265a843e43ed54b2a9e7aeed997359aaac"
+
+[update]
+[update.modrinth]
+mod-id = "XzTcXQrj"
+version = "VTSrsT3b"

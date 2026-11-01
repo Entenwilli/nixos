@@ -1,0 +1,13 @@
+name = "Fowl Play"
+filename = "fowlplay-1.1.2+1.21.1-neoforge.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/WpXfePbg/versions/F8PYwXS5/fowlplay-1.1.2%2B1.21.1-neoforge.jar"
+hash-format = "sha512"
+hash = "b3b1bdbd9a45be786da68c6a84e06d75fec7456950fa03c53a8e97823103759447cb926a1e2719fd8432eb8833f4d0a929f65e53eace8c2e6ef777bfb57e8a1a"
+
+[update]
+[update.modrinth]
+mod-id = "WpXfePbg"
+version = "F8PYwXS5"

@@ -1,0 +1,13 @@
+name = "RightClickHarvest Supplementaries Compat"
+filename = "rch-supplementaries-compat-neoforge-2.0.0+1.21.jar"
+side = "server"
+
+[download]
+url = "https://cdn.modrinth.com/data/1UdKJCjq/versions/npvyks25/rch-supplementaries-compat-neoforge-2.0.0%2B1.21.jar"
+hash-format = "sha512"
+hash = "261f335297557bda41970ae5992dd82e3e4926ba9ac30586a9d37105852159485a6fd4d1b4e6f36c3cddfa5ac4571012bd8d98f9390ec1730a1ca9500fe6b9b8"
+
+[update]
+[update.modrinth]
+mod-id = "1UdKJCjq"
+version = "npvyks25"

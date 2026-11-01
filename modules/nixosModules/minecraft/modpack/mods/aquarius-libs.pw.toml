@@ -1,0 +1,13 @@
+name = "Aquarius Libs"
+filename = "aquariuslibs-1.0.1-neoforge-1.21.1-21.1.217.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/KkHnyaL6/versions/av4UoeaO/aquariuslibs-1.0.1-neoforge-1.21.1-21.1.217.jar"
+hash-format = "sha512"
+hash = "35b5b034102712ea716df0ae93c69cad992471ada20fe164c267a583b157125e3dd4b7a45143e26c98cee14f79ca426d1dc656637b267e0a536485b67f54e549"
+
+[update]
+[update.modrinth]
+mod-id = "KkHnyaL6"
+version = "av4UoeaO"

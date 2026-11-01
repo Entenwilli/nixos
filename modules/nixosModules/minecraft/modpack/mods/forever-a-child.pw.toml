@@ -1,0 +1,13 @@
+name = "Forever A Child"
+filename = "ForeverAChild-neoforge-1.21.1-2.0.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/iU6zcrZd/versions/55I7dmZU/ForeverAChild-neoforge-1.21.1-2.0.1.jar"
+hash-format = "sha512"
+hash = "136143126b566658f1bb4ac1ff44bf4a6720a4b608e06f625a889f57d66f69904dcc3893f5e20d763d61f911ca005d547106d4d4f3dbffcac7c28c6c66b64637"
+
+[update]
+[update.modrinth]
+mod-id = "iU6zcrZd"
+version = "55I7dmZU"

@@ -1,0 +1,13 @@
+name = "More Chests Variants (MCV)"
+filename = "MoreChestVariants-1.5.15+1.21.1-Neo.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/HKKqmr2p/versions/LS1lV2L7/MoreChestVariants-1.5.15%2B1.21.1-Neo.jar"
+hash-format = "sha512"
+hash = "6104c3aa99307a8d6e76e098cfe157867557648c28015f258a48f1b27ccdb8e3ef9d509361e36784f4106cd0edfc1256cfd42787f7816e2f253ee1f67e3b7767"
+
+[update]
+[update.modrinth]
+mod-id = "HKKqmr2p"
+version = "LS1lV2L7"

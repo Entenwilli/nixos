@@ -34,6 +34,8 @@
     };
 
     config = {
+      hostRole = "laptop";
+
       systemd.user.services.lnxlink = {
         serviceConfig = {
           ExecStart = lib.mkForce "${pkgs.lnxlink}/bin/lnxlink -c ${config.home-manager.users.felix.sops.secrets."laptop-lnxlink.yml".path} -i";

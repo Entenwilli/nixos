@@ -1,0 +1,13 @@
+name = "Hopo Better Underwater Ruins"
+filename = "HopoBetterUnderwaterRuins-[1.21.1-1.21.3]-1.2.1b.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/BuWCQzqf/versions/cCUmdH6y/HopoBetterUnderwaterRuins-%5B1.21.1-1.21.3%5D-1.2.1b.jar"
+hash-format = "sha512"
+hash = "a659df6cc3409c8c334e034ffb7da09af08b084e22d5cc7c5e99c609727c5034dd0f4c1dce8f75fe6c845edb9a85b31d2b6605dd4870b1da4c2e1445fda749f7"
+
+[update]
+[update.modrinth]
+mod-id = "BuWCQzqf"
+version = "cCUmdH6y"

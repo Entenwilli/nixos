@@ -14,6 +14,7 @@
       self.nixosModules.bluetooth
       self.nixosModules.drawing
       self.nixosModules.gaming
+      self.nixosModules.host-role
       self.nixosModules.hyprland
       self.nixosModules.i18n
       self.nixosModules.impermanence

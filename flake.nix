@@ -36,6 +36,17 @@
     entenvim.url = "github:Entenwilli/neovim/nixvim";
     entenvim.inputs.nixpkgs.follows = "nixpkgs";
 
+    # Disk partitioning
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Remote installation tooling
+    nixos-anywhere.url = "github:nix-community/nixos-anywhere";
+    nixos-anywhere.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Minecraft servers
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+
     # Quickshell
     entenshell.url = "git+ssh://git@github.com/Entenwilli/shell";
 

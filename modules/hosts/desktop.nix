@@ -46,6 +46,8 @@
       trackma-gtk
     ];
 
+    hostRole = "desktop";
+
     llama.enable = true;
 
     # Enable impermanence
@@ -64,6 +66,10 @@
       restartUnits = ["syncthing.service"];
     };
     syncthing.certSecretName = "syncthing-desktop-cert";
+    sops.secrets."syncthing-desktop-gui-password" = {
+      restartUnits = ["syncthing-init.service"];
+    };
+    syncthing.guiPasswordFile = config.sops.secrets."syncthing-desktop-gui-password".path;
 
     # Set Hostname
     networking.hostName = "nixos-desktop";

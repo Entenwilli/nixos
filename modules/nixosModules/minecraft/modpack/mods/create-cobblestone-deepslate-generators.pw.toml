@@ -1,0 +1,13 @@
+name = "Create Cobblestone deepslate generators"
+filename = "create-cobblestone-deepslate-generators-1.4.6-neoforge+1.21.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/F2XXc3ws/versions/GBDR4YSy/create-cobblestone-deepslate-generators-1.4.6-neoforge%2B1.21.1.jar"
+hash-format = "sha512"
+hash = "08277212127fae7a3c4d2ad05876d999b88838d3c7118aa37520b9f3ad1195d2c0d41e20743778bd7d31f7824d51c2f020946863d391840c7e7683871e41b221"
+
+[update]
+[update.modrinth]
+mod-id = "F2XXc3ws"
+version = "GBDR4YSy"
