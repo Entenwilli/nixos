@@ -9,7 +9,6 @@
     modules = [
       inputs.disko.nixosModules.disko
       inputs.sops-nix.nixosModules.sops
-      inputs.entenvim.nixosModules.neovim
       inputs.nix-minecraft.nixosModules.minecraft-servers
       self.nixosModules.server
     ];
@@ -112,8 +111,6 @@
       efiInstallAsRemovable = true;
     };
 
-    programs.entenvim.enable = true;
-
     users.users.felix = {
       hashedPassword = "$y$j9T$hHy3Jnr8hvdSqLRV3z2760$G.Hr/DOnqhA6c2IfcAcPDGByVm8EOrtvKTnrGKYPodB";
       uid = 1000;
@@ -144,6 +141,7 @@
       neovim
       git
       curl
+      inputs.entenvim.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
     programs.nh = {
