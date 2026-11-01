@@ -1,0 +1,13 @@
+name = "Create: Shuffle Filter"
+filename = "create-shufflefilter-2.1.0-neo.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/gv5RRavC/versions/mimF2YUr/create-shufflefilter-2.1.0-neo.jar"
+hash-format = "sha512"
+hash = "98e61267d76f72622c35d20172e71b1e1cdb833db99d305f3cb0b22fceced5b3b722a1c7d9f1814656fdb4519922f8b2c906f983802184bef236375aad541ed1"
+
+[update]
+[update.modrinth]
+mod-id = "gv5RRavC"
+version = "mimF2YUr"

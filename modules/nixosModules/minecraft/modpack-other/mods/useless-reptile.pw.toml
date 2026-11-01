@@ -1,0 +1,13 @@
+name = "Useless Reptile"
+filename = "useless-reptile-0.9.13-1.21.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/YE4QRt8F/versions/fLxTE60B/useless-reptile-0.9.13-1.21.1.jar"
+hash-format = "sha512"
+hash = "a6ac9048d747fb5c8b75ad358eef3d25646d305080db5829eef3b41066ff92219e5d07390fd5f81ddfdb4da71fd993413c3078f1059f3d29b8be7454413aeeb7"
+
+[update]
+[update.modrinth]
+mod-id = "YE4QRt8F"
+version = "fLxTE60B"

@@ -1,0 +1,13 @@
+name = "Create: Curios Jetpack & Backtank"
+filename = "create_jetpack_curios-1.2.0-neoforge-1.21.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/BBhCMftF/versions/JEmLrfe6/create_jetpack_curios-1.2.0-neoforge-1.21.1.jar"
+hash-format = "sha512"
+hash = "5a751cda827b0459b1013f33573384fb51f8386d5c9a43561dd21698903d73e4f7d6ec66b610bac532d383d9b7435c6fe6910943566e1b96ee819fb154e6d419"
+
+[update]
+[update.modrinth]
+mod-id = "BBhCMftF"
+version = "JEmLrfe6"

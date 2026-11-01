@@ -1,0 +1,13 @@
+name = "Create: Threaded Trains"
+filename = "createthreadedtrains-neoforge-1.21.1-1.0.0.jar"
+side = "server"
+
+[download]
+url = "https://cdn.modrinth.com/data/RYJzdkDr/versions/ry1hvo4l/createthreadedtrains-neoforge-1.21.1-1.0.0.jar"
+hash-format = "sha512"
+hash = "93511d32e8c7484fdcfd90646d48f297ba3188788e0ea6412900be38ae6b82e69bc131bbb011519b52ac0728a7dfd531c0ac356a7935335c06f691ad20e38c69"
+
+[update]
+[update.modrinth]
+mod-id = "RYJzdkDr"
+version = "ry1hvo4l"

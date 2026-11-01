@@ -1,0 +1,13 @@
+name = "Carry On Extend"
+filename = "carryonextend-architectury-neoforge-1.5.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/JbqjOoQj/versions/OdksqY6s/carryonextend-architectury-neoforge-1.5.1.jar"
+hash-format = "sha512"
+hash = "9b1c824cc74b872bbf5dff53d42288dc8ca09b8de0843cb1380c2bbfbf8be25e16bd54bca77b35df5f6180160bb519d6d05c0e9b97482999ea03281aeb6811c9"
+
+[update]
+[update.modrinth]
+mod-id = "JbqjOoQj"
+version = "OdksqY6s"

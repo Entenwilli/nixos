@@ -1,0 +1,13 @@
+name = "Visual Health"
+filename = "visualhealth-neoforge-1.21.1-2.0.0-Hotfix.jar"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/X01iuqRJ/versions/6mkQbXps/visualhealth-neoforge-1.21.1-2.0.0-Hotfix.jar"
+hash-format = "sha512"
+hash = "888056d5cd83ee58bbc146d1ef3ed9c5d4c3077b70f1c49c8304ff0165801e001df2c974da2ff7eacc62b6bafc85f3268bc919b0bd338469567a16bf86cfc9e0"
+
+[update]
+[update.modrinth]
+mod-id = "X01iuqRJ"
+version = "6mkQbXps"

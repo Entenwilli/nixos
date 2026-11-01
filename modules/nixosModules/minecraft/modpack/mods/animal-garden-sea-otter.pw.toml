@@ -1,0 +1,13 @@
+name = "Animal Garden - Sea Otter"
+filename = "animalgarden-seaotter-1.1.0-neoforge-1.21.1-21.1.213.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/PFr3jBbA/versions/Oo6zhzrW/animalgarden-seaotter-1.1.0-neoforge-1.21.1-21.1.213.jar"
+hash-format = "sha512"
+hash = "aa0c490c7d456bb45be2b484f6f4c8d1def7a41c9f258de04a1bdeab1c0dd80db3d9ed0160d0284eb2b15516d1ef3d3bbc1c0e827c4d0c3449231b6cd625dee6"
+
+[update]
+[update.modrinth]
+mod-id = "PFr3jBbA"
+version = "Oo6zhzrW"

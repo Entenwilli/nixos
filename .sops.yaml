@@ -1,7 +1,13 @@
 keys:
   - &key age132c4qxp5kw508rs754tvz489xg2tt4f6mhxm9zraf09qxmxftg6s547shn
+  - &nixos-server-key age1sxjzh3jazdp6jgy5mry07yxdeema00a2gfxe7cg4kz72sfxss3ns0v925y
 creation_rules:
   - path_regex: ^secrets/secrets.yaml$
     key_groups:
     - age:
       - *key
+  - path_regex: ^secrets/nixos-server.yaml$
+    key_groups:
+    - age:
+      - *key
+      - *nixos-server-key

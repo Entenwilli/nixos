@@ -1,0 +1,13 @@
+name = "Deeper Oceans"
+filename = "deeper-oceans-2.0.0-fabric-1.21.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/yqHsPROA/versions/Q4CGh0Nb/deeper-oceans-2.0.0-fabric-1.21.1.jar"
+hash-format = "sha512"
+hash = "60f020654fa1ecde6f17791a890cda02532235b71f40bec3c6b9d3a82cddce28ad4625ef0fd01252476034e9a51a37d1370e9e543be8e949c73727c063861ee1"
+
+[update]
+[update.modrinth]
+mod-id = "yqHsPROA"
+version = "Q4CGh0Nb"

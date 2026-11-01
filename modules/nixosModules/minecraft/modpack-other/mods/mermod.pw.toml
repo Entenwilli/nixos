@@ -1,0 +1,13 @@
+name = "Mermod"
+filename = "mermod-fabric-3.3.2+1.21.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/ORiydwz3/versions/l0PIcrlD/mermod-fabric-3.3.2%2B1.21.1.jar"
+hash-format = "sha512"
+hash = "c7e49c0a281597424bdb09d5490c934456adae2843be406f47568bff5f6db1ee301074c3207015d5af828bad60d2cc54999af0b5f872e6af28d3f7186739a28c"
+
+[update]
+[update.modrinth]
+mod-id = "ORiydwz3"
+version = "l0PIcrlD"

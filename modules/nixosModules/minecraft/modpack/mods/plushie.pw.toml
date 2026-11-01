@@ -1,0 +1,13 @@
+name = "Plushie Mod"
+filename = "plushies-neoforge-1.5.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/hsOK0gUP/versions/ve5iOIXD/plushies-neoforge-1.5.1.jar"
+hash-format = "sha512"
+hash = "7b4c9291b2daba97e83f7874b11c28509c8d0cffbfa092f1f793ebbd3b4b22086b902a0655ddea1ea460d3e9be61c47c9c65f5102bf8b7cb7815c4add017087f"
+
+[update]
+[update.modrinth]
+mod-id = "hsOK0gUP"
+version = "ve5iOIXD"

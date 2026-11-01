@@ -1,0 +1,13 @@
+name = "GraveStone Mod"
+filename = "gravestone-neoforge-1.21.1-1.0.37.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/RYtXKJPr/versions/Y29z3Y9Y/gravestone-neoforge-1.21.1-1.0.37.jar"
+hash-format = "sha512"
+hash = "07e1a08d8e1a8c3f7d0a59a3c5a7b03e32862fadbb018067795704683aa8298823cb6d66e739577b7591bef2dfa2bcbe49eafe14cb73920feebb79cd7a539141"
+
+[update]
+[update.modrinth]
+mod-id = "RYtXKJPr"
+version = "Y29z3Y9Y"

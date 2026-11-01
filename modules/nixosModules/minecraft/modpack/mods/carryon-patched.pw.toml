@@ -1,0 +1,13 @@
+name = "Carryon - Patched (Unofficial)"
+filename = "carryon-neoforge-1.21.1-2.2.4.4-patched-no-slowness.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "6ce1e588e2eddcb817c05e8bc30081440d390480"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 8113055
+project-id = 1543292

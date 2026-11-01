@@ -1,0 +1,13 @@
+name = "Quad"
+filename = "Quad-1.2.9+1.21.1-Neo.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/7jzrCiK0/versions/sTJ6hLWf/Quad-1.2.9%2B1.21.1-Neo.jar"
+hash-format = "sha512"
+hash = "ca9f276118ea9872c15c7ffbe794064b22eef1897204567475862455afce9dcfc25da1fb92f8d5420a1710b0f445386df6cde03e8d042c9b374dd666f0ae7fdf"
+
+[update]
+[update.modrinth]
+mod-id = "7jzrCiK0"
+version = "sTJ6hLWf"

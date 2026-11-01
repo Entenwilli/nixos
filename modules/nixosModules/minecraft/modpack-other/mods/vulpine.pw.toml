@@ -1,0 +1,13 @@
+name = "Vulpine"
+filename = "vulpine-2.2.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/kAckHNrf/versions/CYbo48un/vulpine-2.2.1.jar"
+hash-format = "sha512"
+hash = "be183dbe4ad37b3a1d92089bc223b82ea9d6090aaa921d34dcbd2635749ee8ef6b63656f291a7d5c66ef036b937c56bf89d645ac430f84e962e501ab870f0ba6"
+
+[update]
+[update.modrinth]
+mod-id = "kAckHNrf"
+version = "CYbo48un"

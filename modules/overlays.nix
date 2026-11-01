@@ -45,6 +45,25 @@
       });
     };
 
+    # FIXME: Remove when fixed upstream
+    server-fixes = final: prev: {
+      pythonPackagesExtensions =
+        prev.pythonPackagesExtensions
+        ++ [
+          (
+            py_final: py_prev: {
+              fpdf2 = py_prev.fpdf2.overrideAttrs (old: {
+                disabledTests = old.disabledTests ++ ["test_image_with_explicit_dimensions"];
+              });
+            }
+          )
+        ];
+
+      paperless-ngx = prev.paperless-ngx.overrideAttrs (old: {
+        disabledTests = old.disabledTests ++ ["test_filters"];
+      });
+    };
+
     unstable-packages = final: _prev: {
       unstable = import inputs.nixpkgs-unstable {
         system = final.stdenv.hostPlatform.system;
