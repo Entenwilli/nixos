@@ -50,6 +50,8 @@
     # Quickshell
     entenshell.url = "git+ssh://git@github.com/Entenwilli/shell";
 
+    entenshell-cli.url = "git+ssh://git@github.com/Entenwilli/Entenshell-CLI";
+
     # Color theming
     base16.url = "github:SenchoPens/base16.nix";
     color-schemes.url = "github:tinted-theming/schemes";

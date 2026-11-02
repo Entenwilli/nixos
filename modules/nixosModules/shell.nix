@@ -10,6 +10,7 @@
   }: let
     package =
       inputs.entenshell.packages.${pkgs.stdenv.hostPlatform.system}.entenshell;
+    cli-package = inputs.entenshell-cli.packages.${pkgs.stdenv.hostPlatform.system}.default;
   in {
     imports = [inputs.entenshell.nixosModules.default];
 
@@ -20,6 +21,7 @@
 
     environment.systemPackages = [
       package
+      cli-package
     ];
 
     systemd.packages = [package];

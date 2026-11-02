@@ -1,9 +1,11 @@
-{...}: {
+{inputs, ...}: {
   flake.nixosModules.streamcontroller = {
     pkgs,
     config,
     ...
-  }: {
+  }: let
+    entenshell-cli = inputs.entenshell-cli.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  in {
     programs.streamcontroller = {
       enable = true;
       package = pkgs.unstable.streamcontroller;
@@ -23,6 +25,7 @@
         config.programs.niri.package
         mpv
         procps
+        entenshell-cli
       ];
     };
   };
