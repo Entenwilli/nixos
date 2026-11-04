@@ -42,6 +42,7 @@
 
       virtualisation.oci-containers.containers."tracking-database" = {
         image = "postgres:15";
+        pull = "always";
         environment = {
           "POSTGRES_DB" = "solidtime";
           "POSTGRES_USER" = "solidtime";
@@ -81,6 +82,7 @@
       };
       virtualisation.oci-containers.containers."tracking-frontend" = {
         image = "solidtime/solidtime:latest";
+        pull = "always";
         environment = {
           "APP_DEBUG" = "false";
           "APP_ENV" = "production";
@@ -152,6 +154,7 @@
       };
       virtualisation.oci-containers.containers."tracking-gotenberg" = {
         image = "gotenberg/gotenberg:8";
+        pull = "always";
         log-driver = "journald";
         extraOptions = [
           "--health-cmd=[\"curl\", \"--silent\", \"--fail\", \"http://localhost:3000/health\"]"
@@ -178,6 +181,7 @@
       };
       virtualisation.oci-containers.containers."tracking-queue" = {
         image = "solidtime/solidtime:latest";
+        pull = "always";
         environment = {
           "APP_DEBUG" = "false";
           "APP_ENV" = "production";
@@ -248,6 +252,7 @@
       };
       virtualisation.oci-containers.containers."tracking-scheduler" = {
         image = "solidtime/solidtime:latest";
+        pull = "always";
         environment = {
           "APP_DEBUG" = "false";
           "APP_ENV" = "production";
