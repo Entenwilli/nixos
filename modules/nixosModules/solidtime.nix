@@ -29,7 +29,7 @@
             rule = "Host(`time.fschwickerath.de`)";
             service = "timeService";
             tls.certResolver = "resolver";
-            middlewares = ["chainRequireAuth"];
+            middlewares = ["chainNoAuth"];
           };
         };
       };
