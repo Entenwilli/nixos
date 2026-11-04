@@ -154,6 +154,14 @@
     networking.firewall.allowedTCPPorts = [22 80 443];
     time.timeZone = "Europe/Berlin";
 
+    system.autoUpgrade = {
+      enable = true;
+      flake = "github:Entenwilli/nixos#nixos-server";
+      dates = "03:30";
+      randomizedDelaySec = "0";
+      allowReboot = false;
+    };
+
     systemd.timers.restart = {
       timerConfig = {
         OnCalendar = "*-*-* 04:00:00";
