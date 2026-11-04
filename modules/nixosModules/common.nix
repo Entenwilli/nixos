@@ -10,7 +10,6 @@
     ...
   }: {
     imports = [
-      self.nixosModules.audio
       self.nixosModules.bluetooth
       self.nixosModules.drawing
       self.nixosModules.gaming

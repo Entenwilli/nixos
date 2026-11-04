@@ -43,7 +43,6 @@
       android-tools
       via
       wonderdraft
-      trackma-gtk
     ];
 
     hostRole = "desktop";

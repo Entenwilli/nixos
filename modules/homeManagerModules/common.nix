@@ -133,12 +133,40 @@
     # Enable spotify
     spotify.enable = true;
 
-    # Enable Cover Script
-    coverart.enable = true;
-
     # Enable XDG Desktop
     xdg.enable = true;
     xdg.mime.enable = true;
+
+    # Hide unwanted desktop entries from the application launcher
+    xdg.desktopEntries = {
+      scrcpy = {
+        name = "scrcpy";
+        exec = "scrcpy";
+        noDisplay = true;
+      };
+      scrcpy-console = {
+        name = "scrcpy (console)";
+        exec = "scrcpy --pause-on-exit=if-error";
+        terminal = true;
+        noDisplay = true;
+      };
+      vim = {
+        name = "Vim";
+        exec = "vim %F";
+        terminal = true;
+        noDisplay = true;
+      };
+      winetricks = {
+        name = "Winetricks";
+        exec = "winetricks --gui";
+        noDisplay = true;
+      };
+      xterm = {
+        name = "XTerm";
+        exec = "xterm";
+        noDisplay = true;
+      };
+    };
 
     # Enable university tools
     university.enable = true;

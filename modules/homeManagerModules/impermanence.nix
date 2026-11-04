@@ -78,7 +78,6 @@
           ".config/session"
           ".config/Ryujinx"
           ".config/solidtime"
-          ".config/trackma"
           ".config/TeamSpeak"
           ".local/share/direnv"
 

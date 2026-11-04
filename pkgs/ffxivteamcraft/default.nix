@@ -33,6 +33,10 @@ in
       mkdir -p $out/share/applications
       cp ${desktopItem}/share/applications/* $out/share/applications
 
+      # Install icon
+      mkdir -p $out/share/pixmaps
+      cp ${appimageContents}/ffxiv-teamcraft.png $out/share/pixmaps/ffxiv-teamcraft.png
+
       # Add deucalion binaries
       cp ${appimageContents}/deucalion-bridge/deucalion-bridge.exe \
         $out/bin/deucalion-bridge.exe
