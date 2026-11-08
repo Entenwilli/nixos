@@ -22,9 +22,9 @@
           youtube-recommended-videos # Unhook
           yomitan
           (asbplayer.override rec {
-            version = "1.20.1";
-            url = "https://github.com/asbplayer/asbplayer/releases/download/v${version}/asbplayer-extension-firefox-${version}.xpi";
-            sha256 = "sha256-CYKguAT4tiq292jQte5BX9ESpqbDzkI2Q9vKoTl3Cq8=";
+            version = "1.22.0";
+            url = "https://github.com/asbplayer/asbplayer/releases/download/v${version}/asbplayer_language_learning-${version}.xpi";
+            sha256 = "sha256-NDoIszAhaqqys5Au281fkRyg8JLx4XObczPHL7D+uF0=";
           })
           refined-github
           indie-wiki-buddy
