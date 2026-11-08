@@ -347,4 +347,6 @@ binds {
 
     // The quit action will show a confirmation dialog to avoid accidental exits.
     Mod+Shift+E { spawn "entenshell" "ipc" "call" "powermenu" "toggle"; }
+
+    Mod+Shift+W { spawn "entenshell" "ipc" "call" "wallpaper" "open"; }
 }
