@@ -48,6 +48,7 @@
           settings = {
             "zen.welcome-screen.seen" = true;
             "zen.workspaces.continue-where-left-off" = true;
+            "zen.widget.linux.transparency" = true;
           };
 
           # No containers because of bugs with extensions
