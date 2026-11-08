@@ -57,12 +57,12 @@
               type = "vpn";
             };
             vpn = {
-              #ca = "/home/felix/.cert/nm-openvpn/kit-v6-ca.pem";
+              ca = "${./files/kit-vpn-ca.pem}";
+              connect-timeout = "5";
               connection-type = "password";
               dev = "tun";
               password-flags = "0";
-              port = "1194";
-              remote = "[2a00:1398:0:4::7:6]::";
+              remote = "[2a00:1398:0:4::7:6]:1194:udp, 141.52.226.101:1194:udp, [2a00:1398:0:4::7:8]:443:tcp, 141.52.226.103:443:tcp";
               tls-version-min = "1.3";
               username = "$kitvpn_identity";
               verify-x509-name = "name:ovpn.scc.kit.edu";
