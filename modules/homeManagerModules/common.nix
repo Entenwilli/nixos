@@ -112,7 +112,7 @@
           value=$(fcitx5-remote -n)
 
           if [ "$value" == "keyboard-us" ]; then
-            hyprctl devices -j | jq -r '.keyboards[] | .layout' | head -n1
+            echo "us"
           elif [ "$value" == "mozc" ]; then
             echo "jp"
           fi
