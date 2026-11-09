@@ -26,6 +26,7 @@
       self.nixosModules.server-disk
       self.nixosModules.server-network
       self.nixosModules.host-role
+      self.nixosModules.adventurelog
       self.nixosModules.shiori
       self.nixosModules.glance
       self.nixosModules.fileshare
@@ -53,6 +54,7 @@
 
     hostRole = "server";
 
+    adventurelog.enable = true;
     shiori.enable = true;
     glance.enable = true;
     fileshare.enable = true;
