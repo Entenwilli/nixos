@@ -14,7 +14,6 @@
 
     programs.obs-studio.enable = true;
     programs.obs-studio.plugins = with pkgs.obs-studio-plugins; [
-      #FIXME: Build broken: distroav
       wlrobs
       obs-backgroundremoval
       obs-pipewire-audio-capture
