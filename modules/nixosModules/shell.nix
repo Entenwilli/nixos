@@ -17,6 +17,9 @@
     programs.entenshell = {
       enable = true;
       package = package;
+      wallpaper = {
+        directory = "/home/felix/pictures/wallpaper/";
+      };
     };
 
     environment.systemPackages = [
