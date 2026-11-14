@@ -68,24 +68,6 @@
       unstable = import inputs.nixpkgs-unstable {
         system = final.stdenv.hostPlatform.system;
         config.allowUnfree = true;
-        overlays = [
-          (ufinal: uprev: {
-            # FIXME: Remove when fixed upstream
-            anki = uprev.anki.overrideAttrs (old: {
-              nativeBuildInputs = (old.nativeBuildInputs or []) ++ [ufinal.pkg-config];
-              buildInputs = (old.buildInputs or []) ++ [ufinal.zstd];
-              env =
-                old.env
-                // {
-                  UV_FIND_LINKS = ufinal.runCommand "uv-wheels-fixed" {} ''
-                    mkdir -p $out
-                    ln -s ${old.env.UV_FIND_LINKS}/* $out/
-                    ln -s ${ufinal.python3.pkgs.tomlkit.dist}/*.whl $out/
-                  '';
-                };
-            });
-          })
-        ];
       };
     };
   };
