@@ -82,6 +82,8 @@
           ".local/share/direnv"
 
           ".claude"
+
+          ".config/entenshell"
         ];
         files = [
           ".claude.json"
