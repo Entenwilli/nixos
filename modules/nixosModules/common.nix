@@ -108,6 +108,11 @@
       package = pkgs.javaPackages.compiler.openjdk17;
     };
 
+    programs.ausweisapp = {
+      enable = true;
+      openFirewall = true;
+    };
+
     programs.ssh.enableAskPassword = true;
     programs.ssh.askPassword = "${pkgs.seahorse}/libexec/seahorse/ssh-askpass";
 
