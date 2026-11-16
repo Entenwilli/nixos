@@ -58,7 +58,6 @@
           ".config/zen"
           ".mozilla"
           ".local/share/bemoji"
-          ".config/qt5ct"
           ".config/qt6ct"
           ".local/share/Steam"
           ".local/share/fish"
