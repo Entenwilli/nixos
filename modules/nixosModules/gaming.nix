@@ -22,6 +22,7 @@
         mangohud
         prismlauncher
         ryubing
+        osu-lazer-bin
       ];
 
       programs.steam = {

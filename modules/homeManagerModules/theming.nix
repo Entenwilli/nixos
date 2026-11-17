@@ -30,7 +30,7 @@
       qt = {
         enable = true;
         style.package = with pkgs; [darkly];
-        platformTheme.name = "qtct";
+        platformTheme.name = "qt6ct";
       };
 
       gtk = {

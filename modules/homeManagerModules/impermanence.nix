@@ -83,6 +83,8 @@
           ".claude"
 
           ".config/entenshell"
+
+          ".local/share/osu"
         ];
         files = [
           ".claude.json"
