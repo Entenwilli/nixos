@@ -9,7 +9,7 @@
   libXrender,
   perl,
   zlib,
-  jdk17,
+  jdk21,
   glib,
   glib-networking,
   gtk3,
@@ -21,11 +21,11 @@
   fetchurl,
   ...
 }: let
-  url = "https://updatesite.palladio-simulator.com/DataFlowAnalysis/product/branches/ecore-editor";
+  url = "https://updatesite.palladio-simulator.com/DataFlowAnalysis/product/branches/maven-build";
 in
   stdenv.mkDerivation rec {
     name = "eclipse-dfa";
-    version = "5.0.0-nightly-14.10.2026";
+    version = "5.1.0-nightly-19.11.2026";
     desktopItem = makeDesktopItem {
       name = "DataFlowAnalysis";
       exec = "env WEBKIT_DISABLE_COMPOSITING_MODE=1 WEBKIT_DISABLE_DMABUF_RENDERER=1 DataFlowAnalysisBench";
@@ -38,7 +38,7 @@ in
 
     src = fetchurl {
       url = "${url}/DataFlowAnalysis.linux.gtk.x86_64.tar.gz";
-      hash = "sha256-d8M6vuij8Eb1cwqZx4l4uAnEDjUzSjnE7OMYMoyW44M=";
+      hash = "sha256-m9SH+kdhf4mgexWo/0xULd9SN/1Ay2LfDgKuYZizXWc=";
     };
 
     nativeBuildInputs = [makeWrapper perl];
@@ -48,7 +48,7 @@ in
       glib
       gsettings-desktop-schemas
       gtk3
-      jdk17
+      jdk21
       libarchive
       libX11
       libXrender
@@ -81,7 +81,7 @@ in
       # Create wrapper script
       productId=$(sed 's/id=//; t; d' $out/DataFlowAnalysisBench/.eclipseproduct)
       makeWrapper $out/DataFlowAnalysisBench/DataFlowAnalysisBench $out/bin/DataFlowAnalysisBench \
-          --prefix PATH : ${jdk17}/bin \
+          --prefix PATH : ${jdk21}/bin \
           --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [glib gtk3 libXtst libsecret webkitgtk_4_1]} \
           --prefix GIO_EXTRA_MODULES : "${glib-networking}/lib/gio/modules" \
           --prefix XDG_DATA_DIRS : "$GSETTINGS_SCHEMAS_PATH" \
