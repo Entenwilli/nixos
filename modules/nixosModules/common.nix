@@ -105,7 +105,7 @@
 
     programs.java = {
       enable = true;
-      package = pkgs.javaPackages.compiler.openjdk17;
+      package = pkgs.javaPackages.compiler.openjdk21;
     };
 
     programs.ausweisapp = {
