@@ -12,5 +12,4 @@
   yomitan-api = pkgs.callPackage ./yomitan-api {};
   yomitan-mecab = pkgs.callPackage ./yomitan-mecab {};
   mecab-ipadic-neologd = pkgs.callPackage ./mecab-ipadic-neologd {mecab = prev.mecab;};
-  readest-updated = pkgs.callPackage ./readest {};
 }

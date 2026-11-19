@@ -6,6 +6,7 @@
   python3,
   mecab,
   mecab-ipadic-neologd,
+  nix-update-script,
   ...
 }:
 stdenv.mkDerivation rec {
@@ -59,4 +60,9 @@ stdenv.mkDerivation rec {
     mkdir -p "$out/lib/mozilla/native-messaging-hosts"
     substituteAll "${./firefox-native-messaging-hosts.json}" "$out/lib/mozilla/native-messaging-hosts/yomitan_mecab.json"
   '';
+
+  passthru.updateScript = nix-update-script {
+    attrPath = "yomitan-mecab";
+    extraArgs = ["--version=branch"];
+  };
 }

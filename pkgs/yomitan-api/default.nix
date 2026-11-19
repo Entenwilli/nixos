@@ -3,6 +3,7 @@
   fetchFromGitHub,
   stdenv,
   python3,
+  nix-update-script,
   ...
 }:
 stdenv.mkDerivation rec {
@@ -37,4 +38,9 @@ stdenv.mkDerivation rec {
     mkdir -p "$out/lib/mozilla/native-messaging-hosts"
     substituteAll "${./firefox-native-messaging-hosts.json}" "$out/lib/mozilla/native-messaging-hosts/yomitan_api.json"
   '';
+
+  passthru.updateScript = nix-update-script {
+    attrPath = "yomitan-api";
+    extraArgs = ["--version=branch"];
+  };
 }

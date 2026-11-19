@@ -3,17 +3,19 @@
   fetchurl,
   steam,
   makeDesktopItem,
+  nix-update-script,
 }: let
   pname = "ffxiv-teamcraft";
   version = "11.4.25";
 
-  src = fetchurl {
+  appimageSrc = fetchurl {
     url = "https://github.com/ffxiv-teamcraft/ffxiv-teamcraft/releases/download/v${version}/FFXIV-Teamcraft.AppImage";
     hash = "sha256-hfQYm11qgoeZjgwGS1gb8+BKLyIAPW2LyH5alJTujus=";
   };
 
   appimageContents = appimageTools.extract {
-    inherit pname version src;
+    inherit pname version;
+    src = appimageSrc;
   };
 in
   appimageTools.wrapAppImage rec {
@@ -21,7 +23,10 @@ in
 
     src = appimageContents;
 
-    passthru.src = src;
+    passthru.src = appimageSrc;
+    passthru.updateScript = nix-update-script {
+      attrPath = "ffxiv-teamcraft";
+    };
 
     extraPkgs = pkgs:
       with pkgs; [

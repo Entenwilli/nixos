@@ -3,6 +3,7 @@
   python3Packages,
   fetchPypi,
   pkgs,
+  nix-update-script,
 }:
 python3Packages.buildPythonApplication rec {
   pname = "lnxlink";
@@ -52,6 +53,10 @@ python3Packages.buildPythonApplication rec {
     vdf
     waitress
   ];
+
+  passthru.updateScript = nix-update-script {
+    attrPath = "lnxlink";
+  };
 
   meta = with lib; {
     description = "Effortlessly manage your Linux machine using MQTT.";
