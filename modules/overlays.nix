@@ -1,5 +1,5 @@
-{inputs, ...}: {
-  flake.overlays = {
+{inputs, ...}: let
+  overlays = {
     additions = final: prev:
       import ../pkgs {
         pkgs = final;
@@ -13,19 +13,6 @@
       gnome-network-displays-patched = prev.gnome-network-displays.overrideAttrs (old: {
         nativeBuildInputs = old.nativeBuildInputs ++ [prev.gtk3 prev.wpa_supplicant prev.glib-networking prev.gst_all_1.gstreamer prev.gst_all_1.gst-plugins-base prev.gst_all_1.gst-vaapi];
       });
-
-      # FIXME: Remove when fixed upstream
-      pythonPackagesExtensions =
-        prev.pythonPackagesExtensions
-        ++ [
-          (
-            py_final: py_prev: {
-              fpdf2 = py_prev.fpdf2.overrideAttrs (old: {
-                disabledTests = old.disabledTests ++ ["test_image_with_explicit_dimensions"];
-              });
-            }
-          )
-        ];
 
       mecab = prev.mecab.overrideAttrs (_: {
         postInstall = ''
@@ -45,29 +32,28 @@
       });
     };
 
-    # FIXME: Remove when fixed upstream
-    server-fixes = final: prev: {
-      pythonPackagesExtensions =
-        prev.pythonPackagesExtensions
-        ++ [
-          (
-            py_final: py_prev: {
-              fpdf2 = py_prev.fpdf2.overrideAttrs (old: {
-                disabledTests = old.disabledTests ++ ["test_image_with_explicit_dimensions"];
-              });
-            }
-          )
-        ];
-
-      paperless-ngx = prev.paperless-ngx.overrideAttrs (old: {
-        disabledTests = old.disabledTests ++ ["test_filters"];
-      });
-    };
-
     unstable-packages = final: _prev: {
       unstable = import inputs.nixpkgs-unstable {
         system = final.stdenv.hostPlatform.system;
         config.allowUnfree = true;
+      };
+    };
+  };
+in {
+  flake.overlays = overlays;
+
+  perSystem = {system, ...}: {
+    _module.args.pkgs = import inputs.nixpkgs {
+      inherit system;
+      overlays = [
+        overlays.additions
+        overlays.modifications
+      ];
+      config = {
+        allowUnfree = true;
+        permittedInsecurePackages = [
+          "electron-41.10.7"
+        ];
       };
     };
   };

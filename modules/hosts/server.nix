@@ -48,7 +48,6 @@
 
     nixpkgs.overlays = [
       self.overlays.additions
-      self.overlays.server-fixes
       inputs.nix-minecraft.overlay
     ];
 
