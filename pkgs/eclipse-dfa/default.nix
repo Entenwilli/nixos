@@ -21,11 +21,11 @@
   fetchurl,
   ...
 }: let
-  url = "https://updatesite.palladio-simulator.com/DataFlowAnalysis/product/branches/ecore-editor";
+  url = "https://updatesite.palladio-simulator.com/DataFlowAnalysis/product/branches/maven-build";
 in
   stdenv.mkDerivation rec {
     name = "eclipse-dfa";
-    version = "5.0.0-nightly-14.10.2026";
+    version = "5.1.0-nightly-19.11.2026";
     desktopItem = makeDesktopItem {
       name = "DataFlowAnalysis";
       exec = "env WEBKIT_DISABLE_COMPOSITING_MODE=1 WEBKIT_DISABLE_DMABUF_RENDERER=1 DataFlowAnalysisBench";
