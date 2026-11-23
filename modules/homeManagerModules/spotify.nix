@@ -53,6 +53,12 @@
         ];
       };
 
+      home.persistence."/persistent".directories = lib.mkIf config.impermanence.enable [
+        ".config/spotify"
+        ".cache/spotify/Storage"
+        ".cache/spotify/Default"
+      ];
+
       xdg.desktopEntries.spotify = {
         type = "Application";
         name = "Spotify";
