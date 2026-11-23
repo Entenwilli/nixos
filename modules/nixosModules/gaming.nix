@@ -22,7 +22,9 @@
         mangohud
         prismlauncher
         ryubing
-        osu-lazer-bin
+        (osu-lazer-bin.override {
+          nativeWayland = true;
+        })
       ];
 
       programs.steam = {
