@@ -223,6 +223,7 @@
       hyprland-preview-share-picker
       mecab
       inputs.entenvim.packages.${pkgs.stdenv.hostPlatform.system}.default
+      claude-desktop
     ];
 
     # Create Data Flow Analysis symlink

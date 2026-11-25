@@ -5,6 +5,7 @@
 }: {
   eclipse-dfa = pkgs.callPackage ./eclipse-dfa {};
   wonderdraft = pkgs.callPackage ./wonderdraft {};
+  claude-desktop = pkgs.callPackage ./claude-desktop {};
   lnxlink = pkgs.callPackage ./lnxlink {};
   hyprland-preview-share-picker = pkgs.callPackage ./hyprland-preview-share-picker {};
   ffxiv-teamcraft = pkgs.callPackage ./ffxivteamcraft {};
