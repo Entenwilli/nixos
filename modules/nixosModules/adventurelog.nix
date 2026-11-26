@@ -136,7 +136,7 @@
         wantedBy = ["multi-user.target"];
       };
 
-      services.borgbackup.jobs.backup.paths = ["/srv/data/adventurelog/"];
+      borgbackup.sourcePaths = ["/srv/data/adventurelog/"];
     };
   };
 }

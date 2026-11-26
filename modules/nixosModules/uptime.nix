@@ -31,7 +31,7 @@
       };
     };
 
-    services.borgbackup.jobs.backup.paths = ["/var/lib/uptime-kuma/"];
+    borgbackup.sourcePaths = ["/var/lib/uptime-kuma/"];
     };
   };
 }

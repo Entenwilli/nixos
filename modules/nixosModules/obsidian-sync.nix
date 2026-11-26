@@ -69,7 +69,7 @@
         };
       };
 
-      services.borgbackup.jobs.backup.paths = ["/var/lib/couchdb/"];
+      borgbackup.sourcePaths = ["/var/lib/couchdb/"];
     };
   };
 }

@@ -30,7 +30,7 @@
       };
     };
 
-    services.borgbackup.jobs.backup.paths = [
+    borgbackup.sourcePaths = [
       "/var/lib/shiori/"
     ];
     };

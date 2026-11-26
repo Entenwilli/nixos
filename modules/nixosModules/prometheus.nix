@@ -37,7 +37,7 @@
         ];
       };
 
-      services.borgbackup.jobs.backup.paths = ["/var/lib/prometheus2/"];
+      borgbackup.sourcePaths = ["/var/lib/prometheus2/"];
     };
   };
 }

@@ -159,9 +159,7 @@
           };
         };
 
-        services.borgbackup.jobs = lib.mkIf cfg.enableBorgBackup {
-          backup.paths = ["/var/lib/syncthing/"];
-        };
+        borgbackup.sourcePaths = lib.mkIf cfg.enableBorgBackup ["/var/lib/syncthing/"];
       }
       (lib.optionalAttrs (options ? impermanence) {
         environment.persistence."/persistent".directories = lib.mkIf config.impermanence.enable [

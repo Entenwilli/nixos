@@ -31,7 +31,7 @@
       };
     };
 
-    services.borgbackup.jobs.backup.paths = ["/var/lib/ntfy-sh/"];
+    borgbackup.sourcePaths = ["/var/lib/ntfy-sh/"];
     };
   };
 }

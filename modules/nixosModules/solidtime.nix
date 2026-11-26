@@ -343,7 +343,7 @@
         wantedBy = ["multi-user.target"];
       };
 
-      services.borgbackup.jobs.backup.paths = ["/srv/data/tracking/"];
+      borgbackup.sourcePaths = ["/srv/data/tracking/"];
     };
   };
 }

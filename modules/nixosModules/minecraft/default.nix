@@ -30,7 +30,7 @@
         };
       };
 
-      services.borgbackup.jobs.backup.paths = [
+      borgbackup.sourcePaths = [
         "/srv/minecraft/fabric/world/"
         "/srv/minecraft/fabric/immersive_paintings/"
 

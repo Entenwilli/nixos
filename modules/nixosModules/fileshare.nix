@@ -102,7 +102,7 @@
       };
     };
 
-    services.borgbackup.jobs.backup.paths = ["/var/lib/filebrowser/"];
+    borgbackup.sourcePaths = ["/var/lib/filebrowser/"];
     };
   };
 }

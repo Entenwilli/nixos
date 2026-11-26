@@ -11,6 +11,7 @@
   }: {
     imports = [
       self.nixosModules.bluetooth
+      self.nixosModules.borgbackup
       self.nixosModules.drawing
       self.nixosModules.gaming
       self.nixosModules.host-role

@@ -44,7 +44,7 @@
         };
       };
 
-      services.borgbackup.jobs.backup.paths = ["/var/lib/paperless/" "/var/lib/redis-paperless/"];
+      borgbackup.sourcePaths = ["/var/lib/paperless/" "/var/lib/redis-paperless/"];
     };
   };
 }

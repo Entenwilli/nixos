@@ -93,7 +93,7 @@
         };
       };
 
-      services.borgbackup.jobs.backup.paths = ["/var/lib/grafana/"];
+      borgbackup.sourcePaths = ["/var/lib/grafana/"];
     };
   };
 }

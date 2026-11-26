@@ -7,74 +7,50 @@
   }: {
     options.borgbackup.enable = lib.mkEnableOption "Enable borgbackup";
 
+    options.borgbackup.sourcePaths = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [];
+      description = ''
+        Live filesystem paths to include in the borg backup. Paths are
+        automatically remapped onto the read-only pre-backup btrfs snapshot,
+        so services do not need to be stopped for a consistent backup.
+      '';
+    };
+
     config = lib.mkIf config.borgbackup.enable {
-      services.borgbackup = {
-        jobs.backup = {
-          doInit = true;
-          repo = "ssh://u543537@u543537.your-storagebox.de:23/./backups/NixOSServer";
-          environment = {
-            BORG_RSH = "ssh -i /root/id_backup";
-          };
-          encryption = {
-            mode = "repokey-blake2";
-            passCommand = "cat /root/borg";
-          };
-          compression = "auto,lzma";
-          startAt = "*-*-* 05:00:00";
-          prune.keep = {
-            within = "1d";
-            daily = 7;
-            monthly = -1;
-          };
-          paths = ["/root" "/home/felix/"];
-          extraArgs = ["--debug" "--verbose"];
-          preHook = ''
-            ${pkgs.systemd}/bin/systemctl stop docker-tracking-database.service
-            ${pkgs.systemd}/bin/systemctl stop docker-tracking-frontend.service
-            ${pkgs.systemd}/bin/systemctl stop docker-tracking-queue.service
-            ${pkgs.systemd}/bin/systemctl stop docker-tracking-scheduler.service
-            ${pkgs.systemd}/bin/systemctl stop minecraft-server-fabric.service
-            ${pkgs.systemd}/bin/systemctl stop couchdb.service
-            ${pkgs.systemd}/bin/systemctl stop docker.service
-            ${pkgs.systemd}/bin/systemctl stop filebrowser.service
-            ${pkgs.systemd}/bin/systemctl stop ntfy-sh.service
-            ${pkgs.systemd}/bin/systemctl stop paperless-consumer.service
-            ${pkgs.systemd}/bin/systemctl stop paperless-scheduler.service
-            ${pkgs.systemd}/bin/systemctl stop paperless-task-queue.service
-            ${pkgs.systemd}/bin/systemctl stop paperless-web.service
-            ${pkgs.systemd}/bin/systemctl stop postgresql.service
-            ${pkgs.systemd}/bin/systemctl stop redis-paperless.service
-            ${pkgs.systemd}/bin/systemctl stop syncthing.service
-            ${pkgs.systemd}/bin/systemctl stop shiori.service
-            ${pkgs.systemd}/bin/systemctl stop traefik.service
-            ${pkgs.systemd}/bin/systemctl stop uptime-kuma.service
-            ${pkgs.systemd}/bin/systemctl stop docker-compose-solidtime-root.target
-            ${pkgs.systemd}/bin/systemctl stop docker-compose-adventurelog-root.target
-          '';
-          postPrune = ''
-            ${pkgs.systemd}/bin/systemctl start docker-tracking-database.service
-            ${pkgs.systemd}/bin/systemctl start docker-tracking-frontend.service
-            ${pkgs.systemd}/bin/systemctl start docker-tracking-queue.service
-            ${pkgs.systemd}/bin/systemctl start docker-tracking-scheduler.service
-            ${pkgs.systemd}/bin/systemctl start minecraft-server-fabric.service
-            ${pkgs.systemd}/bin/systemctl start couchdb.service
-            ${pkgs.systemd}/bin/systemctl start docker.service
-            ${pkgs.systemd}/bin/systemctl start filebrowser.service
-            ${pkgs.systemd}/bin/systemctl start ntfy-sh.service
-            ${pkgs.systemd}/bin/systemctl start paperless-consumer.service
-            ${pkgs.systemd}/bin/systemctl start paperless-scheduler.service
-            ${pkgs.systemd}/bin/systemctl start paperless-task-queue.service
-            ${pkgs.systemd}/bin/systemctl start paperless-web.service
-            ${pkgs.systemd}/bin/systemctl start postgresql.service
-            ${pkgs.systemd}/bin/systemctl start redis-paperless.service
-            ${pkgs.systemd}/bin/systemctl start syncthing.service
-            ${pkgs.systemd}/bin/systemctl start shiori.service
-            ${pkgs.systemd}/bin/systemctl start traefik.service
-            ${pkgs.systemd}/bin/systemctl start uptime-kuma.service
-            ${pkgs.systemd}/bin/systemctl start docker-compose-solidtime-root.target
-            ${pkgs.systemd}/bin/systemctl start docker-compose-adventurelog-root.target
-          '';
+      borgbackup.sourcePaths = ["/root" "/home/felix/"];
+
+      services.borgbackup.jobs.backup = {
+        doInit = true;
+        repo = "ssh://u543537@u543537.your-storagebox.de:23/./backups/NixOSServer";
+        environment = {
+          BORG_RSH = "ssh -i /root/id_backup";
         };
+        encryption = {
+          mode = "repokey-blake2";
+          passCommand = "cat /root/borg";
+        };
+        compression = "auto,lzma";
+        startAt = "*-*-* 05:00:00";
+        prune.keep = {
+          within = "1d";
+          daily = 7;
+          monthly = -1;
+        };
+        paths = map (p: "/.snapshots/borg-pre" + p) config.borgbackup.sourcePaths;
+        extraArgs = ["--debug" "--verbose"];
+        preHook = ''
+          if [ -d /.snapshots/borg-pre ]; then
+            ${pkgs.btrfs-progs}/bin/btrfs subvolume delete /.snapshots/borg-pre
+          fi
+          mkdir -p /.snapshots
+          ${pkgs.btrfs-progs}/bin/btrfs subvolume snapshot -r / /.snapshots/borg-pre
+        '';
+        postHook = ''
+          if [ -d /.snapshots/borg-pre ]; then
+            ${pkgs.btrfs-progs}/bin/btrfs subvolume delete /.snapshots/borg-pre
+          fi
+        '';
       };
     };
   };

@@ -147,7 +147,7 @@
         };
       };
 
-      services.borgbackup.jobs.backup.paths = ["/var/lib/traefik/"];
+      borgbackup.sourcePaths = ["/var/lib/traefik/"];
     };
   };
 }

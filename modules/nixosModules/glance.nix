@@ -232,7 +232,7 @@
       };
     };
 
-    services.borgbackup.jobs.backup.paths = ["/var/lib/glance/"];
+    borgbackup.sourcePaths = ["/var/lib/glance/"];
     };
   };
 }
