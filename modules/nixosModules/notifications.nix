@@ -1,52 +1,60 @@
 {...}: {
   flake.nixosModules.notifications = {
     pkgs,
-    config,
+    lib,
     ...
-  }: {
-    systemd.user.timers."break" = {
-      timerConfig = {
-        OnBootSec = "4h";
-        Unit = ["break.service"];
+  }: let
+    mkNotification = {
+      name,
+      schedule,
+      title,
+      message,
+      icon ? "dialog-information",
+      color ? null,
+      urgency ? "normal",
+    }: let
+      colorHint = lib.optionalString (color != null) " -h \"string:fgcolor:${color}\"";
+    in {
+      systemd.user.timers.${name} = {
+        timerConfig = schedule // {Unit = ["${name}.service"];};
+        wantedBy = ["timers.target"];
       };
-      wantedBy = ["timers.target"];
-    };
-    systemd.user.services."break" = {
-      serviceConfig = {
-        Type = "simple";
-        Environment = ["DISPLAY=:0"];
-        ExecStart = ''${pkgs.libnotify}/bin/notify-send -u critical -t 0 -i face-tired -h "string:fgcolor:#ff4444" -a "Time to take a Break!" "Over 4 hours have elapsed! Did you take a break?"'';
-      };
-    };
-
-    systemd.user.timers."late" = {
-      timerConfig = {
-        OnCalendar = "*-*-* 18:00:00";
-        Unit = ["late.service"];
-      };
-      wantedBy = ["timers.target"];
-    };
-    systemd.user.services."late" = {
-      serviceConfig = {
-        Type = "simple";
-        Environment = ["DISPLAY=:0"];
-        ExecStart = ''${pkgs.libnotify}/bin/notify-send -u critical -t 0 -i face-tired -h "string:fgcolor:#ff4444" -a "It's getting late!" "It's 6pm... You should finish work for today!"'';
+      systemd.user.services.${name} = {
+        serviceConfig = {
+          Type = "simple";
+          Environment = ["DISPLAY=:0"];
+          ExecStart = ''${pkgs.libnotify}/bin/notify-send -u ${urgency} -t 0 -i ${icon}${colorHint} -a "${title}" "${message}"'';
+        };
       };
     };
-
-    systemd.user.timers."bedtime" = {
-      timerConfig = {
-        OnCalendar = "*-*-* 22:00:00";
-        Unit = ["bedtime.service"];
-      };
-      wantedBy = ["timers.target"];
-    };
-    systemd.user.services."bedtime" = {
-      serviceConfig = {
-        Type = "simple";
-        Environment = ["DISPLAY=:0"];
-        ExecStart = ''${pkgs.libnotify}/bin/notify-send -u critical -t 0 -i face-tired -h "string:fgcolor:#ff4444" -a "It's time to go to bed!" "It's 10pm... You should wrap up and begin going to bed!"'';
-      };
-    };
-  };
+  in
+    lib.foldl' lib.recursiveUpdate {} (map mkNotification [
+      {
+        name = "break";
+        schedule = {OnBootSec = "4h";};
+        title = "Time to take a Break!";
+        message = "Over 4 hours have elapsed! Did you take a break?";
+        icon = "face-tired";
+        color = "#d20f39";
+        urgency = "critical";
+      }
+      {
+        name = "late";
+        schedule = {OnCalendar = "*-*-* 18:00:00";};
+        title = "It's getting late!";
+        message = "It's 6pm... You should finish work for today!";
+        icon = "face-tired";
+        color = "#d20f39";
+        urgency = "critical";
+      }
+      {
+        name = "bedtime";
+        schedule = {OnCalendar = "*-*-* 22:00:00";};
+        title = "It's time to go to bed!";
+        message = "It's 10pm... You should wrap up and begin going to bed!";
+        icon = "face-tired";
+        color = "#d20f39";
+        urgency = "critical";
+      }
+    ]);
 }
