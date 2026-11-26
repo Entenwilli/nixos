@@ -7,7 +7,10 @@
     pkgs,
     config,
     ...
-  }: {
+  }: let
+    kdl = import ./_kdl.nix {inherit lib;};
+    cfg = config.niri;
+  in {
     options.niri = {
       enable = lib.mkEnableOption "Enable niri";
 
@@ -17,35 +20,10 @@
       };
     };
 
-    config = lib.mkIf config.niri.enable {
+    config = lib.mkIf cfg.enable {
       home.file.".config/niri/config.kdl" = {
         force = true;
-        text =
-          lib.readFile ./config.kdl
-          + ''
-            debug {
-              render-drm-device "/dev/dri/renderD129"
-            }
-            input {
-                keyboard {
-                    xkb {
-                        layout "${config.niri.keyboardLayout}"
-                    }
-                    numlock
-                }
-
-                touchpad {
-                    tap
-                    natural-scroll
-                }
-
-                mouse {
-                    accel-profile "flat"
-                    accel-speed 0.5
-                }
-                focus-follows-mouse
-            }
-          '';
+        text = kdl.toKDL (import ./_config.nix {inherit cfg lib;});
       };
     };
   };
