@@ -49,6 +49,7 @@
             ${pkgs.systemd}/bin/systemctl stop traefik.service
             ${pkgs.systemd}/bin/systemctl stop uptime-kuma.service
             ${pkgs.systemd}/bin/systemctl stop docker-compose-solidtime-root.target
+            ${pkgs.systemd}/bin/systemctl stop docker-compose-adventurelog-root.target
           '';
           postPrune = ''
             ${pkgs.systemd}/bin/systemctl start docker-tracking-database.service
@@ -71,6 +72,7 @@
             ${pkgs.systemd}/bin/systemctl start traefik.service
             ${pkgs.systemd}/bin/systemctl start uptime-kuma.service
             ${pkgs.systemd}/bin/systemctl start docker-compose-solidtime-root.target
+            ${pkgs.systemd}/bin/systemctl start docker-compose-adventurelog-root.target
           '';
         };
       };
