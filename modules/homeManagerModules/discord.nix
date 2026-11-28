@@ -12,8 +12,8 @@
     };
 
     config = lib.mkIf config.discord.enable {
-      home.packages = with pkgs; [
-        vesktop
+      home.packages = [
+        pkgs.unstable.vesktop
       ];
     };
   };
